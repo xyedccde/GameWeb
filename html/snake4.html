@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+         #game-over {
+        color: red;
+        font-size: 24px; /* Adjust this value to change the size of the 'Game Over' text */
+    }
+    </style>
+    
+</head>
+
+<body>
+
+    <div class="score-container">
+        <div>Score : <span id="current-score">0</span></div>
+        <div>High Score : <span id="high-score">0</span></div>
+    </div>
+
+    <canvas id="gameCanvas" class="bg-light" width="500" height="500"></canvas>
+    <div id="game-over"  style="color: red;">
+        Game Over
+        <button class="btn btn-info"  id="restart-btn">Restart Game</button>
+    </div>
+
+
+    <script src="script4.js"></script>
+</body>
+
+</html>

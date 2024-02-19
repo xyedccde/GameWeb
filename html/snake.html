@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/bootstrap.bundle.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        canvas {
+            border: 1px solid #333;
+            position: relative;
+            /* 確保 canvas 有相對定位 */
+            z-index: 1;
+            /* 較低的 z-index */
+        }
+
+        #scorePanel {
+            position: absolute;
+            top: 70px;
+            left: 35%;
+            font-size: 25px;
+            color: red;
+        }
+
+        #restartButton {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+
+            font-size: 16px;
+        }
+
+        #gameOverContainer {
+            display: none;
+            /* 默认隐藏 */
+            position: absolute;
+            left: 50%;
+            /* 水平居中 */
+            transform: translateX(-50%);
+            /* 向左偏移自身宽度的50%，以确保真正的居中 */
+            text-align: center;
+            /* 文字居中 */
+            top: 40%;
+            width: 16%;
+            height: 16%;
+            /* 容器宽度设为50% */
+            background-color: black;
+            /* 背景色 */
+            color: white;
+            /* 文字颜色设为白色 */
+            padding: 10px 0;
+            /* 添加一些内填充 */
+            z-index: 1000;
+        }
+
+
+        #gameOverMessage {
+            font-size: 30px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="snakeCanvas" width="500" height="500"></canvas>
+
+    <div id="scorePanel">
+        Score: <span id="score">0</span>
+    </div>
+
+    <div id="gameOverContainer" class="alert alert-info" role="alert">
+        <div id="gameOverMessage">GAME OVER</div>
+        <button type="button" class="btn btn-info" id="restartButton">RESTART</button>
+
+    </div>
+
+    <script>
+        const canvas = document.getElementById("snakeCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const box = 20;
+        let snake = [{ x: 10, y: 10 }];
+        let food = { x: 15, y: 15 };
+        let snakeHeadUp = new Image();
+        let snakeHeadDown = new Image();
+        let snakeHeadLeft = new Image();
+        let snakeHeadRight = new Image();
+        let tailSegmentImage = new Image();
+        let foodImage = new Image();
+        let direction = "right";
+        let gameSpeed= 10; // 初始遊戲速度
+        let score = 0;
+
+
+
+        snakeHeadUp.src = "SnakeHeadUp.png"; // 蛇的頭部圖像路徑（向上）
+        snakeHeadDown.src = "SnakeHeadDown.png"; // 蛇的頭部圖像路徑（向下）
+        snakeHeadLeft.src = "SnakeHeadLeft.png"; // 蛇的頭部圖像路徑（向左）
+        snakeHeadRight.src = "SnakeHeadRight.png"; // 蛇的頭部圖像路徑（向右）
+        tailSegmentImage.src = "SnakeBody.png"; // 蛇的身體圖像路徑
+        foodImage.src = "food3.png"; // 食物的圖像路徑
+
+        function startGame() {
+            snake = [{ x: 10, y: 10 }];
+            food = {
+                x: Math.floor(Math.random() * (canvas.width / box)),
+                y: Math.floor(Math.random() * (canvas.height / box))
+            };
+            gameSpeed = 100;
+            score = 0;
+            direction = 'right';
+            document.getElementById('score').textContent = score;
+            clearInterval(game);
+            game = setInterval(move, gameSpeed);
+        }
+        function draw() {
+            ctx.fillStyle = 'rgba(250, 250, 250, 1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            document.getElementById('score').textContent = score;
+
+
+            // Draw snake head based on direction
+            let headImage;
+            switch (direction) {
+                case "up":
+                    headImage = snakeHeadUp;
+                    break;
+                case "down":
+                    headImage = snakeHeadDown;
+                    break;
+                case "left":
+                    headImage = snakeHeadLeft;
+                    break;
+                case "right":
+                    headImage = snakeHeadRight;
+                    break;
+            }
+            ctx.drawImage(headImage, snake[0].x* box, snake[0].y * box, box*1.2, box*1.2);
+
+            // Draw snake body (tail segments)
+            for (let i = 1; i < snake.length; i++) {
+                ctx.drawImage(tailSegmentImage, snake[i].x * box, snake[i].y * box, box*1.1, box*1.1);
+            }
+
+            // Draw food
+            ctx.drawImage(foodImage, food.x * box, food.y * box, box, box);
+        }
+
+        function move() {
+            const head = { x: snake[0].x, y: snake[0].y };
+
+            // Check for collision with walls or itself
+            if (
+                head.x < 0 ||
+                head.y < 0 ||
+                head.x >= canvas.width / box ||
+                head.y >= canvas.height / box ||
+                collision()
+            ) {
+                gameOver();
+                return;
+            }
+
+            switch (direction) {
+                case "up":
+                    head.y -= 1;
+                    break;
+                case "down":
+                    head.y += 1;
+                    break;
+                case "left":
+                    head.x -= 1;
+                    break;
+                case "right":
+                    head.x += 1;
+                    break;
+            }
+
+            snake.unshift(head);
+
+            // Check for collision with food
+            if (head.x === food.x && head.y === food.y) {
+                score += 10;
+                // Generate new food
+                food = {
+                    x: Math.floor(Math.random() * (canvas.width / box)),
+                    y: Math.floor(Math.random() * (canvas.height / box))
+                };
+               
+
+            } else {
+                // Remove the tail
+                snake.pop();
+            }
+        }
+
+
+        function collision() {
+            // Check if head collides with any segment of the snake
+            for (let i = 1; i < snake.length; i++) {
+                if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        function changeDirection(event) {
+            switch (event.key) {
+                case "ArrowUp":
+                    direction = "up";
+                    break;
+                case "ArrowDown":
+                    direction = "down";
+                    break;
+                case "ArrowLeft":
+                    direction = "left";
+                    break;
+                case "ArrowRight":
+                    direction = "right";
+                    break;
+            }
+        }
+        document.addEventListener("keydown", changeDirection);
+
+        function gameOver() {
+            clearInterval(game);
+            // 顯示遊戲結束訊息
+            document.getElementById('gameOverContainer').style.display = 'block';
+        }
+        var game;
+        document.getElementById('restartButton').addEventListener('click', restartGame);
+        function restartGame() {
+            // 隱藏遊戲結束訊息容器
+            document.getElementById('gameOverContainer').style.display = 'none';
+
+            // 重設遊戲變量
+            snake = [{ x: 10, y: 10 }];
+            food = {
+                x: Math.floor(Math.random() * (canvas.width / box)),
+                y: Math.floor(Math.random() * (canvas.height / box))
+            };
+            direction = "right";
+            gameSpeed = 150;
+            score = 0; // 重設分數為0
+
+            // 清除並重新啟動遊戲間隔
+            clearInterval(game);
+            game = setInterval(() => {
+
+                move();
+                draw();
+            }, gameSpeed);
+
+            // 重新繪製分數
+            document.getElementById('score').textContent = score;
+        }
+        restartGame();
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        canvas {
+            border: 2px solid #000000;
+            position: relative;
+            z-index: 1;
+        }
+
+        #scorePanel {
+            position: absolute;
+            top: 70px;
+            left: 35%;
+            font-size: 25px;
+            color: red;
+        }
+
+        #restartButton {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        #gameOverContainer {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            top: 40%;
+            width: 16%;
+            height: 16%;
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        #gameOverMessage {
+            font-size: 30px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="flappyBirdCanvas" width="500" height="500"></canvas>
+
+    <div id="scorePanel">
+        Score: <span id="score">0</span>
+    </div>
+
+    <div id="gameOverContainer" class="alert alert-info" role="alert">
+        <div id="gameOverMessage">GAME OVER</div>
+        <button type="button" class="btn btn-info" id="restartButton">Restart Game</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("flappyBirdCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Bird
+        const bird = {
+            x: 50,
+            y: canvas.height / 2 - 15,
+            width: 30,
+            height: 30,
+            img: new Image(),
+            speedY: 0,
+            gravity: 1.2,
+            jump: -10,
+            draw: function () {
+                ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+            },
+            flap: function () {
+                this.speedY = this.jump;
+            },
+            update: function () {
+                this.speedY += this.gravity;
+                this.y += this.speedY;
+
+                // 檢查是否碰到地板
+                if (this.y + this.height > canvas.height) {
+                    gameOver();
+                }
+            }
+        };
+
+        bird.img.src = "bird.png"; // 設置 bird 圖像的路徑
+
+        // Pipes
+        const pipes = [];
+        const pipeWidth = 50;
+        const pipeHeight = 200;
+        const pipeGap = 200;
+        const pipeSpeed = 2;
+        let score = 0; // 增加分數變數
+
+        function createPipe() {
+            const pipe = {
+                x: canvas.width,
+                y: Math.floor(Math.random() * (canvas.height - pipeGap * 2) + pipeGap),
+                width: pipeWidth,
+                height: pipeHeight,
+                img: new Image(),
+                draw: function () {
+                    ctx.drawImage(this.img, this.x, 0, this.width, this.y);
+                    ctx.drawImage(this.img, this.x, this.y + pipeGap, this.width, canvas.height - this.y - pipeGap);
+                },
+                update: function () {
+                    this.x -= pipeSpeed;
+                }
+            };
+            pipe.img.src = "pipe.png"; // 設置 pipe 圖像的路徑
+            pipes.push(pipe);
+        }
+
+        function update() {
+            bird.update();
+
+            if (pipes.length === 0 || pipes[pipes.length - 1].x <= canvas.width - 200) {
+                createPipe();
+            }
+
+            for (let i = pipes.length - 1; i >= 0; i--) {
+                pipes[i].update();
+
+                if (collision(bird, pipes[i])) {
+                    gameOver();
+                    return;
+                }
+
+                if (pipes[i].x + pipeWidth < 0) {
+                    pipes.splice(i, 1);
+                }
+
+                // 檢查是否通過管道，並增加分數
+                if (bird.x > pipes[i].x + pipeWidth && !pipes[i].scored) {
+                    pipes[i].scored = true;
+                    score += 10;
+                    document.getElementById('score').textContent = score;
+                }
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            bird.draw();
+
+            for (const pipe of pipes) {
+                pipe.draw();
+            }
+        }
+
+        function resetGame() {
+            bird.y = canvas.height / 2 - 15;
+            pipes.length = 0;
+            score = 0;
+            document.getElementById('score').textContent = score;
+        }
+
+        function collision(bird, pipe) {
+            return (
+                bird.x < pipe.x + pipe.width &&
+                bird.x + bird.width > pipe.x &&
+                (bird.y < pipe.y || bird.y + bird.height > pipe.y + pipeGap)
+            );
+        }
+
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        function gameOver() {
+            clearInterval(game); // 停止遊戲循環
+            document.getElementById('gameOverContainer').style.display = 'block';
+            document.getElementById('gameOverMessage').textContent = 'GAME OVER';
+            // 禁用板子移動
+            pipes = false;
+            bird = false;
+            return;
+        }
+
+        var game;
+        document.getElementById('restartButton').addEventListener('click', restartGame);
+
+        function restartGame() {
+            document.getElementById('gameOverContainer').style.display = 'none';
+
+            resetGame();
+
+            game = setInterval(() => {
+                update();
+                draw();
+            }, 1000 / 60); // 60 frames per second
+        }
+
+        restartGame();
+
+        // Event listeners
+        window.addEventListener('keydown', function (e) {
+            if (e.code === 'Space') {
+                bird.flap();
+            }
+        });
+
+        // Start the game loop
+        game = setInterval(() => {
+            update();
+            draw();
+        }, 5000 / 60); // 60 frames per second
+    </script>
+</body>
+
+</html>

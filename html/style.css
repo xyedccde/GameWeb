@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff;
+    color: #000000;
+    overflow: hidden;
+    font-family: 'Poppins',sans-serif;
+}
+
+canvas{
+    border: 2px solid #060606;
+}
+
+.score-container{
+    display: flex;
+    justify-content: space-between;
+    width: 420px;
+    font-size: 18px;
+}
+
+#restart-btn{
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: rgb(86, 187, 245);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #060606;
+}
+
+#game-over{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    color: #fff;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameOverContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    color: #ef0505;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameOverMessage {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #17a2b8; /* Bootstrap info color */
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+}

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>brick</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+      margin: 20px auto;
+      border: 2px solid #000;
+      position: relative;
+      top: 100px;
+      z-index: 1;
+    }
+
+    #scorePanel {
+      position: absolute;
+      top: 70px;
+      left: 25%;
+      font-size: 25px;
+      color: red;
+    }
+
+    #restartButton {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    #gameOverContainer {
+      display: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      top: 43%;
+      width: 16%;
+      height: 16%;
+      background-color: black;
+      color: white;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    #gameOverMessage {
+      font-size: 30px;
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <canvas id="brickGameCanvas" width="800" height="500"></canvas>
+  <div id="scorePanel">
+    Score: <span id="score">0</span>
+  </div>
+
+  <div id="gameOverContainer" class="alert alert-info" role="alert">
+    <div id="gameOverMessage">GAME OVER</div>
+    <button type="button" class="btn btn-info" id="restartButton">Restart Game</button>
+  </div>
+  <script>
+    const canvas = document.getElementById('brickGameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const brickRowCount = 5;
+    const brickColumnCount = 8;
+    const brickWidth = 80;
+    const brickHeight = 20;
+    const brickPadding = 10;
+    const brickOffsetTop = 30;
+    const brickOffsetLeft = 30;
+    let score = 0;
+
+    let bricks = [];
+
+    for (let c = 0; c < brickColumnCount; c++) {
+      bricks[c] = [];
+      for (let r = 0; r < brickRowCount; r++) {
+        bricks[c][r] = { x: 0, y: 0, status: 1 };
+      }
+    }
+
+    const ball = {
+      x: canvas.width / 2,
+      y: canvas.height - 30,
+      radius: 10,
+      dx: 2,
+      dy: -2,
+      color: '#0095DD'
+    };
+
+    const paddle = {
+      width: 100,
+      height: 10,
+      x: (canvas.width - 100) / 2,
+      color: '#0095DD'
+    };
+
+    function drawBricks() {
+      for (let c = 0; c < brickColumnCount; c++) {
+        for (let r = 0; r < brickRowCount; r++) {
+          if (bricks[c][r].status === 1) {
+            const brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
+            const brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
+            bricks[c][r].x = brickX;
+            bricks[c][r].y = brickY;
+            ctx.beginPath();
+            ctx.rect(brickX, brickY, brickWidth, brickHeight);
+            ctx.fillStyle = '#0095DD';
+            ctx.fill();
+            ctx.closePath();
+          }
+        }
+      }
+    }
+
+    function drawBall() {
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+      ctx.fillStyle = ball.color;
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function drawPaddle() {
+      ctx.beginPath();
+      ctx.rect(paddle.x, canvas.height - paddle.height, paddle.width, paddle.height);
+      ctx.fillStyle = paddle.color;
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function collisionDetection() {
+      for (let c = 0; c < brickColumnCount; c++) {
+        for (let r = 0; r < brickRowCount; r++) {
+          const b = bricks[c][r];
+          if (b.status === 1) {
+            if (
+              ball.x > b.x &&
+              ball.x < b.x + brickWidth &&
+              ball.y > b.y &&
+              ball.y < b.y + brickHeight
+            ) {
+              ball.dy = -ball.dy;
+              b.status = 0;
+              score += 1; // 增加分數
+            }
+          }
+        }
+      }
+    }
+
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBricks();
+      drawBall();
+      drawPaddle();
+      collisionDetection();
+
+      // 顯示分數
+      document.getElementById('score').textContent = score;
+
+      if (
+        ball.x + ball.dx > canvas.width - ball.radius ||
+        ball.x + ball.dx < ball.radius
+      ) {
+        ball.dx = -ball.dx;
+      }
+
+      if (
+        ball.y + ball.dy < ball.radius ||
+        (ball.y + ball.dy > canvas.height - ball.radius - paddle.height &&
+          ball.x > paddle.x &&
+          ball.x < paddle.x + paddle.width)
+      ) {
+        ball.dy = -ball.dy;
+      }
+
+      
+
+      ball.x += ball.dx;
+      ball.y += ball.dy;
+
+      if (ball.y + ball.dy > canvas.height) {
+  // Game over condition
+  document.getElementById('gameOverContainer').style.display = 'block';
+  document.getElementById('gameOverMessage').textContent = 'GAME OVER';
+  // 禁用板子移動
+  rightPressed = false;
+  leftPressed = false;
+  return;
+}
+
+      if (
+        rightPressed &&
+        paddle.x < canvas.width - paddle.width
+      ) {
+        paddle.x += 7;
+      } else if (
+        leftPressed &&
+        paddle.x > 0
+      ) {
+        paddle.x -= 7;
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    document.addEventListener('keydown', keyDownHandler);
+    document.addEventListener('keyup', keyUpHandler);
+
+    function keyDownHandler(e) {
+      if (e.code === 'ArrowRight') {
+        rightPressed = true;
+      } else if (e.code === 'ArrowLeft') {
+        leftPressed = true;
+      }
+    }
+
+    function keyUpHandler(e) {
+      if (e.code === 'ArrowRight') {
+        rightPressed = false;
+      } else if (e.code === 'ArrowLeft') {
+        leftPressed = false;
+      }
+    }
+
+    let rightPressed = false;
+    let leftPressed = false;
+
+    document.addEventListener('keydown', keyDownHandler);
+    document.addEventListener('keyup', keyUpHandler);
+
+    function keyDownHandler(e) {
+      if (e.code === 'ArrowRight') {
+        rightPressed = true;
+      } else if (e.code === 'ArrowLeft') {
+        leftPressed = true;
+      }
+    }
+
+    function keyUpHandler(e) {
+      if (e.code === 'ArrowRight') {
+        rightPressed = false;
+      } else if (e.code === 'ArrowLeft') {
+        leftPressed = false;
+      }
+    }
+
+    document.addEventListener('keydown', keyDownHandler);
+    document.addEventListener('keyup', keyUpHandler);
+
+    function keyDownHandler(e) {
+      if (e.code === 'ArrowRight') {
+        rightPressed = true;
+      } else if (e.code === 'ArrowLeft') {
+        leftPressed = true;
+      }
+    }
+
+    function keyUpHandler(e) {
+      if (e.code === 'ArrowRight') {
+        rightPressed = false;
+      } else if (e.code === 'ArrowLeft') {
+        leftPressed = false;
+      }
+    }
+
+
+
+    draw();
+  </script>
+</body>
+
+</html>
