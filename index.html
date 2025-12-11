@@ -317,6 +317,13 @@
       gap: 2.8rem;
       align-items: center;
     }
+    
+    .hero-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;   /* 讓整塊靠右對齊 hero-grid 那欄 */
+  gap: 0.75rem;
+    }
 
     .hero-kicker {
       display: inline-flex;
@@ -549,15 +556,15 @@
     }
 
     .hero-slider-controls {
-      position: static !important; /* 脫離圖片，改在 slider 下方 */
-      width: 100%;
-      margin-top: 12px;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      pointer-events: auto;
-    }
+  position: static !important;   /* 不要壓在圖片上 */
+  width: 100%;                   /* 寬度跟 hero-visual 一樣寬 */
+  margin-top: 0;                 /* 因為 hero-visual 已經有 gap 了 */
+  padding: 0 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: auto;
+}
 
     .hero-slider-arrows {
       display: flex;
@@ -1689,7 +1696,7 @@
           <div class="testimonial-inner">
             <div class="testimonial-quote-mark">“</div>
             <p class="testimonial-text">
-              捷強工業在施工前花了不少時間跟我們現場師傅溝通，把實際操作方式納入考量，
+              捷強在施工前花了不少時間跟我們現場師傅溝通，把實際操作方式納入考量，
               上線之後操作人員很快就能上手，後續改程式也都有完整紀錄。
             </p>
             <div class="testimonial-author">
@@ -1925,7 +1932,7 @@
     function handleContactSubmit(event) {
       event.preventDefault();
       alert(
-        "請撥連絡電話 : (04)22635628\n或寄Email : jyechun@gmail.com。"
+        "請撥連絡電話 : (04)2263-5628\n或寄Email : jyechun@gmail.com"
       );
     }
 
