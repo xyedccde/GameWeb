@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <title>Factory Pro | Industrial Solutions</title>
+  <title>捷強工業有限公司 | 自動控制・工業設計・工業配線</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Factory Pro provides modern industrial manufacturing solutions, engineering services and project consulting."
+    content="捷強工業有限公司，專精自動控制、工業設計與工業配線，提供客製化產線整合與電控工程服務。"
   />
 
-  <!-- 字型（Google Fonts：請自行確認商用授權或替換成自有字型） -->
+  <!-- 字型（Google Fonts：請自行確認商用授權或改成本機字型） -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -18,14 +18,6 @@
   />
 
   <style>
-    /* 
-    ==========================================================
-    全新原創樣式 (2025)
-    - 只參考版面風格與互動，不複製任何第三方模板碼
-    - 如需嚴格法務確認，請再諮詢專業律師
-    ==========================================================
-    */
-
     :root {
       --color-bg: #070b12;
       --color-bg-soft: #101725;
@@ -51,7 +43,7 @@
     html,
     body {
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
+        "Segoe UI", "Microsoft JhengHei", sans-serif;
       background: radial-gradient(circle at top, #1b2338 0, #050811 45%, #02040a 100%);
       color: var(--color-text);
       scroll-behavior: smooth;
@@ -71,7 +63,6 @@
       list-style: none;
     }
 
-    /* Layout helpers */
     .container {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -179,7 +170,6 @@
       font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: 0.05em;
-      text-transform: uppercase;
     }
 
     .brand-sub {
@@ -353,14 +343,8 @@
     }
 
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: scale(1.7);
-        opacity: 0;
-      }
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.7); opacity: 0; }
     }
 
     .hero-title {
@@ -469,7 +453,6 @@
       line-height: 1;
     }
 
-    /* Hero slider visual */
     .hero-slider {
       position: relative;
       border-radius: var(--radius-xl);
@@ -709,7 +692,7 @@
       letter-spacing: 0.16em;
     }
 
-    /* About */
+    /* About / Projects / Testimonial / Contact / Footer — 同前略，結構不變，只改文字 */
     .about-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
@@ -757,15 +740,8 @@
       gap: 1.1rem;
     }
 
-    .about-metric {
-      min-width: 120px;
-    }
-
-    .about-metric-number {
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-
+    .about-metric { min-width: 120px; }
+    .about-metric-number { font-size: 1.5rem; font-weight: 700; }
     .about-metric-label {
       font-size: 0.78rem;
       text-transform: uppercase;
@@ -852,7 +828,6 @@
       box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
     }
 
-    /* Projects */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -912,16 +887,8 @@
       gap: 0.5rem;
     }
 
-    .project-title {
-      font-size: 0.98rem;
-      font-weight: 600;
-    }
-
-    .project-desc {
-      font-size: 0.86rem;
-      color: var(--color-muted);
-    }
-
+    .project-title { font-size: 0.98rem; font-weight: 600; }
+    .project-desc { font-size: 0.86rem; color: var(--color-muted); }
     .project-meta {
       font-size: 0.78rem;
       color: #9ca3af;
@@ -931,13 +898,6 @@
       margin-top: 0.3rem;
     }
 
-    .project-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    /* Testimonial */
     .testimonial-card {
       max-width: 720px;
       margin: 0 auto;
@@ -959,37 +919,29 @@
       pointer-events: none;
     }
 
-    .testimonial-inner {
-      position: relative;
-      z-index: 1;
-    }
-
+    .testimonial-inner { position: relative; z-index: 1; }
     .testimonial-quote-mark {
       font-size: 2.5rem;
       line-height: 1;
       color: rgba(251, 191, 36, 0.6);
       margin-bottom: 0.2rem;
     }
-
     .testimonial-text {
       font-size: 0.98rem;
       color: #e5e7eb;
       margin-bottom: 1.4rem;
     }
-
     .testimonial-author {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
     }
-
     .testimonial-author-main {
       display: flex;
       align-items: center;
       gap: 0.8rem;
     }
-
     .testimonial-avatar {
       width: 40px;
       height: 40px;
@@ -997,17 +949,14 @@
       border: 2px solid #facc15;
       background: radial-gradient(circle at top, #facc15, #0f172a);
     }
-
     .testimonial-author-name {
       font-size: 0.92rem;
       font-weight: 600;
     }
-
     .testimonial-author-role {
       font-size: 0.78rem;
       color: var(--color-muted);
     }
-
     .testimonial-badge {
       padding: 0.35rem 0.8rem;
       border-radius: 999px;
@@ -1019,7 +968,6 @@
       align-items: center;
       gap: 0.35rem;
     }
-
     .testimonial-badge-dot {
       width: 7px;
       height: 7px;
@@ -1028,7 +976,6 @@
       box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
     }
 
-    /* Contact */
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
@@ -1058,9 +1005,7 @@
       font-size: 0.86rem;
     }
 
-    .field label {
-      color: #e5e7eb;
-    }
+    .field label { color: #e5e7eb; }
 
     .field input,
     .field textarea {
@@ -1078,9 +1023,7 @@
     }
 
     .field input::placeholder,
-    .field textarea::placeholder {
-      color: #6b7280;
-    }
+    .field textarea::placeholder { color: #6b7280; }
 
     .field input:focus,
     .field textarea:focus {
@@ -1138,7 +1081,6 @@
       background: #f97316;
     }
 
-    /* Footer */
     .site-footer {
       border-top: 1px solid rgba(31, 41, 55, 1);
       background: #020617;
@@ -1175,9 +1117,7 @@
       gap: 0.3rem;
     }
 
-    .footer-links a:hover {
-      color: #e5e7eb;
-    }
+    .footer-links a:hover { color: #e5e7eb; }
 
     .footer-legal {
       max-width: var(--max-width);
@@ -1197,44 +1137,28 @@
       text-underline-offset: 3px;
     }
 
-    /* Responsive */
+    /* RWD */
     @media (max-width: 960px) {
       .hero-grid,
       .about-grid,
       .contact-grid {
         grid-template-columns: minmax(0, 1fr);
       }
-
-      .hero {
-        padding-top: 2.8rem;
-      }
-
-      .hero-grid {
-        gap: 2.2rem;
-      }
-
-      .hero-slider {
-        order: -1;
-      }
-
+      .hero { padding-top: 2.8rem; }
+      .hero-grid { gap: 2.2rem; }
+      .hero-slider { order: -1; }
       .services-grid,
       .projects-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-
       .footer-grid {
         grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
       }
     }
 
     @media (max-width: 720px) {
-      .nav-links {
-        display: none;
-      }
-
-      .nav-toggle {
-        display: inline-flex;
-      }
+      .nav-links { display: none; }
+      .nav-toggle { display: inline-flex; }
 
       .hero-actions {
         flex-direction: column;
@@ -1258,9 +1182,7 @@
         grid-template-columns: minmax(0, 1fr);
       }
 
-      section {
-        padding: 3.5rem 0;
-      }
+      section { padding: 3.5rem 0; }
 
       .testimonial-card {
         padding: 1.8rem 1.6rem 1.7rem;
@@ -1273,162 +1195,154 @@
   <header class="site-header">
     <nav class="nav">
       <a href="#top" class="brand">
-        <span class="brand-mark"><span>FP</span></span>
+        <span class="brand-mark"><span>JC</span></span>
         <span class="brand-text">
-          <span class="brand-title">Factory Pro</span>
-          <span class="brand-sub">Industrial Systems</span>
+          <span class="brand-title">捷強工業有限公司</span>
+          <span class="brand-sub">JIE CHIANG INDUSTRIAL</span>
         </span>
       </a>
 
       <div class="nav-links">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Our Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="#hero">首頁</a>
+        <a href="#about">關於捷強</a>
+        <a href="#services">服務項目</a>
+        <a href="#projects">實績案例</a>
+        <a href="#contact">聯絡我們</a>
         <button class="nav-cta" onclick="scrollToSection('contact')">
-          Request Quote
+          詢問報價
         </button>
       </div>
 
-      <button class="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" aria-label="切換選單">
         <span></span>
       </button>
     </nav>
 
     <div class="nav-mobile" id="nav-mobile">
       <div class="nav-mobile-inner">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Our Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <a href="#contact">Request Quote</a>
+        <a href="#hero">首頁</a>
+        <a href="#about">關於捷強</a>
+        <a href="#services">服務項目</a>
+        <a href="#projects">實績案例</a>
+        <a href="#contact">聯絡我們</a>
+        <a href="#contact">詢問報價</a>
       </div>
     </div>
   </header>
 
   <main id="top">
-    <!-- Hero / Slider -->
+    <!-- Hero -->
     <section class="hero" id="hero">
       <div class="container">
         <div class="hero-grid">
           <div class="hero-copy">
             <div class="hero-kicker">
               <span class="hero-kicker-dot"></span>
-              Precision-built industrial systems
+              自動控制・工業設計・工業配線
             </div>
             <h1 class="hero-title">
-              <span>Modern</span>
-              <span class="hero-title-accent">Factory Solutions</span>
-              <span>For Critical Production</span>
+              <span>穩定產線</span>
+              <span class="hero-title-accent">從電控開始</span>
+              <span>捷強工業為您把關</span>
             </h1>
             <p class="hero-lead">
-              We design and build custom manufacturing lines, automation cells and
-              industrial components that keep your production fast, safe and efficient.
+              捷強工業有限公司專精自動控制、工業設計與工業配線，從新建產線到既有設備改善，
+              以實務經驗與現場思維，為您規劃安全穩定的電控系統。
             </p>
 
             <div class="hero-meta">
               <div class="hero-pill">
-                <span class="hero-pill-count">20+ yrs</span>
-                <span>Heavy industry experience</span>
+                <span class="hero-pill-count">多年經驗</span>
+                <span>工業現場實務累積</span>
               </div>
               <div class="hero-pill">
-                <span class="hero-pill-count">120+</span>
-                <span>Completed plant projects</span>
+                <span class="hero-pill-count">客製化</span>
+                <span>依現場需求設計</span>
               </div>
             </div>
 
             <div class="hero-actions">
               <button class="btn btn-primary" onclick="scrollToSection('services')">
-                Explore Services
+                查看服務項目
                 <span class="btn-icon">→</span>
               </button>
               <button class="btn btn-ghost" onclick="scrollToSection('projects')">
-                Recent Projects
+                檢視實績案例
               </button>
             </div>
           </div>
 
-          <div class="hero-slider" aria-label="Key capabilities slider">
-            <!-- Slide 1 -->
+          <!-- Hero Slider -->
+          <div class="hero-slider" aria-label="重點服務輪播">
             <article
               class="hero-slide active"
-              style="
-                background-image: radial-gradient(circle at top, #facc15 0, #020617 55%);
-              "
+              style="background-image: radial-gradient(circle at top, #facc15 0, #020617 55%);"
             >
               <div class="hero-slide-content">
-                <div class="hero-slide-label">Featured line</div>
+                <div class="hero-slide-label">自動控制</div>
                 <div class="hero-slide-title">
-                  High-precision piston assembly
-                  <span class="hero-slide-pill">Automotive</span>
+                  產線自動控制整合
+                  <span class="hero-slide-pill">PLC & HMI</span>
                 </div>
                 <div class="hero-slide-meta">
                   <span>
                     <span class="hero-slide-meta-dot"></span>
-                    24/7 uptime
+                    PLC 程式設計
                   </span>
-                  <span>0.02 mm tolerance</span>
-                  <span>Turn-key delivery</span>
+                  <span>人機介面畫面規劃</span>
+                  <span>遠端監控介面預留</span>
                 </div>
               </div>
             </article>
 
-            <!-- Slide 2 -->
             <article
               class="hero-slide"
-              style="
-                background-image: radial-gradient(circle at 0 0, #fb923c 0, #020617 55%);
-              "
+              style="background-image: radial-gradient(circle at 0 0, #fb923c 0, #020617 55%);"
             >
               <div class="hero-slide-content">
-                <div class="hero-slide-label">Welding cells</div>
+                <div class="hero-slide-label">工業設計</div>
                 <div class="hero-slide-title">
-                  Robotic iron welding island
-                  <span class="hero-slide-pill">Steelworks</span>
+                  控制盤與設備配置設計
+                  <span class="hero-slide-pill">Panel Design</span>
                 </div>
                 <div class="hero-slide-meta">
                   <span>
                     <span class="hero-slide-meta-dot"></span>
-                    30% faster cycle time
+                    配電盤/控制盤規劃
                   </span>
-                  <span>Integrated safety systems</span>
-                  <span>Remote monitoring</span>
+                  <span>安全與維修便利性兼顧</span>
+                  <span>符合相關規範設計</span>
                 </div>
               </div>
             </article>
 
-            <!-- Slide 3 -->
             <article
               class="hero-slide"
-              style="
-                background-image: radial-gradient(circle at 100% 0, #22c55e 0, #020617 55%);
-              "
+              style="background-image: radial-gradient(circle at 100% 0, #22c55e 0, #020617 55%);"
             >
               <div class="hero-slide-content">
-                <div class="hero-slide-label">Local specials</div>
+                <div class="hero-slide-label">工業配線</div>
                 <div class="hero-slide-title">
-                  Custom fixtures & jigs
-                  <span class="hero-slide-pill">On-demand</span>
+                  現場工業配線施工
+                  <span class="hero-slide-pill">現場施工</span>
                 </div>
                 <div class="hero-slide-meta">
                   <span>
                     <span class="hero-slide-meta-dot"></span>
-                    Small-batch fabrication
+                    線槽 / 電纜整理
                   </span>
-                  <span>Rapid prototyping</span>
-                  <span>Design-to-production</span>
+                  <span>機台內部配線統整</span>
+                  <span>標示清楚易於維護</span>
                 </div>
               </div>
             </article>
 
             <div class="hero-slider-controls">
               <div class="hero-slider-arrows">
-                <button class="hero-slider-btn" data-slide-prev aria-label="Previous slide">
+                <button class="hero-slider-btn" data-slide-prev aria-label="上一張">
                   ‹
                 </button>
-                <button class="hero-slider-btn" data-slide-next aria-label="Next slide">
+                <button class="hero-slider-btn" data-slide-next aria-label="下一張">
                   ›
                 </button>
               </div>
@@ -1447,57 +1361,49 @@
     <section id="services">
       <div class="container">
         <div class="section-header">
-          <div class="section-kicker">Services</div>
-          <h2 class="section-title">What We Build & Deliver</h2>
+          <div class="section-kicker">SERVICES</div>
+          <h2 class="section-title">服務項目</h2>
           <p class="section-subtitle">
-            From local specials to fully automated manufacturing lines, we support every
-            stage of your industrial production.
+            捷強工業以自動控制、工業設計與工業配線為核心，提供從規劃、設計到現場施工的一條龍服務。
           </p>
         </div>
 
         <div class="services-grid">
           <article class="service-card">
-            <div class="service-icon">⚙️</div>
-            <h3 class="service-title">Local Specials & Tooling</h3>
+            <div class="service-icon">🧠</div>
+            <h3 class="service-title">自動控制系統整合</h3>
             <p class="service-desc">
-              Custom fixtures, jigs and tooling engineered for your specific machines and
-              operators – delivered fast.
+              依照產線需求規劃 PLC、HMI 及感測器邏輯，讓設備運轉條件清楚、保護完善，
+              降低故障停機時間。
             </p>
             <div class="service-meta">
-              <span>
-                <span class="service-tag">Custom</span>
-              </span>
-              <span>Lead time: 2–4 weeks</span>
+              <span><span class="service-tag">Control</span></span>
+              <span>PLC / HMI / Inverter</span>
             </div>
           </article>
 
           <article class="service-card">
-            <div class="service-icon">🏭</div>
-            <h3 class="service-title">Piston Press Lines</h3>
+            <div class="service-icon">📐</div>
+            <h3 class="service-title">工業設計與配電盤配置</h3>
             <p class="service-desc">
-              High-precision piston presser systems with integrated measurement, traceability
-              and safety interlocks.
+              以安全、散熱與維修動線為考量，設計控制盤與設備佈局，線路清楚、標示完整，
+              便於日後擴充與保養。
             </p>
             <div class="service-meta">
-              <span>
-                <span class="service-tag">Turn-key</span>
-              </span>
-              <span>Up to 0.02 mm tolerance</span>
+              <span><span class="service-tag">Design</span></span>
+              <span>Panel / Layout</span>
             </div>
           </article>
 
           <article class="service-card">
-            <div class="service-icon">🔥</div>
-            <h3 class="service-title">Welding Iron Cells</h3>
+            <div class="service-icon">🔌</div>
+            <h3 class="service-title">工業配線與現場施工</h3>
             <p class="service-desc">
-              Robotic and semi-automatic welding stations built for heavy cycle operations,
-              with fume extraction and guarding.
+              現場配線、線槽整理與端子標示，兼顧安全、美觀與檢修便利，協助您建立穩定可靠的電控環境。
             </p>
             <div class="service-meta">
-              <span>
-                <span class="service-tag">24/7</span>
-              </span>
-              <span>Cycle time: -30%</span>
+              <span><span class="service-tag">Wiring</span></span>
+              <span>On-site Install</span>
             </div>
           </article>
         </div>
@@ -1508,77 +1414,75 @@
     <section id="about">
       <div class="container">
         <div class="section-header">
-          <div class="section-kicker">About Factory</div>
-          <h2 class="section-title">Engineering That Keeps Plants Moving</h2>
+          <div class="section-kicker">ABOUT</div>
+          <h2 class="section-title">關於捷強工業有限公司</h2>
           <p class="section-subtitle">
-            Factory Pro combines mechanical engineering, automation and on-site support into
-            one agile team focused on uptime.
+            以實際工廠現場為出發點，從配線、控制、機電整合到改善提案，提供穩定可靠的工業解決方案。
           </p>
         </div>
 
         <div class="about-grid">
           <div class="about-text">
-            <h3>From concept sketch to production ready line.</h3>
+            <h3>聽得懂現場語言的電控夥伴。</h3>
             <p>
-              We partner with automotive, steelworks and component manufacturers to design,
-              build and service production equipment that feels tailored to your plant —
-              because it is.
+              捷強工業深知產線不能停的壓力，因此在設計階段就納入維護、擴充與安全等條件，
+              避免只「能運轉」，卻難以「長期使用」的狀況。
             </p>
             <p>
-              Our engineers work directly on your shop floor to understand workflow,
-              safety constraints and maintenance capabilities before we commit to a design.
+              我們重視與現場人員的溝通，不只看圖面，也實際走訪產線，
+              依設備特性與操作方式調整控制邏輯與配線配置。
             </p>
 
             <div class="about-list">
               <div class="about-list-item">
                 <span class="about-list-bullet"></span>
-                <span>On-site audits and line simulations</span>
+                <span>自動控制程式撰寫與修改</span>
               </div>
               <div class="about-list-item">
                 <span class="about-list-bullet"></span>
-                <span>Mechanical, electrical & control panels in-house</span>
+                <span>控制盤/配電盤規劃與製作</span>
               </div>
               <div class="about-list-item">
                 <span class="about-list-bullet"></span>
-                <span>CE / local safety standards compliance</span>
+                <span>機台內部與現場工業配線</span>
               </div>
               <div class="about-list-item">
                 <span class="about-list-bullet"></span>
-                <span>Lifecycle support & spare parts strategy</span>
+                <span>舊設備電控更新與改善</span>
               </div>
             </div>
 
             <div class="about-metrics">
               <div class="about-metric">
-                <div class="about-metric-number">20+</div>
-                <div class="about-metric-label">Years operating</div>
+                <div class="about-metric-number">多年</div>
+                <div class="about-metric-label">工業現場經驗</div>
               </div>
               <div class="about-metric">
-                <div class="about-metric-number">120+</div>
-                <div class="about-metric-label">Major projects</div>
+                <div class="about-metric-number">多家</div>
+                <div class="about-metric-label">合作製造廠</div>
               </div>
               <div class="about-metric">
-                <div class="about-metric-number">98%</div>
-                <div class="about-metric-label">On-time delivery</div>
+                <div class="about-metric-number">高比率</div>
+                <div class="about-metric-label">回頭與轉介紹</div>
               </div>
             </div>
           </div>
 
-          <aside class="about-media" aria-label="Factory snapshot">
+          <aside class="about-media" aria-label="產線情境示意">
             <div class="about-media-ill"></div>
-            <div class="about-media-tag">Inside the factory</div>
+            <div class="about-media-tag">現場實作與測試</div>
             <div class="about-media-overlay">
               <div class="about-media-caption">
-                <div class="about-media-pill">Live production status</div>
+                <div class="about-media-pill">配線整理 + 訊號測試</div>
                 <p>
-                  Dashboards combine sensor data with operator input to highlight bottlenecks
-                  and keep your uptime visible.
+                  自動控制不只是程式，更來自每一條線的標示、每一個端子的檢查，
+                  讓未來的維修與擴充都更有依據。
                 </p>
               </div>
               <div>
                 <div class="about-media-chip">
                   <span class="about-media-chip-dot"></span>
-                  11 active lines · 3 plants
+                  設備上線前逐點確認
                 </div>
               </div>
             </div>
@@ -1591,11 +1495,10 @@
     <section id="projects">
       <div class="container">
         <div class="section-header">
-          <div class="section-kicker">Recent Projects</div>
-          <h2 class="section-title">Selected Factory Installations</h2>
+          <div class="section-kicker">PROJECTS</div>
+          <h2 class="section-title">實績案例（示意）</h2>
           <p class="section-subtitle">
-            A snapshot of the custom production systems we have delivered across automotive
-            and heavy industries.
+            以下內容為範例說明，可依您實際案件名稱與客戶型態自行替換。
           </p>
         </div>
 
@@ -1603,26 +1506,19 @@
           <article class="project-card">
             <div
               class="project-media"
-              style="
-                background-image: linear-gradient(
-                    to bottom right,
-                    #facc15,
-                    #f97316,
-                    #7c2d12
-                  );
-              "
+              style="background-image: linear-gradient(to bottom right,#facc15,#f97316,#7c2d12);"
             >
-              <span class="project-label">Auto Engineering</span>
+              <span class="project-label">自動控制</span>
             </div>
             <div class="project-body">
-              <h3 class="project-title">Piston assembly and leak-test line</h3>
+              <h3 class="project-title">組裝產線 PLC 自動控制整合</h3>
               <p class="project-desc">
-                Full line including pressing, measurement, leak-test and engraving with
-                integrated traceability.
+                針對既有半自動設備重新規劃邏輯與感測器配置，整合 PLC 與 HMI，
+                讓整線運轉狀況一目了然。
               </p>
               <div class="project-meta">
-                <span>Cycle time: 3.2 s/pc</span>
-                <span>Location: EU plant</span>
+                <span>停機事故大幅降低</span>
+                <span>現場教育訓練</span>
               </div>
             </div>
           </article>
@@ -1630,26 +1526,19 @@
           <article class="project-card">
             <div
               class="project-media"
-              style="
-                background-image: linear-gradient(
-                    to bottom right,
-                    #22c55e,
-                    #16a34a,
-                    #052e16
-                  );
-              "
+              style="background-image: linear-gradient(to bottom right,#22c55e,#16a34a,#052e16);"
             >
-              <span class="project-label">Steelworks</span>
+              <span class="project-label">工業設計</span>
             </div>
             <div class="project-body">
-              <h3 class="project-title">Robotic iron welding island</h3>
+              <h3 class="project-title">新建機台控制盤設計</h3>
               <p class="project-desc">
-                Multi-robot cell welding structural iron with offline programming and
-                automatic tip-dressing.
+                從主電源、保護元件、控制電源到端子台配置完整規劃，預留未來擴充空間，
+                並提供電氣圖供客戶備查。
               </p>
               <div class="project-meta">
-                <span>Output: +35%</span>
-                <span>Safety: PL d</span>
+                <span>配電盤新製</span>
+                <span>設計圖文件齊全</span>
               </div>
             </div>
           </article>
@@ -1657,26 +1546,19 @@
           <article class="project-card">
             <div
               class="project-media"
-              style="
-                background-image: linear-gradient(
-                    to bottom right,
-                    #38bdf8,
-                    #0ea5e9,
-                    #0f172a
-                  );
-              "
+              style="background-image: linear-gradient(to bottom right,#38bdf8,#0ea5e9,#0f172a);"
             >
-              <span class="project-label">Custom build</span>
+              <span class="project-label">工業配線</span>
             </div>
             <div class="project-body">
-              <h3 class="project-title">Flexible fixture & jig program</h3>
+              <h3 class="project-title">工廠產線工業配線整理</h3>
               <p class="project-desc">
-                Modular fixtures supporting multiple product variants with quick changeovers
-                for short production runs.
+                針對舊有產線凌亂配線重新整理，新增線槽與線號標籤，降低誤觸與漏接風險，
+                方便日後維護。
               </p>
               <div class="project-meta">
-                <span>Changeover: &lt; 8 min</span>
-                <span>Plants: 2</span>
+                <span>現場施工</span>
+                <span>改善維修效率</span>
               </div>
             </div>
           </article>
@@ -1688,11 +1570,10 @@
     <section id="testimonial">
       <div class="container">
         <div class="section-header">
-          <div class="section-kicker">Testimonial</div>
-          <h2 class="section-title">What Our Clients Say</h2>
+          <div class="section-kicker">CLIENT VOICE</div>
+          <h2 class="section-title">客戶回饋（示意）</h2>
           <p class="section-subtitle">
-            Long-term partnerships matter to us more than single projects. Here’s how one
-            plant manager describes working together.
+            以下為範例文字，可替換為您實際客戶回饋內容，或改成公司介紹段落。
           </p>
         </div>
 
@@ -1700,24 +1581,22 @@
           <div class="testimonial-inner">
             <div class="testimonial-quote-mark">“</div>
             <p class="testimonial-text">
-              Factory Pro was the only supplier willing to commit to our aggressive timeline
-              without sacrificing safety or quality. Their team worked alongside our
-              engineers from RFQ to ramp-up, solving issues on the floor instead of sending
-              emails about them.
+              捷強工業在施工前花了不少時間跟我們現場師傅溝通，把實際操作方式納入考量，
+              上線之後操作人員很快就能上手，後續改程式也都有完整紀錄。
             </p>
             <div class="testimonial-author">
               <div class="testimonial-author-main">
                 <div class="testimonial-avatar" aria-hidden="true"></div>
                 <div>
-                  <div class="testimonial-author-name">Anna Meyer</div>
+                  <div class="testimonial-author-name">某電子零件廠 生管主管</div>
                   <div class="testimonial-author-role">
-                    Plant Manager, European Engine Components
+                    生產線導入自動控制與配線改善專案
                   </div>
                 </div>
               </div>
               <div class="testimonial-badge">
                 <span class="testimonial-badge-dot"></span>
-                Partner since 2016
+                多次合作客戶
               </div>
             </div>
           </div>
@@ -1729,11 +1608,11 @@
     <section id="contact">
       <div class="container">
         <div class="section-header">
-          <div class="section-kicker">Contact</div>
-          <h2 class="section-title">Tell Us About Your Line</h2>
+          <div class="section-kicker">CONTACT</div>
+          <h2 class="section-title">聯絡捷強工業</h2>
           <p class="section-subtitle">
-            Share your current setup and production goals. Our engineering team will come
-            back with suggestions and a timeline.
+            想新增產線、改善舊有設備，或針對自動控制與工業配線有任何問題，都歡迎留下資訊，
+            我們將儘快與您聯繫。
           </p>
         </div>
 
@@ -1741,16 +1620,16 @@
           <form class="contact-form" onsubmit="handleContactSubmit(event)">
             <div class="contact-form-row">
               <div class="field">
-                <label for="name">Name</label>
-                <input id="name" name="name" type="text" placeholder="Your full name" />
+                <label for="name">姓名</label>
+                <input id="name" name="name" type="text" placeholder="您的姓名" />
               </div>
               <div class="field">
-                <label for="company">Company</label>
+                <label for="company">公司名稱</label>
                 <input
                   id="company"
                   name="company"
                   type="text"
-                  placeholder="Company / Plant name"
+                  placeholder="公司 / 工廠名稱"
                 />
               </div>
             </div>
@@ -1761,45 +1640,48 @@
                 <input id="email" name="email" type="email" placeholder="you@company.com" />
               </div>
               <div class="field">
-                <label for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" placeholder="+886 9..." />
+                <label for="phone">電話</label>
+                <input id="phone" name="phone" type="tel" placeholder="0912-345-678" />
               </div>
             </div>
 
             <div class="field">
-              <label for="message">Project details</label>
+              <label for="message">需求說明</label>
               <textarea
                 id="message"
                 name="message"
                 rows="4"
-                placeholder="Share your current line, volume, target cycle time or issues you want to solve."
+                placeholder="請簡單說明設備類型、目前狀況與希望改善的方向。"
               ></textarea>
             </div>
 
             <button class="btn btn-primary" type="submit" style="margin-top: 1.2rem;">
-              Send message
+              送出訊息
               <span class="btn-icon">➤</span>
             </button>
 
             <p class="contact-note">
-              This is a demo front-end only. Connect the form to your backend or email
-              service before going live.
+              此為示意前端畫面，尚未串接後端或寄信服務，上線前請與您的工程師整合功能。
             </p>
           </form>
 
           <aside class="contact-side">
             <div class="contact-block">
-              <h4>Head office</h4>
-              <p>Example Industrial Park, Building 3<br />Your City, Your Country</p>
+              <h4>公司資訊</h4>
+              <p>
+                捷強工業有限公司<br />
+                <!-- TODO: 改成實際地址 -->
+                範例地址：某某市工業區 XX 路 XX 號
+              </p>
               <div class="contact-list">
-                <span><span class="contact-dot"></span>+123 456 7890</span>
-                <span><span class="contact-dot"></span>factory@example.com</span>
+                <span><span class="contact-dot"></span><!-- TODO: 電話 -->電話：02-1234-5678</span>
+                <span><span class="contact-dot"></span><!-- TODO: Email -->Email：info@example.com</span>
               </div>
             </div>
 
             <div class="contact-block">
-              <h4>Working hours</h4>
-              <p>Mon – Fri, 08:30 – 18:00<br />On-site support by schedule.</p>
+              <h4>服務時間</h4>
+              <p>週一至週五 08:30 – 18:00<br />現場施工與勘查採預約制。</p>
             </div>
           </aside>
         </div>
@@ -1812,49 +1694,44 @@
     <div class="footer-grid">
       <div>
         <div class="brand">
-          <span class="brand-mark"><span>FP</span></span>
+          <span class="brand-mark"><span>JC</span></span>
           <span class="brand-text">
-            <span class="brand-title">Factory Pro</span>
-            <span class="brand-sub">Industrial Systems</span>
+            <span class="brand-title">捷強工業有限公司</span>
+            <span class="brand-sub">JIE CHIANG INDUSTRIAL</span>
           </span>
         </div>
         <p class="footer-brand-desc">
-          Custom industrial equipment, automation and tooling for manufacturers who cannot
-          afford downtime.
+          自動控制・工業設計・工業配線，從新建到改善，捷強工業以現場實務經驗，協助您打造穩定可靠的生產環境。
         </p>
       </div>
 
       <div>
-        <div class="footer-heading">Quick links</div>
+        <div class="footer-heading">快速連結</div>
         <div class="footer-links">
-          <a href="#services">Services</a>
-          <a href="#projects">Projects</a>
-          <a href="#testimonial">Testimonial</a>
-          <a href="#contact">Contact</a>
+          <a href="#services">服務項目</a>
+          <a href="#projects">實績案例</a>
+          <a href="#testimonial">客戶回饋</a>
+          <a href="#contact">聯絡我們</a>
         </div>
       </div>
 
       <div>
-        <div class="footer-heading">Contact</div>
+        <div class="footer-heading">聯絡方式</div>
         <div class="footer-links">
-          <span>+123 456 7890</span>
-          <span>factory@example.com</span>
+          <!-- TODO: 改成實際聯絡資訊 -->
+          <span>電話：02-1234-5678</span>
+          <span>Email：info@example.com</span>
         </div>
       </div>
     </div>
 
     <div class="footer-legal">
-      <span>© <span id="year"></span> Factory Pro. All rights reserved.</span>
-      <span>
-        Built with a custom design. Replace demo text &amp; images before production use.
-      </span>
+      <span>© <span id="year"></span> 捷強工業有限公司. 版權所有。</span>
+      <span>此網站版型為客製設計，文字與圖片請依實際情況更新後再上線。</span>
     </div>
   </footer>
 
   <script>
-    // =========================
-    // Smooth scroll helper
-    // =========================
     function scrollToSection(id) {
       const el = document.getElementById(id);
       if (!el) return;
@@ -1863,7 +1740,6 @@
       window.scrollTo({ top: offset, behavior: "smooth" });
     }
 
-    // Enable smooth scroll for nav links
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener("click", (e) => {
         const href = link.getAttribute("href");
@@ -1877,9 +1753,6 @@
       });
     });
 
-    // =========================
-    // Mobile navigation toggle
-    // =========================
     const navToggle = document.querySelector(".nav-toggle");
     const navMobile = document.getElementById("nav-mobile");
 
@@ -1895,16 +1768,12 @@
       });
     }
 
-    // Close on scroll
     window.addEventListener("scroll", () => {
       if (window.innerWidth <= 720 && navMobile.classList.contains("open")) {
         closeMobileNav();
       }
     });
 
-    // =========================
-    // Hero slider logic
-    // =========================
     const slides = Array.from(document.querySelectorAll(".hero-slide"));
     const dots = Array.from(document.querySelectorAll(".hero-slider-dot"));
     const prevBtn = document.querySelector("[data-slide-prev]");
@@ -1929,13 +1798,8 @@
       resetSlideTimer();
     }
 
-    function nextSlide() {
-      goToSlide(currentSlide + 1);
-    }
-
-    function prevSlide() {
-      goToSlide(currentSlide - 1);
-    }
+    function nextSlide() { goToSlide(currentSlide + 1); }
+    function prevSlide() { goToSlide(currentSlide - 1); }
 
     function resetSlideTimer() {
       if (slideTimer) clearInterval(slideTimer);
@@ -1944,28 +1808,18 @@
 
     if (nextBtn) nextBtn.addEventListener("click", nextSlide);
     if (prevBtn) prevBtn.addEventListener("click", prevSlide);
-
     dots.forEach((dot, index) => {
       dot.addEventListener("click", () => goToSlide(index));
     });
+    if (slides.length) { resetSlideTimer(); }
 
-    if (slides.length) {
-      resetSlideTimer();
-    }
-
-    // =========================
-    // Contact form (front-end only)
-    // =========================
     function handleContactSubmit(event) {
       event.preventDefault();
       alert(
-        "This is a demo front-end only.\nConnect this form to your backend or email service before going live."
+        "目前為示意網站，表單尚未串接後端。\n上線前請由您的工程師協助整合寄信或資料儲存功能。"
       );
     }
 
-    // =========================
-    // Footer year
-    // =========================
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
