@@ -9,7 +9,7 @@
     content="捷強工業有限公司，專精自動控制、工業設計與工業配線，提供客製化產線整合與電控工程服務。"
   />
 
-  <!-- 字型（Google Fonts：請自行確認商用授權或改成本機字型） -->
+  <!-- Google Fonts（可自行改成本機字型） -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -229,7 +229,6 @@
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
     }
 
-    /* Mobile menu button */
     .nav-toggle {
       display: none;
       cursor: pointer;
@@ -306,7 +305,7 @@
       color: #e5e7eb;
     }
 
-    /* Hero / Slider */
+    /* Hero */
     .hero {
       padding-top: 4rem;
       padding-bottom: 4.5rem;
@@ -453,6 +452,7 @@
       line-height: 1;
     }
 
+    /* Hero Slider */
     .hero-slider {
       position: relative;
       border-radius: var(--radius-xl);
@@ -460,17 +460,153 @@
       box-shadow: var(--shadow-soft);
       background: radial-gradient(circle at top left, #facc15 0, #020617 55%);
       min-height: 260px;
+      margin-bottom: 18px; /* 下面控制列留一點距離 */
     }
 
-  .hero-slide { position: absolute; inset: 0; opacity: 0; transform: translateX(12px) scale(1.02); transition: opacity 0.6s ease, transform 0.6s ease; background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: flex-end; } .hero-slide.active { opacity: 1; transform: translateX(0) scale(1); } .hero-slide::before { content: ""; position: absolute; inset: 0; background: linear-gradient( 160deg, rgba(15, 23, 42, 0.12), rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.96) ); } .hero-slide-content { position: relative; padding: 1.6rem 1.6rem 1.4rem; color: #f9fafb; } .hero-slide-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: #e5e7eb; opacity: 0.9; margin-bottom: 0.2rem; } .hero-slide-title { font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; } .hero-slide-pill { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.16em; padding: 0.15rem 0.6rem; border-radius: 999px; border: 1px solid rgba(249, 250, 251, 0.6); background: rgba(15, 23, 42, 0.65); } .hero-slide-meta { font-size: 0.8rem; color: #d1d5db; margin-top: 0.45rem; display: flex; gap: 0.8rem; flex-wrap: wrap; } .hero-slide-meta span { display: inline-flex; align-items: center; gap: 0.3rem; } .hero-slide-meta-dot { width: 6px; height: 6px; border-radius: 999px; background: #f97316; } .hero-slid
-    : 12px; /* 圖片與控制列之間的距離 */ padding: 0; display: flex; align-items: center; justify-content: space-between; pointer-events: auto; /* 恢復可點擊 */ } 
-    .hero-slider-arrows { display: flex; gap: 0.6rem; } 
-    .hero-slider-btn { pointer-events: auto; width: 32px; height: 32px; border-radius: 999px; border: 1px solid rgba(248, 250, 252, 0.6); background: rgba(15, 23, 42, 0.7); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.1rem; transition: background var(--transition-fast), transform var(--transition-fast); } 
-    .hero-slider-btn:hover { background: rgba(15, 23, 42, 0.95); transform: translateY(-1px); } 
-    .hero-slider-dots { display: flex; gap: 0.45rem; margin-left: auto; margin-right: auto; } 
-    .hero-slider-dot { width: 8px; height: 8px; border-radius: 999px; border: 1px solid rgba(248, 250, 252, 0.7); background: transparent; cursor: pointer; transition: background var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast); } 
-    .hero-slider-dot.active { background: #f97316; border-color: transparent; transform: scale(1.15); }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateX(12px) scale(1.02);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
 
+    .hero-slide.active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    .hero-slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(15, 23, 42, 0.12),
+        rgba(15, 23, 42, 0.7),
+        rgba(15, 23, 42, 0.96)
+      );
+    }
+
+    .hero-slide-content {
+      position: relative;
+      padding: 1.6rem 1.6rem 3.2rem; /* 底部多一點，避免被擋到 */
+      color: #f9fafb;
+    }
+
+    .hero-slide-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #e5e7eb;
+      opacity: 0.9;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-slide-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-slide-pill {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 250, 251, 0.6);
+      background: rgba(15, 23, 42, 0.65);
+    }
+
+    .hero-slide-meta {
+      font-size: 0.8rem;
+      color: #d1d5db;
+      margin-top: 0.45rem;
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-slide-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .hero-slide-meta-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #f97316;
+    }
+
+    .hero-slider-controls {
+      position: static !important; /* 脫離圖片，改在 slider 下方 */
+      width: 100%;
+      margin-top: 12px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: auto;
+    }
+
+    .hero-slider-arrows {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .hero-slider-btn {
+      pointer-events: auto;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.6);
+      background: rgba(15, 23, 42, 0.7);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .hero-slider-btn:hover {
+      background: rgba(15, 23, 42, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .hero-slider-dots {
+      display: flex;
+      gap: 0.45rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-slider-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.7);
+      background: transparent;
+      cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+
+    .hero-slider-dot.active {
+      background: #f97316;
+      border-color: transparent;
+      transform: scale(1.15);
+    }
 
     /* Services */
     .services-grid {
@@ -559,7 +695,7 @@
       letter-spacing: 0.16em;
     }
 
-    /* About / Projects / Testimonial / Contact / Footer — 同前略，結構不變，只改文字 */
+    /* About */
     .about-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
@@ -608,7 +744,12 @@
     }
 
     .about-metric { min-width: 120px; }
-    .about-metric-number { font-size: 1.5rem; font-weight: 700; }
+
+    .about-metric-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
     .about-metric-label {
       font-size: 0.78rem;
       text-transform: uppercase;
@@ -695,6 +836,7 @@
       box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
     }
 
+    /* Projects */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -721,22 +863,29 @@
 
     .project-media {
       height: 160px;
-      background-size: cover;
-      background-position: center;
       position: relative;
+      overflow: hidden;
+      background: #020617;
+    }
+
+    .project-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .project-media::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.45), transparent 55%);
     }
 
     .project-label {
       position: absolute;
       left: 0.9rem;
-      bottom: 0.9rem;
+      bottom: 0.7rem;
       padding: 0.18rem 0.55rem;
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.78);
@@ -754,8 +903,16 @@
       gap: 0.5rem;
     }
 
-    .project-title { font-size: 0.98rem; font-weight: 600; }
-    .project-desc { font-size: 0.86rem; color: var(--color-muted); }
+    .project-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .project-desc {
+      font-size: 0.86rem;
+      color: var(--color-muted);
+    }
+
     .project-meta {
       font-size: 0.78rem;
       color: #9ca3af;
@@ -765,6 +922,35 @@
       margin-top: 0.3rem;
     }
 
+    /* Gallery */
+    .work-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.3rem;
+    }
+
+    .work-card {
+      background: radial-gradient(circle at top, #111827 0, #020617 85%);
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      font-size: 0.82rem;
+      color: #e5e7eb;
+    }
+
+    .work-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .work-card figcaption {
+      padding: 0.7rem 0.85rem 0.8rem;
+    }
+
+    /* Testimonial */
     .testimonial-card {
       max-width: 720px;
       margin: 0 auto;
@@ -787,28 +973,33 @@
     }
 
     .testimonial-inner { position: relative; z-index: 1; }
+
     .testimonial-quote-mark {
       font-size: 2.5rem;
       line-height: 1;
       color: rgba(251, 191, 36, 0.6);
       margin-bottom: 0.2rem;
     }
+
     .testimonial-text {
       font-size: 0.98rem;
       color: #e5e7eb;
       margin-bottom: 1.4rem;
     }
+
     .testimonial-author {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
     }
+
     .testimonial-author-main {
       display: flex;
       align-items: center;
       gap: 0.8rem;
     }
+
     .testimonial-avatar {
       width: 40px;
       height: 40px;
@@ -816,14 +1007,17 @@
       border: 2px solid #facc15;
       background: radial-gradient(circle at top, #facc15, #0f172a);
     }
+
     .testimonial-author-name {
       font-size: 0.92rem;
       font-weight: 600;
     }
+
     .testimonial-author-role {
       font-size: 0.78rem;
       color: var(--color-muted);
     }
+
     .testimonial-badge {
       padding: 0.35rem 0.8rem;
       border-radius: 999px;
@@ -835,6 +1029,7 @@
       align-items: center;
       gap: 0.35rem;
     }
+
     .testimonial-badge-dot {
       width: 7px;
       height: 7px;
@@ -843,6 +1038,7 @@
       box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
     }
 
+    /* Contact */
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
@@ -948,6 +1144,7 @@
       background: #f97316;
     }
 
+    /* Footer */
     .site-footer {
       border-top: 1px solid rgba(31, 41, 55, 1);
       background: #020617;
@@ -964,11 +1161,18 @@
       gap: 1.8rem;
     }
 
+    .footer-logo {
+      max-width: 280px;
+      height: auto;
+      display: block;
+      margin-bottom: 0.7rem;
+    }
+
     .footer-brand-desc {
       font-size: 0.86rem;
       color: var(--color-muted);
       max-width: 340px;
-      margin-top: 0.6rem;
+      margin-top: 0.2rem;
     }
 
     .footer-heading {
@@ -1011,21 +1215,41 @@
       .contact-grid {
         grid-template-columns: minmax(0, 1fr);
       }
-      .hero { padding-top: 2.8rem; }
-      .hero-grid { gap: 2.2rem; }
-      .hero-slider { order: -1; }
+
+      .hero {
+        padding-top: 2.8rem;
+      }
+
+      .hero-grid {
+        gap: 2.2rem;
+      }
+
+      .hero-slider {
+        order: -1;
+      }
+
       .services-grid,
       .projects-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .work-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .footer-grid {
         grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
       }
     }
 
     @media (max-width: 720px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: inline-flex; }
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
 
       .hero-actions {
         flex-direction: column;
@@ -1045,11 +1269,17 @@
         grid-template-columns: minmax(0, 1fr);
       }
 
+      .work-gallery {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
       .footer-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      section { padding: 3.5rem 0; }
+      section {
+        padding: 3.5rem 0;
+      }
 
       .testimonial-card {
         padding: 1.8rem 1.6rem 1.7rem;
@@ -1065,7 +1295,7 @@
         <span class="brand-mark"><span>JC</span></span>
         <span class="brand-text">
           <span class="brand-title">捷強工業有限公司</span>
-          <span class="brand-sub">JYECHUN INDUSTRIAL</span>
+          <span class="brand-sub">JIE CHIANG INDUSTRIAL</span>
         </span>
       </a>
 
@@ -1091,8 +1321,8 @@
         <a href="#about">關於捷強</a>
         <a href="#services">服務項目</a>
         <a href="#projects">實績案例</a>
-        <a href="#contact">聯絡我們</a>
-        <a href="#contact">詢問報價</a>
+        <a href="#gallery">作品展示</a>
+        <a href="#contact">聯絡我們 / 詢價</a>
       </div>
     </div>
   </header>
@@ -1149,7 +1379,7 @@
                 <div class="hero-slide-label">自動控制</div>
                 <div class="hero-slide-title">
                   產線自動控制整合
-                  <span class="hero-slide-pill">PLC & HMI</span>
+                  <span class="hero-slide-pill">PLC &amp; HMI</span>
                 </div>
                 <div class="hero-slide-meta">
                   <span>
@@ -1203,21 +1433,21 @@
                 </div>
               </div>
             </article>
+          </div>
 
-            <div class="hero-slider-controls">
-              <div class="hero-slider-arrows">
-                <button class="hero-slider-btn" data-slide-prev aria-label="上一張">
-                  ‹
-                </button>
-                <button class="hero-slider-btn" data-slide-next aria-label="下一張">
-                  ›
-                </button>
-              </div>
-              <div class="hero-slider-dots" aria-hidden="true">
-                <button class="hero-slider-dot active" data-slide-to="0"></button>
-                <button class="hero-slider-dot" data-slide-to="1"></button>
-                <button class="hero-slider-dot" data-slide-to="2"></button>
-              </div>
+          <div class="hero-slider-controls">
+            <div class="hero-slider-arrows">
+              <button class="hero-slider-btn" data-slide-prev aria-label="上一張">
+                ‹
+              </button>
+              <button class="hero-slider-btn" data-slide-next aria-label="下一張">
+                ›
+              </button>
+            </div>
+            <div class="hero-slider-dots" aria-hidden="true">
+              <button class="hero-slider-dot active" data-slide-to="0"></button>
+              <button class="hero-slider-dot" data-slide-to="1"></button>
+              <button class="hero-slider-dot" data-slide-to="2"></button>
             </div>
           </div>
         </div>
@@ -1365,70 +1595,121 @@
           <div class="section-kicker">PROJECTS</div>
           <h2 class="section-title">實績案例</h2>
           <p class="section-subtitle">
-            以下內容為範例說明，可依您實際案件名稱與客戶型態自行替換。
+            以下為部份實際合作案件，從大型控制箱、特殊用途控制箱到 PLC 控制盤，皆由捷強工業規劃與製作。
           </p>
         </div>
 
         <div class="projects-grid">
+          <!-- 案例一：黃箱電控配線 -->
           <article class="project-card">
-            <div
-              class="project-media"
-              style="background-image: linear-gradient(to bottom right,#facc15,#f97316,#7c2d12);"
-            >
-              <span class="project-label">自動控制</span>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">組裝產線 PLC 自動控制整合</h3>
-              <p class="project-desc">
-                針對既有半自動設備重新規劃邏輯與感測器配置，整合 PLC 與 HMI，
-                讓整線運轉狀況一目了然。
-              </p>
-              <div class="project-meta">
-                <span>停機事故大幅降低</span>
-                <span>現場教育訓練</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div
-              class="project-media"
-              style="background-image: linear-gradient(to bottom right,#22c55e,#16a34a,#052e16);"
-            >
-              <span class="project-label">工業設計</span>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">新建機台控制盤設計</h3>
-              <p class="project-desc">
-                從主電源、保護元件、控制電源到端子台配置完整規劃，預留未來擴充空間，
-                並提供電氣圖供客戶備查。
-              </p>
-              <div class="project-meta">
-                <span>配電盤新製</span>
-                <span>設計圖文件齊全</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div
-              class="project-media"
-              style="background-image: linear-gradient(to bottom right,#38bdf8,#0ea5e9,#0f172a);"
-            >
+            <div class="project-media">
+              <!-- 對應圖片：panel-yellow-front.jpg -->
+              <img src="images/panel-yellow-front.jpg" alt="大型黃色控制箱內部配線實例" />
               <span class="project-label">工業配線</span>
             </div>
             <div class="project-body">
-              <h3 class="project-title">工廠產線工業配線整理</h3>
+              <h3 class="project-title">大型機台控制箱內部配線</h3>
               <p class="project-desc">
-                針對舊有產線凌亂配線重新整理，新增線槽與線號標籤，降低誤觸與漏接風險，
-                方便日後維護。
+                針對高電流負載與多迴路控制，將主迴路、控制迴路與端子台清楚分區，
+                線路標示完整，方便日後檢修與擴充。
               </p>
               <div class="project-meta">
-                <span>現場施工</span>
-                <span>改善維修效率</span>
+                <span>主/控迴路分離</span>
+                <span>現場施作與測試</span>
               </div>
             </div>
           </article>
+
+          <!-- 案例二：水閘門控制箱 -->
+          <article class="project-card">
+            <div class="project-media">
+              <!-- 對應圖片：panel-floodgate-inside.jpg -->
+              <img src="images/panel-floodgate-inside.jpg" alt="水閘門控制箱內部與保護元件配置" />
+              <span class="project-label">水閘門控制</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">水閘門控制箱設計與配線</h3>
+              <p class="project-desc">
+                依據水閘門啟閉條件設計控制邏輯與保護迴路，搭配監控板與端子分區，
+                外觀面板操作簡單，內部配線條理清楚。
+              </p>
+              <div class="project-meta">
+                <span>自動/手動操作模式</span>
+                <span>保護與異常顯示</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 案例三：PLC 控制盤 -->
+          <article class="project-card">
+            <div class="project-media">
+              <!-- 對應圖片：panel-long-plc.jpg -->
+              <img src="images/panel-long-plc.jpg" alt="PLC 控制盤與多迴路繼電器配線" />
+              <span class="project-label">自動控制</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">PLC 控制盤與多迴路輸出模組</h3>
+              <p class="project-desc">
+                以 PLC 為核心整合多組輸出迴路，搭配繼電器與保護裝置，
+                將動力與訊號端子分區排列，方便擴充與故障排除。
+              </p>
+              <div class="project-meta">
+                <span>PLC 程式搭配電控設計</span>
+                <span>多點 I/O 安全配線</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">WORKS</div>
+          <h2 class="section-title">控制箱作品展示</h2>
+          <p class="section-subtitle">
+            更多實際施工與設計案例照片，包含舊設備改善、新製控制箱與各式產線電控配線。
+          </p>
+        </div>
+
+        <div class="work-gallery">
+          <figure class="work-card">
+            <!-- panel-old-open.jpg -->
+            <img src="images/panel-old-open.jpg" alt="早期控制盤內部改善實例" />
+            <figcaption>舊型控制盤改善與配線整理</figcaption>
+          </figure>
+
+          <figure class="work-card">
+            <!-- panel-compact-plc.jpg -->
+            <img src="images/panel-compact-plc.jpg" alt="多迴路 PLC 控制盤內部配線" />
+            <figcaption>多迴路 PLC 控制盤</figcaption>
+          </figure>
+
+          <figure class="work-card">
+            <!-- panel-hmi-front.jpg -->
+            <img src="images/panel-hmi-front.jpg" alt="具觸控螢幕與操作面板的控制箱外觀" />
+            <figcaption>觸控 HMI 操作面板控制箱</figcaption>
+          </figure>
+
+          <figure class="work-card">
+            <!-- panel-hmi-inside.jpg -->
+            <img src="images/panel-hmi-inside.jpg" alt="雙驅動器與 I/O 端子的內部配線" />
+            <figcaption>雙驅動器系統內部配線</figcaption>
+          </figure>
+
+          <figure class="work-card">
+            <!-- panel-teco-drive.jpg -->
+            <img src="images/panel-teco-drive.jpg" alt="搭配變頻器與控制器的機台電控" />
+            <figcaption>變頻器與控制器整合配線</figcaption>
+          </figure>
+
+          <figure class="work-card">
+            <!-- panel-yellow-top.jpg -->
+            <img src="images/panel-yellow-top.jpg" alt="大型黃色控制箱上視圖與端子台配置" />
+            <figcaption>大型控制箱端子台配置</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -1438,7 +1719,7 @@
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">CLIENT VOICE</div>
-          <h2 class="section-title">客戶回饋</h2>
+          <h2 class="section-title">客戶回饋（示意）</h2>
           <p class="section-subtitle">
             以下為範例文字，可替換為您實際客戶回饋內容，或改成公司介紹段落。
           </p>
@@ -1508,7 +1789,7 @@
               </div>
               <div class="field">
                 <label for="phone">電話</label>
-                <input id="phone" name="phone" type="tel" placeholder="0912-345-678" />
+                <input id="phone" name="phone" type="tel" placeholder="04-2263-5628" />
               </div>
             </div>
 
@@ -1528,7 +1809,7 @@
             </button>
 
             <p class="contact-note">
-              
+              此為示意前端畫面，尚未串接後端或寄信服務，上線前請與您的工程師整合功能。
             </p>
           </form>
 
@@ -1537,17 +1818,19 @@
               <h4>公司資訊</h4>
               <p>
                 捷強工業有限公司<br />
-                台中市南區美村路二段307號
+                <!-- TODO: 改成實際地址 -->
+                範例地址：台中市某某工業區 XX 路 XX 號
               </p>
               <div class="contact-list">
-                <span><span class="contact-dot"></span><!-- -->電話：04-2263-5628</span>
-                <span><span class="contact-dot"></span><!--  -->Email：xyedccde124@gmail.com</span>
+                <span><span class="contact-dot"></span>電話：04-2263-5628</span>
+                <span><span class="contact-dot"></span>傳真：04-2263-5684</span>
+                <span><span class="contact-dot"></span>Email：info@example.com</span>
               </div>
             </div>
 
             <div class="contact-block">
               <h4>服務時間</h4>
-              <p>週一至週五 08:00 – 17:00<br />現場施工與勘查採預約制。</p>
+              <p>週一至週五 08:30 – 18:00<br />現場施工與勘查採預約制。</p>
             </div>
           </aside>
         </div>
@@ -1559,15 +1842,15 @@
   <footer class="site-footer">
     <div class="footer-grid">
       <div>
-        <div class="brand">
-          <span class="brand-mark"><span>JC</span></span>
-          <span class="brand-text">
-            <span class="brand-title">捷強工業有限公司</span>
-            <span class="brand-sub">JYECHUN INDUSTRIAL</span>
-          </span>
-        </div>
+        <!-- 對應圖片：logo-jyechun-banner.jpg -->
+        <img
+          src="images/logo-jyechun-banner.jpg"
+          alt="捷強工業自動控制有限公司 LOGO"
+          class="footer-logo"
+        />
         <p class="footer-brand-desc">
-          自動控制・工業設計與配線，從新建到改善，捷強工業以現場實務經驗，協助您打造穩定可靠的生產環境。
+          自動控制・工業設計・工業配線，從新建到改善，捷強工業以現場實務經驗，
+          協助您打造穩定可靠的生產環境。
         </p>
       </div>
 
@@ -1576,7 +1859,7 @@
         <div class="footer-links">
           <a href="#services">服務項目</a>
           <a href="#projects">實績案例</a>
-          <a href="#testimonial">客戶回饋</a>
+          <a href="#gallery">作品展示</a>
           <a href="#contact">聯絡我們</a>
         </div>
       </div>
@@ -1584,16 +1867,16 @@
       <div>
         <div class="footer-heading">聯絡方式</div>
         <div class="footer-links">
-          <!-- TODO: 改成實際聯絡資訊 -->
           <span>電話：04-2263-5628</span>
-          <span>Email：xyedccde124@gmail.com</span>
+          <span>傳真：04-2263-5684</span>
+          <span>Email：info@example.com</span>
         </div>
       </div>
     </div>
 
     <div class="footer-legal">
       <span>© <span id="year"></span> 捷強工業有限公司. 版權所有。</span>
-      <span>此網站版型為客製設計</span>
+      <span>此網站版型為客製設計，文字與圖片請依實際情況更新後再上線。</span>
     </div>
   </footer>
 
@@ -1682,8 +1965,7 @@
     function handleContactSubmit(event) {
       event.preventDefault();
       alert(
-         "請來電(04)22635628\n郵件xyedccde124@gmail.com"
-        
+        "目前為示意網站，表單尚未串接後端。\n上線前請由您的工程師協助整合寄信或資料儲存功能。"
       );
     }
 
