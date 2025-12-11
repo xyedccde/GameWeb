@@ -462,150 +462,153 @@
       min-height: 260px;
     }
 
-    .hero-slide {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transform: translateX(12px) scale(1.02);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
-    .hero-slide.active {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-    }
-
-    .hero-slide::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        160deg,
-        rgba(15, 23, 42, 0.12),
-        rgba(15, 23, 42, 0.7),
-        rgba(15, 23, 42, 0.96)
-      );
-    }
-
-    .hero-slide-content {
-      position: relative;
-      padding: 1.6rem 1.6rem 1.4rem;
-      color: #f9fafb;
-    }
-
-    .hero-slide-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #e5e7eb;
-      opacity: 0.9;
-      margin-bottom: 0.2rem;
-    }
-
-    .hero-slide-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .hero-slide-pill {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      padding: 0.15rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(249, 250, 251, 0.6);
-      background: rgba(15, 23, 42, 0.65);
-    }
-
-    .hero-slide-meta {
-      font-size: 0.8rem;
-      color: #d1d5db;
-      margin-top: 0.45rem;
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-    }
-
-    .hero-slide-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .hero-slide-meta-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #f97316;
-    }
-
-    .hero-slider-controls {
+   .hero-slide {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -18px; /* 原本是貼齊底部，改成往下移一點 */
-  padding: 0 1.4rem 1.2rem;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(12px) scale(1.02);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.hero-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(15, 23, 42, 0.12),
+    rgba(15, 23, 42, 0.7),
+    rgba(15, 23, 42, 0.96)
+  );
+}
+
+.hero-slide-content {
+  position: relative;
+  padding: 1.6rem 1.6rem 3.2rem; /* ⬅ 增加底部 padding，避免文字壓到 */
+  color: #f9fafb;
+}
+
+.hero-slide-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #e5e7eb;
+  opacity: 0.9;
+  margin-bottom: 0.2rem;
+}
+
+.hero-slide-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hero-slide-pill {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(249, 250, 251, 0.6);
+  background: rgba(15, 23, 42, 0.65);
+}
+
+.hero-slide-meta {
+  font-size: 0.8rem;
+  color: #d1d5db;
+  margin-top: 0.45rem;
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.hero-slide-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.hero-slide-meta-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #f97316;
+}
+
+/* 🔥 這裡開始是控制列移到圖片外的版本 */
+
+.hero-slider-controls {
+  position: static !important;   /* ⬅ 不再貼在圖片裡 */
+  width: 100%;
+  margin-top: 12px;              /* ⬅ 與圖片間距 */
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
-    .hero-slider-arrows {
-      display: flex;
-      gap: 0.5rem;
-    }
+.hero-slider-arrows {
+  display: flex;
+  gap: 0.6rem;
+}
 
-    .hero-slider-btn {
-      pointer-events: auto;
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 250, 252, 0.6);
-      background: rgba(15, 23, 42, 0.7);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: background var(--transition-fast), transform var(--transition-fast);
-    }
+.hero-slider-btn {
+  pointer-events: auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 250, 252, 0.6);
+  background: rgba(15, 23, 42, 0.7);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
 
-    .hero-slider-btn:hover {
-      background: rgba(15, 23, 42, 0.95);
-      transform: translateY(-1px);
-    }
+.hero-slider-btn:hover {
+  background: rgba(15, 23, 42, 0.95);
+  transform: translateY(-1px);
+}
 
-    .hero-slider-dots {
-      display: flex;
-      gap: 0.4rem;
-      pointer-events: auto;
-    }
+.hero-slider-dots {
+  display: flex;
+  gap: 0.45rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-    .hero-slider-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 250, 252, 0.7);
-      background: transparent;
-      cursor: pointer;
-      transition: background var(--transition-fast), transform var(--transition-fast),
-        border-color var(--transition-fast);
-    }
+.hero-slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 250, 252, 0.7);
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast),
+    border-color var(--transition-fast);
+}
 
-    .hero-slider-dot.active {
-      background: #f97316;
-      border-color: transparent;
-      transform: scale(1.15);
-    }
+.hero-slider-dot.active {
+  background: #f97316;
+  border-color: transparent;
+  transform: scale(1.15);
+}
+
 
     /* Services */
     .services-grid {
