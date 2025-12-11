@@ -1,2 +1,1972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Factory Pro | Industrial Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Factory Pro provides modern industrial manufacturing solutions, engineering services and project consulting."
+  />
 
-123
+  <!-- 字型（Google Fonts：請自行確認商用授權或替換成自有字型） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* 
+    ==========================================================
+    全新原創樣式 (2025)
+    - 只參考版面風格與互動，不複製任何第三方模板碼
+    - 如需嚴格法務確認，請再諮詢專業律師
+    ==========================================================
+    */
+
+    :root {
+      --color-bg: #070b12;
+      --color-bg-soft: #101725;
+      --color-accent: #ffb400;
+      --color-accent-soft: rgba(255, 180, 0, 0.14);
+      --color-text: #f5f5f7;
+      --color-muted: #9ca3af;
+      --color-border: rgba(255, 255, 255, 0.06);
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
+      --transition-fast: 0.2s ease-out;
+      --transition-med: 0.3s ease;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1b2338 0, #050811 45%, #02040a 100%);
+      color: var(--color-text);
+      scroll-behavior: smooth;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* Layout helpers */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 4.5rem 0;
+    }
+
+    section:nth-of-type(even) {
+      background: radial-gradient(circle at top, #151a27 0, #050812 60%);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      color: var(--color-accent);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 3.3vw, 2.3rem);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .section-subtitle {
+      margin-top: 0.75rem;
+      color: var(--color-muted);
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 0.95rem;
+    }
+
+    /* Header / Nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(20px);
+      background: linear-gradient(
+        to bottom,
+        rgba(3, 6, 15, 0.96),
+        rgba(3, 6, 15, 0.8),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 11px;
+      background: conic-gradient(
+        from 200deg,
+        #ffb400,
+        #ff6f00,
+        #f97316,
+        #facc15,
+        #ffb400
+      );
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .brand-mark span {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #111827;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .brand-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 0.7rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ffb400, #f97316);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.55rem 1.3rem;
+      border-radius: 999px;
+      border: 1px solid rgba(250, 204, 21, 0.7);
+      background: radial-gradient(circle at top left, #facc15 0, #f97316 40%, #7c2d12 100%);
+      color: #111827;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        filter var(--transition-fast);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
+    }
+
+    /* Mobile menu button */
+    .nav-toggle {
+      display: none;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-toggle span {
+      width: 16px;
+      height: 2px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      position: relative;
+      transition: all var(--transition-med);
+    }
+
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 16px;
+      height: 2px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      transition: all var(--transition-med);
+    }
+
+    .nav-toggle span::before {
+      top: -5px;
+    }
+
+    .nav-toggle span::after {
+      top: 5px;
+    }
+
+    .nav-toggle.active span {
+      background: transparent;
+    }
+
+    .nav-toggle.active span::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    .nav-toggle.active span::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+
+    .nav-mobile {
+      display: none;
+    }
+
+    .nav-mobile.open {
+      display: block;
+    }
+
+    .nav-mobile-inner {
+      padding: 0.3rem 1.5rem 0.75rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.3);
+      background: rgba(6, 10, 20, 0.95);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-mobile-inner a {
+      display: block;
+      padding: 0.55rem 0;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    /* Hero / Slider */
+    .hero {
+      padding-top: 4rem;
+      padding-bottom: 4.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.8rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at top left, rgba(250, 204, 21, 0.2), transparent);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-kicker-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at center, #facc15, #f97316);
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.8);
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.7);
+        opacity: 0;
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 4.2vw, 3.2rem);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-title-accent {
+      background: linear-gradient(120deg, #facc15, #fb923c, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-lead {
+      font-size: 0.98rem;
+      color: var(--color-muted);
+      max-width: 470px;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .hero-pill {
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid var(--color-border);
+      font-size: 0.76rem;
+      color: var(--color-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-pill-count {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 1);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.72rem;
+      color: #e5e7eb;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.75rem 1.6rem;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        background var(--transition-fast), color var(--transition-fast),
+        border-color var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at top left, #facc15 0, #f97316 45%, #7c2d12 110%);
+      color: #111827;
+      box-shadow: var(--shadow-soft);
+      border-color: rgba(250, 204, 21, 0.6);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.7);
+      border-color: rgba(148, 163, 184, 0.5);
+      color: #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .btn-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    /* Hero slider visual */
+    .hero-slider {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: radial-gradient(circle at top left, #facc15 0, #020617 55%);
+      min-height: 260px;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateX(12px) scale(1.02);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    .hero-slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(15, 23, 42, 0.12),
+        rgba(15, 23, 42, 0.7),
+        rgba(15, 23, 42, 0.96)
+      );
+    }
+
+    .hero-slide-content {
+      position: relative;
+      padding: 1.6rem 1.6rem 1.4rem;
+      color: #f9fafb;
+    }
+
+    .hero-slide-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #e5e7eb;
+      opacity: 0.9;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-slide-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-slide-pill {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 250, 251, 0.6);
+      background: rgba(15, 23, 42, 0.65);
+    }
+
+    .hero-slide-meta {
+      font-size: 0.8rem;
+      color: #d1d5db;
+      margin-top: 0.45rem;
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-slide-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .hero-slide-meta-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #f97316;
+    }
+
+    .hero-slider-controls {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 0 1.4rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+
+    .hero-slider-arrows {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .hero-slider-btn {
+      pointer-events: auto;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.6);
+      background: rgba(15, 23, 42, 0.7);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .hero-slider-btn:hover {
+      background: rgba(15, 23, 42, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .hero-slider-dots {
+      display: flex;
+      gap: 0.4rem;
+      pointer-events: auto;
+    }
+
+    .hero-slider-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.7);
+      background: transparent;
+      cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+
+    .hero-slider-dot.active {
+      background: #f97316;
+      border-color: transparent;
+      transform: scale(1.15);
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.7rem;
+    }
+
+    .service-card {
+      background: radial-gradient(circle at top, #111827 0, #020617 85%);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.4rem 1.5rem;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition-med), box-shadow var(--transition-med),
+        border-color var(--transition-med);
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      opacity: 0;
+      background: radial-gradient(circle at top left, rgba(250, 204, 21, 0.28), transparent 55%);
+      transition: opacity var(--transition-med);
+      pointer-events: none;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(220, 252, 231, 0.35);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.85);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 13px;
+      background: var(--color-accent-soft);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .service-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .service-meta {
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #9ca3af;
+    }
+
+    .service-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .service-tag {
+      padding: 0.1rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.6rem;
+      align-items: center;
+    }
+
+    .about-text h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .about-text p {
+      font-size: 0.93rem;
+      color: var(--color-muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .about-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin: 1.1rem 0 1.4rem;
+    }
+
+    .about-list-item {
+      font-size: 0.86rem;
+      color: #e5e7eb;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+    }
+
+    .about-list-bullet {
+      margin-top: 0.15rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at center, #facc15, #f97316);
+    }
+
+    .about-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+    }
+
+    .about-metric {
+      min-width: 120px;
+    }
+
+    .about-metric-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .about-metric-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-muted);
+    }
+
+    .about-media {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: radial-gradient(circle at top, #111827 0, #020617 70%);
+      min-height: 260px;
+      padding: 1.2rem 1.2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .about-media-tag {
+      position: absolute;
+      top: 1.3rem;
+      left: 1.3rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.6);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: rgba(15, 23, 42, 0.56);
+    }
+
+    .about-media-ill {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 0, rgba(250, 204, 21, 0.2), transparent 40%),
+        radial-gradient(circle at 80% 0, rgba(252, 165, 165, 0.12), transparent 42%),
+        linear-gradient(135deg, #020617, #020617 40%, #0b1120 100%);
+      opacity: 0.9;
+    }
+
+    .about-media-overlay {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+    }
+
+    .about-media-caption {
+      max-width: 260px;
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+
+    .about-media-pill {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.7rem;
+      color: #d1d5db;
+      margin-bottom: 0.4rem;
+    }
+
+    .about-media-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.78rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.8);
+    }
+
+    .about-media-chip-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .project-card {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #020617;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition-med), box-shadow var(--transition-med),
+        border-color var(--transition-med);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+      border-color: rgba(251, 146, 60, 0.85);
+    }
+
+    .project-media {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .project-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+    }
+
+    .project-label {
+      position: absolute;
+      left: 0.9rem;
+      bottom: 0.9rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(248, 250, 252, 0.6);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .project-body {
+      padding: 1rem 1rem 1.1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .project-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+
+    .project-desc {
+      font-size: 0.86rem;
+      color: var(--color-muted);
+    }
+
+    .project-meta {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.3rem;
+    }
+
+    .project-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Testimonial */
+    .testimonial-card {
+      max-width: 720px;
+      margin: 0 auto;
+      border-radius: var(--radius-xl);
+      padding: 2.2rem 2.1rem 2rem;
+      border: 1px solid var(--color-border);
+      background: radial-gradient(circle at top, #0f172a 0, #020617 75%);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(circle at top left, rgba(250, 204, 21, 0.28), transparent 55%);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .testimonial-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-quote-mark {
+      font-size: 2.5rem;
+      line-height: 1;
+      color: rgba(251, 191, 36, 0.6);
+      margin-bottom: 0.2rem;
+    }
+
+    .testimonial-text {
+      font-size: 0.98rem;
+      color: #e5e7eb;
+      margin-bottom: 1.4rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .testimonial-author-main {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 2px solid #facc15;
+      background: radial-gradient(circle at top, #facc15, #0f172a);
+    }
+
+    .testimonial-author-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .testimonial-author-role {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+    }
+
+    .testimonial-badge {
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.7);
+      font-size: 0.76rem;
+      color: #a7f3d0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .testimonial-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .contact-form {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      padding: 1.6rem 1.5rem 1.7rem;
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.2), #020617);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-form-row {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-bottom: 1rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.86rem;
+    }
+
+    .field label {
+      color: #e5e7eb;
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: #f9fafb;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.9rem;
+      outline: none;
+      resize: vertical;
+      min-height: 42px;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
+        background var(--transition-fast);
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #6b7280;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(251, 146, 60, 0.88);
+      box-shadow: 0 0 0 1px rgba(251, 146, 60, 0.8);
+      background: #020617;
+    }
+
+    .contact-note {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      margin-top: 0.7rem;
+    }
+
+    .contact-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .contact-block {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      padding: 1.2rem 1.2rem 1.3rem;
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .contact-block h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-block p {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+    }
+
+    .contact-list {
+      margin-top: 0.75rem;
+      display: grid;
+      gap: 0.45rem;
+      font-size: 0.86rem;
+    }
+
+    .contact-list span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .contact-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #f97316;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid rgba(31, 41, 55, 1);
+      background: #020617;
+      padding: 2.5rem 0 1.8rem;
+      margin-top: 2rem;
+    }
+
+    .footer-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 2.1fr 1.2fr 1.2fr;
+      gap: 1.8rem;
+    }
+
+    .footer-brand-desc {
+      font-size: 0.86rem;
+      color: var(--color-muted);
+      max-width: 340px;
+      margin-top: 0.6rem;
+    }
+
+    .footer-heading {
+      font-size: 0.92rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .footer-links {
+      font-size: 0.84rem;
+      color: var(--color-muted);
+      display: grid;
+      gap: 0.3rem;
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+    }
+
+    .footer-legal {
+      max-width: var(--max-width);
+      margin: 1.8rem auto 0;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    .footer-legal a {
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 2.8rem;
+      }
+
+      .hero-grid {
+        gap: 2.2rem;
+      }
+
+      .hero-slider {
+        order: -1;
+      }
+
+      .services-grid,
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .services-grid,
+      .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .about-list {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-form-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      section {
+        padding: 3.5rem 0;
+      }
+
+      .testimonial-card {
+        padding: 1.8rem 1.6rem 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <nav class="nav">
+      <a href="#top" class="brand">
+        <span class="brand-mark"><span>FP</span></span>
+        <span class="brand-text">
+          <span class="brand-title">Factory Pro</span>
+          <span class="brand-sub">Industrial Systems</span>
+        </span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Our Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <button class="nav-cta" onclick="scrollToSection('contact')">
+          Request Quote
+        </button>
+      </div>
+
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+      </button>
+    </nav>
+
+    <div class="nav-mobile" id="nav-mobile">
+      <div class="nav-mobile-inner">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Our Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact">Request Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero / Slider -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="hero-kicker">
+              <span class="hero-kicker-dot"></span>
+              Precision-built industrial systems
+            </div>
+            <h1 class="hero-title">
+              <span>Modern</span>
+              <span class="hero-title-accent">Factory Solutions</span>
+              <span>For Critical Production</span>
+            </h1>
+            <p class="hero-lead">
+              We design and build custom manufacturing lines, automation cells and
+              industrial components that keep your production fast, safe and efficient.
+            </p>
+
+            <div class="hero-meta">
+              <div class="hero-pill">
+                <span class="hero-pill-count">20+ yrs</span>
+                <span>Heavy industry experience</span>
+              </div>
+              <div class="hero-pill">
+                <span class="hero-pill-count">120+</span>
+                <span>Completed plant projects</span>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary" onclick="scrollToSection('services')">
+                Explore Services
+                <span class="btn-icon">→</span>
+              </button>
+              <button class="btn btn-ghost" onclick="scrollToSection('projects')">
+                Recent Projects
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-slider" aria-label="Key capabilities slider">
+            <!-- Slide 1 -->
+            <article
+              class="hero-slide active"
+              style="
+                background-image: radial-gradient(circle at top, #facc15 0, #020617 55%);
+              "
+            >
+              <div class="hero-slide-content">
+                <div class="hero-slide-label">Featured line</div>
+                <div class="hero-slide-title">
+                  High-precision piston assembly
+                  <span class="hero-slide-pill">Automotive</span>
+                </div>
+                <div class="hero-slide-meta">
+                  <span>
+                    <span class="hero-slide-meta-dot"></span>
+                    24/7 uptime
+                  </span>
+                  <span>0.02 mm tolerance</span>
+                  <span>Turn-key delivery</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Slide 2 -->
+            <article
+              class="hero-slide"
+              style="
+                background-image: radial-gradient(circle at 0 0, #fb923c 0, #020617 55%);
+              "
+            >
+              <div class="hero-slide-content">
+                <div class="hero-slide-label">Welding cells</div>
+                <div class="hero-slide-title">
+                  Robotic iron welding island
+                  <span class="hero-slide-pill">Steelworks</span>
+                </div>
+                <div class="hero-slide-meta">
+                  <span>
+                    <span class="hero-slide-meta-dot"></span>
+                    30% faster cycle time
+                  </span>
+                  <span>Integrated safety systems</span>
+                  <span>Remote monitoring</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Slide 3 -->
+            <article
+              class="hero-slide"
+              style="
+                background-image: radial-gradient(circle at 100% 0, #22c55e 0, #020617 55%);
+              "
+            >
+              <div class="hero-slide-content">
+                <div class="hero-slide-label">Local specials</div>
+                <div class="hero-slide-title">
+                  Custom fixtures & jigs
+                  <span class="hero-slide-pill">On-demand</span>
+                </div>
+                <div class="hero-slide-meta">
+                  <span>
+                    <span class="hero-slide-meta-dot"></span>
+                    Small-batch fabrication
+                  </span>
+                  <span>Rapid prototyping</span>
+                  <span>Design-to-production</span>
+                </div>
+              </div>
+            </article>
+
+            <div class="hero-slider-controls">
+              <div class="hero-slider-arrows">
+                <button class="hero-slider-btn" data-slide-prev aria-label="Previous slide">
+                  ‹
+                </button>
+                <button class="hero-slider-btn" data-slide-next aria-label="Next slide">
+                  ›
+                </button>
+              </div>
+              <div class="hero-slider-dots" aria-hidden="true">
+                <button class="hero-slider-dot active" data-slide-to="0"></button>
+                <button class="hero-slider-dot" data-slide-to="1"></button>
+                <button class="hero-slider-dot" data-slide-to="2"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Services</div>
+          <h2 class="section-title">What We Build & Deliver</h2>
+          <p class="section-subtitle">
+            From local specials to fully automated manufacturing lines, we support every
+            stage of your industrial production.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">⚙️</div>
+            <h3 class="service-title">Local Specials & Tooling</h3>
+            <p class="service-desc">
+              Custom fixtures, jigs and tooling engineered for your specific machines and
+              operators – delivered fast.
+            </p>
+            <div class="service-meta">
+              <span>
+                <span class="service-tag">Custom</span>
+              </span>
+              <span>Lead time: 2–4 weeks</span>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🏭</div>
+            <h3 class="service-title">Piston Press Lines</h3>
+            <p class="service-desc">
+              High-precision piston presser systems with integrated measurement, traceability
+              and safety interlocks.
+            </p>
+            <div class="service-meta">
+              <span>
+                <span class="service-tag">Turn-key</span>
+              </span>
+              <span>Up to 0.02 mm tolerance</span>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🔥</div>
+            <h3 class="service-title">Welding Iron Cells</h3>
+            <p class="service-desc">
+              Robotic and semi-automatic welding stations built for heavy cycle operations,
+              with fume extraction and guarding.
+            </p>
+            <div class="service-meta">
+              <span>
+                <span class="service-tag">24/7</span>
+              </span>
+              <span>Cycle time: -30%</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">About Factory</div>
+          <h2 class="section-title">Engineering That Keeps Plants Moving</h2>
+          <p class="section-subtitle">
+            Factory Pro combines mechanical engineering, automation and on-site support into
+            one agile team focused on uptime.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <h3>From concept sketch to production ready line.</h3>
+            <p>
+              We partner with automotive, steelworks and component manufacturers to design,
+              build and service production equipment that feels tailored to your plant —
+              because it is.
+            </p>
+            <p>
+              Our engineers work directly on your shop floor to understand workflow,
+              safety constraints and maintenance capabilities before we commit to a design.
+            </p>
+
+            <div class="about-list">
+              <div class="about-list-item">
+                <span class="about-list-bullet"></span>
+                <span>On-site audits and line simulations</span>
+              </div>
+              <div class="about-list-item">
+                <span class="about-list-bullet"></span>
+                <span>Mechanical, electrical & control panels in-house</span>
+              </div>
+              <div class="about-list-item">
+                <span class="about-list-bullet"></span>
+                <span>CE / local safety standards compliance</span>
+              </div>
+              <div class="about-list-item">
+                <span class="about-list-bullet"></span>
+                <span>Lifecycle support & spare parts strategy</span>
+              </div>
+            </div>
+
+            <div class="about-metrics">
+              <div class="about-metric">
+                <div class="about-metric-number">20+</div>
+                <div class="about-metric-label">Years operating</div>
+              </div>
+              <div class="about-metric">
+                <div class="about-metric-number">120+</div>
+                <div class="about-metric-label">Major projects</div>
+              </div>
+              <div class="about-metric">
+                <div class="about-metric-number">98%</div>
+                <div class="about-metric-label">On-time delivery</div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="about-media" aria-label="Factory snapshot">
+            <div class="about-media-ill"></div>
+            <div class="about-media-tag">Inside the factory</div>
+            <div class="about-media-overlay">
+              <div class="about-media-caption">
+                <div class="about-media-pill">Live production status</div>
+                <p>
+                  Dashboards combine sensor data with operator input to highlight bottlenecks
+                  and keep your uptime visible.
+                </p>
+              </div>
+              <div>
+                <div class="about-media-chip">
+                  <span class="about-media-chip-dot"></span>
+                  11 active lines · 3 plants
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Recent Projects</div>
+          <h2 class="section-title">Selected Factory Installations</h2>
+          <p class="section-subtitle">
+            A snapshot of the custom production systems we have delivered across automotive
+            and heavy industries.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div
+              class="project-media"
+              style="
+                background-image: linear-gradient(
+                    to bottom right,
+                    #facc15,
+                    #f97316,
+                    #7c2d12
+                  );
+              "
+            >
+              <span class="project-label">Auto Engineering</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Piston assembly and leak-test line</h3>
+              <p class="project-desc">
+                Full line including pressing, measurement, leak-test and engraving with
+                integrated traceability.
+              </p>
+              <div class="project-meta">
+                <span>Cycle time: 3.2 s/pc</span>
+                <span>Location: EU plant</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div
+              class="project-media"
+              style="
+                background-image: linear-gradient(
+                    to bottom right,
+                    #22c55e,
+                    #16a34a,
+                    #052e16
+                  );
+              "
+            >
+              <span class="project-label">Steelworks</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Robotic iron welding island</h3>
+              <p class="project-desc">
+                Multi-robot cell welding structural iron with offline programming and
+                automatic tip-dressing.
+              </p>
+              <div class="project-meta">
+                <span>Output: +35%</span>
+                <span>Safety: PL d</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div
+              class="project-media"
+              style="
+                background-image: linear-gradient(
+                    to bottom right,
+                    #38bdf8,
+                    #0ea5e9,
+                    #0f172a
+                  );
+              "
+            >
+              <span class="project-label">Custom build</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Flexible fixture & jig program</h3>
+              <p class="project-desc">
+                Modular fixtures supporting multiple product variants with quick changeovers
+                for short production runs.
+              </p>
+              <div class="project-meta">
+                <span>Changeover: &lt; 8 min</span>
+                <span>Plants: 2</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section id="testimonial">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Testimonial</div>
+          <h2 class="section-title">What Our Clients Say</h2>
+          <p class="section-subtitle">
+            Long-term partnerships matter to us more than single projects. Here’s how one
+            plant manager describes working together.
+          </p>
+        </div>
+
+        <article class="testimonial-card">
+          <div class="testimonial-inner">
+            <div class="testimonial-quote-mark">“</div>
+            <p class="testimonial-text">
+              Factory Pro was the only supplier willing to commit to our aggressive timeline
+              without sacrificing safety or quality. Their team worked alongside our
+              engineers from RFQ to ramp-up, solving issues on the floor instead of sending
+              emails about them.
+            </p>
+            <div class="testimonial-author">
+              <div class="testimonial-author-main">
+                <div class="testimonial-avatar" aria-hidden="true"></div>
+                <div>
+                  <div class="testimonial-author-name">Anna Meyer</div>
+                  <div class="testimonial-author-role">
+                    Plant Manager, European Engine Components
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-badge">
+                <span class="testimonial-badge-dot"></span>
+                Partner since 2016
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">Contact</div>
+          <h2 class="section-title">Tell Us About Your Line</h2>
+          <p class="section-subtitle">
+            Share your current setup and production goals. Our engineering team will come
+            back with suggestions and a timeline.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <form class="contact-form" onsubmit="handleContactSubmit(event)">
+            <div class="contact-form-row">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your full name" />
+              </div>
+              <div class="field">
+                <label for="company">Company</label>
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  placeholder="Company / Plant name"
+                />
+              </div>
+            </div>
+
+            <div class="contact-form-row">
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@company.com" />
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" placeholder="+886 9..." />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="message">Project details</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Share your current line, volume, target cycle time or issues you want to solve."
+              ></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="submit" style="margin-top: 1.2rem;">
+              Send message
+              <span class="btn-icon">➤</span>
+            </button>
+
+            <p class="contact-note">
+              This is a demo front-end only. Connect the form to your backend or email
+              service before going live.
+            </p>
+          </form>
+
+          <aside class="contact-side">
+            <div class="contact-block">
+              <h4>Head office</h4>
+              <p>Example Industrial Park, Building 3<br />Your City, Your Country</p>
+              <div class="contact-list">
+                <span><span class="contact-dot"></span>+123 456 7890</span>
+                <span><span class="contact-dot"></span>factory@example.com</span>
+              </div>
+            </div>
+
+            <div class="contact-block">
+              <h4>Working hours</h4>
+              <p>Mon – Fri, 08:30 – 18:00<br />On-site support by schedule.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div>
+        <div class="brand">
+          <span class="brand-mark"><span>FP</span></span>
+          <span class="brand-text">
+            <span class="brand-title">Factory Pro</span>
+            <span class="brand-sub">Industrial Systems</span>
+          </span>
+        </div>
+        <p class="footer-brand-desc">
+          Custom industrial equipment, automation and tooling for manufacturers who cannot
+          afford downtime.
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-heading">Quick links</div>
+        <div class="footer-links">
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#testimonial">Testimonial</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-heading">Contact</div>
+        <div class="footer-links">
+          <span>+123 456 7890</span>
+          <span>factory@example.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <span>© <span id="year"></span> Factory Pro. All rights reserved.</span>
+      <span>
+        Built with a custom design. Replace demo text &amp; images before production use.
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    // =========================
+    // Smooth scroll helper
+    // =========================
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const offset = window.pageYOffset + rect.top - 70;
+      window.scrollTo({ top: offset, behavior: "smooth" });
+    }
+
+    // Enable smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+        if (!href || href === "#") return;
+        if (href.startsWith("#")) {
+          e.preventDefault();
+          const targetId = href.slice(1);
+          scrollToSection(targetId);
+          closeMobileNav();
+        }
+      });
+    });
+
+    // =========================
+    // Mobile navigation toggle
+    // =========================
+    const navToggle = document.querySelector(".nav-toggle");
+    const navMobile = document.getElementById("nav-mobile");
+
+    function closeMobileNav() {
+      navToggle.classList.remove("active");
+      navMobile.classList.remove("open");
+    }
+
+    if (navToggle) {
+      navToggle.addEventListener("click", () => {
+        navToggle.classList.toggle("active");
+        navMobile.classList.toggle("open");
+      });
+    }
+
+    // Close on scroll
+    window.addEventListener("scroll", () => {
+      if (window.innerWidth <= 720 && navMobile.classList.contains("open")) {
+        closeMobileNav();
+      }
+    });
+
+    // =========================
+    // Hero slider logic
+    // =========================
+    const slides = Array.from(document.querySelectorAll(".hero-slide"));
+    const dots = Array.from(document.querySelectorAll(".hero-slider-dot"));
+    const prevBtn = document.querySelector("[data-slide-prev]");
+    const nextBtn = document.querySelector("[data-slide-next]");
+
+    let currentSlide = 0;
+    let slideTimer = null;
+    const SLIDE_INTERVAL = 6500;
+
+    function goToSlide(index) {
+      if (!slides.length) return;
+      currentSlide = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === currentSlide);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentSlide);
+      });
+
+      resetSlideTimer();
+    }
+
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentSlide - 1);
+    }
+
+    function resetSlideTimer() {
+      if (slideTimer) clearInterval(slideTimer);
+      slideTimer = setInterval(nextSlide, SLIDE_INTERVAL);
+    }
+
+    if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+    if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => goToSlide(index));
+    });
+
+    if (slides.length) {
+      resetSlideTimer();
+    }
+
+    // =========================
+    // Contact form (front-end only)
+    // =========================
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      alert(
+        "This is a demo front-end only.\nConnect this form to your backend or email service before going live."
+      );
+    }
+
+    // =========================
+    // Footer year
+    // =========================
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
