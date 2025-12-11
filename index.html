@@ -548,14 +548,16 @@
     }
 
     .hero-slider-controls {
-      position: absolute;
-      inset: auto 0 0;
-      padding: 0 1.4rem 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      pointer-events: none;
-    }
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -18px; /* 原本是貼齊底部，改成往下移一點 */
+  padding: 0 1.4rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
 
     .hero-slider-arrows {
       display: flex;
@@ -1198,7 +1200,7 @@
         <span class="brand-mark"><span>JC</span></span>
         <span class="brand-text">
           <span class="brand-title">捷強工業有限公司</span>
-          <span class="brand-sub">JIE CHIANG INDUSTRIAL</span>
+          <span class="brand-sub">JYECHUN INDUSTRIAL</span>
         </span>
       </a>
 
@@ -1496,7 +1498,7 @@
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">PROJECTS</div>
-          <h2 class="section-title">實績案例（示意）</h2>
+          <h2 class="section-title">實績案例</h2>
           <p class="section-subtitle">
             以下內容為範例說明，可依您實際案件名稱與客戶型態自行替換。
           </p>
@@ -1571,7 +1573,7 @@
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">CLIENT VOICE</div>
-          <h2 class="section-title">客戶回饋（示意）</h2>
+          <h2 class="section-title">客戶回饋</h2>
           <p class="section-subtitle">
             以下為範例文字，可替換為您實際客戶回饋內容，或改成公司介紹段落。
           </p>
@@ -1670,8 +1672,7 @@
               <h4>公司資訊</h4>
               <p>
                 捷強工業有限公司<br />
-                <!-- TODO: 改成實際地址 -->
-                範例地址：某某市工業區 XX 路 XX 號
+                台中市南區美村路二段307號
               </p>
               <div class="contact-list">
                 <span><span class="contact-dot"></span><!-- TODO: 電話 -->電話：02-1234-5678</span>
@@ -1681,7 +1682,7 @@
 
             <div class="contact-block">
               <h4>服務時間</h4>
-              <p>週一至週五 08:30 – 18:00<br />現場施工與勘查採預約制。</p>
+              <p>週一至週五 08:00 – 17:00<br />現場施工與勘查採預約制。</p>
             </div>
           </aside>
         </div>
@@ -1697,7 +1698,7 @@
           <span class="brand-mark"><span>JC</span></span>
           <span class="brand-text">
             <span class="brand-title">捷強工業有限公司</span>
-            <span class="brand-sub">JIE CHIANG INDUSTRIAL</span>
+            <span class="brand-sub">JYECHUN INDUSTRIAL</span>
           </span>
         </div>
         <p class="footer-brand-desc">
@@ -1719,15 +1720,15 @@
         <div class="footer-heading">聯絡方式</div>
         <div class="footer-links">
           <!-- TODO: 改成實際聯絡資訊 -->
-          <span>電話：02-1234-5678</span>
-          <span>Email：info@example.com</span>
+          <span>電話：04-2263-5628</span>
+          <span>Email：xyedccde124@gmail.com</span>
         </div>
       </div>
     </div>
 
     <div class="footer-legal">
       <span>© <span id="year"></span> 捷強工業有限公司. 版權所有。</span>
-      <span>此網站版型為客製設計，文字與圖片請依實際情況更新後再上線。</span>
+      <span>此網站版型為客製設計</span>
     </div>
   </footer>
 
