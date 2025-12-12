@@ -1120,85 +1120,204 @@
     </section>
 
     <!-- About -->
-    <section id="about">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">ABOUT</div>
-          <h2 class="section-title">關於捷強工業</h2>
-          <p class="section-subtitle">
-            以實際工廠現場為出發點，從配線、控制、機電整合到改善提案，<br>提供穩定可靠的工業解決方案。
+  <section id="about" class="about-v2">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-kicker">ABOUT</div>
+      <h2 class="section-title">關於捷強工業</h2>
+      <p class="section-subtitle">
+        我們把「能穩定運轉」當作最低標準；把「好維修、好擴充、好交接」當作交付標準。
+      </p>
+    </div>
+
+    <div class="about2-grid">
+      <!-- LEFT -->
+      <div class="about2-left">
+        <h3 class="about2-title">聽得懂現場語言的電控夥伴。</h3>
+
+        <div class="about2-lead">
+          <p>
+            從規劃到上線，我們用現場導向的思維，把風險先消化在設計與配線階段，
+            讓產線「穩」是結果，而不是運氣。
           </p>
         </div>
 
-        <div class="about-grid">
-          <div class="about-text">
-            <h3>聽得懂現場語言的電控夥伴。</h3>
-            <p>
-              捷強工業深知產線不能停的壓力，因此在設計階段就納入維護、擴充與安全等條件，
-              避免只「能運轉」，卻難以「長期使用」的狀況。
-            </p>
-            <p>
-              我們重視與現場人員的溝通，不只看圖面，也實際走訪產線，
-              依設備特性與操作方式調整控制邏輯與配線配置。
-            </p>
-
-            <div class="about-list">
-              <div class="about-list-item">
-                <span class="about-list-bullet"></span>
-                <span>自動控制程式撰寫與修改</span>
-              </div>
-              <div class="about-list-item">
-                <span class="about-list-bullet"></span>
-                <span>控制盤/配電盤規劃與製作</span>
-              </div>
-              <div class="about-list-item">
-                <span class="about-list-bullet"></span>
-                <span>機台內部與現場工業配線</span>
-              </div>
-              <div class="about-list-item">
-                <span class="about-list-bullet"></span>
-                <span>舊設備電控更新與改善</span>
-              </div>
-            </div>
-
-            <div class="about-metrics">
-              <div class="about-metric">
-                <div class="about-metric-number">多年</div>
-                <div class="about-metric-label">工業現場經驗</div>
-              </div>
-              <div class="about-metric">
-                <div class="about-metric-number">多家</div>
-                <div class="about-metric-label">合作製造廠</div>
-              </div>
-              <div class="about-metric">
-                <div class="about-metric-number">高比率</div>
-                <div class="about-metric-label">回頭與轉介紹</div>
-              </div>
+        <div class="about2-highlights">
+          <div class="hl">
+            <div class="hl-dot"></div>
+            <div class="hl-text">
+              <div class="hl-title">可維修</div>
+              <div class="hl-desc">端子與線號一致、訊號分區清楚，維修不靠猜。</div>
             </div>
           </div>
 
-          <aside class="about-media" aria-label="產線情境示意">
-            <div class="about-media-ill"></div>
-            <div class="about-media-tag">現場實作與測試</div>
-            <div class="about-media-overlay">
-              <div class="about-media-caption">
-                <div class="about-media-pill">配線整理 + 訊號測試</div>
-                <p>
-                  自動控制不只是程式，更來自每一條線的標示、每一個端子的檢查，
-                  讓未來的維修與擴充都更有依據。
-                </p>
+          <div class="hl">
+            <div class="hl-dot"></div>
+            <div class="hl-text">
+              <div class="hl-title">可擴充</div>
+              <div class="hl-desc">預留 I/O 與迴路規劃，擴線、加站點更順。</div>
+            </div>
+          </div>
+
+          <div class="hl">
+            <div class="hl-dot"></div>
+            <div class="hl-text">
+              <div class="hl-title">可交接</div>
+              <div class="hl-desc">圖面、標示、測試紀錄完整，交接有依據。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about2-kpis">
+          <div class="kpi">
+            <div class="kpi-num">多年</div>
+            <div class="kpi-label">工業現場經驗</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-num">多家</div>
+            <div class="kpi-label">合作製造廠</div>
+          </div>
+          <div class="kpi">
+            <div class="kpi-num">高比率</div>
+            <div class="kpi-label">回頭與轉介紹</div>
+          </div>
+        </div>
+
+        <div class="about2-mini">
+          <span class="mini-pill">PLC 程式撰寫 / 修改</span>
+          <span class="mini-pill">控制盤/配電盤規劃製作</span>
+          <span class="mini-pill">機台內部與現場工業配線</span>
+          <span class="mini-pill">舊設備電控更新改善</span>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="about2-right">
+        <!-- tabs (純 CSS) -->
+        <div class="about2-tabs" role="tablist" aria-label="捷強能力面板">
+          <input type="radio" name="abtTab" id="abtTab1" checked>
+          <label for="abtTab1" class="tab">規劃設計</label>
+
+          <input type="radio" name="abtTab" id="abtTab2">
+          <label for="abtTab2" class="tab">配線施工</label>
+
+          <input type="radio" name="abtTab" id="abtTab3">
+          <label for="abtTab3" class="tab">測試交付</label>
+
+          <div class="tab-panels">
+            <div class="panel p1">
+              <div class="panel-head">
+                <div class="panel-title">從現場條件出發的控制規劃</div>
+                <div class="panel-sub">把「不確定」先變成「設計條件」</div>
               </div>
-              <div>
-                <div class="about-media-chip">
-                  <span class="about-media-chip-dot"></span>
-                  設備上線前逐點確認
+
+              <div class="panel-cards">
+                <div class="p-card">
+                  <div class="p-ic">🧩</div>
+                  <div class="p-tt">需求釐清</div>
+                  <div class="p-dd">運轉條件、保護邏輯、異常處置先對齊。</div>
+                </div>
+                <div class="p-card">
+                  <div class="p-ic">🧠</div>
+                  <div class="p-tt">控制邏輯</div>
+                  <div class="p-dd">PLC/HMI 流程與互鎖規劃，操作更直覺。</div>
+                </div>
+                <div class="p-card">
+                  <div class="p-ic">🧱</div>
+                  <div class="p-tt">迴路分區</div>
+                  <div class="p-dd">動力/訊號分離、端子規劃，降低干擾。</div>
+                </div>
+              </div>
+
+              <div class="panel-foot">
+                <span class="foot-pill">輸入/輸出清單</span>
+                <span class="foot-pill">迴路圖 / Layout</span>
+                <span class="foot-pill">風險點先預防</span>
+              </div>
+            </div>
+
+            <div class="panel p2">
+              <div class="panel-head">
+                <div class="panel-title">線路整齊只是外觀，穩定才是目的</div>
+                <div class="panel-sub">每一條線都有「可追溯」的標示與路徑</div>
+              </div>
+
+              <div class="panel-cards">
+                <div class="p-card">
+                  <div class="p-ic">🧷</div>
+                  <div class="p-tt">線號標示</div>
+                  <div class="p-dd">端子/線槽/電纜一致命名，查線更快。</div>
+                </div>
+                <div class="p-card">
+                  <div class="p-ic">🧰</div>
+                  <div class="p-tt">施工品質</div>
+                  <div class="p-dd">壓接、配線彎曲半徑、線槽留裕量。</div>
+                </div>
+                <div class="p-card">
+                  <div class="p-ic">⚡</div>
+                  <div class="p-tt">安全規範</div>
+                  <div class="p-dd">保護元件配置與接地，提升可靠度。</div>
+                </div>
+              </div>
+
+              <div class="panel-foot">
+                <span class="foot-pill">控制盤/配電盤</span>
+                <span class="foot-pill">現場配線/改造</span>
+                <span class="foot-pill">端子台分區</span>
+              </div>
+            </div>
+
+            <div class="panel p3">
+              <div class="panel-head">
+                <div class="panel-title">上線前逐點確認，交付後好維修</div>
+                <div class="panel-sub">把測試流程做成你們未來的維護工具</div>
+              </div>
+
+              <div class="panel-steps">
+                <div class="step">
+                  <div class="step-badge">01</div>
+                  <div class="step-main">
+                    <div class="step-title">逐點 I/O 測試</div>
+                    <div class="step-desc">感測器、致動器、互鎖條件逐項確認。</div>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-badge">02</div>
+                  <div class="step-main">
+                    <div class="step-title">異常情境演練</div>
+                    <div class="step-desc">停電/急停/過載/保護動作，確保可控。</div>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-badge">03</div>
+                  <div class="step-main">
+                    <div class="step-title">交付文件整理</div>
+                    <div class="step-desc">線號、端子表、圖面與測試紀錄，方便交接。</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel-callout">
+                <div class="call-ic">✅</div>
+                <div class="call-text">
+                  <div class="call-title">讓未來維修有依據</div>
+                  <div class="call-desc">不是「現在能跑」，而是「之後也好處理」。</div>
                 </div>
               </div>
             </div>
-          </aside>
+          </div>
+        </div>
+
+        <!-- small note -->
+        <div class="about2-note">
+          <span class="note-dot"></span>
+          <span>需要我把這個面板換成「PLC/HMI/配電盤/現場配線」四格展示也可以。</span>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
 
     <!-- Projects -->
     <section id="projects">
