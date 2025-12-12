@@ -19,285 +19,301 @@
 
   <style>
     /* ===== About v2 ===== */
-.about-v2 { position: relative; overflow: hidden; }
-.about-v2::before{
-  content:"";
-  position:absolute;
-  inset:-30%;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 18% 40%, rgba(250,204,21,.10), transparent 45%),
-    radial-gradient(circle at 78% 55%, rgba(249,115,22,.08), transparent 45%);
-  opacity:.9;
-}
+    .about-v2 { position: relative; overflow: hidden; }
+    .about-v2::before{
+      content:"";
+      position:absolute;
+      inset:-30%;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 18% 40%, rgba(250,204,21,.10), transparent 45%),
+        radial-gradient(circle at 78% 55%, rgba(249,115,22,.08), transparent 45%);
+      opacity:.9;
+    }
 
-.about2-grid{
-  display:grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-  gap: 2.4rem;
-  align-items: start;
-  position: relative;
-  z-index: 1;
-}
+    .about2-grid{
+      display:grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 2.4rem;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
 
-.about2-title{ font-size: 1.55rem; margin-bottom: .85rem; letter-spacing: .02em; }
-.about2-lead p{
-  color: var(--color-muted);
-  font-size: .95rem;
-  line-height: 1.9;
-  max-width: 46ch;
-}
+    .about2-title{ font-size: 1.55rem; margin-bottom: .85rem; letter-spacing: .02em; }
+    .about2-lead p{
+      color: var(--color-muted);
+      font-size: .95rem;
+      line-height: 1.9;
+      max-width: 46ch;
+    }
 
-.about2-highlights{
-  margin-top: 1.2rem;
-  display: grid;
-  gap: .8rem;
-}
-.hl{
-  display:flex;
-  gap:.75rem;
-  padding: .85rem .95rem;
-  border-radius: 16px;
-  border: 1px solid var(--color-border);
-  background: rgba(2,6,23,.28);
-  backdrop-filter: blur(10px);
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-}
-.hl:hover{
-  transform: translateY(-3px);
-  border-color: rgba(250,204,21,.35);
-  box-shadow: 0 18px 40px rgba(0,0,0,.55);
-}
-.hl-dot{
-  width: 10px; height: 10px; border-radius: 999px;
-  margin-top: .28rem;
-  background: radial-gradient(circle at center, #facc15, #f97316);
-  box-shadow: 0 0 10px rgba(250,204,21,.35);
-  flex: 0 0 auto;
-}
-.hl-title{ font-weight: 700; }
-.hl-desc{ color: var(--color-muted); font-size: .88rem; margin-top: .15rem; }
+    .about2-highlights{
+      margin-top: 1.2rem;
+      display: grid;
+      gap: .8rem;
+    }
+    .hl{
+      display:flex;
+      gap:.75rem;
+      padding: .85rem .95rem;
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      background: rgba(2,6,23,.28);
+      backdrop-filter: blur(10px);
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .hl:hover{
+      transform: translateY(-3px) rotate(-0.4deg);
+      border-color: rgba(250,204,21,.35);
+      box-shadow: 0 18px 40px rgba(0,0,0,.55);
+    }
+    .hl-title{ font-weight: 700; }
+    .hl-desc{ color: var(--color-muted); font-size: .88rem; margin-top: .15rem; }
 
-.about2-kpis{
-  margin-top: 1.35rem;
-  display:flex;
-  flex-wrap: wrap;
-  gap: 1.2rem;
-}
-.kpi{ min-width: 120px; }
-.kpi-num{ font-size: 1.6rem; font-weight: 800; letter-spacing: .02em; }
-.kpi-label{
-  font-size: .78rem;
-  color: var(--color-muted);
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  margin-top: .25rem;
-}
+    .about2-kpis{
+      margin-top: 1.35rem;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+    .kpi{ min-width: 120px; }
+    .kpi-num{ font-size: 1.6rem; font-weight: 800; letter-spacing: .02em; }
+    .kpi-label{
+      font-size: .78rem;
+      color: var(--color-muted);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-top: .25rem;
+    }
 
-.about2-mini{
-  margin-top: 1.15rem;
-  display:flex;
-  flex-wrap: wrap;
-  gap: .55rem;
-}
-.mini-pill{
-  font-size: .78rem;
-  color: #e5e7eb;
-  padding: .38rem .7rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148,163,184,.45);
-  background: rgba(15,23,42,.55);
-  transition: transform .22s ease, border-color .22s ease, background .22s ease;
-}
-.mini-pill:hover{
-  transform: translateY(-2px);
-  border-color: rgba(250,204,21,.55);
-  background: rgba(250,204,21,.08);
-}
+    .about2-mini{
+      margin-top: 1.15rem;
+      display:flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+    }
+    .mini-pill{
+      font-size: .78rem;
+      color: #e5e7eb;
+      padding: .38rem .7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,.45);
+      background: rgba(15,23,42,.55);
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+    }
+    .mini-pill:hover{
+      transform: translateY(-2px);
+      border-color: rgba(250,204,21,.55);
+      background: rgba(250,204,21,.08);
+    }
 
-/* right panel */
-.about2-right{
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border);
-  background: radial-gradient(circle at top, rgba(17,24,39,.85), rgba(2,6,23,.85));
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
-  position: relative;
-}
-.about2-right::before{
-  content:"";
-  position:absolute;
-  inset:-40%;
-  background: radial-gradient(circle at 30% 20%, rgba(250,204,21,.18), transparent 55%);
-  opacity:.6;
-  pointer-events:none;
-  transition: opacity .25s ease;
-}
-.about2-right:hover::before{ opacity:.95; }
+    /* right panel */
+    .about2-right{
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border);
+      background: radial-gradient(circle at top, rgba(17,24,39,.85), rgba(2,6,23,.85));
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      position: relative;
+    }
+    .about2-right::before{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background: radial-gradient(circle at 30% 20%, rgba(250,204,21,.18), transparent 55%);
+      opacity:.6;
+      pointer-events:none;
+      transition: opacity .25s ease;
+    }
+    .about2-right:hover::before{ opacity:.95; }
 
-.about2-tabs{
-  padding: 1.1rem 1.1rem 1.15rem;
-  position: relative;
-  z-index: 1;
-}
-.about2-tabs input{ position:absolute; opacity:0; pointer-events:none; }
+    .about2-tabs{
+      padding: 1.1rem 1.1rem 1.15rem;
+      position: relative;
+      z-index: 1;
+    }
 
-.tab{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding: .45rem .85rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148,163,184,.45);
-  background: rgba(15,23,42,.55);
-  color:#e5e7eb;
-  font-size:.82rem;
-  cursor:pointer;
-  margin-right: .5rem;
-  transition: transform .22s ease, border-color .22s ease, background .22s ease;
-}
-.tab:hover{ transform: translateY(-2px); border-color: rgba(250,204,21,.55); }
+    /* ===== SVG Icon Base ===== */
+    .ic{
+      width: 22px;
+      height: 22px;
+      stroke: #facc15;
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform .28s ease, stroke .28s ease;
+      flex: 0 0 auto;
+    }
 
-#abtTab1:checked ~ label[for="abtTab1"],
-#abtTab2:checked ~ label[for="abtTab2"],
-#abtTab3:checked ~ label[for="abtTab3"]{
-  border-color: rgba(250,204,21,.65);
-  background: rgba(250,204,21,.10);
-}
+    /* icon hover 微旋轉 + 放大 */
+    .hl:hover .ic,
+    .p-card:hover .ic,
+    .cap-card:hover .ic{
+      transform: rotate(-6deg) scale(1.12);
+      stroke: #fb923c;
+    }
 
-.tab-panels{ margin-top: 1rem; }
-.panel{
-  display:none;
-  padding: 1.05rem 1.05rem 1.1rem;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,.06);
-  background: rgba(2,6,23,.35);
-  backdrop-filter: blur(12px);
-  animation: panelIn 260ms ease both;
-}
-@keyframes panelIn{ from{ opacity:0; transform: translateY(6px);} to{opacity:1; transform: translateY(0);} }
+    /* ===== Shine Effect（光掃過） ===== */
+    .hl::after,
+    .p-card::after,
+    .cap-card::after{
+      content:"";
+      position:absolute;
+      inset:-40%;
+      background: linear-gradient(
+        120deg,
+        transparent 35%,
+        rgba(250,204,21,.18),
+        transparent 65%
+      );
+      opacity:0;
+      transform: translateX(-20%);
+      transition: opacity .28s ease, transform .45s ease;
+      pointer-events:none;
+    }
+    .hl:hover::after,
+    .p-card:hover::after,
+    .cap-card:hover::after{
+      opacity:1;
+      transform: translateX(20%);
+    }
 
-#abtTab1:checked ~ .tab-panels .p1{ display:block; }
-#abtTab2:checked ~ .tab-panels .p2{ display:block; }
-#abtTab3:checked ~ .tab-panels .p3{ display:block; }
+    /* ===== 右側：能力四格卡片 ===== */
+    .cap-head{
+      padding: .9rem 1rem 0;
+    }
+    .cap-title{
+      font-weight: 800;
+      letter-spacing: .02em;
+      font-size: 1.05rem;
+    }
+    .cap-sub{
+      color: var(--color-muted);
+      font-size: .86rem;
+      margin-top: .35rem;
+    }
 
-.panel-title{ font-weight: 800; letter-spacing: .02em; font-size: 1.05rem; }
-.panel-sub{ color: var(--color-muted); font-size: .86rem; margin-top: .35rem; }
+    .cap-grid{
+      margin-top: .95rem;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: .8rem;
+    }
+    .cap-card{
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,.22);
+      background: rgba(15,23,42,.55);
+      padding: .9rem .9rem .95rem;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+      min-height: 120px;
+    }
+    .cap-card:hover{
+      transform: translateY(-4px) rotate(-0.35deg) scale(1.01);
+      border-color: rgba(250,204,21,.35);
+      box-shadow: 0 16px 34px rgba(0,0,0,.45);
+    }
+    .cap-top{
+      display:flex;
+      align-items:center;
+      gap: .7rem;
+    }
+    .cap-tt{
+      font-weight: 800;
+      font-size: .95rem;
+      letter-spacing: .01em;
+    }
+    .cap-dd{
+      color: var(--color-muted);
+      font-size: .84rem;
+      margin-top: .55rem;
+      line-height: 1.65;
+    }
 
-.panel-cards{
-  margin-top: .95rem;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: .75rem;
-}
-.p-card{
-  border-radius: 16px;
-  border: 1px solid rgba(148,163,184,.22);
-  background: rgba(15,23,42,.55);
-  padding: .85rem .8rem;
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-}
-.p-card:hover{
-  transform: translateY(-4px);
-  border-color: rgba(250,204,21,.35);
-  box-shadow: 0 16px 34px rgba(0,0,0,.45);
-}
-.p-ic{ font-size: 1.15rem; }
-.p-tt{ font-weight: 700; margin-top: .4rem; font-size: .92rem; }
-.p-dd{ color: var(--color-muted); font-size: .82rem; margin-top: .3rem; line-height: 1.6; }
+    .cap-foot{
+      margin-top: .9rem;
+      display:flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      padding: .1rem 0 0;
+    }
+    .foot-pill{
+      font-size: .74rem;
+      color:#e5e7eb;
+      padding: .32rem .65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,.35);
+      background: rgba(2,6,23,.35);
+    }
 
-.panel-foot{
-  margin-top: .9rem;
-  display:flex;
-  flex-wrap: wrap;
-  gap: .5rem;
-}
-.foot-pill{
-  font-size: .74rem;
-  color:#e5e7eb;
-  padding: .32rem .65rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148,163,184,.35);
-  background: rgba(2,6,23,.35);
-}
+    .about2-note{
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: .85rem 1.1rem 1.05rem;
+      display:flex;
+      gap:.55rem;
+      align-items:flex-start;
+      color: var(--color-muted);
+      font-size: .82rem;
+      position: relative;
+      z-index: 1;
+    }
+    .note-dot{
+      width: 8px; height: 8px; border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34,197,94,.6);
+      margin-top: .35rem;
+      flex: 0 0 auto;
+    }
 
-.panel-steps{ margin-top: .95rem; display:grid; gap: .7rem; }
-.step{
-  display:flex;
-  gap: .7rem;
-  padding: .75rem .8rem;
-  border-radius: 16px;
-  border: 1px solid rgba(148,163,184,.22);
-  background: rgba(15,23,42,.55);
-  transition: transform .25s ease, border-color .25s ease;
-}
-.step:hover{ transform: translateY(-3px); border-color: rgba(250,204,21,.35); }
-.step-badge{
-  width: 34px; height: 34px; border-radius: 12px;
-  display:flex; align-items:center; justify-content:center;
-  background: rgba(250,204,21,.10);
-  border: 1px solid rgba(250,204,21,.35);
-  font-weight: 800;
-  color: #facc15;
-  flex: 0 0 auto;
-}
-.step-title{ font-weight: 700; }
-.step-desc{ color: var(--color-muted); font-size: .84rem; margin-top: .1rem; line-height: 1.65; }
+    /* ===== About scroll reveal（滑到視窗才進場） ===== */
+    .reveal{
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 700ms ease, transform 700ms ease;
+      will-change: opacity, transform;
+    }
+    .reveal.in{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal.stagger > *{
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 700ms ease, transform 700ms ease;
+    }
+    .reveal.in.stagger > *{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal.in.stagger > *:nth-child(1){ transition-delay:  40ms; }
+    .reveal.in.stagger > *:nth-child(2){ transition-delay: 100ms; }
+    .reveal.in.stagger > *:nth-child(3){ transition-delay: 160ms; }
+    .reveal.in.stagger > *:nth-child(4){ transition-delay: 220ms; }
+    .reveal.in.stagger > *:nth-child(5){ transition-delay: 280ms; }
 
-.panel-callout{
-  margin-top: .95rem;
-  display:flex;
-  gap: .75rem;
-  align-items: center;
-  padding: .85rem .9rem;
-  border-radius: 16px;
-  border: 1px solid rgba(34,197,94,.25);
-  background: rgba(34,197,94,.06);
-}
-.call-ic{ font-size: 1.1rem; }
-.call-title{ font-weight: 800; }
-.call-desc{ color: var(--color-muted); font-size: .84rem; margin-top: .1rem; }
+    /* RWD */
+    @media (max-width: 960px){
+      .about2-grid{ grid-template-columns: minmax(0,1fr); }
+      .cap-grid{ grid-template-columns: minmax(0,1fr); }
+    }
 
-.about2-note{
-  border-top: 1px solid rgba(255,255,255,.06);
-  padding: .85rem 1.1rem 1.05rem;
-  display:flex;
-  gap:.55rem;
-  align-items:flex-start;
-  color: var(--color-muted);
-  font-size: .82rem;
-  position: relative;
-  z-index: 1;
-}
-.note-dot{
-  width: 8px; height: 8px; border-radius: 999px;
-  background: #22c55e;
-  box-shadow: 0 0 10px rgba(34,197,94,.6);
-  margin-top: .35rem;
-  flex: 0 0 auto;
-}
-
-/* RWD */
-@media (max-width: 960px){
-  .about2-grid{ grid-template-columns: minmax(0,1fr); }
-  .panel-cards{ grid-template-columns: minmax(0,1fr); }
-}
-
+    /* ===== 以下你的原始 CSS（未動邏輯，只保留） ===== */
     .hero-copy > *{
       opacity: 0;
       transform: translateY(10px);
       animation: heroStagger 700ms ease forwards;
     }
-
     .hero-copy > *:nth-child(1){ animation-delay: 80ms; }
     .hero-copy > *:nth-child(2){ animation-delay: 160ms; }
     .hero-copy > *:nth-child(3){ animation-delay: 240ms; }
     .hero-copy > *:nth-child(4){ animation-delay: 320ms; }
     .hero-copy > *:nth-child(5){ animation-delay: 400ms; }
-
-    @keyframes heroStagger{
-      to{ opacity: 1; transform: translateY(0); }
-    }
+    @keyframes heroStagger{ to{ opacity: 1; transform: translateY(0); } }
 
     :root {
       --color-bg: #070b12;
@@ -540,7 +556,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr); /* ✅ 單欄 */
+      grid-template-columns: minmax(0, 1fr);
       gap: 0;
       align-items: center;
       position: relative;
@@ -548,9 +564,9 @@
     }
 
     .hero-copy {
-      text-align: center;          /* ✅ 置中 */
-      max-width: 920px;            /* ✅ 控制閱讀寬度 */
-      padding: 0 0.5rem;           /* 小螢幕呼吸 */
+      text-align: center;
+      max-width: 920px;
+      padding: 0 0.5rem;
       margin: 0 auto;
       animation: heroIn 800ms ease both;
     }
@@ -602,10 +618,7 @@
       margin-bottom: 0.75rem;
     }
 
-    .hero-title span {
-      margin-bottom: 0.18rem;
-      display: block;
-    }
+    .hero-title span { margin-bottom: 0.18rem; display: block; }
 
     .hero-title-accent {
       background: linear-gradient(120deg, #facc15, #fb923c, #f97316);
@@ -617,21 +630,17 @@
       display: inline-block;
       transition: transform 220ms ease, filter 220ms ease;
     }
-    .hero-title-accent:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.08);
-    }
+    .hero-title-accent:hover { transform: translateY(-2px); filter: brightness(1.08); }
 
     @keyframes accentShine {
       0%, 100% { filter: brightness(1); transform: translateY(0); }
       50% { filter: brightness(1.12); transform: translateY(-1px); }
     }
 
-    /* ✅ lead 原本會偏左（你少了 margin auto），這裡修正＋更好讀 */
     .hero-lead {
       max-width: 680px;
       line-height: 1.85;
-      margin: 1.1rem auto 2rem; /* ✅ auto 置中 */
+      margin: 1.1rem auto 2rem;
       color: var(--color-muted);
       font-size: 0.98rem;
     }
@@ -641,7 +650,7 @@
       flex-wrap: wrap;
       gap: 1rem;
       align-items: center;
-      justify-content: center;     /* ✅ 置中 */
+      justify-content: center;
       margin-bottom: 2rem;
     }
 
@@ -673,12 +682,7 @@
       color: #e5e7eb;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      justify-content: center;     /* ✅ 置中 */
-    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; }
 
     .btn {
       border-radius: 999px;
@@ -699,8 +703,6 @@
       position: relative;
       overflow: hidden;
     }
-
-    /* ✅ 按鈕 hover 微光 */
     .btn::after {
       content: "";
       position: absolute;
@@ -718,7 +720,6 @@
       box-shadow: var(--shadow-soft);
       border-color: rgba(250, 204, 21, 0.6);
     }
-
     .btn-primary:hover {
       transform: translateY(-1px);
       filter: brightness(1.05);
@@ -730,29 +731,18 @@
       border-color: rgba(148, 163, 184, 0.5);
       color: #e5e7eb;
     }
-
-    .btn-ghost:hover {
-      background: rgba(15, 23, 42, 0.95);
-      transform: translateY(-1px);
-    }
+    .btn-ghost:hover { background: rgba(15, 23, 42, 0.95); transform: translateY(-1px); }
 
     .btn-icon { font-size: 1.1rem; line-height: 1; }
 
-    /* ✅ 按鈕微微呼吸動畫（主 CTA + 右上詢問報價） */
-    .btn-breathe {
-      animation: breathe 2.4s ease-in-out infinite;
-    }
+    .btn-breathe { animation: breathe 2.4s ease-in-out infinite; }
     @keyframes breathe {
       0%, 100% { transform: translateY(0) scale(1); filter: brightness(1); }
       50% { transform: translateY(-1px) scale(1.012); filter: brightness(1.05); }
     }
 
     /* Services */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.7rem;
-    }
+    .services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.7rem; }
 
     .service-card {
       background: radial-gradient(circle at top, #111827 0, #020617 85%);
@@ -817,131 +807,8 @@
       letter-spacing: 0.16em;
     }
 
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 2.6rem;
-      align-items: center;
-    }
-
-    .about-text h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
-    .about-text p { font-size: 0.93rem; color: var(--color-muted); margin-bottom: 0.8rem; }
-
-    .about-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
-      margin: 1.1rem 0 1.4rem;
-    }
-
-    .about-list-item {
-      font-size: 0.86rem;
-      color: #e5e7eb;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.45rem;
-    }
-
-    .about-list-bullet {
-      margin-top: 0.15rem;
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: radial-gradient(circle at center, #facc15, #f97316);
-    }
-
-    .about-metrics { display: flex; flex-wrap: wrap; gap: 1.1rem; }
-    .about-metric { min-width: 120px; }
-    .about-metric-number { font-size: 1.5rem; font-weight: 700; }
-    .about-metric-label {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--color-muted);
-    }
-
-    .about-media {
-      position: relative;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
-      background: radial-gradient(circle at top, #111827 0, #020617 70%);
-      min-height: 260px;
-      padding: 1.2rem 1.2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-    }
-
-    .about-media-tag {
-      position: absolute;
-      top: 1.3rem;
-      left: 1.3rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 250, 252, 0.6);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      background: rgba(15, 23, 42, 0.56);
-    }
-
-    .about-media-ill {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 15% 0, rgba(250, 204, 21, 0.2), transparent 40%),
-        radial-gradient(circle at 80% 0, rgba(252, 165, 165, 0.12), transparent 42%),
-        linear-gradient(135deg, #020617, #020617 40%, #0b1120 100%);
-      opacity: 0.9;
-    }
-
-    .about-media-overlay {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1.5rem;
-    }
-
-    .about-media-caption { max-width: 260px; font-size: 0.85rem; color: #e5e7eb; }
-    .about-media-pill {
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      font-size: 0.7rem;
-      color: #d1d5db;
-      margin-bottom: 0.4rem;
-    }
-
-    .about-media-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.78rem;
-      padding: 0.25rem 0.65rem;
-      border-radius: 999px;
-      background: rgba(17, 24, 39, 0.9);
-      border: 1px solid rgba(55, 65, 81, 0.8);
-    }
-
-    .about-media-chip-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
-    }
-
-    /* Projects */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.4rem;
-    }
-
+    /* Projects / Gallery / Testimonial / Contact / Footer 你的原碼在下方 HTML 內容保留，不動其 CSS 依你原本 */
+    .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
     .project-card {
       border-radius: var(--radius-lg);
       overflow: hidden;
@@ -953,34 +820,14 @@
       transition: transform var(--transition-med), box-shadow var(--transition-med),
         border-color var(--transition-med);
     }
-
     .project-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
       border-color: rgba(251, 146, 60, 0.85);
     }
-
-    .project-media {
-      height: 160px;
-      position: relative;
-      overflow: hidden;
-      background: #020617;
-    }
-
-    .project-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .project-media::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(15, 23, 42, 0.45), transparent 55%);
-    }
-
+    .project-media { height: 160px; position: relative; overflow: hidden; background: #020617; }
+    .project-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .project-media::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.45), transparent 55%); }
     .project-label {
       position: absolute;
       left: 0.9rem;
@@ -993,34 +840,12 @@
       text-transform: uppercase;
       letter-spacing: 0.16em;
     }
-
-    .project-body {
-      padding: 1rem 1rem 1.1rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
+    .project-body { padding: 1rem 1rem 1.1rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
     .project-title { font-size: 0.98rem; font-weight: 600; }
     .project-desc { font-size: 0.86rem; color: var(--color-muted); }
+    .project-meta { font-size: 0.78rem; color: #9ca3af; display: flex; justify-content: space-between; align-items: center; margin-top: 0.3rem; }
 
-    .project-meta {
-      font-size: 0.78rem;
-      color: #9ca3af;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 0.3rem;
-    }
-
-    /* Gallery */
-    .work-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.3rem;
-    }
-
+    .work-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.3rem; }
     .work-card {
       background: radial-gradient(circle at top, #111827 0, #020617 85%);
       border-radius: 16px;
@@ -1030,11 +855,9 @@
       font-size: 0.82rem;
       color: #e5e7eb;
     }
-
     .work-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
     .work-card figcaption { padding: 0.7rem 0.85rem 0.8rem; }
 
-    /* Testimonial */
     .testimonial-card {
       max-width: 720px;
       margin: 0 auto;
@@ -1046,7 +869,6 @@
       position: relative;
       overflow: hidden;
     }
-
     .testimonial-card::before {
       content: "";
       position: absolute;
@@ -1055,31 +877,14 @@
       opacity: 0.35;
       pointer-events: none;
     }
-
     .testimonial-inner { position: relative; z-index: 1; }
     .testimonial-quote-mark { font-size: 2.5rem; line-height: 1; color: rgba(251, 191, 36, 0.6); margin-bottom: 0.2rem; }
     .testimonial-text { font-size: 0.98rem; color: #e5e7eb; margin-bottom: 1.4rem; }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
+    .testimonial-author { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
     .testimonial-author-main { display: flex; align-items: center; gap: 0.8rem; }
-
-    .testimonial-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      border: 2px solid #facc15;
-      background: radial-gradient(circle at top, #facc15, #0f172a);
-    }
-
+    .testimonial-avatar { width: 40px; height: 40px; border-radius: 999px; border: 2px solid #facc15; background: radial-gradient(circle at top, #facc15, #0f172a); }
     .testimonial-author-name { font-size: 0.92rem; font-weight: 600; }
     .testimonial-author-role { font-size: 0.78rem; color: var(--color-muted); }
-
     .testimonial-badge {
       padding: 0.35rem 0.8rem;
       border-radius: 999px;
@@ -1091,41 +896,13 @@
       align-items: center;
       gap: 0.35rem;
     }
+    .testimonial-badge-dot { width: 7px; height: 7px; border-radius: 999px; background: #22c55e; box-shadow: 0 0 10px rgba(34, 197, 94, 0.9); }
 
-    .testimonial-badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
-    }
-
-    /* Contact */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 2.5rem;
-      align-items: flex-start;
-    }
-
-    .contact-form {
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--color-border);
-      padding: 1.6rem 1.5rem 1.7rem;
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.2), #020617);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .contact-form-row {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      margin-bottom: 1rem;
-    }
-
+    .contact-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 2.5rem; align-items: flex-start; }
+    .contact-form { border-radius: var(--radius-lg); border: 1px solid var(--color-border); padding: 1.6rem 1.5rem 1.7rem; background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.2), #020617); box-shadow: var(--shadow-soft); }
+    .contact-form-row { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 1rem; }
     .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.86rem; }
     .field label { color: #e5e7eb; }
-
     .field input, .field textarea {
       border-radius: 12px;
       border: 1px solid rgba(148, 163, 184, 0.6);
@@ -1139,96 +916,47 @@
       transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
         background var(--transition-fast);
     }
-
     .field input::placeholder, .field textarea::placeholder { color: #6b7280; }
-
     .field input:focus, .field textarea:focus {
       border-color: rgba(251, 146, 60, 0.88);
       box-shadow: 0 0 0 1px rgba(251, 146, 60, 0.8);
       background: #020617;
     }
-
     .contact-note { font-size: 0.78rem; color: var(--color-muted); margin-top: 0.7rem; }
-
     .contact-side { display: flex; flex-direction: column; gap: 1.4rem; }
-
-    .contact-block {
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--color-border);
-      padding: 1.2rem 1.2rem 1.3rem;
-      background: rgba(15, 23, 42, 0.85);
-    }
-
+    .contact-block { border-radius: var(--radius-lg); border: 1px solid var(--color-border); padding: 1.2rem 1.2rem 1.3rem; background: rgba(15, 23, 42, 0.85); }
     .contact-block h4 { font-size: 0.95rem; margin-bottom: 0.4rem; }
     .contact-block p { font-size: 0.85rem; color: var(--color-muted); }
-
     .contact-list { margin-top: 0.75rem; display: grid; gap: 0.45rem; font-size: 0.86rem; }
-
     .contact-list span { display: inline-flex; align-items: center; gap: 0.35rem; }
     .contact-dot { width: 7px; height: 7px; border-radius: 999px; background: #f97316; }
 
-    /* Footer */
-    .site-footer {
-      border-top: 1px solid rgba(31, 41, 55, 1);
-      background: #020617;
-      padding: 2.5rem 0 1.8rem;
-      margin-top: 2rem;
-    }
-
-    .footer-grid {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      display: grid;
-      grid-template-columns: 2.1fr 1.2fr 1.2fr;
-      gap: 1.8rem;
-    }
-
+    .site-footer { border-top: 1px solid rgba(31, 41, 55, 1); background: #020617; padding: 2.5rem 0 1.8rem; margin-top: 2rem; }
+    .footer-grid { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: 2.1fr 1.2fr 1.2fr; gap: 1.8rem; }
     .footer-logo { max-width: 280px; height: auto; display: block; margin-bottom: 0.7rem; }
     .footer-brand-desc { font-size: 0.86rem; color: var(--color-muted); max-width: 340px; margin-top: 0.2rem; }
     .footer-heading { font-size: 0.92rem; margin-bottom: 0.5rem; font-weight: 600; }
     .footer-links { font-size: 0.84rem; color: var(--color-muted); display: grid; gap: 0.3rem; }
     .footer-links a:hover { color: #e5e7eb; }
-
-    .footer-legal {
-      max-width: var(--max-width);
-      margin: 1.8rem auto 0;
-      padding: 0 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      font-size: 0.78rem;
-      color: #6b7280;
-    }
-
-    .footer-legal a {
-      text-decoration: underline;
-      text-decoration-style: dotted;
-      text-underline-offset: 3px;
-    }
+    .footer-legal { max-width: var(--max-width); margin: 1.8rem auto 0; padding: 0 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; font-size: 0.78rem; color: #6b7280; }
+    .footer-legal a { text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
 
     /* RWD */
     @media (max-width: 960px) {
-      .about-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); }
+      .contact-grid { grid-template-columns: minmax(0, 1fr); }
       .hero { padding-top: 2.8rem; }
-
       .services-grid, .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .work-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .footer-grid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
     }
-
     @media (max-width: 720px) {
       .nav-links { display: none; }
       .nav-toggle { display: inline-flex; }
-
       .hero-actions { flex-direction: column; align-items: stretch; }
       .services-grid, .projects-grid { grid-template-columns: minmax(0, 1fr); }
-      .about-list { grid-template-columns: minmax(0, 1fr); }
       .contact-form-row { grid-template-columns: minmax(0, 1fr); }
       .work-gallery { grid-template-columns: minmax(0, 1fr); }
       .footer-grid { grid-template-columns: minmax(0, 1fr); }
-
       section { padding: 3.5rem 0; }
       .testimonial-card { padding: 1.8rem 1.6rem 1.7rem; }
     }
@@ -1238,6 +966,7 @@
       .btn-breathe, .hero::before, .hero-copy, .hero-title-accent, .hero-kicker-dot, .hero-copy > * {
         animation: none !important;
       }
+      .reveal, .reveal *{ transition: none !important; transform: none !important; opacity: 1 !important; }
       * { scroll-behavior: auto !important; }
     }
   </style>
@@ -1284,7 +1013,7 @@
   </header>
 
   <main id="top">
-    <!-- Hero（已移除推播圖） -->
+    <!-- Hero -->
     <section class="hero" id="hero">
       <div class="container">
         <div class="hero-grid">
@@ -1330,7 +1059,7 @@
       </div>
     </section>
 
-    <!-- Services -->
+    <!-- Services（保留原本，不動） -->
     <section id="services">
       <div class="container">
         <div class="section-header">
@@ -1343,7 +1072,6 @@
 
         <div class="services-grid">
           <article class="service-card">
-            <!-- ✅ PLC icon 改成工業自動化更適合的 -->
             <div class="service-icon">⚙️</div>
             <h3 class="service-title">自動控制系統整合</h3>
             <p class="service-desc">
@@ -1384,205 +1112,176 @@
       </div>
     </section>
 
-    <!-- About -->
-  <section id="about" class="about-v2">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-kicker">ABOUT</div>
-      <h2 class="section-title">關於捷強工業</h2>
-      <p class="section-subtitle">
-        我們把「能穩定運轉」當作最低標準；把「好維修、好擴充、好交接」當作交付標準。
-      </p>
-    </div>
-
-    <div class="about2-grid">
-      <!-- LEFT -->
-      <div class="about2-left">
-        <h3 class="about2-title">聽得懂現場語言的電控夥伴。</h3>
-
-        <div class="about2-lead">
-          <p>
-            從規劃到上線，我們用現場導向的思維，把風險先消化在設計與配線階段，
-            讓產線「穩」是結果，而不是運氣。
+    <!-- About（四格卡片 + 滾動進場） -->
+    <section id="about" class="about-v2">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-kicker">ABOUT</div>
+          <h2 class="section-title">關於捷強工業</h2>
+          <p class="section-subtitle">
+            我們把「能穩定運轉」當作最低標準；把「好維修、好擴充、好交接」當作交付標準。
           </p>
         </div>
 
-        <div class="about2-highlights">
-          <div class="hl">
-            <div class="hl-dot"></div>
-            <div class="hl-text">
-              <div class="hl-title">可維修</div>
-              <div class="hl-desc">端子與線號一致、訊號分區清楚，維修不靠猜。</div>
+        <div class="about2-grid">
+          <!-- LEFT -->
+          <div class="about2-left reveal stagger">
+            <h3 class="about2-title">聽得懂現場語言的電控夥伴。</h3>
+
+            <div class="about2-lead">
+              <p>
+                從規劃到上線，我們用現場導向的思維，把風險先消化在設計與配線階段，
+                讓產線「穩」是結果，而不是運氣。
+              </p>
             </div>
-          </div>
 
-          <div class="hl">
-            <div class="hl-dot"></div>
-            <div class="hl-text">
-              <div class="hl-title">可擴充</div>
-              <div class="hl-desc">預留 I/O 與迴路規劃，擴線、加站點更順。</div>
-            </div>
-          </div>
-
-          <div class="hl">
-            <div class="hl-dot"></div>
-            <div class="hl-text">
-              <div class="hl-title">可交接</div>
-              <div class="hl-desc">圖面、標示、測試紀錄完整，交接有依據。</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="about2-kpis">
-          <div class="kpi">
-            <div class="kpi-num">多年</div>
-            <div class="kpi-label">工業現場經驗</div>
-          </div>
-          <div class="kpi">
-            <div class="kpi-num">多家</div>
-            <div class="kpi-label">合作製造廠</div>
-          </div>
-          <div class="kpi">
-            <div class="kpi-num">高比率</div>
-            <div class="kpi-label">回頭與轉介紹</div>
-          </div>
-        </div>
-
-        <div class="about2-mini">
-          <span class="mini-pill">PLC 程式撰寫 / 修改</span>
-          <span class="mini-pill">控制盤/配電盤規劃製作</span>
-          <span class="mini-pill">機台內部與現場工業配線</span>
-          <span class="mini-pill">舊設備電控更新改善</span>
-        </div>
-      </div>
-
-      <!-- RIGHT -->
-      <div class="about2-right">
-        <!-- tabs (純 CSS) -->
-        <div class="about2-tabs" role="tablist" aria-label="捷強能力面板">
-          <input type="radio" name="abtTab" id="abtTab1" checked>
-          <label for="abtTab1" class="tab">規劃設計</label>
-
-          <input type="radio" name="abtTab" id="abtTab2">
-          <label for="abtTab2" class="tab">配線施工</label>
-
-          <input type="radio" name="abtTab" id="abtTab3">
-          <label for="abtTab3" class="tab">測試交付</label>
-
-          <div class="tab-panels">
-            <div class="panel p1">
-              <div class="panel-head">
-                <div class="panel-title">從現場條件出發的控制規劃</div>
-                <div class="panel-sub">把「不確定」先變成「設計條件」</div>
-              </div>
-
-              <div class="panel-cards">
-                <div class="p-card">
-                  <div class="p-ic">🧩</div>
-                  <div class="p-tt">需求釐清</div>
-                  <div class="p-dd">運轉條件、保護邏輯、異常處置先對齊。</div>
-                </div>
-                <div class="p-card">
-                  <div class="p-ic">🧠</div>
-                  <div class="p-tt">控制邏輯</div>
-                  <div class="p-dd">PLC/HMI 流程與互鎖規劃，操作更直覺。</div>
-                </div>
-                <div class="p-card">
-                  <div class="p-ic">🧱</div>
-                  <div class="p-tt">迴路分區</div>
-                  <div class="p-dd">動力/訊號分離、端子規劃，降低干擾。</div>
+            <div class="about2-highlights">
+              <div class="hl">
+                <!-- icon：維修 -->
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M21 7l-6 6"></path>
+                  <path d="M16 6l2 2"></path>
+                  <path d="M2 22l7-7"></path>
+                  <path d="M7 21l-4-4"></path>
+                </svg>
+                <div class="hl-text">
+                  <div class="hl-title">可維修</div>
+                  <div class="hl-desc">端子與線號一致、訊號分區清楚，維修不靠猜。</div>
                 </div>
               </div>
 
-              <div class="panel-foot">
-                <span class="foot-pill">輸入/輸出清單</span>
+              <div class="hl">
+                <!-- icon：擴充 -->
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3v18"></path>
+                  <path d="M3 12h18"></path>
+                  <path d="M7 7h3"></path>
+                  <path d="M14 14h3"></path>
+                </svg>
+                <div class="hl-text">
+                  <div class="hl-title">可擴充</div>
+                  <div class="hl-desc">預留 I/O 與迴路規劃，擴線、加站點更順。</div>
+                </div>
+              </div>
+
+              <div class="hl">
+                <!-- icon：交接 -->
+                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 7h10"></path>
+                  <path d="M7 12h10"></path>
+                  <path d="M7 17h6"></path>
+                  <path d="M6 3h9l3 3v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path>
+                </svg>
+                <div class="hl-text">
+                  <div class="hl-title">可交接</div>
+                  <div class="hl-desc">圖面、標示、測試紀錄完整，交接有依據。</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="about2-kpis">
+              <div class="kpi">
+                <div class="kpi-num">多年</div>
+                <div class="kpi-label">工業現場經驗</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-num">多家</div>
+                <div class="kpi-label">合作製造廠</div>
+              </div>
+              <div class="kpi">
+                <div class="kpi-num">高比率</div>
+                <div class="kpi-label">回頭與轉介紹</div>
+              </div>
+            </div>
+
+            <div class="about2-mini">
+              <span class="mini-pill">PLC 程式撰寫 / 修改</span>
+              <span class="mini-pill">控制盤/配電盤規劃製作</span>
+              <span class="mini-pill">機台內部與現場工業配線</span>
+              <span class="mini-pill">舊設備電控更新改善</span>
+            </div>
+          </div>
+
+          <!-- RIGHT -->
+          <div class="about2-right reveal">
+            <div class="about2-tabs">
+              <div class="cap-head">
+                <div class="cap-title">核心能力四大模組</div>
+                <div class="cap-sub">用一致的規格與文件，讓每個案子都能「好上線、好維修」。</div>
+              </div>
+
+              <div class="cap-grid">
+                <!-- PLC -->
+                <div class="cap-card">
+                  <div class="cap-top">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="4" y="6" width="16" height="12" rx="2"></rect>
+                      <path d="M8 10h.01M12 10h.01M16 10h.01"></path>
+                      <path d="M7 18v2M12 18v2M17 18v2"></path>
+                    </svg>
+                    <div class="cap-tt">PLC</div>
+                  </div>
+                  <div class="cap-dd">流程/互鎖/保護邏輯規劃，讓運轉條件清楚、異常可控。</div>
+                </div>
+
+                <!-- HMI -->
+                <div class="cap-card">
+                  <div class="cap-top">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="4" y="5" width="16" height="14" rx="2"></rect>
+                      <path d="M8 16h8"></path>
+                      <path d="M12 19v2"></path>
+                    </svg>
+                    <div class="cap-tt">HMI</div>
+                  </div>
+                  <div class="cap-dd">操作畫面與警報邏輯一致化，降低交接成本、提升可用性。</div>
+                </div>
+
+                <!-- 配電盤 -->
+                <div class="cap-card">
+                  <div class="cap-top">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="6" y="3" width="12" height="18" rx="2"></rect>
+                      <path d="M9 7h6"></path>
+                      <path d="M9 11h6"></path>
+                      <path d="M9 15h3"></path>
+                    </svg>
+                    <div class="cap-tt">配電盤</div>
+                  </div>
+                  <div class="cap-dd">迴路分區、端子規劃、保護元件配置，兼顧散熱與維修動線。</div>
+                </div>
+
+                <!-- 現場配線 -->
+                <div class="cap-card">
+                  <div class="cap-top">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M4 8h8"></path>
+                      <path d="M12 8l4 4-4 4"></path>
+                      <path d="M20 16h-8"></path>
+                      <path d="M4 16h4"></path>
+                    </svg>
+                    <div class="cap-tt">現場配線</div>
+                  </div>
+                  <div class="cap-dd">線號/端子/線槽一致命名，查線更快；施工品質可追溯。</div>
+                </div>
+              </div>
+
+              <div class="cap-foot">
+                <span class="foot-pill">I/O 清單</span>
                 <span class="foot-pill">迴路圖 / Layout</span>
-                <span class="foot-pill">風險點先預防</span>
+                <span class="foot-pill">測試紀錄</span>
+                <span class="foot-pill">交付文件</span>
               </div>
             </div>
 
-            <div class="panel p2">
-              <div class="panel-head">
-                <div class="panel-title">線路整齊只是外觀，穩定才是目的</div>
-                <div class="panel-sub">每一條線都有「可追溯」的標示與路徑</div>
-              </div>
-
-              <div class="panel-cards">
-                <div class="p-card">
-                  <div class="p-ic">🧷</div>
-                  <div class="p-tt">線號標示</div>
-                  <div class="p-dd">端子/線槽/電纜一致命名，查線更快。</div>
-                </div>
-                <div class="p-card">
-                  <div class="p-ic">🧰</div>
-                  <div class="p-tt">施工品質</div>
-                  <div class="p-dd">壓接、配線彎曲半徑、線槽留裕量。</div>
-                </div>
-                <div class="p-card">
-                  <div class="p-ic">⚡</div>
-                  <div class="p-tt">安全規範</div>
-                  <div class="p-dd">保護元件配置與接地，提升可靠度。</div>
-                </div>
-              </div>
-
-              <div class="panel-foot">
-                <span class="foot-pill">控制盤/配電盤</span>
-                <span class="foot-pill">現場配線/改造</span>
-                <span class="foot-pill">端子台分區</span>
-              </div>
-            </div>
-
-            <div class="panel p3">
-              <div class="panel-head">
-                <div class="panel-title">上線前逐點確認，交付後好維修</div>
-                <div class="panel-sub">把測試流程做成你們未來的維護工具</div>
-              </div>
-
-              <div class="panel-steps">
-                <div class="step">
-                  <div class="step-badge">01</div>
-                  <div class="step-main">
-                    <div class="step-title">逐點 I/O 測試</div>
-                    <div class="step-desc">感測器、致動器、互鎖條件逐項確認。</div>
-                  </div>
-                </div>
-                <div class="step">
-                  <div class="step-badge">02</div>
-                  <div class="step-main">
-                    <div class="step-title">異常情境演練</div>
-                    <div class="step-desc">停電/急停/過載/保護動作，確保可控。</div>
-                  </div>
-                </div>
-                <div class="step">
-                  <div class="step-badge">03</div>
-                  <div class="step-main">
-                    <div class="step-title">交付文件整理</div>
-                    <div class="step-desc">線號、端子表、圖面與測試紀錄，方便交接。</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="panel-callout">
-                <div class="call-ic">✅</div>
-                <div class="call-text">
-                  <div class="call-title">讓未來維修有依據</div>
-                  <div class="call-desc">不是「現在能跑」，而是「之後也好處理」。</div>
-                </div>
-              </div>
+            <div class="about2-note">
+              <span class="note-dot"></span>
+              <span>想要把四格卡片改成「可點擊切換細節」也可以（仍維持企業感）。</span>
             </div>
           </div>
         </div>
-
-        <!-- small note -->
-        <div class="about2-note">
-          <span class="note-dot"></span>
-          <span>需要我把這個面板換成「PLC/HMI/配電盤/現場配線」四格展示也可以。</span>
-        </div>
       </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- Projects -->
     <section id="projects">
@@ -1914,6 +1613,29 @@
         heroEl.style.removeProperty("--my");
       });
     }
+
+    // ✅ About 滾動進場（IntersectionObserver）
+    (function(){
+      const els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+
+      // 若瀏覽器不支援，直接顯示
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(el => el.classList.add('in'));
+        return;
+      }
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(ent => {
+          if (ent.isIntersecting) {
+            ent.target.classList.add('in');
+            io.unobserve(ent.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
+
+      els.forEach(el => io.observe(el));
+    })();
 
     function handleContactSubmit(event) {
       event.preventDefault();
