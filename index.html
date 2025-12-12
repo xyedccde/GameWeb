@@ -182,58 +182,87 @@
       transform: translateX(20%);
     }
 
-    /* ===== 右側：能力四格卡片 ===== */
-    .cap-head{
-      padding: .9rem 1rem 0;
-    }
-    .cap-title{
-      font-weight: 800;
-      letter-spacing: .02em;
-      font-size: 1.05rem;
-    }
-    .cap-sub{
-      color: var(--color-muted);
-      font-size: .86rem;
-      margin-top: .35rem;
-    }
+   /* ===== 右側：能力四格（精簡版：一行重點 + hover 展開） ===== */
+.cap-head{ padding: .9rem 1rem 0; }
+.cap-title{ font-weight: 800; letter-spacing: .02em; font-size: 1.05rem; }
+.cap-sub{ color: var(--color-muted); font-size: .86rem; margin-top: .35rem; }
 
-    .cap-grid{
-      margin-top: .95rem;
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: .8rem;
-    }
-    .cap-card{
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-      border: 1px solid rgba(148,163,184,.22);
-      background: rgba(15,23,42,.55);
-      padding: .9rem .9rem .95rem;
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-      min-height: 120px;
-    }
-    .cap-card:hover{
-      transform: translateY(-4px) rotate(-0.35deg) scale(1.01);
-      border-color: rgba(250,204,21,.35);
-      box-shadow: 0 16px 34px rgba(0,0,0,.45);
-    }
-    .cap-top{
-      display:flex;
-      align-items:center;
-      gap: .7rem;
-    }
-    .cap-tt{
-      font-weight: 800;
-      font-size: .95rem;
-      letter-spacing: .01em;
-    }
-    .cap-dd{
-      color: var(--color-muted);
-      font-size: .84rem;
-      margin-top: .55rem;
-      line-height: 1.65;
-    }
+.cap-grid{
+  margin-top: .95rem;
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: .8rem;
+}
+
+/* 卡片本體 */
+.cap-card{
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(148,163,184,.22);
+  background: rgba(15,23,42,.55);
+  padding: .9rem .9rem .95rem;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  min-height: 112px;               /* ✅ 固定感，版面更企業 */
+}
+
+.cap-card:hover{
+  transform: translateY(-4px) rotate(-0.35deg) scale(1.01);
+  border-color: rgba(250,204,21,.35);
+  box-shadow: 0 16px 34px rgba(0,0,0,.45);
+}
+
+.cap-top{
+  display:flex;
+  align-items:center;
+  gap: .7rem;
+}
+
+.cap-tt{
+  font-weight: 800;
+  font-size: .95rem;
+  letter-spacing: .01em;
+}
+
+/* ✅ 第一行：永遠顯示（精簡重點） */
+.cap-line{
+  margin-top: .55rem;
+  color: #e5e7eb;
+  font-size: .86rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;           /* ✅ 只顯示一行 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ✅ 第二行：預設收起，hover 才展開（更有質感） */
+.cap-more{
+  margin-top: .35rem;
+  color: var(--color-muted);
+  font-size: .82rem;
+  line-height: 1.6;
+
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(4px);
+  overflow: hidden;
+
+  transition: max-height .35s ease, opacity .25s ease, transform .25s ease;
+}
+
+.cap-card:hover .cap-more{
+  max-height: 3.2em;               /* 約兩行 */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RWD */
+@media (max-width: 960px){
+  .cap-grid{ grid-template-columns: minmax(0,1fr); }
+}
+
 
     .cap-foot{
       margin-top: .9rem;
@@ -1210,61 +1239,66 @@
                 <div class="cap-sub">用一致的規格與文件，讓每個案子都能「好上線、好維修」。</div>
               </div>
 
-              <div class="cap-grid">
-                <!-- PLC -->
-                <div class="cap-card">
-                  <div class="cap-top">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                      <rect x="4" y="6" width="16" height="12" rx="2"></rect>
-                      <path d="M8 10h.01M12 10h.01M16 10h.01"></path>
-                      <path d="M7 18v2M12 18v2M17 18v2"></path>
-                    </svg>
-                    <div class="cap-tt">PLC</div>
-                  </div>
-                  <div class="cap-dd">流程/互鎖/保護邏輯規劃，讓運轉條件清楚、異常可控。</div>
-                </div>
+            <div class="cap-grid">
+  <!-- PLC -->
+  <div class="cap-card">
+    <div class="cap-top">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="4" y="6" width="16" height="12" rx="2"></rect>
+        <path d="M8 10h.01M12 10h.01M16 10h.01"></path>
+        <path d="M7 18v2M12 18v2M17 18v2"></path>
+      </svg>
+      <div class="cap-tt">PLC</div>
+    </div>
+    <div class="cap-line">流程 / 互鎖 / 保護邏輯</div>
+    <div class="cap-more">依現場條件先對齊運轉規則，異常可控、停機更少。</div>
+  </div>
 
-                <!-- HMI -->
-                <div class="cap-card">
-                  <div class="cap-top">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                      <rect x="4" y="5" width="16" height="14" rx="2"></rect>
-                      <path d="M8 16h8"></path>
-                      <path d="M12 19v2"></path>
-                    </svg>
-                    <div class="cap-tt">HMI</div>
-                  </div>
-                  <div class="cap-dd">操作畫面與警報邏輯一致化，降低交接成本、提升可用性。</div>
-                </div>
+  <!-- HMI -->
+  <div class="cap-card">
+    <div class="cap-top">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="4" y="5" width="16" height="14" rx="2"></rect>
+        <path d="M8 16h8"></path>
+        <path d="M12 19v2"></path>
+      </svg>
+      <div class="cap-tt">HMI</div>
+    </div>
+    <div class="cap-line">畫面 / 警報 / 操作一致</div>
+    <div class="cap-more">降低學習成本與交接落差，操作更直覺、狀態更清楚。</div>
+  </div>
 
-                <!-- 配電盤 -->
-                <div class="cap-card">
-                  <div class="cap-top">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                      <rect x="6" y="3" width="12" height="18" rx="2"></rect>
-                      <path d="M9 7h6"></path>
-                      <path d="M9 11h6"></path>
-                      <path d="M9 15h3"></path>
-                    </svg>
-                    <div class="cap-tt">配電盤</div>
-                  </div>
-                  <div class="cap-dd">迴路分區、端子規劃、保護元件配置，兼顧散熱與維修動線。</div>
-                </div>
+  <!-- 配電盤 -->
+  <div class="cap-card">
+    <div class="cap-top">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="6" y="3" width="12" height="18" rx="2"></rect>
+        <path d="M9 7h6"></path>
+        <path d="M9 11h6"></path>
+        <path d="M9 15h3"></path>
+      </svg>
+      <div class="cap-tt">配電盤</div>
+    </div>
+    <div class="cap-line">分區清楚、維修順手</div>
+    <div class="cap-more">端子與迴路規劃到位，擴充保留、查修更快。</div>
+  </div>
 
-                <!-- 現場配線 -->
-                <div class="cap-card">
-                  <div class="cap-top">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 8h8"></path>
-                      <path d="M12 8l4 4-4 4"></path>
-                      <path d="M20 16h-8"></path>
-                      <path d="M4 16h4"></path>
-                    </svg>
-                    <div class="cap-tt">現場配線</div>
-                  </div>
-                  <div class="cap-dd">線號/端子/線槽一致命名，查線更快；施工品質可追溯。</div>
-                </div>
-              </div>
+  <!-- 現場配線 -->
+  <div class="cap-card">
+    <div class="cap-top">
+      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 8h8"></path>
+        <path d="M12 8l4 4-4 4"></path>
+        <path d="M20 16h-8"></path>
+        <path d="M4 16h4"></path>
+      </svg>
+      <div class="cap-tt">現場配線</div>
+    </div>
+    <div class="cap-line">線號一致、路徑可追</div>
+    <div class="cap-more">施工品質標準化，查線定位快，後續改造更省時。</div>
+  </div>
+</div>
+
 
               <div class="cap-foot">
                 <span class="foot-pill">I/O 清單</span>
