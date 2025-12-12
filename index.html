@@ -18,6 +18,22 @@
   />
 
   <style>
+    .hero-copy > *{
+      opacity: 0;
+      transform: translateY(10px);
+      animation: heroStagger 700ms ease forwards;
+    }
+
+    .hero-copy > *:nth-child(1){ animation-delay: 80ms; }
+    .hero-copy > *:nth-child(2){ animation-delay: 160ms; }
+    .hero-copy > *:nth-child(3){ animation-delay: 240ms; }
+    .hero-copy > *:nth-child(4){ animation-delay: 320ms; }
+    .hero-copy > *:nth-child(5){ animation-delay: 400ms; }
+
+    @keyframes heroStagger{
+      to{ opacity: 1; transform: translateY(0); }
+    }
+
     :root {
       --color-bg: #070b12;
       --color-bg-soft: #101725;
@@ -239,17 +255,16 @@
       overflow: hidden;
     }
 
-    /* 背景光暈（吸睛但不花） */
+    /* ✅ 背景光暈：支援滑鼠跟隨（--mx/--my） */
     .hero::before {
       content: "";
       position: absolute;
       inset: -30%;
+      pointer-events: none;
       background:
-        radial-gradient(circle at 30% 30%, rgba(250, 204, 21, 0.18), transparent 45%),
+        radial-gradient(650px 420px at var(--mx, 50%) var(--my, 35%), rgba(250, 204, 21, 0.18), transparent 60%),
         radial-gradient(circle at 75% 25%, rgba(249, 115, 22, 0.12), transparent 40%),
         radial-gradient(circle at 60% 75%, rgba(34, 197, 94, 0.08), transparent 42%);
-      filter: blur(0px);
-      pointer-events: none;
       animation: heroGlow 8s ease-in-out infinite alternate;
     }
 
@@ -269,7 +284,8 @@
 
     .hero-copy {
       text-align: center;          /* ✅ 置中 */
-      max-width: 820px;            /* ✅ 控制閱讀寬度 */
+      max-width: 920px;            /* ✅ 控制閱讀寬度 */
+      padding: 0 0.5rem;           /* 小螢幕呼吸 */
       margin: 0 auto;
       animation: heroIn 800ms ease both;
     }
@@ -291,6 +307,12 @@
       text-transform: uppercase;
       letter-spacing: 0.18em;
       margin: 0 auto 0.9rem;
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+    }
+    .hero-kicker:hover {
+      transform: translateY(-2px);
+      border-color: rgba(250, 204, 21, 0.7);
+      background: rgba(250, 204, 21, 0.08);
     }
 
     .hero-kicker-dot {
@@ -309,13 +331,16 @@
 
     .hero-title {
       font-size: clamp(2.5rem, 4.2vw, 3.2rem);
-      line-height: 1.05;
+      line-height: 1.08;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       margin-bottom: 0.75rem;
     }
 
-    .hero-title span { display: block; }
+    .hero-title span {
+      margin-bottom: 0.18rem;
+      display: block;
+    }
 
     .hero-title-accent {
       background: linear-gradient(120deg, #facc15, #fb923c, #f97316);
@@ -324,6 +349,12 @@
       color: transparent;
       text-shadow: 0 0 20px rgba(250, 204, 21, 0.12);
       animation: accentShine 2.8s ease-in-out infinite;
+      display: inline-block;
+      transition: transform 220ms ease, filter 220ms ease;
+    }
+    .hero-title-accent:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
     }
 
     @keyframes accentShine {
@@ -331,11 +362,13 @@
       50% { filter: brightness(1.12); transform: translateY(-1px); }
     }
 
+    /* ✅ lead 原本會偏左（你少了 margin auto），這裡修正＋更好讀 */
     .hero-lead {
-      font-size: 0.98rem;
+      max-width: 680px;
+      line-height: 1.85;
+      margin: 1.1rem auto 2rem; /* ✅ auto 置中 */
       color: var(--color-muted);
-      max-width: 640px;
-      margin: 0.9rem auto 1.6rem;
+      font-size: 0.98rem;
     }
 
     .hero-meta {
@@ -358,6 +391,12 @@
       gap: 0.5rem;
       background: rgba(2, 6, 23, 0.25);
       backdrop-filter: blur(10px);
+      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+    }
+    .hero-pill:hover {
+      transform: translateY(-2px);
+      border-color: rgba(250, 204, 21, 0.45);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.42);
     }
 
     .hero-pill-count {
@@ -392,7 +431,21 @@
         background var(--transition-fast), color var(--transition-fast),
         border-color var(--transition-fast), filter var(--transition-fast);
       will-change: transform;
+      position: relative;
+      overflow: hidden;
     }
+
+    /* ✅ 按鈕 hover 微光 */
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.22), transparent 48%);
+      opacity: 0;
+      transition: opacity 220ms ease;
+      pointer-events: none;
+    }
+    .btn:hover::after { opacity: 1; }
 
     .btn-primary {
       background: radial-gradient(circle at top left, #facc15 0, #f97316 45%, #7c2d12 110%);
@@ -917,7 +970,7 @@
 
     /* 尊重使用者降低動態效果 */
     @media (prefers-reduced-motion: reduce) {
-      .btn-breathe, .hero::before, .hero-copy, .hero-title-accent, .hero-kicker-dot {
+      .btn-breathe, .hero::before, .hero-copy, .hero-title-accent, .hero-kicker-dot, .hero-copy > * {
         animation: none !important;
       }
       * { scroll-behavior: auto !important; }
@@ -1461,6 +1514,22 @@
         closeMobileNav();
       }
     });
+
+    // ✅ Hero 滑鼠跟隨光暈（不影響其他區塊）
+    const heroEl = document.getElementById("hero");
+    if (heroEl) {
+      heroEl.addEventListener("mousemove", (e) => {
+        const r = heroEl.getBoundingClientRect();
+        const mx = ((e.clientX - r.left) / r.width) * 100;
+        const my = ((e.clientY - r.top) / r.height) * 100;
+        heroEl.style.setProperty("--mx", mx + "%");
+        heroEl.style.setProperty("--my", my + "%");
+      });
+      heroEl.addEventListener("mouseleave", () => {
+        heroEl.style.removeProperty("--mx");
+        heroEl.style.removeProperty("--my");
+      });
+    }
 
     function handleContactSubmit(event) {
       event.preventDefault();
