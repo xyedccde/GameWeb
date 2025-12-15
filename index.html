@@ -2202,25 +2202,23 @@
     message: form.message.value
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbzByr--UNZkyf2sRYONaPDRmKQwH72WDdONZ6az9kCJLd3dmg93tZSOBmwYzowM2KQJ/exec", {
+  fetch("【你的 Web App /exec URL】", {
     method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json"
-    }
+    body: JSON.stringify(data) // 不加 headers，瀏覽器會用 text/plain，通常不會觸發預檢
   })
-  .then(res => res.json())
-  .then(res => {
-    if (res.result === "success") {
-      alert("已送出成功，我們會盡快與您聯絡！");
-      form.reset();
-    } else {
-      alert("送出失敗，請稍後再試");
-    }
-  })
-  .catch(() => {
-    alert("連線錯誤，請稍後再試");
-  });
+    .then((r) => r.json())
+    .then((res) => {
+      if (res.result === "success") {
+        alert("已送出成功，我們會盡快與您聯絡！");
+        form.reset();
+      } else {
+        alert("送出失敗：" + (res.message || "請稍後再試"));
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      alert("連線錯誤，請稍後再試");
+    });
 }
 
 
