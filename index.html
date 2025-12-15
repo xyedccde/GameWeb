@@ -565,6 +565,27 @@
       overflow: hidden;
     }
 
+    /* 浮水印圖片層 */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image: url("images/bg-control-panel.jpg");
+  background-size: contain;      /* 不裁切，完整呈現 */
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.08;                 /* 🔥 關鍵：浮水印感 */
+  filter: grayscale(1) contrast(1.05);
+  pointer-events: none;          /* 不擋操作 */
+  z-index: 0;
+}
+
+/* 確保文字在最上層 */
+.hero > *{
+  position: relative;
+  z-index: 1;
+}
+
     /* ✅ 背景光暈：支援滑鼠跟隨（--mx/--my） */
     .hero::before {
       content: "";
