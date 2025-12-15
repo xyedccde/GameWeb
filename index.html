@@ -2190,9 +2190,39 @@
     })();
 
     function handleContactSubmit(event) {
-      event.preventDefault();
-      alert("請撥連絡電話 : (04)2263-5628\n或寄Email : jyechun@gmail.com");
+  event.preventDefault();
+
+  const form = event.target;
+
+  const data = {
+    name: form.name.value,
+    company: form.company.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    message: form.message.value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbzByr--UNZkyf2sRYONaPDRmKQwH72WDdONZ6az9kCJLd3dmg93tZSOBmwYzowM2KQJ/exec", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
     }
+  })
+  .then(res => res.json())
+  .then(res => {
+    if (res.result === "success") {
+      alert("已送出成功，我們會盡快與您聯絡！");
+      form.reset();
+    } else {
+      alert("送出失敗，請稍後再試");
+    }
+  })
+  .catch(() => {
+    alert("連線錯誤，請稍後再試");
+  });
+}
+
 
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
