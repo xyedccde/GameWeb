@@ -565,20 +565,19 @@
       overflow: hidden;
     }
 
-    /* 浮水印圖片層 */
+   /* 浮水印圖片層 */
 .hero::after{
   content:"";
   position:absolute;
   inset:0;
-  background: 
-    linear-gradient(rgba(2,6,23,.92), rgba(2,6,23,.92)),
-    url("images/bg-control-panel.jpg");
-  background-size: cover;
+  background-image: url("images/bg-control-panel.jpg");
+  background-size: contain;      /* 不裁切，完整呈現 */
+  background-repeat: no-repeat;
   background-position: center;
-  mix-blend-mode: lighten;
-  opacity: .18;
-  filter: grayscale(1) contrast(1.3);
-  pointer-events:none;
+  opacity: 0.1;                 /* 🔥 關鍵：浮水印感 */
+  filter: grayscale(1) contrast(1.05);
+  pointer-events: none;          /* 不擋操作 */
+  z-index: 0;
 }
 
 
