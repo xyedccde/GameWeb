@@ -2202,7 +2202,7 @@
     message: form.message.value
   };
 
-  fetch("【你的 Web App /exec URL】", {
+  fetch("https://script.google.com/macros/s/AKfycbzByr--UNZkyf2sRYONaPDRmKQwH72WDdONZ6az9kCJLd3dmg93tZSOBmwYzowM2KQJ/exec", {
     method: "POST",
     body: JSON.stringify(data) // 不加 headers，瀏覽器會用 text/plain，通常不會觸發預檢
   })
