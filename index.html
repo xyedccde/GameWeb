@@ -1223,8 +1223,20 @@
     .footer-heading { font-size: 0.92rem; margin-bottom: 0.5rem; font-weight: 600; }
     .footer-links { font-size: 0.84rem; color: var(--color-muted); display: grid; gap: 0.3rem; }
     .footer-links a:hover { color: #e5e7eb; }
-    .footer-legal { max-width: var(--max-width); margin: 1.8rem auto 0; padding: 0 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; font-size: 0.78rem; color: #6b7280; }
-    .footer-legal a { text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
+    .footer-legal {
+  max-width: var(--max-width);
+  margin: 1.8rem auto 0;
+  padding: 0 1.5rem;
+
+  display: flex;
+  justify-content: center;  /* ← 置中 */
+  gap: 1rem;
+
+  font-size: 0.78rem;
+  color: #6b7280;
+  text-align: center;
+}
+
 
     @media (max-width: 960px) {
       .contact-grid { grid-template-columns: minmax(0, 1fr); }
@@ -2000,6 +2012,7 @@
         <div class="footer-heading">快速連結</div>
         <div class="footer-links">
           <a href="#services">服務項目</a>
+          <a href="#catalog">電子零件>ㄉㄧ>
           <a href="#projects">實績案例</a>
           <a href="#gallery">控制箱設計</a>
           <a href="#contact">聯絡我們</a>
@@ -2017,8 +2030,7 @@
     </div>
 
     <div class="footer-legal">
-      <span>© <span id="year"></span> 捷強工業有限公司. 版權所有。</span>
-      <span>此網站為Joe Chang客製設計</span>
+      <span>Copyright© <span id="year"></span> 捷強工業有限公司版權所有｜JOE CHANG客製設計。</span>
     </div>
   </footer>
 
