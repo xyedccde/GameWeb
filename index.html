@@ -1347,6 +1347,98 @@
     inset 0 -1px 0 rgba(250,204,21,.15);
 }
 
+/* ===============================
+   Works Slider（控制箱設計輪播）
+=============================== */
+
+.works-slider{
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,.65);
+  background: #020617;
+}
+
+.ws-track{
+  position: relative;
+  height: 520px;
+}
+
+.ws-slide{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.ws-slide.active{
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 1;
+}
+
+.ws-slide img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.05);
+}
+
+/* 下方漸層遮罩 + 說明文字 */
+.ws-slide::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    to top,
+    rgba(2,6,23,.85),
+    rgba(2,6,23,.15),
+    transparent 55%
+  );
+}
+
+.ws-slide figcaption{
+  position:absolute;
+  left: 1.4rem;
+  bottom: 1.2rem;
+  z-index: 2;
+  font-size: .95rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+}
+
+/* 左右控制鍵 */
+.ws-btn{
+  position:absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(2,6,23,.65);
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background .25s ease, transform .25s ease;
+}
+
+.ws-btn:hover{
+  background: rgba(15,23,42,.9);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.ws-btn.prev{ left: 1rem; }
+.ws-btn.next{ right: 1rem; }
+
+/* RWD */
+@media (max-width: 768px){
+  .ws-track{ height: 380px; }
+}
 
 </style>
   
@@ -1906,37 +1998,45 @@
           </p>
         </div>
 
-        <div class="work-gallery">
-          <figure class="work-card">
-            <img src="images/panel-old-open.jpg" alt="早期控制盤內部改善實例" />
-            <figcaption>舊型控制盤改善與配線整理</figcaption>
-          </figure>
+        <div class="works-slider" id="worksSlider">
 
-          <figure class="work-card">
-            <img src="images/panel-compact-plc.jpg" alt="多迴路 PLC 控制盤內部配線" />
-            <figcaption>多迴路 PLC 控制盤</figcaption>
-          </figure>
+  <div class="ws-track">
+    <figure class="ws-slide active">
+      <img src="images/panel-old-open.jpg" alt="舊型控制盤改善與配線整理">
+      <figcaption>舊型控制盤改善與配線整理</figcaption>
+    </figure>
 
-          <figure class="work-card">
-            <img src="images/panel-hmi-front.jpg" alt="具觸控螢幕與操作面板的控制箱外觀" />
-            <figcaption>觸控 HMI 操作面板控制箱</figcaption>
-          </figure>
+    <figure class="ws-slide">
+      <img src="images/panel-compact-plc.jpg" alt="多迴路 PLC 控制盤">
+      <figcaption>多迴路 PLC 控制盤</figcaption>
+    </figure>
 
-          <figure class="work-card">
-            <img src="images/panel-hmi-inside.jpg" alt="雙驅動器與 I/O 端子的內部配線" />
-            <figcaption>雙驅動器系統內部配線</figcaption>
-          </figure>
+    <figure class="ws-slide">
+      <img src="images/panel-hmi-front.jpg" alt="觸控 HMI 操作面板控制箱">
+      <figcaption>觸控 HMI 操作面板控制箱</figcaption>
+    </figure>
 
-          <figure class="work-card">
-            <img src="images/panel-teco-drive.jpg" alt="搭配變頻器與控制器的機台電控" />
-            <figcaption>變頻器與控制器整合配線</figcaption>
-          </figure>
+    <figure class="ws-slide">
+      <img src="images/panel-hmi-inside.jpg" alt="雙驅動器系統內部配線">
+      <figcaption>雙驅動器系統內部配線</figcaption>
+    </figure>
 
-          <figure class="work-card">
-            <img src="images/panel-yellow-top.jpg" alt="大型黃色控制箱上視圖與端子台配置" />
-            <figcaption>大型控制箱端子台配置</figcaption>
-          </figure>
-        </div>
+    <figure class="ws-slide">
+      <img src="images/panel-teco-drive.jpg" alt="變頻器與控制器整合配線">
+      <figcaption>變頻器與控制器整合配線</figcaption>
+    </figure>
+
+    <figure class="ws-slide">
+      <img src="images/panel-yellow-top.jpg" alt="大型控制箱端子台配置">
+      <figcaption>大型控制箱端子台配置</figcaption>
+    </figure>
+  </div>
+
+  <!-- 控制按鈕 -->
+  <button class="ws-btn prev" aria-label="上一張">‹</button>
+  <button class="ws-btn next" aria-label="下一張">›</button>
+</div>
+
       </div>
     </section>
 
@@ -2409,6 +2509,57 @@
   });
 })();
 
+// ===============================
+// Works Slider
+// ===============================
+(() => {
+  const slider = document.getElementById("worksSlider");
+  if (!slider) return;
+
+  const slides = slider.querySelectorAll(".ws-slide");
+  const prevBtn = slider.querySelector(".prev");
+  const nextBtn = slider.querySelector(".next");
+
+  let index = 0;
+  let timer;
+
+  function show(i){
+    slides.forEach(s => s.classList.remove("active"));
+    slides[i].classList.add("active");
+  }
+
+  function next(){
+    index = (index + 1) % slides.length;
+    show(index);
+  }
+
+  function prev(){
+    index = (index - 1 + slides.length) % slides.length;
+    show(index);
+  }
+
+  function start(){
+    timer = setInterval(next, 3000);
+  }
+
+  function stop(){
+    clearInterval(timer);
+  }
+
+  nextBtn.addEventListener("click", () => {
+    stop(); next(); start();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    stop(); prev(); start();
+  });
+
+  slider.addEventListener("mouseenter", stop);
+  slider.addEventListener("mouseleave", start);
+
+  show(index);
+  start();
+})();
 
   </script>
 
