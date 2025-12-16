@@ -1363,7 +1363,7 @@
 
 .ws-track{
   position: relative;
-  height: 520px;
+  height: 280px;
 }
 
 .ws-slide{
@@ -1439,6 +1439,220 @@
 @media (max-width: 768px){
   .ws-track{ height: 380px; }
 }
+
+    /* ===== Gallery Carousel (Premium / Low-key Parallax) ===== */
+.gallery-carousel{
+  position: relative;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  background: radial-gradient(circle at top, rgba(17,24,39,.75), rgba(2,6,23,.9));
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.gallery-carousel::before{
+  content:"";
+  position:absolute;
+  inset:-30%;
+  background:
+    radial-gradient(circle at 25% 35%, rgba(250,204,21,.10), transparent 52%),
+    radial-gradient(circle at 75% 60%, rgba(34,197,94,.07), transparent 55%);
+  opacity:.9;
+  pointer-events:none;
+}
+
+.gc-viewport{
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+}
+
+.gc-track{
+  position: relative;
+  min-height: 280px;
+}
+
+.gc-slide{
+  position:absolute;
+  inset:0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 650ms ease;
+}
+
+.gc-slide.is-active{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.gc-media{
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.gc-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /* ✅ 視差核心：圖片稍微放大，切換時做微位移 */
+  transform: scale(1.06) translate3d(var(--px, 0px), 0, 0);
+  transition: transform 950ms cubic-bezier(.2,.8,.2,1), filter 650ms ease;
+  filter: saturate(1.05) contrast(1.05);
+  will-change: transform;
+}
+
+.gc-slide.is-active .gc-media img{
+  filter: saturate(1.08) contrast(1.07);
+}
+
+.gc-media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(to top, rgba(2,6,23,.78), rgba(2,6,23,.15) 55%, rgba(2,6,23,.05));
+  pointer-events:none;
+}
+
+.gc-cap{
+  position: absolute;
+  left: 1.1rem;
+  bottom: 1rem;
+  right: 1.1rem;
+  padding: .8rem 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(148,163,184,.22);
+  background: rgba(2,6,23,.55);
+  backdrop-filter: blur(10px);
+  color: #e5e7eb;
+  font-size: .92rem;
+  line-height: 1.55;
+
+  /* ✅ 文字慢半拍：低調高級 */
+  transform: translateY(10px);
+  opacity: 0;
+  transition: transform 650ms ease 120ms, opacity 650ms ease 120ms;
+}
+
+.gc-slide.is-active .gc-cap{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Buttons */
+.gc-btn{
+  position:absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+
+  /* 🔑 提高存在感 */
+  border: 1px solid rgba(250,204,21,.45);
+  background: rgba(15,23,42,.75);
+
+  color: #facc15;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease,
+    background 200ms ease,
+    box-shadow 200ms ease;
+
+  z-index: 20;        /* 🔑 關鍵：壓過圖片 */
+  opacity: .65;       /* 平常低調 */
+}
+
+/* 滑到輪播整塊時，按鈕才浮出來 */
+.gallery-carousel:hover .gc-btn{
+  opacity: 1;
+}
+
+/* Hover 狀態 */
+.gc-btn:hover{
+  background: rgba(15,23,42,.95);
+  box-shadow: 0 8px 25px rgba(250,204,21,.35);
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* 位置微調（更靠邊，不擋畫面） */
+.gc-prev{ left: .6rem; }
+.gc-next{ right: .6rem; }
+
+
+/* UI */
+.gc-ui{
+  position:absolute;
+  left: 0;
+  right: 0;
+  bottom: .75rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap: .9rem;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.gc-dots{
+  display:flex;
+  gap: .45rem;
+  padding: .45rem .7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,.22);
+  background: rgba(2,6,23,.45);
+  backdrop-filter: blur(10px);
+  pointer-events: auto;
+}
+
+.gc-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,.5);
+  background: rgba(148,163,184,.25);
+  cursor:pointer;
+  transition: transform 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+.gc-dot:hover{
+  transform: scale(1.2);
+  border-color: rgba(250,204,21,.6);
+}
+.gc-dot.is-active{
+  background: rgba(250,204,21,.9);
+  border-color: rgba(250,204,21,.9);
+}
+
+.gc-meta{
+  padding: .45rem .8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,.22);
+  background: rgba(2,6,23,.45);
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+.gc-count{
+  font-size: .8rem;
+  color: var(--color-muted);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+/* RWD */
+@media (max-width: 960px){
+  .gc-track{ min-height: 460px; }
+}
+@media (max-width: 720px){
+  .gc-track{ min-height: 380px; }
+  .gc-btn{ width: 40px; height: 40px; }
+}
+
 
 </style>
   
@@ -1989,56 +2203,82 @@
     </section>
 
     <section id="gallery">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">WORKS</div>
-          <h2 class="section-title">控制箱設計</h2>
-          <p class="section-subtitle">
-            實際施工與設計案例照片，包含舊設備改善、新製控制箱與各式產線電控配線。
-          </p>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-kicker">WORKS</div>
+      <h2 class="section-title">控制箱設計</h2>
+      <p class="section-subtitle">
+        實際施工與設計案例照片，包含舊設備改善、新製控制箱與各式產線電控配線。
+      </p>
+    </div>
+
+    <!-- ✅ Carousel -->
+    <div class="gallery-carousel" id="galleryCarousel" aria-label="控制箱設計輪播">
+      <div class="gc-viewport">
+        <div class="gc-track">
+          <!-- Slide 1 -->
+          <figure class="gc-slide is-active">
+            <div class="gc-media">
+              <img src="images/panel-old-open.jpg" alt="舊型控制盤改善與配線整理" />
+            </div>
+            <figcaption class="gc-cap">舊型控制盤改善與配線整理</figcaption>
+          </figure>
+
+          <!-- Slide 2 -->
+          <figure class="gc-slide">
+            <div class="gc-media">
+              <img src="images/panel-compact-plc.jpg" alt="多迴路 PLC 控制盤" />
+            </div>
+            <figcaption class="gc-cap">多迴路 PLC 控制盤</figcaption>
+          </figure>
+
+          <!-- Slide 3 -->
+          <figure class="gc-slide">
+            <div class="gc-media">
+              <img src="images/panel-hmi-front.jpg" alt="觸控 HMI 操作面板控制箱" />
+            </div>
+            <figcaption class="gc-cap">觸控 HMI 操作面板控制箱</figcaption>
+          </figure>
+
+          <!-- Slide 4 -->
+          <figure class="gc-slide">
+            <div class="gc-media">
+              <img src="images/panel-hmi-inside.jpg" alt="雙驅動器系統內部配線" />
+            </div>
+            <figcaption class="gc-cap">雙驅動器系統內部配線</figcaption>
+          </figure>
+
+          <!-- Slide 5 -->
+          <figure class="gc-slide">
+            <div class="gc-media">
+              <img src="images/panel-teco-drive.jpg" alt="變頻器與控制器整合配線" />
+            </div>
+            <figcaption class="gc-cap">變頻器與控制器整合配線</figcaption>
+          </figure>
+
+          <!-- Slide 6 -->
+          <figure class="gc-slide">
+            <div class="gc-media">
+              <img src="images/panel-yellow-top.jpg" alt="大型控制箱端子台配置" />
+            </div>
+            <figcaption class="gc-cap">大型控制箱端子台配置</figcaption>
+          </figure>
         </div>
-
-        <div class="works-slider" id="worksSlider">
-
-  <div class="ws-track">
-    <figure class="ws-slide active">
-      <img src="images/panel-old-open.jpg" alt="舊型控制盤改善與配線整理">
-      <figcaption>舊型控制盤改善與配線整理</figcaption>
-    </figure>
-
-    <figure class="ws-slide">
-      <img src="images/panel-compact-plc.jpg" alt="多迴路 PLC 控制盤">
-      <figcaption>多迴路 PLC 控制盤</figcaption>
-    </figure>
-
-    <figure class="ws-slide">
-      <img src="images/panel-hmi-front.jpg" alt="觸控 HMI 操作面板控制箱">
-      <figcaption>觸控 HMI 操作面板控制箱</figcaption>
-    </figure>
-
-    <figure class="ws-slide">
-      <img src="images/panel-hmi-inside.jpg" alt="雙驅動器系統內部配線">
-      <figcaption>雙驅動器系統內部配線</figcaption>
-    </figure>
-
-    <figure class="ws-slide">
-      <img src="images/panel-teco-drive.jpg" alt="變頻器與控制器整合配線">
-      <figcaption>變頻器與控制器整合配線</figcaption>
-    </figure>
-
-    <figure class="ws-slide">
-      <img src="images/panel-yellow-top.jpg" alt="大型控制箱端子台配置">
-      <figcaption>大型控制箱端子台配置</figcaption>
-    </figure>
-  </div>
-
-  <!-- 控制按鈕 -->
-  <button class="ws-btn prev" aria-label="上一張">‹</button>
-  <button class="ws-btn next" aria-label="下一張">›</button>
-</div>
-
       </div>
-    </section>
+
+      <button class="gc-btn gc-prev" type="button" aria-label="上一張">‹</button>
+      <button class="gc-btn gc-next" type="button" aria-label="下一張">›</button>
+
+      <div class="gc-ui">
+        <div class="gc-dots" aria-label="輪播頁碼"></div>
+        <div class="gc-meta">
+          <span class="gc-count" id="gcCount">01 / 06</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <section id="testimonial">
       <div class="container">
@@ -2562,6 +2802,138 @@
 })();
 
   </script>
+  <script>
+/* ===== Gallery Carousel: auto(3s) + prev/next + dots + low-key parallax ===== */
+(function(){
+  const root = document.getElementById("galleryCarousel");
+  if (!root) return;
+
+  const slides = Array.from(root.querySelectorAll(".gc-slide"));
+  const dotsWrap = root.querySelector(".gc-dots");
+  const prevBtn = root.querySelector(".gc-prev");
+  const nextBtn = root.querySelector(".gc-next");
+  const countEl = document.getElementById("gcCount");
+
+  if (!slides.length || !dotsWrap || !prevBtn || !nextBtn) return;
+
+  let idx = 0;
+  let timer = null;
+
+  // build dots
+  dotsWrap.innerHTML = "";
+  slides.forEach((_, i) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = "gc-dot" + (i === 0 ? " is-active" : "");
+    b.setAttribute("aria-label", `切到第 ${i+1} 張`);
+    b.addEventListener("click", () => go(i, "dot"));
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.querySelectorAll(".gc-dot"));
+
+  function pad(n){ return String(n).padStart(2, "0"); }
+  function updateCount(){
+    if (!countEl) return;
+    countEl.textContent = `${pad(idx+1)} / ${pad(slides.length)}`;
+  }
+
+  // ✅ 低調視差：切換時「方向性微推進」
+  function setParallaxForActive(dir){
+    const active = slides[idx];
+    if (!active) return;
+    const img = active.querySelector("img");
+    if (!img) return;
+
+    // 初始偏移：非常小（低調）
+    // dir: "next" -> 從右往左推進；"prev" -> 從左往右推進
+    const start = dir === "prev" ? -12 : 12;
+    active.style.setProperty("--px", start + "px");
+
+    // 下一幀回到 0，產生「微微推進」感
+    requestAnimationFrame(() => {
+      active.style.setProperty("--px", "0px");
+    });
+  }
+
+  function applyActive(){
+    slides.forEach((s, i) => s.classList.toggle("is-active", i === idx));
+    dots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
+    updateCount();
+  }
+
+  function go(nextIndex, reason){
+    const old = idx;
+    idx = (nextIndex + slides.length) % slides.length;
+    applyActive();
+
+    // 決定方向（給視差用）
+    let dir = "next";
+    if (reason === "prev") dir = "prev";
+    else if (reason === "next") dir = "next";
+    else dir = (idx > old ? "next" : "prev");
+
+    setParallaxForActive(dir);
+    restart();
+  }
+
+  function next(){ go(idx + 1, "next"); }
+  function prev(){ go(idx - 1, "prev"); }
+
+  prevBtn.addEventListener("click", prev);
+  nextBtn.addEventListener("click", next);
+
+  // Auto play 3s
+  function start(){
+    stop();
+    timer = setInterval(next, 3000);
+  }
+  function stop(){
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
+  function restart(){
+    start();
+  }
+
+  // Hover pause（桌機更有質感）
+  root.addEventListener("mouseenter", stop);
+  root.addEventListener("mouseleave", start);
+
+  // ✅ 滑鼠呼吸式 parallax（非常小，不浮誇）
+  const viewport = root.querySelector(".gc-viewport");
+  if (viewport) {
+    viewport.addEventListener("mousemove", (e) => {
+      const r = viewport.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width; // 0..1
+      const offset = (x - 0.5) * 8; // 最多 ±4px（低調）
+      const active = slides[idx];
+      if (active) active.style.setProperty("--px", offset.toFixed(2) + "px");
+    });
+    viewport.addEventListener("mouseleave", () => {
+      const active = slides[idx];
+      if (active) active.style.setProperty("--px", "0px");
+    });
+  }
+
+  // Touch / reduced motion friendly
+  const prefersReduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduce) {
+    // 減少動態：關閉滑鼠 parallax & 自動播放
+    stop();
+    if (viewport) {
+      viewport.onmousemove = null;
+      viewport.onmouseleave = null;
+    }
+  } else {
+    start();
+  }
+
+  // init
+  applyActive();
+  setParallaxForActive("next");
+})();
+</script>
+
 
 </body>
 </html>
