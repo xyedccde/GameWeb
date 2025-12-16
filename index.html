@@ -95,16 +95,13 @@
   display:flex;
   flex-direction: column;
   transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
-  position: relative; /* 讓你既有的 shine ::after 生效 */
+  position: relative;
 }
 .catalog-card:hover{
   transform: translateY(-6px) rotate(-.25deg);
   border-color: rgba(250,204,21,.35);
   box-shadow: 0 18px 50px rgba(0,0,0,.85);
 }
-
-/* 套用你既有的 shine（如果你是只寫 .hl/.p-card 也沒包含到 catalog，這裡補上） */
-.catalog-card{ position: relative; overflow:hidden; }
 .catalog-card::after{
   content:"";
   position:absolute;
@@ -195,6 +192,43 @@
 .sp-k{ color: var(--color-muted); min-width: 64px; }
 .sp-v{ text-align:right; color:#e5e7eb; }
 
+/* ✅ 新增：二段式下拉樣式（符合你整體暗色風格） */
+.catalog-select{
+  margin-top: .15rem;
+  display:grid;
+  gap: .45rem;
+  padding: .85rem .9rem;
+  border-radius: 14px;
+  border: 1px solid rgba(148,163,184,.22);
+  background: rgba(15,23,42,.55);
+}
+.catalog-select label{
+  font-size: .78rem;
+  color: var(--color-muted);
+  letter-spacing: .08em;
+}
+.catalog-select select{
+  width:100%;
+  border-radius: 12px;
+  border: 1px solid rgba(148,163,184,.5);
+  background: rgba(2,6,23,.7);
+  color:#e5e7eb;
+  padding: .6rem .7rem;
+  outline: none;
+}
+.catalog-select select:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+.catalog-selected-hint{
+  font-size: .78rem;
+  color: #a7f3d0;
+  border-left: 3px solid rgba(34,197,94,.65);
+  padding-left: .6rem;
+  margin-top: .1rem;
+  min-height: 1em;
+}
+
 .catalog-actions{
   margin-top: auto;
   display:flex;
@@ -214,7 +248,6 @@
   .catalog-grid{ grid-template-columns: minmax(0,1fr); }
   .catalog-media{ height: 200px; }
 }
-
 
     /* ===== About v2 ===== */
     .about-v2 { position: relative; overflow: hidden; }
@@ -308,7 +341,6 @@
       background: rgba(250,204,21,.08);
     }
 
-    /* right panel */
     .about2-right{
       border-radius: var(--radius-xl);
       border: 1px solid var(--color-border);
@@ -334,7 +366,6 @@
       z-index: 1;
     }
 
-    /* ===== SVG Icon Base ===== */
     .ic{
       width: 22px;
       height: 22px;
@@ -347,7 +378,6 @@
       flex: 0 0 auto;
     }
 
-    /* icon hover 微旋轉 + 放大 */
     .hl:hover .ic,
     .p-card:hover .ic,
     .cap-card:hover .ic{
@@ -355,7 +385,6 @@
       stroke: #fb923c;
     }
 
-    /* ===== Shine Effect（光掃過） ===== */
     .hl::after,
     .p-card::after,
     .cap-card::after{
@@ -380,7 +409,6 @@
       transform: translateX(20%);
     }
 
-   /* ===== 右側：能力四格（精簡版：一行重點 + hover 展開） ===== */
 .cap-head{ padding: .9rem 1rem 0; }
 .cap-title{ font-weight: 800; letter-spacing: .02em; font-size: 1.05rem; }
 .cap-sub{ color: var(--color-muted); font-size: .86rem; margin-top: .35rem; }
@@ -392,7 +420,6 @@
   gap: .8rem;
 }
 
-/* 卡片本體 */
 .cap-card{
   position: relative;
   overflow: hidden;
@@ -401,7 +428,7 @@
   background: rgba(15,23,42,.55);
   padding: .9rem .9rem .95rem;
   transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-  min-height: 112px;               /* ✅ 固定感，版面更企業 */
+  min-height: 112px;
 }
 
 .cap-card:hover{
@@ -422,20 +449,18 @@
   letter-spacing: .01em;
 }
 
-/* ✅ 第一行：永遠顯示（精簡重點） */
 .cap-line{
   margin-top: .55rem;
   color: #e5e7eb;
   font-size: .86rem;
   line-height: 1.55;
   display: -webkit-box;
-  -webkit-line-clamp: 1;           /* ✅ 只顯示一行 */
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* ✅ 第二行：預設收起，hover 才展開（更有質感） */
 .cap-more{
   margin-top: .35rem;
   color: var(--color-muted);
@@ -451,16 +476,14 @@
 }
 
 .cap-card:hover .cap-more{
-  max-height: 3.2em;               /* 約兩行 */
+  max-height: 3.2em;
   opacity: 1;
   transform: translateY(0);
 }
 
-/* RWD */
 @media (max-width: 960px){
   .cap-grid{ grid-template-columns: minmax(0,1fr); }
 }
-
 
     .cap-foot{
       margin-top: .9rem;
@@ -497,7 +520,6 @@
       flex: 0 0 auto;
     }
 
-    /* ===== About scroll reveal（滑到視窗才進場） ===== */
     .reveal{
       opacity: 0;
       transform: translateY(14px);
@@ -523,13 +545,11 @@
     .reveal.in.stagger > *:nth-child(4){ transition-delay: 220ms; }
     .reveal.in.stagger > *:nth-child(5){ transition-delay: 280ms; }
 
-    /* RWD */
     @media (max-width: 960px){
       .about2-grid{ grid-template-columns: minmax(0,1fr); }
       .cap-grid{ grid-template-columns: minmax(0,1fr); }
     }
 
-    /* ===== 以下你的原始 CSS（未動邏輯，只保留） ===== */
     .hero-copy > *{
       opacity: 0;
       transform: translateY(10px);
@@ -755,7 +775,6 @@
       color: #e5e7eb;
     }
 
-    /* ===== Hero（已移除右側推播圖，改為置中）===== */
     .hero {
       padding-top: 4rem;
       padding-bottom: 4.5rem;
@@ -763,29 +782,25 @@
       overflow: hidden;
     }
 
-   /* 浮水印圖片層 */
 .hero::after{
   content:"";
   position:absolute;
   inset:0;
   background-image: url("images/bg-control-panel.jpg");
-  background-size: contain;      /* 不裁切，完整呈現 */
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.07;                 /* 🔥 關鍵：浮水印感 */
+  opacity: 0.07;
   filter: grayscale(1) contrast(1.05);
-  pointer-events: none;          /* 不擋操作 */
+  pointer-events: none;
   z-index: 0;
 }
 
-
-/* 確保文字在最上層 */
 .hero > *{
   position: relative;
   z-index: 1;
 }
 
-    /* ✅ 背景光暈：支援滑鼠跟隨（--mx/--my） */
     .hero::before {
       content: "";
       position: absolute;
@@ -1056,7 +1071,6 @@
       letter-spacing: 0.16em;
     }
 
-    /* Projects / Gallery / Testimonial / Contact / Footer 你的原碼在下方 HTML 內容保留，不動其 CSS 依你原本 */
     .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
     .project-card {
       border-radius: var(--radius-lg);
@@ -1190,7 +1204,6 @@
     .footer-legal { max-width: var(--max-width); margin: 1.8rem auto 0; padding: 0 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; font-size: 0.78rem; color: #6b7280; }
     .footer-legal a { text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
 
-    /* RWD */
     @media (max-width: 960px) {
       .contact-grid { grid-template-columns: minmax(0, 1fr); }
       .hero { padding-top: 2.8rem; }
@@ -1210,7 +1223,6 @@
       .testimonial-card { padding: 1.8rem 1.6rem 1.7rem; }
     }
 
-    /* 尊重使用者降低動態效果 */
     @media (prefers-reduced-motion: reduce) {
       .btn-breathe, .hero::before, .hero-copy, .hero-title-accent, .hero-kicker-dot, .hero-copy > * {
         animation: none !important;
@@ -1309,8 +1321,7 @@
       </div>
     </section>
 
-  
-    <!-- About（四格卡片 + 滾動進場） -->
+    <!-- About（保留原本，不動內容） -->
     <section id="about" class="about-v2">
       <div class="container">
         <div class="section-header reveal">
@@ -1322,7 +1333,6 @@
         </div>
 
         <div class="about2-grid">
-          <!-- LEFT -->
           <div class="about2-left reveal stagger">
             <h3 class="about2-title">聽得懂現場語言的電控夥伴。</h3>
 
@@ -1335,7 +1345,6 @@
 
             <div class="about2-highlights">
               <div class="hl">
-                <!-- icon：維修 -->
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M21 7l-6 6"></path>
                   <path d="M16 6l2 2"></path>
@@ -1349,7 +1358,6 @@
               </div>
 
               <div class="hl">
-                <!-- icon：擴充 -->
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 3v18"></path>
                   <path d="M3 12h18"></path>
@@ -1363,7 +1371,6 @@
               </div>
 
               <div class="hl">
-                <!-- icon：交接 -->
                 <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M7 7h10"></path>
                   <path d="M7 12h10"></path>
@@ -1393,7 +1400,6 @@
             </div>
           </div>
 
-          <!-- RIGHT -->
           <div class="about2-right reveal">
             <div class="about2-tabs">
               <div class="cap-head">
@@ -1401,66 +1407,61 @@
                 <div class="cap-sub">用一致的規格與文件，讓每個案子都能「好上線、好維修」。</div>
               </div>
 
-            <div class="cap-grid">
-  <!-- PLC -->
-  <div class="cap-card">
-    <div class="cap-top">
-      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="4" y="6" width="16" height="12" rx="2"></rect>
-        <path d="M8 10h.01M12 10h.01M16 10h.01"></path>
-        <path d="M7 18v2M12 18v2M17 18v2"></path>
-      </svg>
-      <div class="cap-tt">PLC</div>
-    </div>
-    <div class="cap-line">流程 / 互鎖 / 保護邏輯</div>
-    <div class="cap-more">依現場條件先對齊運轉規則，異常可控、停機更少。</div>
-  </div>
+              <div class="cap-grid">
+                <div class="cap-card">
+                  <div class="cap-top">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="4" y="6" width="16" height="12" rx="2"></rect>
+                      <path d="M8 10h.01M12 10h.01M16 10h.01"></path>
+                      <path d="M7 18v2M12 18v2M17 18v2"></path>
+                    </svg>
+                    <div class="cap-tt">PLC</div>
+                  </div>
+                  <div class="cap-line">流程 / 互鎖 / 保護邏輯</div>
+                  <div class="cap-more">依現場條件先對齊運轉規則，異常可控、停機更少。</div>
+                </div>
 
-  <!-- HMI -->
-  <div class="cap-card">
-    <div class="cap-top">
-      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="4" y="5" width="16" height="14" rx="2"></rect>
-        <path d="M8 16h8"></path>
-        <path d="M12 19v2"></path>
-      </svg>
-      <div class="cap-tt">HMI</div>
-    </div>
-    <div class="cap-line">畫面 / 警報 / 操作一致</div>
-    <div class="cap-more">降低學習成本與交接落差，操作更直覺、狀態更清楚。</div>
-  </div>
+                <div class="cap-card">
+                  <div class="cap-top">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="4" y="5" width="16" height="14" rx="2"></rect>
+                      <path d="M8 16h8"></path>
+                      <path d="M12 19v2"></path>
+                    </svg>
+                    <div class="cap-tt">HMI</div>
+                  </div>
+                  <div class="cap-line">畫面 / 警報 / 操作一致</div>
+                  <div class="cap-more">降低學習成本與交接落差，操作更直覺、狀態更清楚。</div>
+                </div>
 
-  <!-- 配電盤 -->
-  <div class="cap-card">
-    <div class="cap-top">
-      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-        <rect x="6" y="3" width="12" height="18" rx="2"></rect>
-        <path d="M9 7h6"></path>
-        <path d="M9 11h6"></path>
-        <path d="M9 15h3"></path>
-      </svg>
-      <div class="cap-tt">配電盤</div>
-    </div>
-    <div class="cap-line">分區清楚、維修順手</div>
-    <div class="cap-more">端子與迴路規劃到位，擴充保留、查修更快。</div>
-  </div>
+                <div class="cap-card">
+                  <div class="cap-top">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="6" y="3" width="12" height="18" rx="2"></rect>
+                      <path d="M9 7h6"></path>
+                      <path d="M9 11h6"></path>
+                      <path d="M9 15h3"></path>
+                    </svg>
+                    <div class="cap-tt">配電盤</div>
+                  </div>
+                  <div class="cap-line">分區清楚、維修順手</div>
+                  <div class="cap-more">端子與迴路規劃到位，擴充保留、查修更快。</div>
+                </div>
 
-  <!-- 現場配線 -->
-  <div class="cap-card">
-    <div class="cap-top">
-      <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M4 8h8"></path>
-        <path d="M12 8l4 4-4 4"></path>
-        <path d="M20 16h-8"></path>
-        <path d="M4 16h4"></path>
-      </svg>
-      <div class="cap-tt">現場配線</div>
-    </div>
-    <div class="cap-line">線號一致、路徑可追</div>
-    <div class="cap-more">施工品質標準化，查線定位快，後續改造更省時。</div>
-  </div>
-</div>
-
+                <div class="cap-card">
+                  <div class="cap-top">
+                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M4 8h8"></path>
+                      <path d="M12 8l4 4-4 4"></path>
+                      <path d="M20 16h-8"></path>
+                      <path d="M4 16h4"></path>
+                    </svg>
+                    <div class="cap-tt">現場配線</div>
+                  </div>
+                  <div class="cap-line">線號一致、路徑可追</div>
+                  <div class="cap-more">施工品質標準化，查線定位快，後續改造更省時。</div>
+                </div>
+              </div>
 
               <div class="cap-foot">
                 <span class="foot-pill">I/O 清單</span>
@@ -1474,7 +1475,7 @@
       </div>
     </section>
 
-      <!-- Services（保留原本，不動） -->
+    <!-- Services（保留原本） -->
     <section id="services">
       <div class="container">
         <div class="section-header">
@@ -1527,142 +1528,181 @@
       </div>
     </section>
 
-   <!-- Catalog / Parts -->
-<section id="catalog" class="catalog">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-kicker">PARTS</div>
-      <h2 class="section-title">電子零件販售</h2>
-      <p class="section-subtitle">
-        小型型錄（品牌 / 規格 / 價格）。點「加入詢價」會自動帶入聯絡表單的需求說明。
-      </p>
-    </div>
+    <!-- Catalog / Parts -->
+    <section id="catalog" class="catalog">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-kicker">PARTS</div>
+          <h2 class="section-title">電子零件販售</h2>
+          <p class="section-subtitle">
+            小型型錄（品牌 / 規格 / 價格）。點「加入詢價」會自動帶入聯絡表單的需求說明。
+          </p>
+        </div>
 
-    <div class="catalog-toolbar">
-      <div class="catalog-search">
-        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="11" cy="11" r="7"></circle>
-          <path d="M20 20l-3.2-3.2"></path>
-        </svg>
-        <input id="catalogSearch" type="search" placeholder="搜尋：品牌 / 型號 / 關鍵字（例：TECO、E710、MCCB）" />
+        <div class="catalog-toolbar">
+          <div class="catalog-search">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="M20 20l-3.2-3.2"></path>
+            </svg>
+            <input id="catalogSearch" type="search" placeholder="搜尋：品牌 / 型號 / 關鍵字（例：TECO、E710、MCCB）" />
+          </div>
+
+          <div class="catalog-hint">
+            <span class="hint-dot"></span>
+            <span>價格可先填「請洽詢」或「NT$—」；之後再接 Google Sheet 也很順。</span>
+          </div>
+        </div>
+
+        <div class="catalog-grid" id="catalogGrid">
+          <!-- 1 MCCB -->
+          <article class="catalog-card" data-key="mccb nf-125 nf125 mitsubishi breaker no-fuse 3p 80a s-t10 st-20">
+            <div class="catalog-media">
+              <img src="images/product-mccb.jpg" alt="電池開關 / 無熔絲斷路器" loading="lazy" />
+              <span class="catalog-badge">MCCB</span>
+            </div>
+
+            <div class="catalog-body">
+              <div class="catalog-top">
+                <h3 class="catalog-title">電池開關 / 無熔絲斷路器（MCCB）</h3>
+                <div class="catalog-price">NT$ 請洽詢</div>
+              </div>
+
+              <ul class="catalog-spec">
+                <li><span class="sp-k">用途</span><span class="sp-v">工業配電 / 保護</span></li>
+                <li><span class="sp-k">備註</span><span class="sp-v">以實際庫存 / 規格為準</span></li>
+              </ul>
+
+              <!-- ✅ 二段式：先品牌/大項 -> 再型號/規格 -->
+              <div class="catalog-select">
+                <label>先選品牌 / 大項</label>
+                <select class="c-brand" data-cascade-key="mccb">
+                  <option value="">— 請選擇 —</option>
+                  <option value="MITSUBISHI">MITSUBISHI</option>
+                </select>
+
+                <label>再選型號 / 規格</label>
+                <select class="c-model" disabled>
+                  <option value="">— 請先選品牌 —</option>
+                </select>
+
+                <div class="catalog-selected-hint" data-selected-hint></div>
+              </div>
+
+              <div class="catalog-actions">
+                <button class="btn btn-primary catalog-btn" type="button"
+                  data-add="【詢價】電池開關 / 無熔絲斷路器（MCCB）">
+                  加入詢價 <span class="btn-icon">＋</span>
+                </button>
+                <button class="btn btn-ghost catalog-btn ghost" type="button"
+                  data-copy="MCCB / No-Fuse Breaker">
+                  複製關鍵字
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2 Inverter -->
+          <article class="catalog-card" data-key="inverter frequency drive teco delta siemens e710 ms300 v20 g120">
+            <div class="catalog-media">
+              <img src="images/product-inverter-teco-e710.jpg" alt="變頻器" loading="lazy" />
+              <span class="catalog-badge">INVERTER</span>
+            </div>
+
+            <div class="catalog-body">
+              <div class="catalog-top">
+                <h3 class="catalog-title">變頻器（Frequency Inverter）</h3>
+                <div class="catalog-price">NT$ 請洽詢</div>
+              </div>
+
+              <ul class="catalog-spec">
+                <li><span class="sp-k">用途</span><span class="sp-v">馬達調速 / 節能</span></li>
+                <li><span class="sp-k">備註</span><span class="sp-v">可依電壓/功率選型</span></li>
+              </ul>
+
+              <!-- ✅ 二段式：先品牌 -> 再系列/型號 -->
+              <div class="catalog-select">
+                <label>先選品牌 / 大項</label>
+                <select class="c-brand" data-cascade-key="inverter">
+                  <option value="">— 請選擇 —</option>
+                  <option value="TECO">東元 TECO</option>
+                  <option value="DELTA">台達 DELTA</option>
+                  <option value="SIEMENS">西門子 SIEMENS</option>
+                </select>
+
+                <label>再選型號 / 規格</label>
+                <select class="c-model" disabled>
+                  <option value="">— 請先選品牌 —</option>
+                </select>
+
+                <div class="catalog-selected-hint" data-selected-hint></div>
+              </div>
+
+              <div class="catalog-actions">
+                <button class="btn btn-primary catalog-btn" type="button"
+                  data-add="【詢價】變頻器（請協助確認電壓/功率/控制需求）">
+                  加入詢價 <span class="btn-icon">＋</span>
+                </button>
+                <button class="btn btn-ghost catalog-btn ghost" type="button"
+                  data-copy="Frequency Inverter / VFD">
+                  複製關鍵字
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3 Timer -->
+          <article class="catalog-card" data-key="timer theben din rail time switch sul 181 h">
+            <div class="catalog-media">
+              <img src="images/product-timer.jpg" alt="計數器 / 時間開關" loading="lazy" />
+              <span class="catalog-badge">TIMER</span>
+            </div>
+
+            <div class="catalog-body">
+              <div class="catalog-top">
+                <h3 class="catalog-title">定時開關 / 計時器（Timer）</h3>
+                <div class="catalog-price">NT$ 請洽詢</div>
+              </div>
+
+              <ul class="catalog-spec">
+                <li><span class="sp-k">用途</span><span class="sp-v">照明/循環控制/排程</span></li>
+                <li><span class="sp-k">備註</span><span class="sp-v">可提供照片/規格確認</span></li>
+              </ul>
+
+              <!-- ✅ 二段式：先品牌/大項 -> 再型號/規格 -->
+              <div class="catalog-select">
+                <label>先選品牌 / 大項</label>
+                <select class="c-brand" data-cascade-key="timer">
+                  <option value="">— 請選擇 —</option>
+                  <option value="THEBEN">Theben</option>
+                  <option value="DIN">DIN 軌定時器</option>
+                </select>
+
+                <label>再選型號 / 規格</label>
+                <select class="c-model" disabled>
+                  <option value="">— 請先選品牌 —</option>
+                </select>
+
+                <div class="catalog-selected-hint" data-selected-hint></div>
+              </div>
+
+              <div class="catalog-actions">
+                <button class="btn btn-primary catalog-btn" type="button"
+                  data-add="【詢價】定時開關 / 計時器（請協助確認型號與規格）">
+                  加入詢價 <span class="btn-icon">＋</span>
+                </button>
+                <button class="btn btn-ghost catalog-btn ghost" type="button"
+                  data-copy="DIN Rail Timer / Time Switch">
+                  複製關鍵字
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <div class="catalog-hint">
-        <span class="hint-dot"></span>
-        <span>價格可先填「請洽詢」或「NT$—」；之後再接 Google Sheet 也很順。</span>
-      </div>
-    </div>
-
-    <div class="catalog-grid" id="catalogGrid">
-      <!-- 1 -->
-      <article class="catalog-card" data-key="mitsubishi nf125-cv mccb no-fuse breaker 3p 80a">
-        <div class="catalog-media">
-          <img src="images/product-mccb.jpg" alt="MITSUBISHI 電池開關 / 無熔絲斷路器" loading="lazy" />
-          <span class="catalog-badge">MITSUBISHI</span>
-        </div>
-
-        <div class="catalog-body">
-          <div class="catalog-top">
-            <h3 class="catalog-title">無熔絲斷路器（MCCB）</h3>
-            <div class="catalog-price">NT$ 請洽詢</div>
-          </div>
-
-          <ul class="catalog-spec">
-            <li><span class="sp-k">型號</span><span class="sp-v">NF125-CV</span></li>
-            <li><span class="sp-k">規格</span><span class="sp-v">3P / 80A</span></li>
-            <li><span class="sp-k">備註</span><span class="sp-v">工業配電用（現貨以實際庫存為準）</span></li>
-          </ul>
-
-          <div class="catalog-actions">
-            <button class="btn btn-primary catalog-btn"
-              type="button"
-              data-add="【詢價】MITSUBISHI NF125-CV（3P/80A）無熔絲斷路器">
-              加入詢價 <span class="btn-icon">＋</span>
-            </button>
-            <button class="btn btn-ghost catalog-btn ghost"
-              type="button"
-              data-copy="MITSUBISHI NF125-CV 3P 80A MCCB">
-              複製型號
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- 2 -->
-      <article class="catalog-card" data-key="teco e710 inverter frequency inverter 0.75kw 200v">
-        <div class="catalog-media">
-          <img src="images/product-inverter-teco-e710.jpg" alt="TECO E710 變頻器" loading="lazy" />
-          <span class="catalog-badge">TECO</span>
-        </div>
-
-        <div class="catalog-body">
-          <div class="catalog-top">
-            <h3 class="catalog-title">變頻器（Frequency Inverter）</h3>
-            <div class="catalog-price">NT$ 請洽詢</div>
-          </div>
-
-          <ul class="catalog-spec">
-            <li><span class="sp-k">系列</span><span class="sp-v">E710 Series</span></li>
-            <li><span class="sp-k">功率</span><span class="sp-v">0.75kW</span></li>
-            <li><span class="sp-k">電壓</span><span class="sp-v">200V Class</span></li>
-          </ul>
-
-          <div class="catalog-actions">
-            <button class="btn btn-primary catalog-btn"
-              type="button"
-              data-add="【詢價】TECO E710 變頻器（0.75kW / 200V Class）">
-              加入詢價 <span class="btn-icon">＋</span>
-            </button>
-            <button class="btn btn-ghost catalog-btn ghost"
-              type="button"
-              data-copy="TECO E710 0.75kW 200V">
-              複製型號
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- 3 -->
-      <article class="catalog-card" data-key="timer theben sul 181 h time switch">
-        <div class="catalog-media">
-          <img src="images/product-timer.jpg" alt="計數器 / 時間開關" loading="lazy" />
-          <span class="catalog-badge">TIMER</span>
-        </div>
-
-        <div class="catalog-body">
-          <div class="catalog-top">
-            <h3 class="catalog-title">計數器 / 時間開關</h3>
-            <div class="catalog-price">NT$ 請洽詢</div>
-          </div>
-
-          <ul class="catalog-spec">
-            <li><span class="sp-k">類型</span><span class="sp-v">DIN 軌道式</span></li>
-            <li><span class="sp-k">用途</span><span class="sp-v">照明/循環控制/排程</span></li>
-            <li><span class="sp-k">備註</span><span class="sp-v">型號依現貨（可提供照片/規格確認）</span></li>
-          </ul>
-
-          <div class="catalog-actions">
-            <button class="btn btn-primary catalog-btn"
-              type="button"
-              data-add="【詢價】DIN 軌道式 計數器 / 時間開關（請協助確認型號與規格）">
-              加入詢價 <span class="btn-icon">＋</span>
-            </button>
-            <button class="btn btn-ghost catalog-btn ghost"
-              type="button"
-              data-copy="DIN Rail Timer / Time Switch">
-              複製關鍵字
-            </button>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-
-
-
-    <!-- Projects -->
+    <!-- Projects / Gallery / Testimonial / Contact / Footer（以下保留你原本內容） -->
     <section id="projects">
       <div class="container">
         <div class="section-header">
@@ -1731,7 +1771,6 @@
       </div>
     </section>
 
-    <!-- Gallery -->
     <section id="gallery">
       <div class="container">
         <div class="section-header">
@@ -1776,15 +1815,12 @@
       </div>
     </section>
 
-    <!-- Testimonial -->
     <section id="testimonial">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">CLIENT VOICE</div>
           <h2 class="section-title">客戶回饋</h2>
-          <p class="section-subtitle">
-            品質、效率與可靠度，來自客戶的真實見證
-          </p>
+          <p class="section-subtitle">品質、效率與可靠度，來自客戶的真實見證</p>
         </div>
 
         <article class="testimonial-card">
@@ -1799,9 +1835,7 @@
                 <div class="testimonial-avatar" aria-hidden="true"></div>
                 <div>
                   <div class="testimonial-author-name">某電子零件廠 生管主管</div>
-                  <div class="testimonial-author-role">
-                    生產線導入自動控制與配線改善專案
-                  </div>
+                  <div class="testimonial-author-role">生產線導入自動控制與配線改善專案</div>
                 </div>
               </div>
               <div class="testimonial-badge">
@@ -1814,15 +1848,13 @@
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">CONTACT</div>
           <h2 class="section-title">聯絡捷強工業</h2>
           <p class="section-subtitle">
-            想新增產線、改善舊有設備，或針對自動控制與工業配線有任何問題，<br>歡迎留下資訊，
-            我們將儘快與您聯繫。
+            想新增產線、改善舊有設備，或針對自動控制與工業配線有任何問題，<br>歡迎留下資訊，我們將儘快與您聯繫。
           </p>
         </div>
 
@@ -1852,12 +1884,8 @@
 
             <div class="field">
               <label for="message">需求說明</label>
-              <textarea
-                id="message"
-                name="message"
-                rows="4"
-                placeholder="請簡單說明設備類型、目前狀況與希望改善的方向。"
-              ></textarea>
+              <textarea id="message" name="message" rows="4"
+                placeholder="請簡單說明設備類型、目前狀況與希望改善的方向。"></textarea>
             </div>
 
             <button class="btn btn-primary btn-breathe" type="submit" style="margin-top: 1.2rem;">
@@ -1893,15 +1921,10 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-grid">
       <div>
-        <img
-          src="images/logo-jyechun-banner.jpg"
-          alt="捷強工業自動控制有限公司 LOGO"
-          class="footer-logo"
-        />
+        <img src="images/logo-jyechun-banner.jpg" alt="捷強工業自動控制有限公司 LOGO" class="footer-logo" />
         <p class="footer-brand-desc">
           自動控制・工業設計與配線，從新建到改善，捷強工業以現場實務經驗，
           協助您打造穩定可靠的生產環境。
@@ -1977,7 +2000,7 @@
       }
     });
 
-    // ✅ Hero 滑鼠跟隨光暈（不影響其他區塊）
+    // ✅ Hero 滑鼠跟隨光暈
     const heroEl = document.getElementById("hero");
     if (heroEl) {
       heroEl.addEventListener("mousemove", (e) => {
@@ -1993,12 +2016,11 @@
       });
     }
 
-    // ✅ About 滾動進場（IntersectionObserver）
+    // ✅ About 滾動進場
     (function(){
       const els = document.querySelectorAll('.reveal');
       if (!els.length) return;
 
-      // 若瀏覽器不支援，直接顯示
       if (!('IntersectionObserver' in window)) {
         els.forEach(el => el.classList.add('in'));
         return;
@@ -2017,87 +2039,198 @@
     })();
 
     function handleContactSubmit(event) {
-  event.preventDefault();
+      event.preventDefault();
+      const form = event.target;
 
-  const form = event.target;
+      const data = {
+        name: form.name.value,
+        company: form.company.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        message: form.message.value
+      };
 
-  const data = {
-    name: form.name.value,
-    company: form.company.value,
-    email: form.email.value,
-    phone: form.phone.value,
-    message: form.message.value
-  };
-
-  fetch("https://script.google.com/macros/s/AKfycbzByr--UNZkyf2sRYONaPDRmKQwH72WDdONZ6az9kCJLd3dmg93tZSOBmwYzowM2KQJ/exec", {
-    method: "POST",
-    body: JSON.stringify(data) // 不加 headers，瀏覽器會用 text/plain，通常不會觸發預檢
-  })
-    .then((r) => r.json())
-    .then((res) => {
-      if (res.result === "success") {
-        alert("已送出成功，我們會盡快與您聯絡！");
-        form.reset();
-      } else {
-        alert("送出失敗：" + (res.message || "請稍後再試"));
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      alert("連線錯誤，請稍後再試");
-    });
-}
-
+      fetch("https://script.google.com/macros/s/AKfycbzByr--UNZkyf2sRYONaPDRmKQwH72WDdONZ6az9kCJLd3dmg93tZSOBmwYzowM2KQJ/exec", {
+        method: "POST",
+        body: JSON.stringify(data)
+      })
+      .then((r) => r.json())
+      .then((res) => {
+        if (res.result === "success") {
+          alert("已送出成功，我們會盡快與您聯絡！");
+          form.reset();
+        } else {
+          alert("送出失敗：" + (res.message || "請稍後再試"));
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("連線錯誤，請稍後再試");
+      });
+    }
 
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  
- <script>
-  // ===== Catalog: search / add-to-inquiry / copy =====
-  const catalogSearch = document.getElementById("catalogSearch");
-  const catalogGrid = document.getElementById("catalogGrid");
+  <script>
+    // ===== Catalog: search / add-to-inquiry / copy / 兩段式聯動下拉 =====
+    const catalogSearch = document.getElementById("catalogSearch");
+    const catalogGrid = document.getElementById("catalogGrid");
 
-  if (catalogSearch && catalogGrid) {
-    catalogSearch.addEventListener("input", () => {
-      const q = catalogSearch.value.trim().toLowerCase();
-      catalogGrid.querySelectorAll(".catalog-card").forEach((card) => {
-        const key = (card.getAttribute("data-key") || "").toLowerCase();
-        card.style.display = !q || key.includes(q) ? "" : "none";
-      });
-    });
+    // ✅ 二段式聯動資料（只要改這裡就能新增品牌/型號）
+    const cascadeData = {
+      mccb: {
+        MITSUBISHI: ["NF-125 3P 80A", "S-T10 3.6A", "ST-20 6.6A"]
+      },
+      inverter: {
+        TECO: ["E710 Series", "E720 Series", "N310+（示例）", "E2（示例）"],
+        DELTA: ["MS300", "VFD-EL", "VFD-M（示例）", "CP2000（示例）"],
+        SIEMENS: ["SINAMICS V20", "SINAMICS G120", "MICROMASTER（舊系列）"]
+      },
+      timer: {
+        THEBEN: ["Theben 定時器（例：SUL 181 h）", "Theben DIN 軌定時器（示例）"],
+        DIN: ["DIN 軌定時器（類型）", "循環定時器（示例）", "數位時間開關（示例）"]
+      }
+    };
 
-    catalogGrid.addEventListener("click", async (e) => {
-      const btn = e.target.closest("button");
-      if (!btn) return;
+    const brandLabelMap = {
+      MITSUBISHI: "MITSUBISHI",
+      TECO: "東元 TECO",
+      DELTA: "台達 DELTA",
+      SIEMENS: "西門子 SIEMENS",
+      THEBEN: "Theben",
+      DIN: "DIN 軌定時器"
+    };
 
-      // 加入詢價
-      const addText = btn.getAttribute("data-add");
-      if (addText) {
-        const msg = document.getElementById("message");
-        if (msg) {
-          const prefix = msg.value.trim() ? "\n" : "";
-          msg.value += prefix + addText;
-        }
-        scrollToSection("contact");
+    function appendToInquiry(text){
+      const msg = document.getElementById("message");
+      if (!msg || !text) return;
+      const prefix = msg.value.trim() ? "\n" : "";
+      msg.value += prefix + text;
+    }
+
+    function setHint(card, text){
+      const hint = card.querySelector("[data-selected-hint]");
+      if (!hint) return;
+      hint.textContent = text || "";
+    }
+
+    function resetModelSelect(modelSel){
+      modelSel.innerHTML = "";
+      modelSel.disabled = true;
+      modelSel.appendChild(new Option("— 請先選品牌 —", ""));
+    }
+
+    function buildModelSelect(card, cascadeKey, brandKey){
+      const modelSel = card.querySelector(".c-model");
+      if (!modelSel) return;
+
+      if (!cascadeKey || !brandKey) {
+        resetModelSelect(modelSel);
+        setHint(card, "");
         return;
       }
 
-      // 複製
-      const copyText = btn.getAttribute("data-copy");
-      if (copyText) {
-        try {
-          await navigator.clipboard.writeText(copyText);
-          btn.textContent = "已複製 ✅";
-          setTimeout(() => (btn.textContent = "複製型號"), 900);
-        } catch {
-          alert("複製失敗，請手動複製：\n" + copyText);
-        }
-      }
-    });
-  }
-</script>
+      const models = cascadeData?.[cascadeKey]?.[brandKey] || [];
 
+      modelSel.disabled = false;
+      modelSel.innerHTML = "";
+      modelSel.appendChild(new Option("— 請選擇型號 —", ""));
+      models.forEach(m => modelSel.appendChild(new Option(m, m)));
+
+      setHint(card, `已選擇：${brandLabelMap[brandKey] || brandKey}（請再選型號/規格）`);
+    }
+
+    function getSelectedSpecLine(card){
+      const brandSel = card.querySelector(".c-brand");
+      const modelSel = card.querySelector(".c-model");
+      if (!brandSel || !modelSel) return "";
+
+      const cascadeKey = brandSel.getAttribute("data-cascade-key");
+      const brandKey = (brandSel.value || "").trim();
+      const modelVal = (modelSel.value || "").trim();
+
+      if (!brandKey && !modelVal) return "";
+
+      const title = (() => {
+        if (cascadeKey === "mccb") return "電池開關 / MCCB";
+        if (cascadeKey === "inverter") return "變頻器";
+        if (cascadeKey === "timer") return "定時開關 / 計時器";
+        return "品項";
+      })();
+
+      return `【規格】${title}：${brandLabelMap[brandKey] || brandKey || "未選品牌"} / ${modelVal || "未選型號"}`;
+    }
+
+    if (catalogSearch && catalogGrid) {
+      // 搜尋
+      catalogSearch.addEventListener("input", () => {
+        const q = catalogSearch.value.trim().toLowerCase();
+        catalogGrid.querySelectorAll(".catalog-card").forEach((card) => {
+          const key = (card.getAttribute("data-key") || "").toLowerCase();
+          card.style.display = !q || key.includes(q) ? "" : "none";
+        });
+      });
+
+      // ✅ 聯動下拉
+      catalogGrid.addEventListener("change", (e) => {
+        const card = e.target.closest(".catalog-card");
+        if (!card) return;
+
+        if (e.target.classList.contains("c-brand")) {
+          const cascadeKey = e.target.getAttribute("data-cascade-key");
+          const brandKey = e.target.value;
+          buildModelSelect(card, cascadeKey, brandKey);
+          return;
+        }
+
+        if (e.target.classList.contains("c-model")) {
+          const brandSel = card.querySelector(".c-brand");
+          const brandKey = (brandSel?.value || "").trim();
+          const modelVal = (e.target.value || "").trim();
+          setHint(card, (brandKey || modelVal) ? `已選擇：${brandLabelMap[brandKey] || brandKey || "未選品牌"} / ${modelVal || "未選型號"}` : "");
+          return;
+        }
+      });
+
+      // ✅ 加入詢價 / 複製
+      catalogGrid.addEventListener("click", async (e) => {
+        const btn = e.target.closest("button");
+        if (!btn) return;
+
+        const card = btn.closest(".catalog-card");
+
+        // 加入詢價：先塞「二段式選到的規格」再塞 data-add
+        const addText = btn.getAttribute("data-add");
+        if (addText) {
+          const spec = getSelectedSpecLine(card);
+          if (spec) appendToInquiry(spec);
+          appendToInquiry(addText);
+          scrollToSection("contact");
+          return;
+        }
+
+        // 複製
+        const copyText = btn.getAttribute("data-copy");
+        if (copyText) {
+          try {
+            await navigator.clipboard.writeText(copyText);
+            const old = btn.textContent;
+            btn.textContent = "已複製 ✅";
+            setTimeout(() => (btn.textContent = old), 900);
+          } catch {
+            alert("複製失敗，請手動複製：\n" + copyText);
+          }
+        }
+      });
+
+      // ✅ 初始化：所有 model 先 disabled
+      catalogGrid.querySelectorAll(".catalog-card").forEach(card => {
+        const modelSel = card.querySelector(".c-model");
+        if (modelSel) resetModelSelect(modelSel);
+      });
+    }
+  </script>
 
 </body>
 </html>
