@@ -1288,6 +1288,104 @@
 .catalog-selected-hint:empty {
   display: none;
 }
+
+    /* =========================
+   Header / Nav：更活潑但專業（覆蓋版）
+   直接貼在 CSS 最後面
+========================= */
+
+/* 1) Header：玻璃＋微光暈＋更有層次 */
+.site-header{
+  background: rgba(3, 6, 15, 0.62);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 18px 55px rgba(0,0,0,.55);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* 2) 上方一條「流光」：增加活潑感但不花俏 */
+.site-header::before{
+  content:"";
+  position:absolute;
+  left:0; right:0; top:0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(250,204,21,.9), rgba(249,115,22,.9), transparent);
+  opacity: .75;
+  filter: blur(.1px);
+}
+
+/* 3) Nav 佈局：高度舒服、間距更像品牌網站 */
+.nav{
+  padding: .9rem 1.6rem;
+  gap: 1.2rem;
+}
+
+/* 4) Brand：更精緻的 hover */
+.brand{
+  padding: .35rem .5rem;
+  border-radius: 14px;
+  transition: transform .22s ease, background .22s ease, border-color .22s ease;
+  border: 1px solid transparent;
+}
+.brand:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.03);
+  border-color: rgba(250,204,21,.18);
+}
+
+/* 5) Links：改成膠囊 hover（更活潑、專業不幼稚） */
+.nav-links{
+  gap: 1.1rem;
+}
+.nav-links a{
+  padding: .48rem .78rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: rgba(229,231,235,.92);
+  transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+}
+.nav-links a::after{ display:none; } /* 關掉你原本底線動畫，改膠囊感 */
+
+.nav-links a:hover{
+  background: rgba(255,255,255,.04);
+  border-color: rgba(148,163,184,.25);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* 6) CTA：更像「高級按鈕」—發光但克制 */
+.nav-cta{
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(250,204,21,.65);
+  box-shadow: 0 14px 40px rgba(0,0,0,.55);
+}
+.nav-cta::before{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 55%);
+  opacity: .0;
+  transition: opacity .22s ease;
+  pointer-events:none;
+}
+.nav-cta:hover::before{ opacity: .9; }
+
+/* 7) 整體更「精緻」：讓字距跟粗細更穩 */
+.brand-title{ letter-spacing: .06em; }
+.nav-links a{ letter-spacing: .04em; font-weight: 500; }
+
+/* 8) 手機選單區也跟著更像玻璃 */
+.nav-mobile-inner{
+  background: rgba(6, 10, 20, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
 </style>
   
 </head>
@@ -2332,6 +2430,21 @@
       });
       updateCatalogEmptyState("");
     }
+
+    // Header 滾動收縮（可選）
+(() => {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+
+  const onScroll = () => {
+    const y = window.scrollY || 0;
+    header.style.boxShadow = y > 10 ? "0 16px 50px rgba(0,0,0,.65)" : "0 18px 55px rgba(0,0,0,.55)";
+    header.style.background = y > 10 ? "rgba(3,6,15,.72)" : "rgba(3,6,15,.62)";
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+})();
+
   </script>
 
 </body>
