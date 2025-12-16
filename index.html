@@ -192,7 +192,7 @@
 .sp-k{ color: var(--color-muted); min-width: 64px; }
 .sp-v{ text-align:right; color:#e5e7eb; }
 
-/* ✅ 新增：二段式下拉樣式（符合你整體暗色風格） */
+/* ✅ 二段式下拉樣式 */
 .catalog-select{
   margin-top: .15rem;
   display:grid;
@@ -1230,6 +1230,25 @@
       .reveal, .reveal *{ transition: none !important; transform: none !important; opacity: 1 !important; }
       * { scroll-behavior: auto !important; }
     }
+
+    /* ===== Catalog Search: empty state + prevent layout jump ===== */
+.catalog-grid{
+  min-height: 260px;
+}
+
+.catalog-empty{
+  grid-column: 1 / -1;
+  border-radius: var(--radius-lg);
+  border: 1px dashed rgba(148,163,184,.35);
+  background: rgba(2,6,23,.35);
+  padding: 1.2rem 1.1rem;
+  color: var(--color-muted);
+  display: none;
+}
+
+.catalog-empty strong{
+  color: #e5e7eb;
+}
   </style>
 </head>
 
@@ -1550,7 +1569,7 @@
 
           <div class="catalog-hint">
             <span class="hint-dot"></span>
-            <span>價格可先填「請洽詢」或「NT$—」；。</span>
+            <span>價格可先填「請洽詢」或「NT$—」。</span>
           </div>
         </div>
 
@@ -1573,7 +1592,6 @@
                 <li><span class="sp-k">備註</span><span class="sp-v">以實際庫存 / 規格為準</span></li>
               </ul>
 
-              <!-- ✅ 二段式：先品牌/大項 -> 再型號/規格 -->
               <div class="catalog-select">
                 <label>先選品牌 / 大項</label>
                 <select class="c-brand" data-cascade-key="mccb">
@@ -1620,7 +1638,6 @@
                 <li><span class="sp-k">備註</span><span class="sp-v">可依電壓/功率選型</span></li>
               </ul>
 
-              <!-- ✅ 二段式：先品牌 -> 再系列/型號 -->
               <div class="catalog-select">
                 <label>先選品牌 / 大項</label>
                 <select class="c-brand" data-cascade-key="inverter">
@@ -1669,7 +1686,6 @@
                 <li><span class="sp-k">備註</span><span class="sp-v">可提供照片/規格確認</span></li>
               </ul>
 
-              <!-- ✅ 二段式：先品牌/大項 -> 再型號/規格 -->
               <div class="catalog-select">
                 <label>先選品牌 / 大項</label>
                 <select class="c-brand" data-cascade-key="timer">
@@ -1698,6 +1714,12 @@
               </div>
             </div>
           </article>
+
+          <!-- ✅ 空結果提示（移到 grid 底下，避免被卡片包住） -->
+          <div class="catalog-empty" id="catalogEmpty">
+            找不到符合「<strong id="catalogEmptyQ"></strong>」的品項。<br />
+            你可以試試：品牌（TECO/台達/三菱）、品名（變頻器/電池開關/定時器）、型號（E710/NF-125）。
+          </div>
         </div>
       </div>
     </section>
@@ -2076,19 +2098,21 @@
     // ===== Catalog: search / add-to-inquiry / copy / 兩段式聯動下拉 =====
     const catalogSearch = document.getElementById("catalogSearch");
     const catalogGrid = document.getElementById("catalogGrid");
+    const catalogEmpty = document.getElementById("catalogEmpty");
+    const catalogEmptyQ = document.getElementById("catalogEmptyQ");
 
     // ✅ 二段式聯動資料（只要改這裡就能新增品牌/型號）
     const cascadeData = {
       mccb: {
-        MITSUBISHI: ["NF-125/3P 80A", "ST-10/3.6A", "ST-20/6.6A"]
+        MITSUBISHI: ["NF-125 / 3P 80A", "S-T10 / 3.6A", "S-T20 / 6.6A"]
       },
       inverter: {
         TECO: ["E710 Series", "E720 Series", "N310+", "E2"],
-        DELTA: ["MS300", "VFD-EL", "VFD-M", "CP2000）"],
+        DELTA: ["MS300", "VFD-EL", "VFD-M", "CP2000"],
         SIEMENS: ["SINAMICS V20", "SINAMICS G120", "MICROMASTER（舊系列）"]
       },
       timer: {
-        THEBEN: ["Theben 定時器（例：SUL 181 h）", "Theben DIN 軌定時器）"],
+        THEBEN: ["Theben 定時器（例：SUL 181 h）", "Theben DIN 軌定時器"],
         DIN: ["DIN 軌定時器", "循環定時器", "數位時間開關"]
       }
     };
@@ -2142,6 +2166,7 @@
     }
 
     function getSelectedSpecLine(card){
+      if (!card) return "";
       const brandSel = card.querySelector(".c-brand");
       const modelSel = card.querySelector(".c-model");
       if (!brandSel || !modelSel) return "";
@@ -2162,14 +2187,29 @@
       return `【規格】${title}：${brandLabelMap[brandKey] || brandKey || "未選品牌"} / ${modelVal || "未選型號"}`;
     }
 
+    function updateCatalogEmptyState(q){
+      if (!catalogGrid || !catalogEmpty) return;
+
+      const cards = Array.from(catalogGrid.querySelectorAll(".catalog-card"));
+      const visibleCount = cards.filter(card => card.style.display !== "none").length;
+
+      // q 有輸入且沒有結果 -> 顯示 empty；其餘情況隱藏
+      const showEmpty = !!q && visibleCount === 0;
+      catalogEmpty.style.display = showEmpty ? "block" : "none";
+      if (catalogEmptyQ) catalogEmptyQ.textContent = q || "";
+    }
+
     if (catalogSearch && catalogGrid) {
-      // 搜尋
+      // 搜尋 + 空結果提示
       catalogSearch.addEventListener("input", () => {
         const q = catalogSearch.value.trim().toLowerCase();
+
         catalogGrid.querySelectorAll(".catalog-card").forEach((card) => {
           const key = (card.getAttribute("data-key") || "").toLowerCase();
           card.style.display = !q || key.includes(q) ? "" : "none";
         });
+
+        updateCatalogEmptyState(q);
       });
 
       // ✅ 聯動下拉
@@ -2180,6 +2220,8 @@
         if (e.target.classList.contains("c-brand")) {
           const cascadeKey = e.target.getAttribute("data-cascade-key");
           const brandKey = e.target.value;
+
+          // 品牌一換：重建型號下拉（同時把 hint 改成“請再選型號”）
           buildModelSelect(card, cascadeKey, brandKey);
           return;
         }
@@ -2188,7 +2230,12 @@
           const brandSel = card.querySelector(".c-brand");
           const brandKey = (brandSel?.value || "").trim();
           const modelVal = (e.target.value || "").trim();
-          setHint(card, (brandKey || modelVal) ? `已選擇：${brandLabelMap[brandKey] || brandKey || "未選品牌"} / ${modelVal || "未選型號"}` : "");
+          setHint(
+            card,
+            (brandKey || modelVal)
+              ? `已選擇：${brandLabelMap[brandKey] || brandKey || "未選品牌"} / ${modelVal || "未選型號"}`
+              : ""
+          );
           return;
         }
       });
@@ -2224,11 +2271,12 @@
         }
       });
 
-      // ✅ 初始化：所有 model 先 disabled
+      // ✅ 初始化：所有 model 先 disabled + 初始化空結果提示（避免一開始殘留）
       catalogGrid.querySelectorAll(".catalog-card").forEach(card => {
         const modelSel = card.querySelector(".c-model");
         if (modelSel) resetModelSelect(modelSel);
       });
+      updateCatalogEmptyState("");
     }
   </script>
 
