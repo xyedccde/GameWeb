@@ -2446,40 +2446,50 @@
     note.textContent = "送出中…";
   }
 
-  fetch("https://script.google.com/macros/s/AKfycbzByr--UNZkyf2sRYONaPDRmKQwH72WDdONZ6az9kCJLd3dmg93tZSOBmwYzowM2KQJ/exec", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  })
-  .then(r => r.json())
-  .then(res => {
-    if (res.result === "success") {
-      form.reset();
-      if (note){
-        note.className = "contact-note ok";
-        note.textContent = "已送出成功，我們會儘快與您聯絡。";
-      }
-    } else {
-      if (note){
-        note.className = "contact-note err";
-        note.textContent = "送出失敗：" + (res.message || "請稍後再試。");
-      }
+ const url = "https://script.google.com/macros/s/AKfycbzByr--UNZkyf2sRYONaPDRmKQwH72WDdONZ6az9kCJLd3dmg93tZSOBmwYzowM2KQJ/exec";
+const params = new URLSearchParams(data);
+
+fetch(url, {
+  method: "POST",
+  body: params
+})
+.then(async (r) => {
+  const text = await r.text();         // 先用 text 避免 json() 直接炸
+  let res;
+  try { res = JSON.parse(text); }      // 如果真的是 JSON 再 parse
+  catch { throw new Error("Non-JSON response: " + text.slice(0, 120)); }
+
+  return res;
+})
+.then((res) => {
+  if (res.result === "success") {
+    form.reset();
+    if (note){
+      note.className = "contact-note ok";
+      note.textContent = "已送出成功，我們會儘快與您聯絡。";
     }
-  })
-  .catch(() => {
+  } else {
     if (note){
       note.className = "contact-note err";
-      note.textContent = "連線錯誤，請稍後再試。";
+      note.textContent = "送出失敗：" + (res.message || "請稍後再試。");
     }
-  })
-  .finally(() => {
-    if (btn) {
-      btn.disabled = false;
-      btn.style.opacity = "";
-      btn.style.cursor = "";
-    }
-  });
-}
+  }
+})
+.catch((err) => {
+  console.error(err);
+  if (note){
+    note.className = "contact-note err";
+    note.textContent = "連線錯誤，請稍後再試。";
+  }
+})
+.finally(() => {
+  if (btn) {
+    btn.disabled = false;
+    btn.style.opacity = "";
+    btn.style.cursor = "";
+  }
+});
+
 
 
 
