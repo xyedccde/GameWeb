@@ -8,6 +8,32 @@
     name="description"
     content="捷強工業有限公司，專精自動控制、工業設計與工業配線，提供客製化產線整合與電控工程服務。"
   />
+  <link rel="icon" href="/favicon.ico" />
+
+<meta property="og:title" content="捷強工業有限公司 | 自動控制・工業設計與配線" />
+<meta property="og:description" content="專精自動控制、工業設計與工業配線，提供客製化產線整合與電控工程服務。" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="zh_TW" />
+<meta property="og:image" content="https://jyechun.com.tw/images/og-cover.jpg" />
+<link rel="canonical" href="https://jyechun.com.tw/" />
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"捷強工業有限公司",
+  "address":{
+    "@type":"PostalAddress",
+    "addressCountry":"TW",
+    "addressLocality":"台中市",
+    "addressRegion":"南區",
+    "streetAddress":"美村路二段307號"
+  },
+  "telephone":"04-2263-5628",
+  "email":"jyechun@gmail.com"
+}
+</script>
+
 
   <!-- Google Fonts（可自行改成本機字型） -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -584,21 +610,41 @@
     .hero-copy > *:nth-child(5){ animation-delay: 400ms; }
     @keyframes heroStagger{ to{ opacity: 1; transform: translateY(0); } }
 
-    :root {
-      --color-bg: #070b12;
-      --color-bg-soft: #101725;
-      --color-accent: #ffb400;
-      --color-accent-soft: rgba(255, 180, 0, 0.14);
-      --color-text: #f5f5f7;
-      --color-muted: #9ca3af;
-      --color-border: rgba(255, 255, 255, 0.06);
-      --radius-lg: 18px;
-      --radius-xl: 26px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
-      --transition-fast: 0.2s ease-out;
-      --transition-med: 0.3s ease;
-      --max-width: 1120px;
-    }
+   :root{
+  --color-bg: #070b12;
+  --color-bg-2: #0b1220;
+  --color-panel: rgba(2,6,23,.55);
+  --color-panel-2: rgba(15,23,42,.62);
+
+  --color-text: #f5f5f7;
+  --color-muted: #9ca3af;
+
+  /* 主色：金橘（保留你現在的風格） */
+  --brand-1: #facc15;
+  --brand-2: #fb923c;
+  --brand-3: #f97316;
+
+  /* 綠色只用在成功/提示（避免畫面太花） */
+  --ok: #22c55e;
+
+  --color-border: rgba(148,163,184,.22);
+  --color-border-strong: rgba(148,163,184,.38);
+
+  /* 圓角：企業感 = 少一點「玩具感」 */
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  /* 統一陰影（企業感：少種類、可預期） */
+  --shadow-1: 0 10px 26px rgba(0,0,0,.45);
+  --shadow-2: 0 16px 42px rgba(0,0,0,.62);
+  --shadow-3: 0 22px 60px rgba(0,0,0,.78);
+
+  --transition-fast: 160ms ease;
+  --transition-med: 260ms ease;
+  --max-width: 1120px;
+}
+
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -1527,6 +1573,40 @@
   .gc-track{ height: 260px; }
   .gc-btn{ width: 40px; height: 40px; }
 }
+
+    .contact-note{
+  margin-top: .9rem;
+  font-size: .82rem;
+  color: var(--color-muted);
+  min-height: 1.2em;
+}
+.contact-note.ok{
+  color: #a7f3d0;
+  border-left: 3px solid rgba(34,197,94,.7);
+  padding-left: .6rem;
+}
+.contact-note.err{
+  color: #fecaca;
+  border-left: 3px solid rgba(239,68,68,.7);
+  padding-left: .6rem;
+}
+.hero-title{
+  font-weight: 800;
+  letter-spacing: .02em;
+  line-height: 1.08;
+  max-width: 980px;
+  margin: 0 auto .75rem;
+}
+.hero-title span{ display:block; }
+.hero-lead{
+  max-width: 720px;
+  margin: 1.0rem auto 1.9rem;
+  line-height: 1.9;
+  font-size: 1rem;
+  color: var(--color-muted);
+}
+.hero-meta{ margin-bottom: 2.1rem; }
+
   </style>
 </head>
 
@@ -1583,25 +1663,21 @@
             </div>
 
             <h1 class="hero-title">
-              <span>穩定產線</span>
-              <span class="hero-title-accent">從電控開始</span>
-              <span>捷強工業為您把關</span>
-            </h1>
+  <span>自動控制與工業配線</span>
+  <span class="hero-title-accent">讓產線穩定可維修、可擴充</span>
+</h1>
 
-            <p class="hero-lead">
-              捷強工業有限公司專精自動控制、工業設計與工業配線，從新建產線到既有設備改善，</br>以實務經驗與現場思維，為您規劃安全穩定的電控系
-            </p>
+<p class="hero-lead">
+  捷強工業專注 PLC / HMI / 配電盤 / 現場配線整合。從新建產線到既有設備改善，
+  以一致的線號標示、迴路分區與測試紀錄，交付「好上線、好維修、好交接」的電控系統。
+</p>
 
-            <div class="hero-meta">
-              <div class="hero-pill">
-                <span class="hero-pill-count">多年經驗</span>
-                <span>工業現場實務累積</span>
-              </div>
-              <div class="hero-pill">
-                <span class="hero-pill-count">客製化</span>
-                <span>依現場需求設計</span>
-              </div>
-            </div>
+<div class="hero-meta">
+  <div class="hero-pill"><span class="hero-pill-count">可維修</span><span>線號一致、端子清楚</span></div>
+  <div class="hero-pill"><span class="hero-pill-count">可擴充</span><span>預留 I/O、迴路可追</span></div>
+  <div class="hero-pill"><span class="hero-pill-count">可交接</span><span>圖面＋測試紀錄完整</span></div>
+</div>
+
 
             <div class="hero-actions">
               <button class="btn btn-primary btn-breathe" onclick="scrollToSection('services')">
@@ -2378,38 +2454,75 @@
       els.forEach(el => io.observe(el));
     })();
 
-    function handleContactSubmit(event) {
-      event.preventDefault();
-      const form = event.target;
+   function handleContactSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
 
-      const data = {
-        name: form.name.value,
-        company: form.company.value,
-        email: form.email.value,
-        phone: form.phone.value,
-        message: form.message.value
-      };
+  const note = form.querySelector(".contact-note");
+  const btn = form.querySelector('button[type="submit"]');
 
-      fetch("https://script.google.com/macros/s/AKfycbzByr--UNZkyf2sRYONaPDRmKQwH72WDdONZ6az9kCJLd3dmg93tZSOBmwYzowM2KQJ/exec", {
-        method: "POST",
-        body: JSON.stringify(data)
-      })
-      .then((r) => r.json())
-      .then((res) => {
-        if (res.result === "success") {
-          alert("已送出成功，我們會盡快與您聯絡！");
-          form.reset();
-        } else {
-          alert("送出失敗：" + (res.message || "請稍後再試"));
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        alert("連線錯誤，請稍後再試");
-      });
+  const data = {
+    name: form.name.value.trim(),
+    company: form.company.value.trim(),
+    email: form.email.value.trim(),
+    phone: form.phone.value.trim(),
+    message: form.message.value.trim()
+  };
+
+  // 基本檢查（企業感：至少擋空訊息）
+  if (!data.name || !data.phone || !data.message) {
+    if (note){
+      note.className = "contact-note err";
+      note.textContent = "請至少填寫：姓名、電話、需求說明。";
     }
+    return;
+  }
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+  if (btn) {
+    btn.disabled = true;
+    btn.style.opacity = ".75";
+    btn.style.cursor = "not-allowed";
+  }
+  if (note){
+    note.className = "contact-note";
+    note.textContent = "送出中…";
+  }
+
+  fetch("https://script.google.com/macros/s/AKfycbzByr--UNZkyf2sRYONaPDRmKQwH72WDdONZ6az9kCJLd3dmg93tZSOBmwYzowM2KQJ/exec", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(r => r.json())
+  .then(res => {
+    if (res.result === "success") {
+      form.reset();
+      if (note){
+        note.className = "contact-note ok";
+        note.textContent = "已送出成功，我們會儘快與您聯絡。";
+      }
+    } else {
+      if (note){
+        note.className = "contact-note err";
+        note.textContent = "送出失敗：" + (res.message || "請稍後再試。");
+      }
+    }
+  })
+  .catch(() => {
+    if (note){
+      note.className = "contact-note err";
+      note.textContent = "連線錯誤，請稍後再試。";
+    }
+  })
+  .finally(() => {
+    if (btn) {
+      btn.disabled = false;
+      btn.style.opacity = "";
+      btn.style.cursor = "";
+    }
+  });
+}
+
   </script>
 
   <script>
