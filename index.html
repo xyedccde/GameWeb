@@ -1344,7 +1344,7 @@
    ======================================================================= */
 .gallery-carousel{
   position: relative;
-  max-width: 650px;                 /* ✅ 縮小：你想更小可改 760 / 820 */
+  max-width: 500px;                 /* ✅ 縮小：你想更小可改 760 / 820 */
   margin: 0 auto;
   border-radius: var(--radius-xl);
   border: 1px solid var(--color-border);
@@ -1373,7 +1373,7 @@
 /* ✅ 固定舞台高度（小一點） */
 .gc-track{
   position: relative;
-  height: 520px;                    /* ✅ 桌機高度 */
+  height: 400px;                    /* ✅ 桌機高度 */
 }
 
 /* slide 疊在一起切換 */
@@ -1456,32 +1456,20 @@
   gap: 12px;
   padding: 10px 12px 12px;
   border-top: 1px solid rgba(255,255,255,.06);
-  background: rgba(2,6,23,.50);
-  backdrop-filter: blur(12px);
+  background: rgba(2,6,23,.40);
+  backdrop-filter: blur(10px);
 }
 
 /* 中央文字：真正視覺置中 */
 .gc-caption{
   grid-column: 2;
   text-align: center;
-  font-size: .95rem;
-  font-weight: 600;                         /* 更專業 */
-  letter-spacing: .06em;                    /* 工業感 */
-  color: rgba(248,250,252,.92);
+  font-size: .92rem;
+  color: #e5e7eb;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0 .2rem;
-}
-    .gc-caption::after{
-  content:"";
-  display:block;
-  width: 54px;
-  height: 2px;
-  margin: 8px auto 0;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, rgba(250,204,21,.55), transparent);
-  opacity: .65;
 }
 
 /* 右側 dots + 頁數 */
@@ -1524,12 +1512,10 @@
 }
 
 .gc-count{
-  font-size: .78rem;
-  font-weight: 650;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: rgba(148,163,184,.95);
-  font-variant-numeric: tabular-nums;       /* 數字等寬更「工程」 */
+  font-size: .82rem;
+  color: rgba(229,231,235,.85);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 /* RWD */
