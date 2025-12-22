@@ -808,26 +808,15 @@
   content:"";
   position:absolute;
   inset:0;
-
-  /* ✅ 換成你的控制箱實拍圖 */
-  background-image: url("images/bg-control-cabinet-watermark.jpg");
-
-  /* ✅ 不要裁切，保持完整專業感 */
+  background-image: url("images/bg-control-cabinet-real.jpg");
   background-size: cover;
   background-position: center;
-
-  /* ✅ 關鍵：浮水印感 */
-  opacity: 0.06;
-
-  /* ✅ 工業感調整 */
-  filter:
-    grayscale(1)
-    contrast(1.08)
-    brightness(0.95);
-
+  opacity: 0.06;          /* 關鍵：低調專業 */
+  filter: grayscale(1) contrast(1.05);
   pointer-events: none;
   z-index: 0;
 }
+
 
 .hero > *{
   position: relative;
