@@ -2331,171 +2331,178 @@
     </div>
   </footer>
 
-  <script>
-    function scrollToSection(id) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const offset = window.pageYOffset + rect.top - 70;
-      window.scrollTo({ top: offset, behavior: "smooth" });
-    }
+ <script>
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const offset = window.pageYOffset + rect.top - 70;
+    window.scrollTo({ top: offset, behavior: "smooth" });
+  }
 
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-      link.addEventListener("click", (e) => {
-        const href = link.getAttribute("href");
-        if (!href || href === "#") return;
-        if (href.startsWith("#")) {
-          e.preventDefault();
-          const targetId = href.slice(1);
-          scrollToSection(targetId);
-          closeMobileNav();
-        }
-      });
-    });
-
-    const navToggle = document.querySelector(".nav-toggle");
-    const navMobile = document.getElementById("nav-mobile");
-
-    function closeMobileNav() {
-      navToggle.classList.remove("active");
-      navMobile.classList.remove("open");
-    }
-
-    if (navToggle) {
-      navToggle.addEventListener("click", () => {
-        navToggle.classList.toggle("active");
-        navMobile.classList.toggle("open");
-      });
-    }
-
-    window.addEventListener("scroll", () => {
-      if (window.innerWidth <= 720 && navMobile.classList.contains("open")) {
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+      if (!href || href === "#") return;
+      if (href.startsWith("#")) {
+        e.preventDefault();
+        const targetId = href.slice(1);
+        scrollToSection(targetId);
         closeMobileNav();
       }
     });
+  });
 
-    // ✅ Hero 滑鼠跟隨光暈
-    const heroEl = document.getElementById("hero");
-    if (heroEl) {
-      heroEl.addEventListener("mousemove", (e) => {
-        const r = heroEl.getBoundingClientRect();
-        const mx = ((e.clientX - r.left) / r.width) * 100;
-        const my = ((e.clientY - r.top) / r.height) * 100;
-        heroEl.style.setProperty("--mx", mx + "%");
-        heroEl.style.setProperty("--my", my + "%");
-      });
-      heroEl.addEventListener("mouseleave", () => {
-        heroEl.style.removeProperty("--mx");
-        heroEl.style.removeProperty("--my");
-      });
+  const navToggle = document.querySelector(".nav-toggle");
+  const navMobile = document.getElementById("nav-mobile");
+
+  function closeMobileNav() {
+    if (navToggle) navToggle.classList.remove("active");
+    if (navMobile) navMobile.classList.remove("open");
+  }
+
+  if (navToggle) {
+    navToggle.addEventListener("click", () => {
+      navToggle.classList.toggle("active");
+      navMobile.classList.toggle("open");
+    });
+  }
+
+  window.addEventListener("scroll", () => {
+    if (window.innerWidth <= 720 && navMobile && navMobile.classList.contains("open")) {
+      closeMobileNav();
+    }
+  });
+
+  // ✅ Hero 滑鼠跟隨光暈
+  const heroEl = document.getElementById("hero");
+  if (heroEl) {
+    heroEl.addEventListener("mousemove", (e) => {
+      const r = heroEl.getBoundingClientRect();
+      const mx = ((e.clientX - r.left) / r.width) * 100;
+      const my = ((e.clientY - r.top) / r.height) * 100;
+      heroEl.style.setProperty("--mx", mx + "%");
+      heroEl.style.setProperty("--my", my + "%");
+    });
+    heroEl.addEventListener("mouseleave", () => {
+      heroEl.style.removeProperty("--mx");
+      heroEl.style.removeProperty("--my");
+    });
+  }
+
+  // ✅ About 滾動進場
+  (function () {
+    const els = document.querySelectorAll(".reveal");
+    if (!els.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+      els.forEach((el) => el.classList.add("in"));
+      return;
     }
 
-    // ✅ About 滾動進場
-    (function(){
-      const els = document.querySelectorAll('.reveal');
-      if (!els.length) return;
-
-      if (!('IntersectionObserver' in window)) {
-        els.forEach(el => el.classList.add('in'));
-        return;
-      }
-
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(ent => {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((ent) => {
           if (ent.isIntersecting) {
-            ent.target.classList.add('in');
+            ent.target.classList.add("in");
             io.unobserve(ent.target);
           }
         });
-      }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+    );
 
-      els.forEach(el => io.observe(el));
-    })();
+    els.forEach((el) => io.observe(el));
+  })();
 
-   function handleContactSubmit(event) {
-  event.preventDefault();
-  const form = event.target;
+  // ✅ Contact：送到 Apps Script（企業感：按鈕下方顯示成功/失敗）
+  async function handleContactSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
 
-  const note = form.querySelector(".contact-note");
-  const btn = form.querySelector('button[type="submit"]');
+    const note = form.querySelector(".contact-note");
+    const btn = form.querySelector('button[type="submit"]');
 
-  const data = {
-    name: form.name.value.trim(),
-    company: form.company.value.trim(),
-    email: form.email.value.trim(),
-    phone: form.phone.value.trim(),
-    message: form.message.value.trim()
-  };
+    const data = {
+      name: form.name.value.trim(),
+      company: form.company.value.trim(),
+      email: form.email.value.trim(),
+      phone: form.phone.value.trim(),
+      message: form.message.value.trim(),
+    };
 
-  // 基本檢查（企業感：至少擋空訊息）
-  if (!data.name || !data.phone || !data.message) {
-    if (note){
-      note.className = "contact-note err";
-      note.textContent = "請至少填寫：姓名、電話、需求說明。";
+    // 基本檢查
+    if (!data.name || !data.phone || !data.message) {
+      if (note) {
+        note.className = "contact-note err";
+        note.textContent = "請至少填寫：姓名、電話、需求說明。";
+      }
+      return;
     }
-    return;
-  }
 
-  if (btn) {
-    btn.disabled = true;
-    btn.style.opacity = ".75";
-    btn.style.cursor = "not-allowed";
-  }
-  if (note){
-    note.className = "contact-note";
-    note.textContent = "送出中…";
-  }
-
- const url = "https://script.google.com/macros/s/AKfycbzByr--UNZkyf2sRYONaPDRmKQwH72WDdONZ6az9kCJLd3dmg93tZSOBmwYzowM2KQJ/exec";
-const params = new URLSearchParams(data);
-
-fetch(url, {
-  method: "POST",
-  body: params
-})
-.then(async (r) => {
-  const text = await r.text();         // 先用 text 避免 json() 直接炸
-  let res;
-  try { res = JSON.parse(text); }      // 如果真的是 JSON 再 parse
-  catch { throw new Error("Non-JSON response: " + text.slice(0, 120)); }
-
-  return res;
-})
-.then((res) => {
-  if (res.result === "success") {
-    form.reset();
-    if (note){
-      note.className = "contact-note ok";
-      note.textContent = "已送出成功，我們會儘快與您聯絡。";
+    if (btn) {
+      btn.disabled = true;
+      btn.style.opacity = ".75";
+      btn.style.cursor = "not-allowed";
     }
-  } else {
-    if (note){
-      note.className = "contact-note err";
-      note.textContent = "送出失敗：" + (res.message || "請稍後再試。");
+    if (note) {
+      note.className = "contact-note";
+      note.textContent = "送出中…";
+    }
+
+    const url =
+      "https://script.google.com/macros/s/AKfycbzByr--UNZkyf2sRYONaPDRmKQwH72WDdONZ6az9kCJLd3dmg93tZSOBmwYzowM2KQJ/exec";
+
+    try {
+      // ⚠️ 用 text/plain + JSON.stringify：
+      // 1) 讓 Apps Script 直接用 JSON.parse
+      // 2) 通常可避免瀏覽器發 OPTIONS preflight 的麻煩（比 application/json 更穩）
+      const r = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(data),
+      });
+
+      const text = await r.text();
+      let res;
+      try {
+        res = JSON.parse(text);
+      } catch {
+        throw new Error("Non-JSON response: " + text.slice(0, 160));
+      }
+
+      if (res.result === "success") {
+        form.reset();
+        if (note) {
+          note.className = "contact-note ok";
+          note.textContent = "已送出成功，我們會儘快與您聯絡。";
+        }
+      } else {
+        if (note) {
+          note.className = "contact-note err";
+          note.textContent = "送出失敗：" + (res.message || "請稍後再試。");
+        }
+      }
+    } catch (err) {
+      console.error(err);
+      if (note) {
+        note.className = "contact-note err";
+        note.textContent =
+          "連線錯誤或權限被拒（請確認 Apps Script 已部署為 Web App 且允許任何人存取）。";
+      }
+    } finally {
+      if (btn) {
+        btn.disabled = false;
+        btn.style.opacity = "";
+        btn.style.cursor = "";
+      }
     }
   }
-})
-.catch((err) => {
-  console.error(err);
-  if (note){
-    note.className = "contact-note err";
-    note.textContent = "連線錯誤，請稍後再試。";
-  }
-})
-.finally(() => {
-  if (btn) {
-    btn.disabled = false;
-    btn.style.opacity = "";
-    btn.style.cursor = "";
-  }
-});
 
-
-
-
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  // ✅ 年份（放在 function 外面）
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
 
   <script>
     // ===== Catalog: search / add-to-inquiry / copy / 兩段式聯動下拉 =====
