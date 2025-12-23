@@ -1574,42 +1574,56 @@
 /* dots 壓在圖片上（圖片內下方） */
 .gc-viewport{ position: relative; }
 
+/* ===== Dots：更透明 / 更小 / 工業感 ===== */
 .gc-dots-overlay{
   position: absolute;
   left: 50%;
-  bottom: 14px;
+  bottom: 10px;                     /* ⬇ 更貼近底部 */
   transform: translateX(-50%);
   z-index: 30;
 
   display: flex;
-  gap: .5rem;
+  gap: .4rem;                       /* ⬅ 間距變小 */
 
-  padding: .45rem .75rem;
+  padding: .28rem .55rem;           /* ⬅ 整體更小 */
   border-radius: 999px;
-  border: 1px solid rgba(148,163,184,.28);
-  background: rgba(2,6,23,.45);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+
+  background: rgba(2,6,23,.28);     /* ⬅ 更透明 */
+  border: 1px solid rgba(148,163,184,.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* dots 外觀沿用你的 dot 風格，但放在 overlay 看起來更專業 */
+/* dot 本體 */
 .gc-dots-overlay .gc-dot{
-  width: 8px;
-  height: 8px;
+  width: 6px;                       /* ⬅ 更小 */
+  height: 6px;
   border-radius: 999px;
-  border: 1px solid rgba(148,163,184,.5);
-  background: rgba(148,163,184,.25);
+
+  border: 1px solid rgba(148,163,184,.45);
+  background: rgba(148,163,184,.18);
+
   cursor:pointer;
-  transition: transform 200ms ease, background 200ms ease, border-color 200ms ease;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease;
 }
+
+/* hover */
 .gc-dots-overlay .gc-dot:hover{
-  transform: scale(1.2);
-  border-color: rgba(250,204,21,.6);
+  transform: scale(1.25);
+  border-color: rgba(250,204,21,.55);
 }
+
+/* active */
 .gc-dots-overlay .gc-dot.is-active{
-  background: rgba(250,204,21,.9);
-  border-color: rgba(250,204,21,.9);
+  background: rgba(250,204,21,.85);
+  border-color: rgba(250,204,21,.85);
+  box-shadow: 0 0 6px rgba(250,204,21,.45);
 }
+
 
 /* caption 在圖片外、正下方 */
 .gc-bar{
