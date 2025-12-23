@@ -2391,14 +2391,64 @@
   }
 
   // ✅ About 滾動進場
+   // ✅ 全站：滾動進場淡入（自動套用到各區塊）
   (function () {
-    const els = document.querySelectorAll(".reveal");
+    // 1) 自動把常見區塊加上 reveal（你不用手動改 HTML）
+    const revealSelectors = [
+      ".section-header",
+      ".catalog-toolbar",
+      ".catalog-card",
+      ".project-card",
+      ".service-card",
+      ".gallery-carousel",
+      ".testimonial-card",
+      ".contact-form",
+      ".contact-block",
+      ".footer-grid > *"
+    ];
+
+    // 2) 需要「一群卡片」依序淡入的容器（stagger）
+    const staggerSelectors = [
+      ".services-grid",
+      ".projects-grid",
+      ".catalog-grid",
+      ".footer-grid",
+      ".contact-side"
+    ];
+
+    revealSelectors.forEach((sel) => {
+      document.querySelectorAll(sel).forEach((el) => {
+        el.classList.add("reveal");
+      });
+    });
+
+    staggerSelectors.forEach((sel) => {
+      document.querySelectorAll(sel).forEach((el) => {
+        el.classList.add("reveal", "stagger");
+      });
+    });
+
+    // 如果你不想空結果提示也淡入，可取消它的 reveal（避免看起來怪）
+    const empty = document.getElementById("catalogEmpty");
+    if (empty) empty.classList.remove("reveal", "stagger");
+
+    // 3) 初始化 IntersectionObserver
+    const els = Array.from(document.querySelectorAll(".reveal"));
     if (!els.length) return;
 
+    // 後備：不支援 IO 就直接顯示
     if (!("IntersectionObserver" in window)) {
       els.forEach((el) => el.classList.add("in"));
       return;
     }
+
+    // 小優化：避免「一開始就在視窗內的元素」閃一下
+    // 先把已經在畫面內的元素直接打開
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    els.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.92) el.classList.add("in");
+    });
 
     const io = new IntersectionObserver(
       (entries) => {
@@ -2409,11 +2459,17 @@
           }
         });
       },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -12% 0px"
+      }
     );
 
-    els.forEach((el) => io.observe(el));
+    els.forEach((el) => {
+      if (!el.classList.contains("in")) io.observe(el);
+    });
   })();
+
 
   // ✅ Contact：送到 Apps Script（企業感：按鈕下方顯示成功/失敗）
   async function handleContactSubmit(event) {
