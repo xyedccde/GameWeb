@@ -1562,21 +1562,79 @@
 }
 
 
-    /* ✅ Gallery：不要左右按鈕、不要頁數 */
+ /* =========================================================
+   ✅ Gallery v3：dots 壓在圖片上、caption 在圖片外下方
+   ========================================================= */
+
+/* 不要左右按鈕、不要頁數（保險：就算 HTML 還有也看不到） */
 .gc-btn{ display: none !important; }
 .gc-count{ display: none !important; }
+.gc-right{ display: none !important; } /* 你現在 HTML 已經沒有 gc-right，但保險 */
 
-/* ✅ 只保留「下方說明 + dots」並排好看 */
+/* dots 壓在圖片上（圖片內下方） */
+.gc-viewport{ position: relative; }
+
+.gc-dots-overlay{
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  z-index: 30;
+
+  display: flex;
+  gap: .5rem;
+
+  padding: .45rem .75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,.28);
+  background: rgba(2,6,23,.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* dots 外觀沿用你的 dot 風格，但放在 overlay 看起來更專業 */
+.gc-dots-overlay .gc-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,.5);
+  background: rgba(148,163,184,.25);
+  cursor:pointer;
+  transition: transform 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+.gc-dots-overlay .gc-dot:hover{
+  transform: scale(1.2);
+  border-color: rgba(250,204,21,.6);
+}
+.gc-dots-overlay .gc-dot.is-active{
+  background: rgba(250,204,21,.9);
+  border-color: rgba(250,204,21,.9);
+}
+
+/* caption 在圖片外、正下方 */
 .gc-bar{
-  grid-template-columns: 1fr auto; /* caption / dots */
+  display:block;
+  padding: 10px 12px 12px;
+  border-top: 1px solid rgba(255,255,255,.06);
+  background: rgba(2,6,23,.40);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .gc-caption{
-  grid-column: 1;
-  text-align: left;               /* 你想置中可改 center */
+  text-align: center; /* 你要左對齊就改 left */
+  font-size: .92rem;
+  color: #e5e7eb;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 .2rem;
 }
-.gc-right{
-  grid-column: 2;
+
+/* ✅ 輪播圖寬一點（你說要更寬） */
+.gallery-carousel{
+  max-width: 920px;  /* 你原本 700，這裡加寬；想更寬可改 980/1040 */
 }
+
 
   </style>
 </head>
@@ -2136,52 +2194,62 @@
           </p>
         </div>
 
-        <div class="gallery-carousel" id="galleryCarousel" aria-label="控制箱設計輪播">
-          <div class="gc-viewport">
-            <div class="gc-track">
-              <figure class="gc-slide is-active">
-                <div class="gc-media">
-                  <img src="images/panel-old-open.jpg" alt="舊型控制盤改善與配線整理" />
-                </div>
-                <figcaption class="gc-cap sr-only">舊型控制盤改善與配線整理</figcaption>
-              </figure>
+       <div class="gallery-carousel" id="galleryCarousel" aria-label="控制箱設計輪播">
+  <div class="gc-viewport">
+    <div class="gc-track">
+      <figure class="gc-slide is-active">
+        <div class="gc-media">
+          <img src="images/panel-old-open.jpg" alt="舊型控制盤改善與配線整理" />
+        </div>
+        <figcaption class="gc-cap sr-only">舊型控制盤改善與配線整理</figcaption>
+      </figure>
 
-              <figure class="gc-slide">
-                <div class="gc-media">
-                  <img src="images/panel-compact-plc.jpg" alt="多迴路 PLC 控制盤" />
-                </div>
-                <figcaption class="gc-cap sr-only">多迴路 PLC 控制盤</figcaption>
-              </figure>
+      <figure class="gc-slide">
+        <div class="gc-media">
+          <img src="images/panel-compact-plc.jpg" alt="多迴路 PLC 控制盤" />
+        </div>
+        <figcaption class="gc-cap sr-only">多迴路 PLC 控制盤</figcaption>
+      </figure>
 
-              <figure class="gc-slide">
-                <div class="gc-media">
-                  <img src="images/panel-hmi-front.jpg" alt="觸控 HMI 操作面板控制箱" />
-                </div>
-                <figcaption class="gc-cap sr-only">觸控 HMI 操作面板控制箱</figcaption>
-              </figure>
+      <figure class="gc-slide">
+        <div class="gc-media">
+          <img src="images/panel-hmi-front.jpg" alt="觸控 HMI 操作面板控制箱" />
+        </div>
+        <figcaption class="gc-cap sr-only">觸控 HMI 操作面板控制箱</figcaption>
+      </figure>
 
-              <figure class="gc-slide">
-                <div class="gc-media">
-                  <img src="images/panel-hmi-inside.jpg" alt="雙驅動器系統內部配線" />
-                </div>
-                <figcaption class="gc-cap sr-only">雙驅動器系統內部配線</figcaption>
-              </figure>
+      <figure class="gc-slide">
+        <div class="gc-media">
+          <img src="images/panel-hmi-inside.jpg" alt="雙驅動器系統內部配線" />
+        </div>
+        <figcaption class="gc-cap sr-only">雙驅動器系統內部配線</figcaption>
+      </figure>
 
-              <figure class="gc-slide">
-                <div class="gc-media">
-                  <img src="images/panel-teco-drive.jpg" alt="變頻器與控制器整合配線" />
-                </div>
-                <figcaption class="gc-cap sr-only">變頻器與控制器整合配線</figcaption>
-              </figure>
+      <figure class="gc-slide">
+        <div class="gc-media">
+          <img src="images/panel-teco-drive.jpg" alt="變頻器與控制器整合配線" />
+        </div>
+        <figcaption class="gc-cap sr-only">變頻器與控制器整合配線</figcaption>
+      </figure>
 
-              <figure class="gc-slide">
-                <div class="gc-media">
-                  <img src="images/panel-yellow-top.jpg" alt="大型控制箱端子台配置" />
-                </div>
-                <figcaption class="gc-cap sr-only">大型控制箱端子台配置</figcaption>
-              </figure>
-            </div>
-          </div>
+      <figure class="gc-slide">
+        <div class="gc-media">
+          <img src="images/panel-yellow-top.jpg" alt="大型控制箱端子台配置" />
+        </div>
+        <figcaption class="gc-cap sr-only">大型控制箱端子台配置</figcaption>
+      </figure>
+    </div>
+
+    <!-- ✅ dots：壓在圖片上（圖片內下方） -->
+    <div class="gc-dots gc-dots-overlay" aria-label="輪播頁碼"></div>
+  </div>
+
+  <!-- ✅ caption：在圖片外、正下方 -->
+  <div class="gc-bar">
+    <div class="gc-caption" id="gcCaption">舊型控制盤改善與配線整理</div>
+  </div>
+</div>
+
 
           <button class="gc-btn gc-prev" type="button" aria-label="上一張">‹</button>
           <button class="gc-btn gc-next" type="button" aria-label="下一張">›</button>
@@ -2771,13 +2839,13 @@
   </script>
 
 <script>
-/* ✅ Gallery Carousel: auto(3s) + dots + caption（無左右鍵、無頁數） */
+/* ✅ Gallery Carousel: auto(3s) + dots(壓在圖上) + caption(圖下)（無左右鍵、無頁數） */
 (function(){
   const root = document.getElementById("galleryCarousel");
   if (!root) return;
 
   const slides = Array.from(root.querySelectorAll(".gc-slide"));
-  const dotsWrap = root.querySelector(".gc-dots");
+  const dotsWrap = root.querySelector(".gc-dots-overlay");
   const captionEl = document.getElementById("gcCaption");
 
   if (!slides.length || !dotsWrap || !captionEl) return;
@@ -2803,11 +2871,10 @@
     return slides[i]?.querySelector("img")?.alt || "";
   }
 
-  function updateBar(){
+  function updateCaption(){
     captionEl.textContent = getCaption(idx);
   }
 
-  /* ✅ 低調視差：只位移很小（避免裁切） */
   function setParallaxForActive(dir){
     const active = slides[idx];
     if (!active) return;
@@ -2819,7 +2886,7 @@
   function applyActive(){
     slides.forEach((s, i) => s.classList.toggle("is-active", i === idx));
     dots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
-    updateBar();
+    updateCaption();
   }
 
   function go(nextIndex, reason){
@@ -2850,7 +2917,7 @@
   root.addEventListener("mouseenter", stop);
   root.addEventListener("mouseleave", start);
 
-  // ✅ 滑鼠呼吸式 parallax（更小幅度）
+  // 滑鼠呼吸式 parallax（很小幅度）
   const viewport = root.querySelector(".gc-viewport");
   if (viewport) {
     viewport.addEventListener("mousemove", (e) => {
@@ -2881,6 +2948,7 @@
   setParallaxForActive("next");
 })();
 </script>
+
 
 
 </body>
