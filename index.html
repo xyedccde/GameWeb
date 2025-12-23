@@ -1344,7 +1344,7 @@
    ======================================================================= */
 .gallery-carousel{
   position: relative;
-  max-width: 500px;                 /* ✅ 縮小：你想更小可改 760 / 820 */
+  max-width: 700px;                 /* ✅ 縮小：你想更小可改 760 / 820 */
   margin: 0 auto;
   border-radius: var(--radius-xl);
   border: 1px solid var(--color-border);
@@ -1559,6 +1559,23 @@
   color: #fecaca;
   border-left: 3px solid rgba(239,68,68,.7);
   padding-left: .6rem;
+}
+
+
+    /* ✅ Gallery：不要左右按鈕、不要頁數 */
+.gc-btn{ display: none !important; }
+.gc-count{ display: none !important; }
+
+/* ✅ 只保留「下方說明 + dots」並排好看 */
+.gc-bar{
+  grid-template-columns: 1fr auto; /* caption / dots */
+}
+.gc-caption{
+  grid-column: 1;
+  text-align: left;               /* 你想置中可改 center */
+}
+.gc-right{
+  grid-column: 2;
 }
 
   </style>
@@ -2753,20 +2770,17 @@
 })();
   </script>
 
-  <script>
-/* ✅ Gallery Carousel: auto(3s) + prev/next + dots + low-key parallax（不裁切版） */
+<script>
+/* ✅ Gallery Carousel: auto(3s) + dots + caption（無左右鍵、無頁數） */
 (function(){
   const root = document.getElementById("galleryCarousel");
   if (!root) return;
 
   const slides = Array.from(root.querySelectorAll(".gc-slide"));
   const dotsWrap = root.querySelector(".gc-dots");
-  const prevBtn = root.querySelector(".gc-prev");
-  const nextBtn = root.querySelector(".gc-next");
-  const countEl = document.getElementById("gcCount");
   const captionEl = document.getElementById("gcCaption");
 
-  if (!slides.length || !dotsWrap || !prevBtn || !nextBtn || !countEl || !captionEl) return;
+  if (!slides.length || !dotsWrap || !captionEl) return;
 
   let idx = 0;
   let timer = null;
@@ -2783,31 +2797,23 @@
   });
   const dots = Array.from(dotsWrap.querySelectorAll(".gc-dot"));
 
-  function pad(n){ return String(n).padStart(2, "0"); }
-
   function getCaption(i){
     const cap = slides[i]?.querySelector(".gc-cap");
     if (cap && cap.textContent.trim()) return cap.textContent.trim();
-    const imgAlt = slides[i]?.querySelector("img")?.alt || "";
-    return imgAlt;
+    return slides[i]?.querySelector("img")?.alt || "";
   }
 
   function updateBar(){
-    countEl.textContent = `${pad(idx+1)} / ${pad(slides.length)}`;
     captionEl.textContent = getCaption(idx);
   }
 
-  /* ✅ 低調視差：只位移很小，不縮放（避免裁切） */
+  /* ✅ 低調視差：只位移很小（避免裁切） */
   function setParallaxForActive(dir){
     const active = slides[idx];
     if (!active) return;
-
-    const start = dir === "prev" ? -8 : 8;   // 更小，避免邊緣感
+    const start = dir === "prev" ? -8 : 8;
     active.style.setProperty("--px", start + "px");
-
-    requestAnimationFrame(() => {
-      active.style.setProperty("--px", "0px");
-    });
+    requestAnimationFrame(() => active.style.setProperty("--px", "0px"));
   }
 
   function applyActive(){
@@ -2822,19 +2828,13 @@
     applyActive();
 
     let dir = "next";
-    if (reason === "prev") dir = "prev";
-    else if (reason === "next") dir = "next";
-    else dir = (idx > old ? "next" : "prev");
-
+    if (reason === "dot") dir = (idx >= old ? "next" : "prev");
     setParallaxForActive(dir);
+
     restart();
   }
 
-  function next(){ go(idx + 1, "next"); }
-  function prev(){ go(idx - 1, "prev"); }
-
-  prevBtn.addEventListener("click", prev);
-  nextBtn.addEventListener("click", next);
+  function next(){ go(idx + 1, "auto"); }
 
   function start(){
     stop();
@@ -2846,6 +2846,7 @@
   }
   function restart(){ start(); }
 
+  // hover 暫停
   root.addEventListener("mouseenter", stop);
   root.addEventListener("mouseleave", start);
 
@@ -2855,7 +2856,7 @@
     viewport.addEventListener("mousemove", (e) => {
       const r = viewport.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width; // 0..1
-      const offset = (x - 0.5) * 6;             // 最多 ±3px（低調）
+      const offset = (x - 0.5) * 6;             // 最多 ±3px
       const active = slides[idx];
       if (active) active.style.setProperty("--px", offset.toFixed(2) + "px");
     });
@@ -2880,6 +2881,7 @@
   setParallaxForActive("next");
 })();
 </script>
+
 
 </body>
 </html>
