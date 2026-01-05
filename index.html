@@ -675,23 +675,17 @@
 
     .brand { display: flex; align-items: center; gap: 0.6rem; }
 
-    .brand-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 11px;
-      background: conic-gradient(
-        from 200deg,
-        #ffb400,
-        #ff6f00,
-        #f97316,
-        #facc15,
-        #ffb400
-      );
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    }
+    .brand-mark{
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: transparent;        /* 移除原本漸層 */
+  box-shadow: 0 6px 18px rgba(0,0,0,.45);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;               /* 重點：裁切 logo */
+}
 
     .brand-mark span { font-size: 0.85rem; font-weight: 800; color: #111827; }
 
@@ -1659,7 +1653,9 @@
   <header class="site-header">
     <nav class="nav">
       <a href="#top" class="brand">
-        <span class="brand-mark"><span>JC</span></span>
+        <span class="brand-mark logo-img">
+  <img src="images/logo.png" alt="捷強工業有限公司 LOGO">
+</span>
         <span class="brand-text">
           <span class="brand-title">捷強工業有限公司</span>
           <span class="brand-sub">JYECHUN INDUSTRIAL</span>
