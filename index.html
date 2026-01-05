@@ -673,27 +673,28 @@
       margin: 0 auto;
     }
 
-    .brand{
+  /* ===== Header brand：改成簽名檔 banner 圖 ===== */
+.brand.brand-banner{
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0;
+  margin-right: 10px;           /* 想更靠近右邊選單就改小，例如 6px / 0 */
 }
 
-    .brand-mark{
-  width: 55px;
-  height: 55px;
-
-  border-radius: 50%;          /* 改成圓形，比 10px 更像章 */
-  background: transparent;
-
-  box-shadow: 0 4px 12px rgba(0,0,0,.35); /* 陰影變淡，不搶戲 */
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  flex-shrink: 0;              /* ⭐ 很重要，避免被文字擠 */
+/* 只控制高度，寬度自動等比例 */
+.brand-banner-img{
+  height: 56px;                 /* ⭐ logo 改大/改小就改這行 */
+  width: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.45)); /* 類似你原本陰影質感 */
 }
+
+/* 手機版縮小一點避免擠 */
+@media (max-width: 720px){
+  .brand-banner-img{ height: 44px; }
+}
+
 
 
     .brand-mark span { font-size: 0.85rem; font-weight: 800; color: #111827; }
@@ -1661,12 +1662,10 @@
   <!-- Header / Nav -->
   <header class="site-header">
     <nav class="nav">
-      <a href="#top" class="brand">
-        <span class="brand-mark logo-img">
-  <img src="logo-jyechun-banner.jpg" alt="捷強工業有限公司 LOGO">
-</span>
-        
-      </a>
+      <a href="#top" class="brand brand-banner" aria-label="捷強工業有限公司">
+  <img class="brand-banner-img" src="images/logo-jyechun-banner.jpg" alt="捷強工業有限公司">
+</a>
+
 
       <div class="nav-links">
         <a href="#hero">首頁</a>
