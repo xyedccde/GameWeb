@@ -1,33 +1,51 @@
-# 捷強工業有限公司｜官網（靜態單頁）
-https://jyechun.com.tw/
+# 捷強工業有限公司 官方網站
 
-JOE製作的公司形象官網（單頁式 Landing Page），包含服務介紹、案例展示、作品輪播、零件詢價區與聯絡表單。
+這是 **捷強工業有限公司** 的官方網站前端程式碼（純靜態 HTML/CSS/JavaScript）。
 
+🔗 **線上網站**：https://jyechun.com.tw/
+
+本專案為靜態網站設計，適合部署至 GitHub Pages 或任意靜態主機。
 
 ---
 
-## 功能摘要
-- **導覽列 + 行動版選單**：錨點平滑捲動，手機版可展開/收合
-- **Hero 背景與滑鼠光暈效果**：跟隨滑鼠位置的光暈視覺
-- **About / Services / Projects**：公司介紹與服務卡片展示
-- **電子零件販售（Catalog）**
-  - 關鍵字搜尋（品牌 / 型號 / 關鍵字）
-  - 品項卡片
-  - **品牌 → 規格**兩段式聯動下拉
-  - 一鍵「加入詢價」：把選擇的規格與詢價文字自動帶入聯絡表單
-  - 一鍵複製關鍵字
-  - 空結果提示（無符合品項）
-- **控制箱設計輪播（Gallery）**
-  - 自動輪播（3 秒）
-  - Dot 切換
-  - Caption 顯示（圖下方）
-  - Hover 暫停
-  - prefers-reduced-motion 支援
-- **聯絡表單**
-  - 前端驗證（姓名/電話/需求必填）
-  - 送到 Google Apps Script Web App（寫入 Google Sheet）
-  - 成功/失敗狀態提示
-- **Google Map 嵌入**
-- Footer 自動年份
+## 📌 內容簡介
 
+這個網站頁面包括：
 
+- 導覽列與行動版選單
+- Hero 版面與滑鼠光暈效果
+- About / Services / Projects 公司資訊區
+- 產品目錄（含搜尋 + 選擇品牌/規格）
+- 控制箱設計圖片輪播
+- 客戶回饋區
+- 聯絡表單（送出至 Google Apps Script）
+- Google 地圖嵌入
+
+所有互動都是前端 JavaScript 實作，不含後端程式。
+
+---
+
+## 🧠 技術與架構
+
+本網站採用純靜態 HTML/CSS/JS 架構：
+
+- **HTML**：單一頁面（index.html）
+- **CSS**：內嵌於 index.html（未拆分檔案）
+- **JS**：內嵌於 index.html（畫面互動、搜尋、下拉關聯、輪播、表單）
+
+圖片資源統一放在 `images/` 資料夾。
+
+---
+
+## 🚀 如何在本機執行
+
+推薦用本機 server 啟動避免路徑問題：
+
+### 方法 1：VS Code + Live Server
+1. 安裝 VS Code Live Server 外掛
+2. 打開 index.html
+3. 右鍵 → `Open with Live Server`
+
+### 方法 2：Python 內建伺服器
+```bash
+python -m http.server 5500
