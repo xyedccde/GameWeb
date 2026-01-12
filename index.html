@@ -4,2391 +4,299 @@
   <meta charset="UTF-8" />
   <title>捷強工業有限公司 | 自動控制・工業設計與配線</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="捷強工業有限公司，專精自動控制、工業設計與工業配線，提供客製化產線整合與電控工程服務。"
-  />
+  <meta name="description" content="捷強工業有限公司，專精自動控制、工業設計與工業配線，提供客製化產線整合與電控工程服務。" />
   <link rel="icon" href="/favicon.ico">
 
-  <!-- Google Fonts（可自行改成本機字型） -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* ===== Contact Map ===== */
-.contact-map{
-  margin-top: .9rem;
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(148,163,184,.35);
-  background: rgba(2,6,23,.35);
-  box-shadow: 0 12px 26px rgba(0,0,0,.35);
-}
-
-.contact-map iframe{
-  width: 100%;
-  height: 260px;
-  border: 0;
-  display: block;
-  filter: saturate(1.05) contrast(1.05);
-}
-
-@media (max-width: 720px){
-  .contact-map iframe{ height: 240px; }
-}
-    
-   /* ===== Catalog (Parts) ===== */
-.catalog { position: relative; overflow: hidden; }
-.catalog::before{
-  content:"";
-  position:absolute;
-  inset:-30%;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 25% 30%, rgba(34,197,94,.08), transparent 48%),
-    radial-gradient(circle at 70% 60%, rgba(250,204,21,.10), transparent 50%);
-  opacity:.9;
-}
-
-.catalog-toolbar{
-  display:flex;
-  gap: 1rem;
-  align-items:center;
-  justify-content: space-between;
-  margin: 0 auto 1.25rem;
-  max-width: var(--max-width);
-}
-
-.catalog-search{
-  flex: 1;
-  display:flex;
-  align-items:center;
-  gap: .6rem;
-  padding: .75rem .9rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148,163,184,.35);
-  background: rgba(15,23,42,.55);
-  backdrop-filter: blur(10px);
-  min-width: 260px;
-}
-.catalog-search input{
-  width: 100%;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: #e5e7eb;
-  font-size: .9rem;
-}
-.catalog-search input::placeholder{ color:#6b7280; }
-
-.catalog-hint{
-  display:flex;
-  gap:.5rem;
-  align-items:flex-start;
-  color: var(--color-muted);
-  font-size: .82rem;
-  max-width: 44ch;
-}
-.catalog-hint .hint-dot{
-  width: 8px; height: 8px; border-radius: 999px;
-  background: #22c55e;
-  box-shadow: 0 0 10px rgba(34,197,94,.6);
-  margin-top: .35rem;
-  flex: 0 0 auto;
-}
-
-.catalog-grid{
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.4rem;
-  position: relative;
-  z-index: 1;
-}
-
-.catalog-card{
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  background: radial-gradient(circle at top, #111827 0, #020617 85%);
-  box-shadow: 0 15px 35px rgba(0,0,0,.6);
-  overflow: hidden;
-  display:flex;
-  flex-direction: column;
-  transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
-  position: relative;
-}
-.catalog-card:hover{
-  transform: translateY(-6px) rotate(-.25deg);
-  border-color: rgba(250,204,21,.35);
-  box-shadow: 0 18px 50px rgba(0,0,0,.85);
-}
-.catalog-card::after{
-  content:"";
-  position:absolute;
-  inset:-40%;
-  background: linear-gradient(120deg, transparent 35%, rgba(250,204,21,.18), transparent 65%);
-  opacity:0;
-  transform: translateX(-20%);
-  transition: opacity .28s ease, transform .45s ease;
-  pointer-events:none;
-}
-.catalog-card:hover::after{ opacity:1; transform: translateX(20%); }
-
-.catalog-media{
-  position: relative;
-  height: 180px;
-  overflow:hidden;
-  background: #020617;
-}
-.catalog-media img{
-  width:100%;
-  height:100%;
-  object-fit: cover;
-  display:block;
-  filter: saturate(1.05) contrast(1.05);
-  transform: scale(1.02);
-  transition: transform .35s ease, filter .35s ease;
-}
-.catalog-card:hover .catalog-media img{
-  transform: scale(1.06);
-  filter: saturate(1.1) contrast(1.08);
-}
-.catalog-media::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(to top, rgba(2,6,23,.75), transparent 65%);
-  pointer-events:none;
-}
-
-.catalog-badge{
-  position:absolute;
-  left: .9rem;
-  bottom: .85rem;
-  padding: .18rem .6rem;
-  border-radius: 999px;
-  background: rgba(15,23,42,.82);
-  border: 1px solid rgba(248,250,252,.55);
-  font-size: .68rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-}
-
-.catalog-body{
-  padding: 1rem 1rem 1.1rem;
-  display:flex;
-  flex-direction: column;
-  gap: .8rem;
-  flex: 1;
-}
-
-.catalog-top{
-  display:flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: .75rem;
-}
-.catalog-title{ font-size: 1rem; font-weight: 650; }
-.catalog-price{
-  font-size: .9rem;
-  font-weight: 700;
-  color: #facc15;
-  white-space: nowrap;
-}
-
-.catalog-spec{
-  display:grid;
-  gap: .45rem;
-  font-size: .86rem;
-  color:#e5e7eb;
-}
-.catalog-spec li{
-  display:flex;
-  justify-content: space-between;
-  gap: .75rem;
-  padding-bottom: .35rem;
-  border-bottom: 1px dashed rgba(148,163,184,.22);
-}
-.sp-k{ color: var(--color-muted); min-width: 64px; }
-.sp-v{ text-align:right; color:#e5e7eb; }
-
-/* ✅ 二段式下拉樣式 */
-.catalog-select{
-  margin-top: .15rem;
-  display:grid;
-  gap: .45rem;
-  padding: .85rem .9rem;
-  border-radius: 14px;
-  border: 1px solid rgba(148,163,184,.22);
-  background: rgba(15,23,42,.55);
-}
-.catalog-select label{
-  font-size: .78rem;
-  color: var(--color-muted);
-  letter-spacing: .08em;
-}
-.catalog-select select{
-  width:100%;
-  border-radius: 12px;
-  border: 1px solid rgba(148,163,184,.5);
-  background: rgba(2,6,23,.7);
-  color:#e5e7eb;
-  padding: .6rem .7rem;
-  outline: none;
-}
-.catalog-select select:disabled{
-  opacity:.55;
-  cursor:not-allowed;
-}
-.catalog-selected-hint{
-  font-size: .78rem;
-  color: #a7f3d0;
-  border-left: 3px solid rgba(34,197,94,.65);
-  padding-left: .6rem;
-  margin-top: .1rem;
-  min-height: 1em;
-}
-
-.catalog-actions{
-  margin-top: auto;
-  display:flex;
-  gap: .6rem;
-  flex-wrap: wrap;
-}
-.catalog-btn{ padding: .68rem 1.05rem; font-size: .84rem; }
-.catalog-btn.ghost{ border-color: rgba(148,163,184,.5); }
-
-/* RWD */
-@media (max-width: 960px){
-  .catalog-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
-  .catalog-toolbar{ flex-direction: column; align-items: stretch; }
-  .catalog-hint{ max-width: none; }
-}
-@media (max-width: 720px){
-  .catalog-grid{ grid-template-columns: minmax(0,1fr); }
-  .catalog-media{ height: 200px; }
-}
-
-    /* ===== About v2 ===== */
-    .about-v2 { position: relative; overflow: hidden; }
-    .about-v2::before{
-      content:"";
-      position:absolute;
-      inset:-30%;
-      pointer-events:none;
-      background:
-        radial-gradient(circle at 18% 40%, rgba(250,204,21,.10), transparent 45%),
-        radial-gradient(circle at 78% 55%, rgba(249,115,22,.08), transparent 45%);
-      opacity:.9;
-    }
-
-    .about2-grid{
-      display:grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-      gap: 2.4rem;
-      align-items: start;
-      position: relative;
-      z-index: 1;
-    }
-
-    .about2-title{ font-size: 1.55rem; margin-bottom: .85rem; letter-spacing: .02em; }
-    .about2-lead p{
-      color: var(--color-muted);
-      font-size: .95rem;
-      line-height: 1.9;
-      max-width: 46ch;
-    }
-
-    .about2-highlights{
-      margin-top: 1.2rem;
-      display: grid;
-      gap: .8rem;
-    }
-    .hl{
-      display:flex;
-      gap:.75rem;
-      padding: .85rem .95rem;
-      border-radius: 16px;
-      border: 1px solid var(--color-border);
-      background: rgba(2,6,23,.28);
-      backdrop-filter: blur(10px);
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .hl:hover{
-      transform: translateY(-3px) rotate(-0.4deg);
-      border-color: rgba(250,204,21,.35);
-      box-shadow: 0 18px 40px rgba(0,0,0,.55);
-    }
-    .hl-title{ font-weight: 700; }
-    .hl-desc{ color: var(--color-muted); font-size: .88rem; margin-top: .15rem; }
-
-    .about2-kpis{
-      margin-top: 1.35rem;
-      display:flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-    }
-    .kpi{ min-width: 120px; }
-    .kpi-num{ font-size: 1.6rem; font-weight: 800; letter-spacing: .02em; }
-    .kpi-label{
-      font-size: .78rem;
-      color: var(--color-muted);
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      margin-top: .25rem;
-    }
-
-    .about2-mini{
-      margin-top: 1.15rem;
-      display:flex;
-      flex-wrap: wrap;
-      gap: .55rem;
-    }
-    .mini-pill{
-      font-size: .78rem;
-      color: #e5e7eb;
-      padding: .38rem .7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,.45);
-      background: rgba(15,23,42,.55);
-      transition: transform .22s ease, border-color .22s ease, background .22s ease;
-    }
-    .mini-pill:hover{
-      transform: translateY(-2px);
-      border-color: rgba(250,204,21,.55);
-      background: rgba(250,204,21,.08);
-    }
-
-    .about2-right{
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--color-border);
-      background: radial-gradient(circle at top, rgba(17,24,39,.85), rgba(2,6,23,.85));
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-      position: relative;
-    }
-    .about2-right::before{
-      content:"";
-      position:absolute;
-      inset:-40%;
-      background: radial-gradient(circle at 30% 20%, rgba(250,204,21,.18), transparent 55%);
-      opacity:.6;
-      pointer-events:none;
-      transition: opacity .25s ease;
-    }
-    .about2-right:hover::before{ opacity:.95; }
-
-    .about2-tabs{
-      padding: 1.1rem 1.1rem 1.15rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .ic{
-      width: 22px;
-      height: 22px;
-      stroke: #facc15;
-      stroke-width: 1.8;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      transition: transform .28s ease, stroke .28s ease;
-      flex: 0 0 auto;
-    }
-
-    .hl:hover .ic,
-    .p-card:hover .ic,
-    .cap-card:hover .ic{
-      transform: rotate(-6deg) scale(1.12);
-      stroke: #fb923c;
-    }
-
-    .hl::after,
-    .p-card::after,
-    .cap-card::after{
-      content:"";
-      position:absolute;
-      inset:-40%;
-      background: linear-gradient(
-        120deg,
-        transparent 35%,
-        rgba(250,204,21,.18),
-        transparent 65%
-      );
-      opacity:0;
-      transform: translateX(-20%);
-      transition: opacity .28s ease, transform .45s ease;
-      pointer-events:none;
-    }
-    .hl:hover::after,
-    .p-card:hover::after,
-    .cap-card:hover::after{
-      opacity:1;
-      transform: translateX(20%);
-    }
-
-.cap-head{ padding: .9rem 1rem 0; }
-.cap-title{ font-weight: 800; letter-spacing: .02em; font-size: 1.05rem; }
-.cap-sub{ color: var(--color-muted); font-size: .86rem; margin-top: .35rem; }
-
-.cap-grid{
-  margin-top: .95rem;
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: .8rem;
-}
-
-.cap-card{
-  position: relative;
-  overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid rgba(148,163,184,.22);
-  background: rgba(15,23,42,.55);
-  padding: .9rem .9rem .95rem;
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-  min-height: 112px;
-}
-
-.cap-card:hover{
-  transform: translateY(-4px) rotate(-0.35deg) scale(1.01);
-  border-color: rgba(250,204,21,.35);
-  box-shadow: 0 16px 34px rgba(0,0,0,.45);
-}
-
-.cap-top{
-  display:flex;
-  align-items:center;
-  gap: .7rem;
-}
-
-.cap-tt{
-  font-weight: 800;
-  font-size: .95rem;
-  letter-spacing: .01em;
-}
-
-.cap-line{
-  margin-top: .55rem;
-  color: #e5e7eb;
-  font-size: .86rem;
-  line-height: 1.55;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.cap-more{
-  margin-top: .35rem;
-  color: var(--color-muted);
-  font-size: .82rem;
-  line-height: 1.6;
-
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(4px);
-  overflow: hidden;
-
-  transition: max-height .35s ease, opacity .25s ease, transform .25s ease;
-}
-
-.cap-card:hover .cap-more{
-  max-height: 3.2em;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (max-width: 960px){
-  .cap-grid{ grid-template-columns: minmax(0,1fr); }
-}
-
-    .cap-foot{
-      margin-top: .9rem;
-      display:flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      padding: .1rem 0 0;
-    }
-    .foot-pill{
-      font-size: .74rem;
-      color:#e5e7eb;
-      padding: .32rem .65rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,.35);
-      background: rgba(2,6,23,.35);
-    }
-
-    .about2-note{
-      border-top: 1px solid rgba(255,255,255,.06);
-      padding: .85rem 1.1rem 1.05rem;
-      display:flex;
-      gap:.55rem;
-      align-items:flex-start;
-      color: var(--color-muted);
-      font-size: .82rem;
-      position: relative;
-      z-index: 1;
-    }
-    .note-dot{
-      width: 8px; height: 8px; border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 10px rgba(34,197,94,.6);
-      margin-top: .35rem;
-      flex: 0 0 auto;
-    }
-
-    .reveal{
-      opacity: 0;
-      transform: translateY(14px);
-      transition: opacity 700ms ease, transform 700ms ease;
-      will-change: opacity, transform;
-    }
-    .reveal.in{
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal.stagger > *{
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 700ms ease, transform 700ms ease;
-    }
-    .reveal.in.stagger > *{
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal.in.stagger > *:nth-child(1){ transition-delay:  40ms; }
-    .reveal.in.stagger > *:nth-child(2){ transition-delay: 100ms; }
-    .reveal.in.stagger > *:nth-child(3){ transition-delay: 160ms; }
-    .reveal.in.stagger > *:nth-child(4){ transition-delay: 220ms; }
-    .reveal.in.stagger > *:nth-child(5){ transition-delay: 280ms; }
-
-    @media (max-width: 960px){
-      .about2-grid{ grid-template-columns: minmax(0,1fr); }
-      .cap-grid{ grid-template-columns: minmax(0,1fr); }
-    }
-
-    .hero-copy > *{
-      opacity: 0;
-      transform: translateY(10px);
-      animation: heroStagger 700ms ease forwards;
-    }
-    .hero-copy > *:nth-child(1){ animation-delay: 80ms; }
-    .hero-copy > *:nth-child(2){ animation-delay: 160ms; }
-    .hero-copy > *:nth-child(3){ animation-delay: 240ms; }
-    .hero-copy > *:nth-child(4){ animation-delay: 320ms; }
-    .hero-copy > *:nth-child(5){ animation-delay: 400ms; }
-    @keyframes heroStagger{ to{ opacity: 1; transform: translateY(0); } }
-
+    /* ===== 全域變數與基礎 ===== */
     :root {
       --color-bg: #070b12;
-      --color-bg-soft: #101725;
-      --color-accent: #ffb400;
-      --color-accent-soft: rgba(255, 180, 0, 0.14);
-      --color-text: #f5f5f7;
+      --color-accent: #facc15;
+      --color-accent-hover: #fb923c;
+      --color-text: #f3f4f6;
       --color-muted: #9ca3af;
-      --color-border: rgba(255, 255, 255, 0.06);
+      --color-border: rgba(255, 255, 255, 0.08);
       --radius-lg: 18px;
       --radius-xl: 26px;
-      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.6);
-      --transition-fast: 0.2s ease-out;
-      --transition-med: 0.3s ease;
+      --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.7);
+      --transition-med: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       --max-width: 1120px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html, body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", "Microsoft JhengHei", sans-serif;
-      background: radial-gradient(circle at top, #1b2338 0, #050811 45%, #02040a 100%);
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Poppins", "Microsoft JhengHei", sans-serif;
+      background: #02040a;
       color: var(--color-text);
-      scroll-behavior: smooth;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 5rem 0; position: relative; }
+    section:nth-of-type(even) { background: radial-gradient(circle at top, #0f172a 0%, #02040a 100%); }
 
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
+    /* 高亮搜尋文字樣式 */
+    .highlight { background: rgba(250, 204, 21, 0.3); color: #fff; border-radius: 2px; padding: 0 2px; }
 
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    section { padding: 4.5rem 0; }
-    section:nth-of-type(even) {
-      background: radial-gradient(circle at top, #151a27 0, #050812 60%);
-    }
-
-    .section-header { text-align: center; margin-bottom: 3rem; }
-    .section-kicker {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.78rem;
-      color: var(--color-accent);
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-    }
-    .section-title {
-      font-size: clamp(1.9rem, 3.3vw, 2.3rem);
-      font-weight: 700;
-      letter-spacing: 0.03em;
-    }
-    .section-subtitle {
-      margin-top: 0.75rem;
-      color: var(--color-muted);
-      max-width: 540px;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 0.95rem;
-    }
-
-    /* Header / Nav */
+    /* ===== Header & Nav ===== */
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(20px);
-      background: linear-gradient(
-        to bottom,
-        rgba(3, 6, 15, 0.96),
-        rgba(3, 6, 15, 0.8),
-        transparent
-      );
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(3, 6, 15, 0.85);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--color-border);
     }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem 1.5rem;
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-  /* ===== Header brand：改成簽名檔 banner 圖 ===== */
-.brand.brand-banner{
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin-right: 10px;           /* 想更靠近右邊選單就改小，例如 6px / 0 */
-}
-
-/* 只控制高度，寬度自動等比例 */
-.brand-banner-img{
-  height: 42px;                 /* ⭐ logo 改大/改小就改這行 */
-  width: auto;
-  display: block;
-  object-fit: contain;
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,.45)); /* 類似你原本陰影質感 */
-}
-
-/* 手機版縮小一點避免擠 */
-@media (max-width: 720px){
-  .brand-banner-img{ height: 44px; }
-}
-
-
-
-    .brand-mark span { font-size: 0.85rem; font-weight: 800; color: #111827; }
-
-    .brand-text { display: flex; flex-direction: column; line-height: 1.05; }
-
-    .brand-title { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.05em; }
-    .brand-sub {
-      font-size: 0.7rem;
-      color: var(--color-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    .nav-links { display: flex; align-items: center; gap: 1.75rem; font-size: 0.9rem; }
-
-    .nav-links a { position: relative; padding-bottom: 0.1rem; }
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0%;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #ffb400, #f97316);
-      transition: width var(--transition-fast);
-    }
-    .nav-links a:hover::after { width: 100%; }
-
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.5rem; max-width: var(--max-width); margin: 0 auto; }
+    .brand-banner-img { height: 42px; width: auto; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)); transition: transform 0.3s; }
+    .brand-banner-img:hover { transform: scale(1.02); }
+    .nav-links { display: flex; gap: 2rem; font-size: 0.95rem; align-items: center; }
+    .nav-links a { color: var(--color-muted); transition: color 0.3s; position: relative; }
+    .nav-links a:hover { color: var(--color-accent); }
     .nav-cta {
-      padding: 0.55rem 1.3rem;
-      border-radius: 999px;
-      border: 1px solid rgba(250, 204, 21, 0.7);
-      background: radial-gradient(circle at top left, #facc15 0, #f97316 40%, #7c2d12 100%);
-      color: #111827;
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
-      cursor: pointer;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-        filter var(--transition-fast);
-    }
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
+      padding: 0.6rem 1.4rem; border-radius: 999px;
+      background: linear-gradient(135deg, #facc15 0%, #f97316 100%);
+      color: #000; font-weight: 700; font-size: 0.85rem; border: none; cursor: pointer;
     }
 
-    .nav-toggle {
-      display: none;
-      cursor: pointer;
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-toggle span {
-      width: 16px;
-      height: 2px;
-      border-radius: 999px;
-      background: #e5e7eb;
-      position: relative;
-      transition: all var(--transition-med);
-    }
-
-    .nav-toggle span::before,
-    .nav-toggle span::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 16px;
-      height: 2px;
-      border-radius: 999px;
-      background: #e5e7eb;
-      transition: all var(--transition-med);
-    }
-
-    .nav-toggle span::before { top: -5px; }
-    .nav-toggle span::after { top: 5px; }
-
-    .nav-toggle.active span { background: transparent; }
-    .nav-toggle.active span::before { top: 0; transform: rotate(45deg); }
-    .nav-toggle.active span::after { top: 0; transform: rotate(-45deg); }
-
-    .nav-mobile { display: none; }
-    .nav-mobile.open { display: block; }
-
-    .nav-mobile-inner {
-      padding: 0.3rem 1.5rem 0.75rem;
-      border-top: 1px solid rgba(148, 163, 184, 0.3);
-      background: rgba(6, 10, 20, 0.95);
-      backdrop-filter: blur(16px);
-    }
-
-    .nav-mobile-inner a {
-      display: block;
-      padding: 0.55rem 0;
-      font-size: 0.9rem;
-      color: #e5e7eb;
-    }
-
-    .hero {
-      padding-top: 4rem;
-      padding-bottom: 4.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image: url("images/bg-control-cabinet-real.jpg");
-  background-size: cover;
-  background-position: center;
-  opacity: 0.06;          /* 關鍵：低調專業 */
-  filter: grayscale(1) contrast(1.05);
-  pointer-events: none;
-  z-index: 0;
-}
-
-
-.hero > *{
-  position: relative;
-  z-index: 1;
-}
-
+    /* ===== Hero ===== */
+    .hero { padding: 8rem 0 6rem; overflow: hidden; text-align: center; }
     .hero::before {
-      content: "";
-      position: absolute;
-      inset: -30%;
-      pointer-events: none;
-      background:
-        radial-gradient(650px 420px at var(--mx, 50%) var(--my, 35%), rgba(250, 204, 21, 0.18), transparent 60%),
-        radial-gradient(circle at 75% 25%, rgba(249, 115, 22, 0.12), transparent 40%),
-        radial-gradient(circle at 60% 75%, rgba(34, 197, 94, 0.08), transparent 42%);
-      animation: heroGlow 8s ease-in-out infinite alternate;
-    }
-
-    @keyframes heroGlow {
-      0% { transform: translate3d(0,0,0) scale(1); opacity: .9; }
-      100% { transform: translate3d(0,-6px,0) scale(1.03); opacity: 1; }
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 0;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-copy {
-      text-align: center;
-      max-width: 920px;
-      padding: 0 0.5rem;
-      margin: 0 auto;
-      animation: heroIn 800ms ease both;
-    }
-
-    @keyframes heroIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: radial-gradient(circle at top left, rgba(250, 204, 21, 0.2), transparent);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      margin: 0 auto 0.9rem;
-      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
-    }
-    .hero-kicker:hover {
-      transform: translateY(-2px);
-      border-color: rgba(250, 204, 21, 0.7);
-      background: rgba(250, 204, 21, 0.08);
-    }
-
-    .hero-kicker-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: radial-gradient(circle at center, #facc15, #f97316);
-      box-shadow: 0 0 10px rgba(250, 204, 21, 0.8);
-      animation: pulse 1.6s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      100% { transform: scale(1.7); opacity: 0; }
-    }
-
-    .hero-title {
-      font-size: clamp(2.5rem, 4.2vw, 3.2rem);
-      line-height: 1.08;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-title span { margin-bottom: 0.18rem; display: block; }
-
-    .hero-title-accent {
-      background: linear-gradient(120deg, #facc15, #fb923c, #f97316);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 20px rgba(250, 204, 21, 0.12);
-      animation: accentShine 2.8s ease-in-out infinite;
-      display: inline-block;
-      transition: transform 220ms ease, filter 220ms ease;
-    }
-    .hero-title-accent:hover { transform: translateY(-2px); filter: brightness(1.08); }
-
-    @keyframes accentShine {
-      0%, 100% { filter: brightness(1); transform: translateY(0); }
-      50% { filter: brightness(1.12); transform: translateY(-1px); }
-    }
-
-    .hero-lead {
-      max-width: 680px;
-      line-height: 1.85;
-      margin: 1.1rem auto 2rem;
-      color: var(--color-muted);
-      font-size: 0.98rem;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-
-    .hero-pill {
-      padding: 0.45rem 0.85rem;
-      border-radius: 999px;
-      border: 1px solid var(--color-border);
-      font-size: 0.76rem;
-      color: var(--color-muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(2, 6, 23, 0.25);
-      backdrop-filter: blur(10px);
-      transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
-    }
-    .hero-pill:hover {
-      transform: translateY(-2px);
-      border-color: rgba(250, 204, 21, 0.45);
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.42);
-    }
-
-    .hero-pill-count {
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 1);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      font-size: 0.72rem;
-      color: #e5e7eb;
-    }
-
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; }
-
-    .btn {
-      border-radius: 999px;
-      padding: 0.75rem 1.6rem;
-      font-size: 0.9rem;
-      border: 1px solid transparent;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-        background var(--transition-fast), color var(--transition-fast),
-        border-color var(--transition-fast), filter var(--transition-fast);
-      will-change: transform;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn::after {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.22), transparent 48%);
-      opacity: 0;
-      transition: opacity 220ms ease;
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(250, 204, 21, 0.12) 0%, transparent 50%);
       pointer-events: none;
     }
-    .btn:hover::after { opacity: 1; }
+    .hero-kicker { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.4rem 1rem; border-radius: 999px; border: 1px solid var(--color-border); background: rgba(255,255,255,0.03); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 1.5rem; }
+    .hero-kicker-dot { width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%; box-shadow: 0 0 12px var(--color-accent); animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+    .hero-title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero-title-accent { background: linear-gradient(to right, #facc15, #f97316); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-lead { max-width: 700px; margin: 0 auto 2.5rem; color: var(--color-muted); font-size: 1.1rem; }
+    .btn { padding: 0.8rem 2rem; border-radius: 999px; font-weight: 600; cursor: pointer; transition: var(--transition-med); display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid transparent; }
+    .btn-primary { background: var(--color-accent); color: #000; box-shadow: 0 10px 20px rgba(250, 204, 21, 0.2); }
+    .btn-primary:hover { transform: translateY(-3px); filter: brightness(1.1); }
+    .btn-ghost { background: transparent; border-color: var(--color-border); color: #fff; }
+    .btn-ghost:hover { background: rgba(255,255,255,0.05); }
 
-    .btn-primary {
-      background: radial-gradient(circle at top left, #facc15 0, #f97316 45%, #7c2d12 110%);
-      color: #111827;
-      box-shadow: var(--shadow-soft);
-      border-color: rgba(250, 204, 21, 0.6);
+    /* ===== Services & Cards ===== */
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+    .section-kicker { color: var(--color-accent); font-size: 0.8rem; letter-spacing: 3px; font-weight: 600; }
+    .services-grid, .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    .service-card, .project-card, .catalog-card {
+      background: #0f172a; border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+      padding: 2rem; transition: var(--transition-med); position: relative; overflow: hidden;
     }
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
-    }
+    .service-card:hover, .project-card:hover { transform: translateY(-10px); border-color: rgba(250, 204, 21, 0.3); box-shadow: var(--shadow-soft); }
 
-    .btn-ghost {
-      background: rgba(15, 23, 42, 0.7);
-      border-color: rgba(148, 163, 184, 0.5);
-      color: #e5e7eb;
-    }
-    .btn-ghost:hover { background: rgba(15, 23, 42, 0.95); transform: translateY(-1px); }
+    /* ===== Catalog ===== */
+    .catalog-toolbar { margin-bottom: 2rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
+    .catalog-search { position: relative; flex: 1; min-width: 300px; }
+    .catalog-search input { width: 100%; padding: 1rem 1.5rem; border-radius: 999px; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--color-border); color: #fff; outline: none; transition: 0.3s; }
+    .catalog-search input:focus { border-color: var(--color-accent); box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.1); }
+    .catalog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
+    .catalog-media { height: 200px; margin: -2rem -2rem 1.5rem; overflow: hidden; }
+    .catalog-media img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+    .catalog-card:hover .catalog-media img { transform: scale(1.1); }
+    .catalog-price { color: var(--color-accent); font-weight: 700; font-size: 1.2rem; }
+    .catalog-select select { width: 100%; padding: 0.6rem; border-radius: 8px; background: #02040a; border: 1px solid var(--color-border); color: #fff; margin-top: 0.5rem; }
 
-    .btn-icon { font-size: 1.1rem; line-height: 1; }
+    /* ===== Gallery Carousel (V3 改良) ===== */
+    .gallery-carousel { max-width: 900px; margin: 0 auto; border-radius: var(--radius-xl); overflow: hidden; border: 1px solid var(--color-border); background: #000; position: relative; }
+    .gc-track { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); cursor: grab; }
+    .gc-track:active { cursor: grabbing; }
+    .gc-slide { min-width: 100%; height: 500px; position: relative; }
+    .gc-slide img { width: 100%; height: 100%; object-fit: contain; padding: 20px; }
+    .gc-dots-overlay { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
+    .gc-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); border: none; cursor: pointer; transition: 0.3s; }
+    .gc-dot.is-active { background: var(--color-accent); width: 24px; border-radius: 10px; }
+    .gc-bar { background: rgba(15, 23, 42, 0.9); padding: 1rem; text-align: center; border-top: 1px solid var(--color-border); }
 
-    .btn-breathe { animation: breathe 2.4s ease-in-out infinite; }
-    @keyframes breathe {
-      0%, 100% { transform: translateY(0) scale(1); filter: brightness(1); }
-      50% { transform: translateY(-1px) scale(1.012); filter: brightness(1.05); }
-    }
+    /* ===== Contact ===== */
+    .contact-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 3rem; }
+    .field { margin-bottom: 1.2rem; }
+    .field label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--color-muted); }
+    .field input, .field textarea { width: 100%; padding: 0.8rem 1rem; border-radius: 12px; background: #02040a; border: 1px solid var(--color-border); color: #fff; outline: none; }
+    .field input:focus, .field textarea:focus { border-color: var(--color-accent); }
+    .contact-map { height: 300px; border-radius: var(--radius-lg); overflow: hidden; margin-top: 1.5rem; border: 1px solid var(--color-border); }
+    .contact-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(1) invert(0.9) contrast(1.2); }
 
-    /* Services */
-    .services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.7rem; }
+    /* ===== Footer ===== */
+    .site-footer { padding: 4rem 0 2rem; border-top: 1px solid var(--color-border); background: #02040a; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
 
-    .service-card {
-      background: radial-gradient(circle at top, #111827 0, #020617 85%);
-      border-radius: var(--radius-lg);
-      padding: 1.4rem 1.4rem 1.5rem;
-      border: 1px solid var(--color-border);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-      position: relative;
-      overflow: hidden;
-      transition: transform var(--transition-med), box-shadow var(--transition-med),
-        border-color var(--transition-med);
-    }
-
-    .service-card::before {
-      content: "";
-      position: absolute;
-      inset: -30%;
-      opacity: 0;
-      background: radial-gradient(circle at top left, rgba(250, 204, 21, 0.28), transparent 55%);
-      transition: opacity var(--transition-med);
-      pointer-events: none;
-    }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(220, 252, 231, 0.35);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.85);
-    }
-
-    .service-card:hover::before { opacity: 1; }
-
-    .service-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 13px;
-      background: var(--color-accent-soft);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
-    }
-
-    .service-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.45rem; }
-    .service-desc { font-size: 0.9rem; color: var(--color-muted); margin-bottom: 0.9rem; }
-
-    .service-meta {
-      font-size: 0.8rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #9ca3af;
-    }
-
-    .service-tag {
-      padding: 0.1rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.65);
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    .projects-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
-    .project-card {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: #020617;
-      border: 1px solid var(--color-border);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.7);
-      display: flex;
-      flex-direction: column;
-      transition: transform var(--transition-med), box-shadow var(--transition-med),
-        border-color var(--transition-med);
-    }
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
-      border-color: rgba(251, 146, 60, 0.85);
-    }
-    .project-media { height: 160px; position: relative; overflow: hidden; background: #020617; }
-    .project-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .project-media::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15, 23, 42, 0.45), transparent 55%); }
-    .project-label {
-      position: absolute;
-      left: 0.9rem;
-      bottom: 0.7rem;
-      padding: 0.18rem 0.55rem;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.78);
-      border: 1px solid rgba(248, 250, 252, 0.6);
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-    .project-body { padding: 1rem 1rem 1.1rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
-    .project-title { font-size: 0.98rem; font-weight: 600; }
-    .project-desc { font-size: 0.86rem; color: var(--color-muted); }
-    .project-meta { font-size: 0.78rem; color: #9ca3af; display: flex; justify-content: space-between; align-items: center; margin-top: 0.3rem; }
-
-    .work-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.3rem; }
-    .work-card {
-      background: radial-gradient(circle at top, #111827 0, #020617 85%);
-      border-radius: 16px;
-      border: 1px solid var(--color-border);
-      overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-      font-size: 0.82rem;
-      color: #e5e7eb;
-    }
-    .work-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
-    .work-card figcaption { padding: 0.7rem 0.85rem 0.8rem; }
-
-    .testimonial-card {
-      max-width: 720px;
-      margin: 0 auto;
-      border-radius: var(--radius-xl);
-      padding: 2.2rem 2.1rem 2rem;
-      border: 1px solid var(--color-border);
-      background: radial-gradient(circle at top, #0f172a 0, #020617 75%);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-    .testimonial-card::before {
-      content: "";
-      position: absolute;
-      inset: -20%;
-      background: radial-gradient(circle at top left, rgba(250, 204, 21, 0.28), transparent 55%);
-      opacity: 0.35;
-      pointer-events: none;
-    }
-    .testimonial-inner { position: relative; z-index: 1; }
-    .testimonial-quote-mark { font-size: 2.5rem; line-height: 1; color: rgba(251, 191, 36, 0.6); margin-bottom: 0.2rem; }
-    .testimonial-text { font-size: 0.98rem; color: #e5e7eb; margin-bottom: 1.4rem; }
-    .testimonial-author { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .testimonial-author-main { display: flex; align-items: center; gap: 0.8rem; }
-    .testimonial-avatar { width: 40px; height: 40px; border-radius: 999px; border: 2px solid #facc15; background: radial-gradient(circle at top, #facc15, #0f172a); }
-    .testimonial-author-name { font-size: 0.92rem; font-weight: 600; }
-    .testimonial-author-role { font-size: 0.78rem; color: var(--color-muted); }
-    .testimonial-badge {
-      padding: 0.35rem 0.8rem;
-      border-radius: 999px;
-      background: rgba(22, 163, 74, 0.12);
-      border: 1px solid rgba(52, 211, 153, 0.7);
-      font-size: 0.76rem;
-      color: #a7f3d0;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-    .testimonial-badge-dot { width: 7px; height: 7px; border-radius: 999px; background: #22c55e; box-shadow: 0 0 10px rgba(34, 197, 94, 0.9); }
-
-    .contact-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 2.5rem; align-items: flex-start; }
-    .contact-form { border-radius: var(--radius-lg); border: 1px solid var(--color-border); padding: 1.6rem 1.5rem 1.7rem; background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.2), #020617); box-shadow: var(--shadow-soft); }
-    .contact-form-row { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 1rem; }
-    .field { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.86rem; }
-    .field label { color: #e5e7eb; }
-    .field input, .field textarea {
-      border-radius: 12px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      background: rgba(15, 23, 42, 0.9);
-      color: #f9fafb;
-      padding: 0.6rem 0.8rem;
-      font-size: 0.9rem;
-      outline: none;
-      resize: vertical;
-      min-height: 42px;
-      transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
-        background var(--transition-fast);
-    }
-    .field input::placeholder, .field textarea::placeholder { color: #6b7280; }
-    .field input:focus, .field textarea:focus {
-      border-color: rgba(251, 146, 60, 0.88);
-      box-shadow: 0 0 0 1px rgba(251, 146, 60, 0.8);
-      background: #020617;
-    }
-    .contact-note { font-size: 0.78rem; color: var(--color-muted); margin-top: 0.7rem; }
-    .contact-side { display: flex; flex-direction: column; gap: 1.4rem; }
-    .contact-block { border-radius: var(--radius-lg); border: 1px solid var(--color-border); padding: 1.2rem 1.2rem 1.3rem; background: rgba(15, 23, 42, 0.85); }
-    .contact-block h4 { font-size: 0.95rem; margin-bottom: 0.4rem; }
-    .contact-block p { font-size: 0.85rem; color: var(--color-muted); }
-    .contact-list { margin-top: 0.75rem; display: grid; gap: 0.45rem; font-size: 0.86rem; }
-    .contact-list span { display: inline-flex; align-items: center; gap: 0.35rem; }
-    .contact-dot { width: 7px; height: 7px; border-radius: 999px; background: #f97316; }
-
-    .site-footer { border-top: 1px solid rgba(31, 41, 55, 1); background: #020617; padding: 2.5rem 0 1.8rem; margin-top: 2rem; }
-    .footer-grid { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; display: grid; grid-template-columns: 2.1fr 1.2fr 1.2fr; gap: 1.8rem; }
-    .footer-logo { max-width: 280px; height: auto; display: block; margin-bottom: 0.7rem; }
-    .footer-brand-desc { font-size: 0.86rem; color: var(--color-muted); max-width: 340px; margin-top: 0.2rem; }
-    .footer-heading { font-size: 0.92rem; margin-bottom: 0.5rem; font-weight: 600; }
-    .footer-links { font-size: 0.84rem; color: var(--color-muted); display: grid; gap: 0.3rem; }
-    .footer-links a:hover { color: #e5e7eb; }
-    .footer-legal {
-  max-width: var(--max-width);
-  margin: 1.8rem auto 0;
-  padding: 0 1.5rem;
-
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-
-  font-size: 0.78rem;
-  color: #6b7280;
-  text-align: center;
-}
-
+    /* ===== RWD ===== */
     @media (max-width: 960px) {
-      .contact-grid { grid-template-columns: minmax(0, 1fr); }
-      .hero { padding-top: 2.8rem; }
-      .services-grid, .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .work-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .footer-grid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
-    }
-    @media (max-width: 720px) {
+      .contact-grid, .footer-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      .nav-toggle { display: inline-flex; }
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .services-grid, .projects-grid { grid-template-columns: minmax(0, 1fr); }
-      .contact-form-row { grid-template-columns: minmax(0, 1fr); }
-      .work-gallery { grid-template-columns: minmax(0, 1fr); }
-      .footer-grid { grid-template-columns: minmax(0, 1fr); }
-      section { padding: 3.5rem 0; }
-      .testimonial-card { padding: 1.8rem 1.6rem 1.7rem; }
+      .gc-slide { height: 350px; }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .btn-breathe, .hero::before, .hero-copy, .hero-title-accent, .hero-kicker-dot, .hero-copy > * {
-        animation: none !important;
-      }
-      .reveal, .reveal *{ transition: none !important; transform: none !important; opacity: 1 !important; }
-      * { scroll-behavior: auto !important; }
-    }
-
-    /* ===== Catalog Search: empty state + prevent layout jump ===== */
-.catalog-grid{
-  min-height: 260px;
-}
-
-.catalog-empty{
-  grid-column: 1 / -1;
-  border-radius: var(--radius-lg);
-  border: 1px dashed rgba(148,163,184,.35);
-  background: rgba(2,6,23,.35);
-  padding: 1.2rem 1.1rem;
-  color: var(--color-muted);
-  display: none;
-}
-
-.catalog-empty strong{
-  color: #e5e7eb;
-}
-
-/* ✅ Hide green indicator when no selection ===== */
-.catalog-selected-hint:empty { display: none; }
-
-/* =========================
-   Header / Nav：更活潑但專業（覆蓋版）
-========================= */
-.site-header{
-  position: sticky;
-  top: 0;
-  z-index: 50;
-
-  background: linear-gradient(
-    to bottom,
-    rgba(3,6,15,.88),
-    rgba(3,6,15,.75)
-  );
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  transition: background .35s ease, box-shadow .35s ease;
-}
-.site-header::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:
-    radial-gradient(
-      600px 120px at var(--hx, 50%) 0%,
-      rgba(250,204,21,.12),
-      transparent 60%
-    );
-  opacity: .35;
-  transition: opacity .35s ease;
-}
-.site-header:hover::after{ opacity: .7; }
-.site-header:hover{
-  box-shadow:
-    0 18px 55px rgba(0,0,0,.65),
-    inset 0 -1px 0 rgba(250,204,21,.15);
-}
-
-/* ===== Accessibility helper ===== */
-.sr-only{
-  position:absolute !important;
-  width:1px !important;
-  height:1px !important;
-  padding:0 !important;
-  margin:-1px !important;
-  overflow:hidden !important;
-  clip: rect(0,0,0,0) !important;
-  white-space: nowrap !important;
-  border:0 !important;
-}
-
-/* =======================================================================
-   ✅ 控制箱設計輪播：v2（縮小 + 完整顯示 + 說明/頁數移到下方不擋圖）
-   ======================================================================= */
-.gallery-carousel{
-  position: relative;
-  max-width: 700px;                 /* ✅ 縮小：你想更小可改 760 / 820 */
-  margin: 0 auto;
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border);
-  background: radial-gradient(circle at top, rgba(17,24,39,.75), rgba(2,6,23,.9));
-  box-shadow: var(--shadow-soft);
-  overflow: hidden;
-}
-
-.gallery-carousel::before{
-  content:"";
-  position:absolute;
-  inset:-30%;
-  background:
-    radial-gradient(circle at 25% 35%, rgba(250,204,21,.10), transparent 52%),
-    radial-gradient(circle at 75% 60%, rgba(34,197,94,.07), transparent 55%);
-  opacity:.9;
-  pointer-events:none;
-}
-
-.gc-viewport{
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-xl);
-}
-
-/* ✅ 固定舞台高度（小一點） */
-.gc-track{
-  position: relative;
-  height: 400px;                    /* ✅ 桌機高度 */
-}
-
-/* slide 疊在一起切換 */
-.gc-slide{
-  position:absolute;
-  inset:0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 650ms ease;
-}
-.gc-slide.is-active{
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* ✅ 內縮讓 parallax 位移也不會裁切邊界 */
-.gc-media{
-  position: absolute;
-  inset: 0;
-  padding: 12px;                    /* ✅ 這行很重要：位移不會把邊緣推掉 */
-  overflow: hidden;
-}
-
-.gc-media img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;              /* ✅ 完整顯示，不裁切 */
-  object-position: center;
-  background: rgba(2,6,23,.35);
-  border-radius: 18px;
-
-  /* ✅ 低調視差：只做微位移，不做 scale（避免裁切） */
-  transform: translate3d(var(--px, 0px), 0, 0);
-  transition: transform 950ms cubic-bezier(.2,.8,.2,1), filter 650ms ease;
-  filter: saturate(1.05) contrast(1.05);
-  will-change: transform;
-}
-
-.gc-media::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(to top, rgba(2,6,23,.35), rgba(2,6,23,.10) 55%, rgba(2,6,23,.02));
-  pointer-events:none;
-}
-
-/* ✅ 上下張按鈕：永遠不被擋到 */
-.gc-btn{
-  position:absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  border: 1px solid rgba(250,204,21,.45);
-  background: rgba(15,23,42,.72);
-  color: #facc15;
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: opacity 200ms ease, transform 200ms ease, background 200ms ease, box-shadow 200ms ease;
-  z-index: 20;
-  opacity: .70;
-}
-.gallery-carousel:hover .gc-btn{ opacity: 1; }
-.gc-btn:hover{
-  background: rgba(15,23,42,.95);
-  box-shadow: 0 8px 25px rgba(250,204,21,.35);
-  transform: translateY(-50%) scale(1.08);
-}
-.gc-prev{ left: .6rem; }
-.gc-next{ right: .6rem; }
-
-/* ✅ 圖下資訊列：caption 視覺置中，右側控制固定 */
-.gc-bar{
-  display: grid;
-  grid-template-columns: 1fr auto 1fr; /* 左空白 / 中caption / 右控制 */
-  align-items: center;
-  gap: 12px;
-  padding: 10px 12px 12px;
-  border-top: 1px solid rgba(255,255,255,.06);
-  background: rgba(2,6,23,.40);
-  backdrop-filter: blur(10px);
-}
-
-/* 中央文字：真正視覺置中 */
-.gc-caption{
-  grid-column: 2;
-  text-align: center;
-  font-size: .92rem;
-  color: #e5e7eb;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0 .2rem;
-}
-
-/* 右側 dots + 頁數 */
-.gc-right{
-  grid-column: 3;
-  justify-self: end;
-  display: flex;
-  align-items: center;
-  gap: .8rem;
-  flex: 0 0 auto;
-}
-
-/* dots（可點） */
-.gc-dots{
-  display:flex;
-  gap: .45rem;
-  padding: .45rem .7rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148,163,184,.22);
-  background: rgba(2,6,23,.35);
-  backdrop-filter: blur(10px);
-}
-
-.gc-dot{
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(148,163,184,.5);
-  background: rgba(148,163,184,.25);
-  cursor:pointer;
-  transition: transform 200ms ease, background 200ms ease, border-color 200ms ease;
-}
-.gc-dot:hover{
-  transform: scale(1.2);
-  border-color: rgba(250,204,21,.6);
-}
-.gc-dot.is-active{
-  background: rgba(250,204,21,.9);
-  border-color: rgba(250,204,21,.9);
-}
-
-.gc-count{
-  font-size: .82rem;
-  color: rgba(229,231,235,.85);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-
-/* RWD */
-@media (max-width: 960px){
-  .gallery-carousel{ max-width: 100%; }
-  .gc-track{ height: 360px; }
-}
-@media (max-width: 720px){
-  .gc-track{ height: 260px; }
-  .gc-btn{ width: 40px; height: 40px; }
-}
-
-    .contact-note{
-  margin-top: .9rem;
-  font-size: .82rem;
-  color: var(--color-muted);
-  min-height: 1.2em;
-}
-.contact-note.ok{
-  color: #a7f3d0;
-  border-left: 3px solid rgba(34,197,94,.7);
-  padding-left: .6rem;
-}
-.contact-note.err{
-  color: #fecaca;
-  border-left: 3px solid rgba(239,68,68,.7);
-  padding-left: .6rem;
-}
-.contact-note{
-  margin-top: .9rem;
-  font-size: .82rem;
-  color: var(--color-muted);
-  min-height: 1.2em;
-}
-.contact-note.ok{
-  color: #a7f3d0;
-  border-left: 3px solid rgba(34,197,94,.7);
-  padding-left: .6rem;
-}
-.contact-note.err{
-  color: #fecaca;
-  border-left: 3px solid rgba(239,68,68,.7);
-  padding-left: .6rem;
-}
-
-
- /* =========================================================
-   ✅ Gallery v3：dots 壓在圖片上、caption 在圖片外下方
-   ========================================================= */
-
-/* 不要左右按鈕、不要頁數（保險：就算 HTML 還有也看不到） */
-.gc-btn{ display: none !important; }
-.gc-count{ display: none !important; }
-.gc-right{ display: none !important; } /* 你現在 HTML 已經沒有 gc-right，但保險 */
-
-/* dots 壓在圖片上（圖片內下方） */
-.gc-viewport{ position: relative; }
-
-/* ===== Dots：更透明 / 更小 / 工業感 ===== */
-.gc-dots-overlay{
-  position: absolute;
-  left: 50%;
-  bottom: 10px;                     /* ⬇ 更貼近底部 */
-  transform: translateX(-50%);
-  z-index: 30;
-
-  display: flex;
-  gap: .4rem;                       /* ⬅ 間距變小 */
-
-  padding: .28rem .55rem;           /* ⬅ 整體更小 */
-  border-radius: 999px;
-
-  background: rgba(2,6,23,.28);     /* ⬅ 更透明 */
-  border: 1px solid rgba(148,163,184,.18);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-/* dot 本體 */
-.gc-dots-overlay .gc-dot{
-  width: 6px;                       /* ⬅ 更小 */
-  height: 6px;
-  border-radius: 999px;
-
-  border: 1px solid rgba(148,163,184,.45);
-  background: rgba(148,163,184,.18);
-
-  cursor:pointer;
-  transition:
-    transform 180ms ease,
-    background 180ms ease,
-    border-color 180ms ease,
-    opacity 180ms ease;
-}
-
-/* hover */
-.gc-dots-overlay .gc-dot:hover{
-  transform: scale(1.25);
-  border-color: rgba(250,204,21,.55);
-}
-
-/* active */
-.gc-dots-overlay .gc-dot.is-active{
-  background: rgba(250,204,21,.85);
-  border-color: rgba(250,204,21,.85);
-  box-shadow: 0 0 6px rgba(250,204,21,.45);
-}
-
-
-/* caption 在圖片外、正下方 */
-.gc-bar{
-  display:block;
-  padding: 10px 12px 12px;
-  border-top: 1px solid rgba(255,255,255,.06);
-  background: rgba(2,6,23,.40);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-.gc-caption{
-  text-align: center; /* 你要左對齊就改 left */
-  font-size: .92rem;
-  color: #e5e7eb;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0 .2rem;
-}
-
-/* ✅ 輪播圖寬一點（你說要更寬） */
-.gallery-carousel{
-  max-width: 920px;  /* 你原本 700，這裡加寬；想更寬可改 980/1040 */
-}
-
-
+    .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 
 <body>
-  <!-- Header / Nav -->
   <header class="site-header">
     <nav class="nav">
-      <a href="#top" class="brand brand-banner" aria-label="捷強工業有限公司">
-  <img class="brand-banner-img" src="images/logo-jyechun-banner.jpg" alt="捷強工業有限公司">
-</a>
-
-
+      <a href="#top" class="brand">
+        <img class="brand-banner-img" src="images/logo-jyechun-banner.jpg" alt="捷強工業">
+      </a>
       <div class="nav-links">
         <a href="#hero">首頁</a>
-        <a href="#about">關於捷強</a>
+        <a href="#about">關於我們</a>
         <a href="#services">服務項目</a>
         <a href="#catalog">電子零件</a>
         <a href="#projects">實績案例</a>
         <a href="#contact">聯絡我們</a>
-        <button class="nav-cta btn-breathe" onclick="scrollToSection('contact')">
-          詢問報價
-        </button>
+        <button class="nav-cta" onclick="scrollToSection('contact')">詢問報價</button>
       </div>
-
-      <button class="nav-toggle" aria-label="切換選單">
-        <span></span>
-      </button>
     </nav>
-
-    <div class="nav-mobile" id="nav-mobile">
-      <div class="nav-mobile-inner">
-        <a href="#hero">首頁</a>
-        <a href="#about">關於捷強</a>
-        <a href="#services">服務項目</a>
-        <a href="#projects">實績案例</a>
-        <a href="#gallery">作品展示</a>
-        <a href="#contact">聯絡我們 / 詢價</a>
-      </div>
-    </div>
   </header>
 
   <main id="top">
-    <!-- Hero -->
     <section class="hero" id="hero">
       <div class="container">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <div class="hero-kicker">
-              <span class="hero-kicker-dot"></span>
-              自動控制・工業設計・工業配線
-            </div>
-
-            <h1 class="hero-title">
-              <span>穩定產線</span>
-              <span class="hero-title-accent">從電控開始</span>
-              <span>捷強工業為您把關</span>
-            </h1>
-
-            <p class="hero-lead">
-              捷強工業有限公司專精自動控制、工業設計與工業配線，從新建產線到既有設備改善，</br>以實務經驗與現場思維，為您規劃安全穩定的電控系
-            </p>
-
-            <div class="hero-meta">
-              <div class="hero-pill">
-                <span class="hero-pill-count">多年經驗</span>
-                <span>工業現場實務累積</span>
-              </div>
-              <div class="hero-pill">
-                <span class="hero-pill-count">客製化</span>
-                <span>依現場需求設計</span>
-              </div>
-            </div>
-
-            <div class="hero-actions">
-              <button class="btn btn-primary btn-breathe" onclick="scrollToSection('services')">
-                查看服務項目
-                <span class="btn-icon">→</span>
-              </button>
-              <button class="btn btn-ghost" onclick="scrollToSection('projects')">
-                檢視實績案例
-              </button>
-            </div>
-          </div>
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          自動控制・工業設計・工業配線
+        </div>
+        <h1 class="hero-title">
+          穩定產線 <span class="hero-title-accent">從電控開始</span>
+        </h1>
+        <p class="hero-lead">
+          專精新建產線與既有設備改善，以現場實務思維為您規劃安全、穩定的電控系統。
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="scrollToSection('services')">服務項目 →</button>
+          <button class="btn btn-ghost" onclick="scrollToSection('projects')">實績案例</button>
         </div>
       </div>
     </section>
 
-    <!-- About（保留原本，不動內容） -->
-    <section id="about" class="about-v2">
+    <section id="about">
       <div class="container">
         <div class="section-header reveal">
           <div class="section-kicker">ABOUT</div>
-          <h2 class="section-title">關於捷強工業</h2>
-          <p class="section-subtitle">
-            「穩定運轉只是起點；可維修、可擴充、可交接，才是完整的交付標準。」
-          </p>
+          <h2 class="section-title">聽得懂現場語言的電控夥伴</h2>
+          <p style="color:var(--color-muted)">穩定運轉只是起點；可維修、可擴充、可交接，才是捷強的交付標準。</p>
         </div>
-
-        <div class="about2-grid">
-          <div class="about2-left reveal stagger">
-            <h3 class="about2-title">聽得懂現場語言的電控夥伴。</h3>
-
-            <div class="about2-lead">
-              <p>
-                從規劃到上線，我們用現場導向的思維，把風險先消化在設計與配線階段，
-                讓產線「穩」是結果，而不是運氣。
-              </p>
-            </div>
-
-            <div class="about2-highlights">
-              <div class="hl">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M21 7l-6 6"></path>
-                  <path d="M16 6l2 2"></path>
-                  <path d="M2 22l7-7"></path>
-                  <path d="M7 21l-4-4"></path>
-                </svg>
-                <div class="hl-text">
-                  <div class="hl-title">可維修</div>
-                  <div class="hl-desc">端子與線號一致、訊號分區清楚，維修不靠猜。</div>
-                </div>
-              </div>
-
-              <div class="hl">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 3v18"></path>
-                  <path d="M3 12h18"></path>
-                  <path d="M7 7h3"></path>
-                  <path d="M14 14h3"></path>
-                </svg>
-                <div class="hl-text">
-                  <div class="hl-title">可擴充</div>
-                  <div class="hl-desc">預留 I/O 與迴路規劃，擴線、加站點更順。</div>
-                </div>
-              </div>
-
-              <div class="hl">
-                <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M7 7h10"></path>
-                  <path d="M7 12h10"></path>
-                  <path d="M7 17h6"></path>
-                  <path d="M6 3h9l3 3v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path>
-                </svg>
-                <div class="hl-text">
-                  <div class="hl-title">可交接</div>
-                  <div class="hl-desc">圖面、標示、測試紀錄完整，交接有依據。</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="about2-kpis">
-              <div class="kpi">
-                <div class="kpi-num">多年</div>
-                <div class="kpi-label">工業現場經驗</div>
-              </div>
-              <div class="kpi">
-                <div class="kpi-num">多家</div>
-                <div class="kpi-label">合作製造廠</div>
-              </div>
-              <div class="kpi">
-                <div class="kpi-num">高比率</div>
-                <div class="kpi-label">回頭與轉介紹</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="about2-right reveal">
-            <div class="about2-tabs">
-              <div class="cap-head">
-                <div class="cap-title">核心能力四大模組</div>
-                <div class="cap-sub">用一致的規格與文件，讓每個案子都能「好上線、好維修」。</div>
-              </div>
-
-              <div class="cap-grid">
-                <div class="cap-card">
-                  <div class="cap-top">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                      <rect x="4" y="6" width="16" height="12" rx="2"></rect>
-                      <path d="M8 10h.01M12 10h.01M16 10h.01"></path>
-                      <path d="M7 18v2M12 18v2M17 18v2"></path>
-                    </svg>
-                    <div class="cap-tt">PLC</div>
-                  </div>
-                  <div class="cap-line">流程 / 互鎖 / 保護邏輯</div>
-                  <div class="cap-more">依現場條件先對齊運轉規則，異常可控、停機更少。</div>
-                </div>
-
-                <div class="cap-card">
-                  <div class="cap-top">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                      <rect x="4" y="5" width="16" height="14" rx="2"></rect>
-                      <path d="M8 16h8"></path>
-                      <path d="M12 19v2"></path>
-                    </svg>
-                    <div class="cap-tt">HMI</div>
-                  </div>
-                  <div class="cap-line">畫面 / 警報 / 操作一致</div>
-                  <div class="cap-more">降低學習成本與交接落差，操作更直覺、狀態更清楚。</div>
-                </div>
-
-                <div class="cap-card">
-                  <div class="cap-top">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                      <rect x="6" y="3" width="12" height="18" rx="2"></rect>
-                      <path d="M9 7h6"></path>
-                      <path d="M9 11h6"></path>
-                      <path d="M9 15h3"></path>
-                    </svg>
-                    <div class="cap-tt">配電盤</div>
-                  </div>
-                  <div class="cap-line">分區清楚、維修順手</div>
-                  <div class="cap-more">端子與迴路規劃到位，擴充保留、查修更快。</div>
-                </div>
-
-                <div class="cap-card">
-                  <div class="cap-top">
-                    <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M4 8h8"></path>
-                      <path d="M12 8l4 4-4 4"></path>
-                      <path d="M20 16h-8"></path>
-                      <path d="M4 16h4"></path>
-                    </svg>
-                    <div class="cap-tt">現場配線</div>
-                  </div>
-                  <div class="cap-line">線號一致、路徑可追</div>
-                  <div class="cap-more">施工品質標準化，查線定位快，後續改造更省時。</div>
-                </div>
-              </div>
-
-              <div class="cap-foot">
-                <span class="foot-pill">I/O 清單</span>
-                <span class="foot-pill">迴路圖 / Layout</span>
-                <span class="foot-pill">測試紀錄</span>
-                <span class="foot-pill">交付文件</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services（保留原本） -->
-    <section id="services">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">SERVICES</div>
-          <h2 class="section-title">服務項目</h2>
-          <p class="section-subtitle">
-            捷強工業以自動控制、工業設計與工業配線為核心，<br>提供從規劃、設計到現場施工的一條龍服務。
-          </p>
-        </div>
-
         <div class="services-grid">
-          <article class="service-card">
-            <div class="service-icon">⚙️</div>
-            <h3 class="service-title">自動控制系統整合</h3>
-            <p class="service-desc">
-              依照產線需求規劃 PLC、HMI 及感測器邏輯，讓設備運轉條件清楚、保護完善，
-              降低故障停機時間。
-            </p>
-            <div class="service-meta">
-              <span><span class="service-tag">Control</span></span>
-              <span>PLC / HMI / Inverter</span>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">📐</div>
-            <h3 class="service-title">工業設計與配電盤配置</h3>
-            <p class="service-desc">
-              以安全、散熱與維修動線為考量，設計控制盤與設備佈局，線路清楚、標示完整，
-              便於日後擴充與保養。
-            </p>
-            <div class="service-meta">
-              <span><span class="service-tag">Design</span></span>
-              <span>Panel / Layout</span>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">🔌</div>
-            <h3 class="service-title">工業配線與現場施工</h3>
-            <p class="service-desc">
-              現場配線、線槽整理與端子標示，兼顧安全、美觀與檢修便利，協助您建立穩定可靠的電控環境。
-            </p>
-            <div class="service-meta">
-              <span><span class="service-tag">Wiring</span></span>
-              <span>On-site Install</span>
-            </div>
-          </article>
+          <div class="service-card reveal">
+            <h3>可維修</h3>
+            <p>端子與線號一致、訊號分區清楚，維修不靠猜，降低停機風險。</p>
+          </div>
+          <div class="service-card reveal">
+            <h3>可擴充</h3>
+            <p>預留 I/O 與迴路規劃，未來擴線或增加站點更加順暢。</p>
+          </div>
+          <div class="service-card reveal">
+            <h3>可交接</h3>
+            <p>提供完整圖面、標示與測試紀錄，讓運維管理有據可循。</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Catalog / Parts -->
-    <section id="catalog" class="catalog">
+    <section id="catalog">
       <div class="container">
         <div class="section-header">
           <div class="section-kicker">PARTS</div>
           <h2 class="section-title">電子零件販售</h2>
-          <p class="section-subtitle">
-            請先選（品牌 / 規格 ）。點「加入詢價」會自動帶入聯絡表單的需求說明。
-          </p>
         </div>
 
         <div class="catalog-toolbar">
           <div class="catalog-search">
-            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="11" cy="11" r="7"></circle>
-              <path d="M20 20l-3.2-3.2"></path>
-            </svg>
-            <input id="catalogSearch" type="search" placeholder="搜尋：品牌 / 型號 / 關鍵字（例：TECO、E710、MCCB）" />
-          </div>
-
-          <div class="catalog-hint">
-            <span class="hint-dot"></span>
-            <span>價格可先填「請洽詢」或「NT$—」。</span>
+            <input id="catalogSearch" type="search" placeholder="搜尋品牌或型號 (例如: TECO, Delta, 變頻器...)" />
           </div>
         </div>
 
         <div class="catalog-grid" id="catalogGrid">
-          <!-- 1 MCCB -->
-          <article class="catalog-card" data-key="mccb 電池開關 無熔絲斷路器 breaker
-          mitsubishi 三菱 nf-125 nf125 3p 80a st s-t">
-            <div class="catalog-media">
-              <img src="images/product-mccb.jpg" alt="電池開關 / 無熔絲斷路器" loading="lazy" />
-              <span class="catalog-badge">MCCB</span>
+          <article class="catalog-card" data-key="mccb mitsubishi nf-125 三菱 無熔絲斷路器">
+            <div class="catalog-media"><img src="images/product-mccb.jpg" alt="MCCB"></div>
+            <h3 class="item-title">無熔絲斷路器 (MCCB)</h3>
+            <div class="catalog-price">NT$ 請洽詢</div>
+            <div class="catalog-select">
+              <select class="c-brand" data-cascade="mccb">
+                <option value="">選擇品牌</option>
+                <option value="MITSUBISHI">MITSUBISHI</option>
+              </select>
             </div>
-
-            <div class="catalog-body">
-              <div class="catalog-top">
-                <h3 class="catalog-title">電池開關 / 無熔絲斷路器</h3>
-                <div class="catalog-price">NT$ 請洽詢</div>
-              </div>
-
-              <ul class="catalog-spec">
-                <li><span class="sp-k">用途</span><span class="sp-v">工業配電 / 保護</span></li>
-                <li><span class="sp-k">備註</span><span class="sp-v">以實際庫存 / 規格為準</span></li>
-              </ul>
-
-              <div class="catalog-select">
-                <label>品牌</label>
-                <select class="c-brand" data-cascade-key="mccb">
-                  <option value="">— 請選擇 —</option>
-                  <option value="MITSUBISHI">MITSUBISHI</option>
-                </select>
-
-                <label>規格</label>
-                <select class="c-model" disabled>
-                  <option value="">— 請先選品牌 —</option>
-                </select>
-
-                <div class="catalog-selected-hint" data-selected-hint></div>
-              </div>
-
-              <div class="catalog-actions">
-                <button class="btn btn-primary catalog-btn" type="button"
-                  data-add="【詢價】電池開關 / 無熔絲斷路器（MCCB）">
-                  加入詢價 <span class="btn-icon">＋</span>
-                </button>
-                <button class="btn btn-ghost catalog-btn ghost" type="button"
-                  data-copy="MCCB / 無熔絲斷路器">
-                  複製關鍵字
-                </button>
-              </div>
-            </div>
+            <button class="btn btn-primary" style="width:100%; margin-top:1rem;" onclick="addInquiry('MCCB')">加入詢價</button>
           </article>
 
-          <!-- 2 Inverter -->
-          <article class="catalog-card" data-key="變頻器 inverter frequency drive vfd
-            teco 東元 delta 台達 siemens 西門子
-            e710 ms300 v20 g120 馬達 調速">
-            <div class="catalog-media">
-              <img src="images/product-inverter-teco-e710.jpg" alt="變頻器" loading="lazy" />
-              <span class="catalog-badge">INVERTER</span>
+          <article class="catalog-card" data-key="inverter teco e710 delta 東元 台達 變頻器">
+            <div class="catalog-media"><img src="images/product-inverter-teco-e710.jpg" alt="Inverter"></div>
+            <h3 class="item-title">變頻器 (Inverter)</h3>
+            <div class="catalog-price">NT$ 請洽詢</div>
+            <div class="catalog-select">
+              <select class="c-brand" data-cascade="inverter">
+                <option value="">選擇品牌</option>
+                <option value="TECO">東元 TECO</option>
+                <option value="DELTA">台達 DELTA</option>
+              </select>
             </div>
-
-            <div class="catalog-body">
-              <div class="catalog-top">
-                <h3 class="catalog-title">變頻器（Inverter）</h3>
-                <div class="catalog-price">NT$ 請洽詢</div>
-              </div>
-
-              <ul class="catalog-spec">
-                <li><span class="sp-k">用途</span><span class="sp-v">馬達調速 / 節能</span></li>
-                <li><span class="sp-k">備註</span><span class="sp-v">可依電壓/功率選型</span></li>
-              </ul>
-
-              <div class="catalog-select">
-                <label>品牌</label>
-                <select class="c-brand" data-cascade-key="inverter">
-                  <option value="">— 請選擇 —</option>
-                  <option value="TECO">東元 TECO</option>
-                  <option value="DELTA">台達 DELTA</option>
-                  <option value="SIEMENS">西門子 SIEMENS</option>
-                </select>
-
-                <label>規格</label>
-                <select class="c-model" disabled>
-                  <option value="">— 請先選品牌 —</option>
-                </select>
-
-                <div class="catalog-selected-hint" data-selected-hint></div>
-              </div>
-
-              <div class="catalog-actions">
-                <button class="btn btn-primary catalog-btn" type="button"
-                  data-add="【詢價】變頻器（請協助確認電壓/功率/控制需求）">
-                  加入詢價 <span class="btn-icon">＋</span>
-                </button>
-                <button class="btn btn-ghost catalog-btn ghost" type="button"
-                  data-copy=" VFD / 變頻器">
-                  複製關鍵字
-                </button>
-              </div>
-            </div>
+            <button class="btn btn-primary" style="width:100%; margin-top:1rem;" onclick="addInquiry('變頻器')">加入詢價</button>
           </article>
-
-          <!-- 3 Timer -->
-          <article class="catalog-card" data-key="計數器 定時器 定時開關 計時器 timer
-          theben din 軌 時間開關 sul 181">
-            <div class="catalog-media">
-              <img src="images/product-timer.jpg" alt="計數器 / 時間開關" loading="lazy" />
-              <span class="catalog-badge">TIMER</span>
-            </div>
-
-            <div class="catalog-body">
-              <div class="catalog-top">
-                <h3 class="catalog-title">定時開關 / 計數器（Timer）</h3>
-                <div class="catalog-price">NT$ 請洽詢</div>
-              </div>
-
-              <ul class="catalog-spec">
-                <li><span class="sp-k">用途</span><span class="sp-v">照明/循環控制/排程</span></li>
-                <li><span class="sp-k">備註</span><span class="sp-v">可提供照片/規格確認</span></li>
-              </ul>
-
-              <div class="catalog-select">
-                <label>品牌</label>
-                <select class="c-brand" data-cascade-key="timer">
-                  <option value="">— 請選擇 —</option>
-                  <option value="THEBEN">Theben</option>
-                  <option value="DIN">DIN 軌定時器</option>
-                </select>
-
-                <label>規格</label>
-                <select class="c-model" disabled>
-                  <option value="">— 請先選品牌 —</option>
-                </select>
-
-                <div class="catalog-selected-hint" data-selected-hint></div>
-              </div>
-
-              <div class="catalog-actions">
-                <button class="btn btn-primary catalog-btn" type="button"
-                  data-add="【詢價】定時開關 / 計數器（請協助確認型號與規格）">
-                  加入詢價 <span class="btn-icon">＋</span>
-                </button>
-                <button class="btn btn-ghost catalog-btn ghost" type="button"
-                  data-copy="Timer / 計數器">
-                  複製關鍵字
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- ✅ 空結果提示 -->
-          <div class="catalog-empty" id="catalogEmpty">
-            找不到符合「<strong id="catalogEmptyQ"></strong>」的品項。<br />
-            你可以試試：品牌（TECO/台達/三菱）、品名（變頻器/電池開關/定時器）、型號（E710/NF-125）。
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects（保留原本） -->
     <section id="projects">
       <div class="container">
         <div class="section-header">
-          <div class="section-kicker">PROJECTS</div>
-          <h2 class="section-title">實績案例</h2>
-          <p class="section-subtitle">
-            以下為部份實際合作案件，從大型控制箱、特殊用途控制箱到 PLC 控制盤，<br>皆由捷強工業規劃與製作。
-          </p>
-        </div>
-
-        <div class="projects-grid">
-          <article class="project-card">
-            <div class="project-media">
-              <img src="images/panel-yellow-front.jpg" alt="大型黃色控制箱內部配線實例" />
-              <span class="project-label">工業配線</span>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">大型機台控制箱內部配線</h3>
-              <p class="project-desc">
-                針對高電流負載與多迴路控制，將主迴路、控制迴路與端子台清楚分區，
-                線路標示完整，方便日後檢修與擴充。
-              </p>
-              <div class="project-meta">
-                <span>主/控迴路分離</span>
-                <span>現場施作與測試</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media">
-              <img src="images/panel-floodgate-inside.jpg" alt="水閘門控制箱內部與保護元件配置" />
-              <span class="project-label">水閘門控制</span>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">水閘門控制箱設計與配線</h3>
-              <p class="project-desc">
-                依據水閘門啟閉條件設計控制邏輯與保護迴路，搭配監控板與端子分區，
-                外觀面板操作簡單，內部配線條理清楚。
-              </p>
-              <div class="project-meta">
-                <span>自動/手動操作模式</span>
-                <span>保護與異常顯示</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-media">
-              <img src="images/panel-long-plc.jpg" alt="PLC 控制盤與多迴路繼電器配線" />
-              <span class="project-label">自動控制</span>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">PLC 控制盤與多迴路輸出模組</h3>
-              <p class="project-desc">
-                以 PLC 為核心整合多組輸出迴路，搭配繼電器與保護裝置，
-                將動力與訊號端子分區排列，方便擴充與故障排除。
-              </p>
-              <div class="project-meta">
-                <span>PLC 程式搭配電控設計</span>
-                <span>多點 I/O 安全配線</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ✅ 控制箱設計（已改：說明/圓點/頁數在圖下方） -->
-    <section id="gallery">
-      <div class="container">
-        <div class="section-header">
           <div class="section-kicker">WORKS</div>
-          <h2 class="section-title">控制箱設計</h2>
-          <p class="section-subtitle">
-            實際施工與設計案例照片，包含舊設備改善、新製控制箱與各式產線電控配線。
-          </p>
+          <h2 class="section-title">控制箱設計實績</h2>
         </div>
-
-       <div class="gallery-carousel" id="galleryCarousel" aria-label="控制箱設計輪播">
-  <div class="gc-viewport">
-    <div class="gc-track">
-      <figure class="gc-slide is-active">
-        <div class="gc-media">
-          <img src="images/panel-old-open.jpg" alt="舊型控制盤改善與配線整理" />
-        </div>
-        <figcaption class="gc-cap sr-only">舊型控制盤改善與配線整理</figcaption>
-      </figure>
-
-      <figure class="gc-slide">
-        <div class="gc-media">
-          <img src="images/panel-compact-plc.jpg" alt="多迴路 PLC 控制盤" />
-        </div>
-        <figcaption class="gc-cap sr-only">多迴路 PLC 控制盤</figcaption>
-      </figure>
-
-      <figure class="gc-slide">
-        <div class="gc-media">
-          <img src="images/panel-hmi-front.jpg" alt="觸控 HMI 操作面板控制箱" />
-        </div>
-        <figcaption class="gc-cap sr-only">觸控 HMI 操作面板控制箱</figcaption>
-      </figure>
-
-      <figure class="gc-slide">
-        <div class="gc-media">
-          <img src="images/panel-hmi-inside.jpg" alt="雙驅動器系統內部配線" />
-        </div>
-        <figcaption class="gc-cap sr-only">雙驅動器系統內部配線</figcaption>
-      </figure>
-
-      <figure class="gc-slide">
-        <div class="gc-media">
-          <img src="images/panel-teco-drive.jpg" alt="變頻器與控制器整合配線" />
-        </div>
-        <figcaption class="gc-cap sr-only">變頻器與控制器整合配線</figcaption>
-      </figure>
-
-      <figure class="gc-slide">
-        <div class="gc-media">
-          <img src="images/panel-yellow-top.jpg" alt="大型控制箱端子台配置" />
-        </div>
-        <figcaption class="gc-cap sr-only">大型控制箱端子台配置</figcaption>
-      </figure>
-    </div>
-
-    <!-- ✅ dots：壓在圖片上（圖片內下方） -->
-    <div class="gc-dots gc-dots-overlay" aria-label="輪播頁碼"></div>
-  </div>
-
-  <!-- ✅ caption：在圖片外、正下方 -->
-  <div class="gc-bar">
-    <div class="gc-caption" id="gcCaption">舊型控制盤改善與配線整理</div>
-  </div>
-</div>
-
-
-          <button class="gc-btn gc-prev" type="button" aria-label="上一張">‹</button>
-          <button class="gc-btn gc-next" type="button" aria-label="下一張">›</button>
-
-          <!-- ✅ 圖下資訊列（不擋圖） -->
-          <div class="gc-bar">
-            <div class="gc-caption" id="gcCaption"></div>
-            <div class="gc-right">
-              <div class="gc-dots" aria-label="輪播頁碼"></div>
-              <div class="gc-count" id="gcCount">01 / 06</div>
-            </div>
+        
+        <div class="gallery-carousel" id="galleryCarousel">
+          <div class="gc-track" id="gcTrack">
+            <div class="gc-slide"><img src="images/panel-old-open.jpg" alt="舊型控制盤改善"></div>
+            <div class="gc-slide"><img src="images/panel-compact-plc.jpg" alt="PLC控制盤"></div>
+            <div class="gc-slide"><img src="images/panel-hmi-front.jpg" alt="HMI操作面板"></div>
           </div>
+          <div class="gc-dots-overlay" id="gcDots"></div>
+          <div class="gc-bar"><p id="gcCaption">載入中...</p></div>
         </div>
-      </div>
-    </section>
-
-    <section id="testimonial">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">CLIENT VOICE</div>
-          <h2 class="section-title">客戶回饋</h2>
-          <p class="section-subtitle">品質、效率與可靠度，來自客戶的真實見證</p>
-        </div>
-
-        <article class="testimonial-card">
-          <div class="testimonial-inner">
-            <div class="testimonial-quote-mark">“</div>
-            <p class="testimonial-text">
-              捷強在施工前花了不少時間跟我們現場師傅溝通，把實際操作方式納入考量，
-              上線之後操作人員很快就能上手，後續改程式也都有完整紀錄。
-            </p>
-            <div class="testimonial-author">
-              <div class="testimonial-author-main">
-                <div class="testimonial-avatar" aria-hidden="true"></div>
-                <div>
-                  <div class="testimonial-author-name">某電子零件廠 生管主管</div>
-                  <div class="testimonial-author-role">生產線導入自動控制與配線改善專案</div>
-                </div>
-              </div>
-              <div class="testimonial-badge">
-                <span class="testimonial-badge-dot"></span>
-                多次合作客戶
-              </div>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
 
     <section id="contact">
       <div class="container">
-        <div class="section-header">
-          <div class="section-kicker">CONTACT</div>
-          <h2 class="section-title">聯絡捷強工業</h2>
-          <p class="section-subtitle">
-            想新增產線、改善舊有設備，或針對自動控制與工業配線有任何問題，<br>歡迎留下資訊，我們將儘快與您聯繫。
-          </p>
-        </div>
-
         <div class="contact-grid">
-          <form class="contact-form" onsubmit="handleContactSubmit(event)">
-            <div class="contact-form-row">
+          <div class="reveal">
+            <h2 class="section-title">聯絡捷強</h2>
+            <form id="contactForm" onsubmit="handleContactSubmit(event)">
               <div class="field">
-                <label for="name">姓名</label>
-                <input id="name" name="name" type="text" placeholder="您的姓名" />
-              </div>
-              <div class="field">
-                <label for="company">公司名稱</label>
-                <input id="company" name="company" type="text" placeholder="公司 / 工廠名稱" />
-              </div>
-            </div>
-
-            <div class="contact-form-row">
-              <div class="field">
-                <label for="email">Email</label>
-                <input id="email" name="email" type="email" placeholder="example@company.com" />
+                <label>姓名 *</label>
+                <input type="text" name="name" required placeholder="您的稱呼">
               </div>
               <div class="field">
-                <label for="phone">電話</label>
-                <input id="phone" name="phone" type="tel" placeholder="0X-2222-XXXX" />
+                <label>電話 *</label>
+                <input type="tel" name="phone" required placeholder="聯絡電話">
               </div>
-            </div>
-
-            <div class="field">
-              <label for="message">需求說明</label>
-              <textarea id="message" name="message" rows="4"
-                placeholder="請簡單說明設備類型、目前狀況與希望改善的方向。"></textarea>
-            </div>
-
-            <button class="btn btn-primary btn-breathe" type="submit" style="margin-top: 1.2rem;">
-              送出訊息
-              <span class="btn-icon">➤</span>
-            </button>
-
-            <p class="contact-note"></p>
-          </form>
-
-          <aside class="contact-side">
-            <div class="contact-block">
-              <h4>公司資訊</h4>
-              <p>
-                捷強工業有限公司<br />
-                台中市南區美村路二段307號
-              </p>
-              <div class="contact-map" aria-label="捷強工業有限公司 地圖位置">
-                <iframe
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                  src="https://www.google.com/maps?q=%E5%8F%B0%E4%B8%AD%E5%B8%82%E5%8D%97%E5%8D%80%E7%BE%8E%E6%9D%91%E8%B7%AF%E4%BA%8C%E6%AE%B5307%E8%99%9F&output=embed"
-                  title="捷強工業有限公司（台中市南區美村路二段307號）">
-                </iframe>
+              <div class="field">
+                <label>需求說明 *</label>
+                <textarea name="message" rows="5" required id="messageField" placeholder="請描述您的設備狀況或零件需求"></textarea>
               </div>
-              <div class="contact-list">
-                <span><span class="contact-dot"></span>電話：04-2263-5628</span>
-                <span><span class="contact-dot"></span>傳真：04-2263-5684</span>
-                <span><span class="contact-dot"></span>統編：97033479</span>
-                <span><span class="contact-dot"></span>Email：jyechun@gmail.com</span>
-              </div>
-            </div>
+              <button class="btn btn-primary" type="submit" id="submitBtn">送出訊息 ➤</button>
+              <p id="formStatus" style="margin-top:1rem"></p>
+            </form>
+          </div>
 
-            <div class="contact-block">
-              <h4>服務時間</h4>
-              <p>週一至週五 08:00 – 17:00<br />現場施工與勘查採預約制。</p>
+          <aside class="reveal">
+            <div class="service-card">
+              <h3>公司資訊</h3>
+              <p>台中市南區美村路二段307號</p>
+              <p>電話：04-2263-5628</p>
+              <p>Email：jyechun@gmail.com</p>
+              <div class="contact-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3641.547372740924!2d120.6631553759654!3d24.117366373891485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693db79c293771%3A0x6df9c5e39665a38a!2zNDA35Y-w5Lit5biC5Y2X5Y2A576O5p2R6Lev5LqM5q61MzA36Jmf!5e0!3m2!1szh-TW!2stw!4v1705000000000!5m2!1szh-TW!2stw" allowfullscreen="" loading="lazy"></iframe>
+              </div>
             </div>
           </aside>
         </div>
@@ -2397,575 +305,140 @@
   </main>
 
   <footer class="site-footer">
-    <div class="footer-grid">
-      <div>
-        <img src="images/logo-jyechun-banner.jpg" alt="捷強工業自動控制有限公司 LOGO" class="footer-logo" />
-        <p class="footer-brand-desc">
-          自動控制・工業設計與配線，從新建到改善，捷強工業以現場實務經驗，
-          協助您打造穩定可靠的生產環境。
-        </p>
-      </div>
-
-      <div>
-        <div class="footer-heading">快速連結</div>
-        <div class="footer-links">
-          <a href="#services">服務項目</a>
-          <a href="#catalog">電子零件</a>
-          <a href="#projects">實績案例</a>
-          <a href="#gallery">控制箱設計</a>
-          <a href="#contact">聯絡我們</a>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="images/logo-jyechun-banner.jpg" alt="Logo" height="40">
+          <p style="margin-top:1rem; color:var(--color-muted)">專業自動控制系統整合，為企業打造高效、穩定的工業生產環境。</p>
+        </div>
+        <div>
+          <h4>快速連結</h4>
+          <p><a href="#services">服務項目</a></p>
+          <p><a href="#catalog">電子零件</a></p>
+          <p><a href="#contact">聯絡詢價</a></p>
+        </div>
+        <div>
+          <h4>服務時間</h4>
+          <p>週一至週五</p>
+          <p>08:00 – 17:00</p>
         </div>
       </div>
-
-      <div>
-        <div class="footer-heading">聯絡方式</div>
-        <div class="footer-links">
-          <span>電話：04-2263-5628</span>
-          <span>傳真：04-2263-5684</span>
-          <span>Email：jyechun@gmail.com</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-legal">
-      <span>Copyright© <span id="year"></span> 捷強工業有限公司版權所有｜JOE CHANG客製設計。</span>
+      <center style="color:var(--color-muted); font-size:0.8rem; border-top:1px solid var(--color-border); padding-top:2rem;">
+        Copyright © <span id="year"></span> 捷強工業有限公司 All Rights Reserved.
+      </center>
     </div>
   </footer>
 
- <script>
-  function scrollToSection(id) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const offset = window.pageYOffset + rect.top - 70;
-    window.scrollTo({ top: offset, behavior: "smooth" });
-  }
-
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener("click", (e) => {
-      const href = link.getAttribute("href");
-      if (!href || href === "#") return;
-      if (href.startsWith("#")) {
-        e.preventDefault();
-        const targetId = href.slice(1);
-        scrollToSection(targetId);
-        closeMobileNav();
-      }
-    });
-  });
-
-  const navToggle = document.querySelector(".nav-toggle");
-  const navMobile = document.getElementById("nav-mobile");
-
-  function closeMobileNav() {
-    if (navToggle) navToggle.classList.remove("active");
-    if (navMobile) navMobile.classList.remove("open");
-  }
-
-  if (navToggle) {
-    navToggle.addEventListener("click", () => {
-      navToggle.classList.toggle("active");
-      navMobile.classList.toggle("open");
-    });
-  }
-
-  window.addEventListener("scroll", () => {
-    if (window.innerWidth <= 720 && navMobile && navMobile.classList.contains("open")) {
-      closeMobileNav();
-    }
-  });
-
-  // ✅ Hero 滑鼠跟隨光暈
-  const heroEl = document.getElementById("hero");
-  if (heroEl) {
-    heroEl.addEventListener("mousemove", (e) => {
-      const r = heroEl.getBoundingClientRect();
-      const mx = ((e.clientX - r.left) / r.width) * 100;
-      const my = ((e.clientY - r.top) / r.height) * 100;
-      heroEl.style.setProperty("--mx", mx + "%");
-      heroEl.style.setProperty("--my", my + "%");
-    });
-    heroEl.addEventListener("mouseleave", () => {
-      heroEl.style.removeProperty("--mx");
-      heroEl.style.removeProperty("--my");
-    });
-  }
-
-  // ✅ About 滾動進場
-   // ✅ 全站：滾動進場淡入（自動套用到各區塊）
-  (function () {
-    // 1) 自動把常見區塊加上 reveal（你不用手動改 HTML）
-    const revealSelectors = [
-      ".section-header",
-      ".catalog-toolbar",
-      ".catalog-card",
-      ".project-card",
-      ".service-card",
-      ".gallery-carousel",
-      ".testimonial-card",
-      ".contact-form",
-      ".contact-block",
-      ".footer-grid > *"
-    ];
-
-    // 2) 需要「一群卡片」依序淡入的容器（stagger）
-    const staggerSelectors = [
-      ".services-grid",
-      ".projects-grid",
-      ".catalog-grid",
-      ".footer-grid",
-      ".contact-side"
-    ];
-
-    revealSelectors.forEach((sel) => {
-      document.querySelectorAll(sel).forEach((el) => {
-        el.classList.add("reveal");
-      });
-    });
-
-    staggerSelectors.forEach((sel) => {
-      document.querySelectorAll(sel).forEach((el) => {
-        el.classList.add("reveal", "stagger");
-      });
-    });
-
-    // 如果你不想空結果提示也淡入，可取消它的 reveal（避免看起來怪）
-    const empty = document.getElementById("catalogEmpty");
-    if (empty) empty.classList.remove("reveal", "stagger");
-
-    // 3) 初始化 IntersectionObserver
-    const els = Array.from(document.querySelectorAll(".reveal"));
-    if (!els.length) return;
-
-    // 後備：不支援 IO 就直接顯示
-    if (!("IntersectionObserver" in window)) {
-      els.forEach((el) => el.classList.add("in"));
-      return;
-    }
-
-    // 小優化：避免「一開始就在視窗內的元素」閃一下
-    // 先把已經在畫面內的元素直接打開
-    const vh = window.innerHeight || document.documentElement.clientHeight;
-    els.forEach((el) => {
-      const r = el.getBoundingClientRect();
-      if (r.top < vh * 0.92) el.classList.add("in");
-    });
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((ent) => {
-          if (ent.isIntersecting) {
-            ent.target.classList.add("in");
-            io.unobserve(ent.target);
-          }
-        });
-      },
-      {
-        threshold: 0.12,
-        rootMargin: "0px 0px -12% 0px"
-      }
-    );
-
-    els.forEach((el) => {
-      if (!el.classList.contains("in")) io.observe(el);
-    });
-  })();
-
-
-  // ✅ Contact：送到 Apps Script（企業感：按鈕下方顯示成功/失敗）
-  async function handleContactSubmit(event) {
-    event.preventDefault();
-    const form = event.target;
-
-    const note = form.querySelector(".contact-note");
-    const btn = form.querySelector('button[type="submit"]');
-
-    const data = {
-      name: form.name.value.trim(),
-      company: form.company.value.trim(),
-      email: form.email.value.trim(),
-      phone: form.phone.value.trim(),
-      message: form.message.value.trim(),
-    };
-
-    // 基本檢查
-    if (!data.name || !data.phone || !data.message) {
-      if (note) {
-        note.className = "contact-note err";
-        note.textContent = "請至少填寫：姓名、電話、需求說明。";
-      }
-      return;
-    }
-
-    if (btn) {
-      btn.disabled = true;
-      btn.style.opacity = ".75";
-      btn.style.cursor = "not-allowed";
-    }
-    if (note) {
-      note.className = "contact-note";
-      note.textContent = "送出中…";
-    }
-
-    const url =
-      "https://script.google.com/macros/s/AKfycbzByr--UNZkyf2sRYONaPDRmKQwH72WDdONZ6az9kCJLd3dmg93tZSOBmwYzowM2KQJ/exec";
-
-    try {
-      // ⚠️ 用 text/plain + JSON.stringify：
-      // 1) 讓 Apps Script 直接用 JSON.parse
-      // 2) 通常可避免瀏覽器發 OPTIONS preflight 的麻煩（比 application/json 更穩）
-      const r = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(data),
-      });
-
-      const text = await r.text();
-      let res;
-      try {
-        res = JSON.parse(text);
-      } catch {
-        throw new Error("Non-JSON response: " + text.slice(0, 160));
-      }
-
-      if (res.result === "success") {
-        form.reset();
-        if (note) {
-          note.className = "contact-note ok";
-          note.textContent = "已送出成功，我們會儘快與您聯絡。";
-        }
-      } else {
-        if (note) {
-          note.className = "contact-note err";
-          note.textContent = "送出失敗：" + (res.message || "請稍後再試。");
-        }
-      }
-    } catch (err) {
-      console.error(err);
-      if (note) {
-        note.className = "contact-note err";
-        note.textContent =
-          "連線錯誤或權限被拒（請確認 Apps Script 已部署為 Web App 且允許任何人存取）。";
-      }
-    } finally {
-      if (btn) {
-        btn.disabled = false;
-        btn.style.opacity = "";
-        btn.style.cursor = "";
-      }
-    }
-  }
-
-  // ✅ 年份（放在 function 外面）
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-</script>
-
   <script>
-    // ===== Catalog: search / add-to-inquiry / copy / 兩段式聯動下拉 =====
-    const catalogSearch = document.getElementById("catalogSearch");
-    const catalogGrid = document.getElementById("catalogGrid");
-    const catalogEmpty = document.getElementById("catalogEmpty");
-    const catalogEmptyQ = document.getElementById("catalogEmptyQ");
-
-    // ✅ 二段式聯動資料（只要改這裡就能新增品牌/型號）
-    const cascadeData = {
-      mccb: {
-        MITSUBISHI: ["NF-125 / 3P 80A", "S-T10 / 3.6A", "S-T20 / 6.6A"]
-      },
-      inverter: {
-        TECO: ["E710 Series", "E720 Series", "N310+", "E2"],
-        DELTA: ["MS300", "VFD-EL", "VFD-M", "CP2000"],
-        SIEMENS: ["SINAMICS V20", "SINAMICS G120", "MICROMASTER（舊系列）"]
-      },
-      timer: {
-        THEBEN: ["Theben 定時器（例：SUL 181 h）", "Theben DIN 軌定時器"],
-        DIN: ["DIN 軌定時器", "循環定時器", "數位時間開關"]
-      }
-    };
-
-    const brandLabelMap = {
-      MITSUBISHI: "MITSUBISHI",
-      TECO: "東元 TECO",
-      DELTA: "台達 DELTA",
-      SIEMENS: "西門子 SIEMENS",
-      THEBEN: "Theben",
-      DIN: "DIN 軌定時器"
-    };
-
-    function appendToInquiry(text){
-      const msg = document.getElementById("message");
-      if (!msg || !text) return;
-      const prefix = msg.value.trim() ? "\n" : "";
-      msg.value += prefix + text;
+    // 1. 導航跳轉
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
     }
 
-    function setHint(card, text){
-      const hint = card.querySelector("[data-selected-hint]");
-      if (!hint) return;
-      hint.textContent = text || "";
-    }
+    // 2. 零件搜尋 + 關鍵字高亮
+    const searchInput = document.getElementById('catalogSearch');
+    searchInput.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase();
+      document.querySelectorAll('.catalog-card').forEach(card => {
+        const text = card.getAttribute('data-key');
+        const titleEl = card.querySelector('.item-title');
+        const originalTitle = titleEl.innerText;
 
-    function resetModelSelect(modelSel){
-      modelSel.innerHTML = "";
-      modelSel.disabled = true;
-      modelSel.appendChild(new Option("— 請先選品牌 —", ""));
-    }
-
-    function buildModelSelect(card, cascadeKey, brandKey){
-      const modelSel = card.querySelector(".c-model");
-      if (!modelSel) return;
-
-      if (!cascadeKey || !brandKey) {
-        resetModelSelect(modelSel);
-        setHint(card, "");
-        return;
-      }
-
-      const models = cascadeData?.[cascadeKey]?.[brandKey] || [];
-
-      modelSel.disabled = false;
-      modelSel.innerHTML = "";
-      modelSel.appendChild(new Option("— 請選擇型號 —", ""));
-      models.forEach(m => modelSel.appendChild(new Option(m, m)));
-
-      setHint(card, `已選擇：${brandLabelMap[brandKey] || brandKey}（請再選型號/規格）`);
-    }
-
-    function getSelectedSpecLine(card){
-      if (!card) return "";
-      const brandSel = card.querySelector(".c-brand");
-      const modelSel = card.querySelector(".c-model");
-      if (!brandSel || !modelSel) return "";
-
-      const cascadeKey = brandSel.getAttribute("data-cascade-key");
-      const brandKey = (brandSel.value || "").trim();
-      const modelVal = (modelSel.value || "").trim();
-
-      if (!brandKey && !modelVal) return "";
-
-      const title = (() => {
-        if (cascadeKey === "mccb") return "電池開關 / MCCB";
-        if (cascadeKey === "inverter") return "變頻器";
-        if (cascadeKey === "timer") return "定時開關 / 計時器";
-        return "品項";
-      })();
-
-      return `【規格】${title}：${brandLabelMap[brandKey] || brandKey || "未選品牌"} / ${modelVal || "未選型號"}`;
-    }
-
-    function updateCatalogEmptyState(q){
-      if (!catalogGrid || !catalogEmpty) return;
-
-      const cards = Array.from(catalogGrid.querySelectorAll(".catalog-card"));
-      const visibleCount = cards.filter(card => card.style.display !== "none").length;
-
-      const showEmpty = !!q && visibleCount === 0;
-      catalogEmpty.style.display = showEmpty ? "block" : "none";
-      if (catalogEmptyQ) catalogEmptyQ.textContent = q || "";
-    }
-
-    if (catalogSearch && catalogGrid) {
-      catalogSearch.addEventListener("input", () => {
-        const q = catalogSearch.value.trim().toLowerCase();
-
-        catalogGrid.querySelectorAll(".catalog-card").forEach((card) => {
-          const key = (card.getAttribute("data-key") || "").toLowerCase();
-          card.style.display = !q || key.includes(q) ? "" : "none";
-        });
-
-        updateCatalogEmptyState(q);
-      });
-
-      catalogGrid.addEventListener("change", (e) => {
-        const card = e.target.closest(".catalog-card");
-        if (!card) return;
-
-        if (e.target.classList.contains("c-brand")) {
-          const cascadeKey = e.target.getAttribute("data-cascade-key");
-          const brandKey = e.target.value;
-          buildModelSelect(card, cascadeKey, brandKey);
-          return;
-        }
-
-        if (e.target.classList.contains("c-model")) {
-          const brandSel = card.querySelector(".c-brand");
-          const brandKey = (brandSel?.value || "").trim();
-          const modelVal = (e.target.value || "").trim();
-          setHint(
-            card,
-            (brandKey || modelVal)
-              ? `已選擇：${brandLabelMap[brandKey] || brandKey || "未選品牌"} / ${modelVal || "未選型號"}`
-              : ""
-          );
-          return;
-        }
-      });
-
-      catalogGrid.addEventListener("click", async (e) => {
-        const btn = e.target.closest("button");
-        if (!btn) return;
-
-        const card = btn.closest(".catalog-card");
-
-        const addText = btn.getAttribute("data-add");
-        if (addText) {
-          const spec = getSelectedSpecLine(card);
-          if (spec) appendToInquiry(spec);
-          appendToInquiry(addText);
-          scrollToSection("contact");
-          return;
-        }
-
-        const copyText = btn.getAttribute("data-copy");
-        if (copyText) {
-          try {
-            await navigator.clipboard.writeText(copyText);
-            const old = btn.textContent;
-            btn.textContent = "已複製 ✅";
-            setTimeout(() => (btn.textContent = old), 900);
-          } catch {
-            alert("複製失敗，請手動複製：\n" + copyText);
+        if (text.includes(q)) {
+          card.style.display = 'block';
+          // 高亮邏輯
+          if (q.length > 0) {
+            const regex = new RegExp(`(${q})`, 'gi');
+            titleEl.innerHTML = originalTitle.replace(regex, '<span class="highlight">$1</span>');
+          } else {
+            titleEl.innerHTML = originalTitle;
           }
+        } else {
+          card.style.display = 'none';
         }
       });
+    });
 
-      catalogGrid.querySelectorAll(".catalog-card").forEach(card => {
-        const modelSel = card.querySelector(".c-model");
-        if (modelSel) resetModelSelect(modelSel);
+    // 3. 詢價聯動
+    function addInquiry(item) {
+      const field = document.getElementById('messageField');
+      field.value += (field.value ? '\n' : '') + `【詢價需求】: ${item}`;
+      scrollToSection('contact');
+    }
+
+    // 4. 改良輪播圖 (支援 Swipe)
+    const track = document.getElementById('gcTrack');
+    const slides = Array.from(track.children);
+    const dotsContainer = document.getElementById('gcDots');
+    const caption = document.getElementById('gcCaption');
+    let currentIdx = 0;
+
+    // 初始化 Dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = `gc-dot ${i===0?'is-active':''}`;
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(i) {
+      currentIdx = i;
+      track.style.transform = `translateX(-${i * 100}%)`;
+      caption.innerText = slides[i].querySelector('img').alt;
+      Array.from(dotsContainer.children).forEach((d, idx) => d.classList.toggle('is-active', idx === i));
+    }
+    
+    // 自動播放
+    setInterval(() => {
+      currentIdx = (currentIdx + 1) % slides.length;
+      goToSlide(currentIdx);
+    }, 5000);
+
+    // 簡易 Swipe 支援
+    let startX = 0;
+    track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) goToSlide((currentIdx + 1) % slides.length);
+        else goToSlide((currentIdx - 1 + slides.length) % slides.length);
+      }
+    });
+
+    // 5. 滾動動畫
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in');
       });
-      updateCatalogEmptyState("");
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // 6. 表單提交
+    async function handleContactSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const status = document.getElementById('formStatus');
+      btn.disabled = true;
+      status.innerText = "傳送中...";
+
+      // 此處替換為您的 Google Apps Script URL
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzByr--UNZkyf2sRYONaPDRmKQwH72WDdONZ6az9kCJLd3dmg93tZSOBmwYzowM2KQJ/exec';
+      
+      try {
+        await fetch(scriptURL, { method: 'POST', body: new FormData(e.target)});
+        status.style.color = "#a7f3d0";
+        status.innerText = "訊息已成功送出！我們將儘快聯絡您。";
+        e.target.reset();
+      } catch (err) {
+        status.style.color = "#fca5a5";
+        status.innerText = "抱歉，傳送失敗，請撥打電話與我們聯絡。";
+      }
+      btn.disabled = false;
     }
 
-   // Header 滑鼠互動光影（不影響文字）
-(() => {
-  const header = document.querySelector(".site-header");
-  if (!header) return;
-
-  header.addEventListener("mousemove", e => {
-    const r = header.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width) * 100;
-    header.style.setProperty("--hx", x + "%");
-  });
-
-  header.addEventListener("mouseleave", () => {
-    header.style.removeProperty("--hx");
-  });
-})();
+    document.getElementById('year').innerText = new Date().getFullYear();
+    goToSlide(0); // 初始化第一張
   </script>
-
-<script>
-/* ✅ Gallery Carousel: auto(3s) + dots(壓在圖上) + caption(圖下)（無左右鍵、無頁數） */
-(function(){
-  const root = document.getElementById("galleryCarousel");
-  if (!root) return;
-
-  const slides = Array.from(root.querySelectorAll(".gc-slide"));
-  const dotsWrap = root.querySelector(".gc-dots-overlay");
-  const captionEl = document.getElementById("gcCaption");
-
-  if (!slides.length || !dotsWrap || !captionEl) return;
-
-  let idx = 0;
-  let timer = null;
-
-  // build dots
-  dotsWrap.innerHTML = "";
-  slides.forEach((_, i) => {
-    const b = document.createElement("button");
-    b.type = "button";
-    b.className = "gc-dot" + (i === 0 ? " is-active" : "");
-    b.setAttribute("aria-label", `切到第 ${i+1} 張`);
-    b.addEventListener("click", () => go(i, "dot"));
-    dotsWrap.appendChild(b);
-  });
-  const dots = Array.from(dotsWrap.querySelectorAll(".gc-dot"));
-
-  function getCaption(i){
-    const cap = slides[i]?.querySelector(".gc-cap");
-    if (cap && cap.textContent.trim()) return cap.textContent.trim();
-    return slides[i]?.querySelector("img")?.alt || "";
-  }
-
-  function updateCaption(){
-    captionEl.textContent = getCaption(idx);
-  }
-
-  function setParallaxForActive(dir){
-    const active = slides[idx];
-    if (!active) return;
-    const start = dir === "prev" ? -8 : 8;
-    active.style.setProperty("--px", start + "px");
-    requestAnimationFrame(() => active.style.setProperty("--px", "0px"));
-  }
-
-  function applyActive(){
-    slides.forEach((s, i) => s.classList.toggle("is-active", i === idx));
-    dots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
-    updateCaption();
-  }
-
-  function go(nextIndex, reason){
-    const old = idx;
-    idx = (nextIndex + slides.length) % slides.length;
-    applyActive();
-
-    let dir = "next";
-    if (reason === "dot") dir = (idx >= old ? "next" : "prev");
-    setParallaxForActive(dir);
-
-    restart();
-  }
-
-  function next(){ go(idx + 1, "auto"); }
-
-  function start(){
-    stop();
-    timer = setInterval(next, 3000);
-  }
-  function stop(){
-    if (timer) clearInterval(timer);
-    timer = null;
-  }
-  function restart(){ start(); }
-
-  // hover 暫停
-  root.addEventListener("mouseenter", stop);
-  root.addEventListener("mouseleave", start);
-
-  // 滑鼠呼吸式 parallax（很小幅度）
-  const viewport = root.querySelector(".gc-viewport");
-  if (viewport) {
-    viewport.addEventListener("mousemove", (e) => {
-      const r = viewport.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width; // 0..1
-      const offset = (x - 0.5) * 6;             // 最多 ±3px
-      const active = slides[idx];
-      if (active) active.style.setProperty("--px", offset.toFixed(2) + "px");
-    });
-    viewport.addEventListener("mouseleave", () => {
-      const active = slides[idx];
-      if (active) active.style.setProperty("--px", "0px");
-    });
-  }
-
-  const prefersReduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReduce) {
-    stop();
-    if (viewport) {
-      viewport.onmousemove = null;
-      viewport.onmouseleave = null;
-    }
-  } else {
-    start();
-  }
-
-  applyActive();
-  setParallaxForActive("next");
-})();
-</script>
-
-
-
 </body>
 </html>
