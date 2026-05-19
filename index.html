@@ -10,7 +10,6 @@
   />
   <link rel="icon" href="/favicon.ico">
 
-  <!-- Google Fonts（可自行改成本機字型） -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -623,15 +622,26 @@
       font-size: 0.95rem;
     }
 
-    /* Header / Nav */
-    .brand.brand-banner{
+    /* ===== Navigation Bar Layout Fix ===== */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* 讓左、中右、右自動拉開 */
+      padding: 0.75rem 1.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* 左邊 Brand LOGO */
+    .brand.brand-banner {
       display: flex;
       align-items: center;
       gap: 0;
-      margin-right: 10px;
+      flex-shrink: 0;
     }
 
-    .brand-banner-img{
+    .brand-banner-img {
       height: 42px;
       width: auto;
       display: block;
@@ -639,11 +649,16 @@
       filter: drop-shadow(0 6px 14px rgba(0,0,0,.45));
     }
 
-    @media (max-width: 720px){
-      .brand-banner-img{ height: 44px; }
+    /* 右邊導覽連結群 */
+    .nav-links { 
+      display: flex; 
+      align-items: center; 
+      gap: 1.75rem; 
+      font-size: 0.9rem;
+      margin-left: auto;     /* 關鍵：把選單往右邊推 */
+      margin-right: 1.75rem; /* 與最右側詢問按鈕保持距離 */
     }
 
-    .nav-links { display: flex; align-items: center; gap: 1.75rem; font-size: 0.9rem; }
     .nav-links a { position: relative; padding-bottom: 0.1rem; }
     .nav-links a::after {
       content: "";
@@ -658,7 +673,9 @@
     }
     .nav-links a:hover::after { width: 100%; }
 
+    /* 右邊詢問報價按鈕 */
     .nav-cta {
+      flex-shrink: 0;
       padding: 0.55rem 1.3rem;
       border-radius: 999px;
       border: 1px solid rgba(250, 204, 21, 0.7);
@@ -671,11 +688,6 @@
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
       cursor: pointer;
       transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
-    }
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.05);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
     }
 
     .nav-toggle {
@@ -1147,7 +1159,7 @@
       .footer-grid { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
     }
     @media (max-width: 720px) {
-      .nav-links { display: none; }
+      .nav-links, .nav-cta { display: none; } /* 手機版隱藏桌機導覽與按鈕 */
       .nav-toggle { display: inline-flex; }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .services-grid, .projects-grid { grid-template-columns: minmax(0, 1fr); }
@@ -1346,7 +1358,6 @@
 </head>
 
 <body>
-  <!-- Header / Nav -->
   <header class="site-header">
     <nav class="nav">
       <a href="#top" class="brand brand-banner" aria-label="捷強工業有限公司">
@@ -1360,10 +1371,11 @@
         <a href="#catalog">電子零件</a>
         <a href="#projects">實績案例</a>
         <a href="#contact">聯絡我們</a>
-        <button class="nav-cta btn-breathe" onclick="scrollToSection('contact')">
-          詢問報價
-        </button>
       </div>
+
+      <button class="nav-cta btn-breathe" onclick="scrollToSection('contact')">
+        詢問報價
+      </button>
 
       <button class="nav-toggle" aria-label="切換選單">
         <span></span>
@@ -1384,7 +1396,6 @@
   </header>
 
   <main id="top">
-    <!-- Hero -->
     <section class="hero" id="hero">
       <div class="container">
         <div class="hero-grid">
@@ -1429,7 +1440,6 @@
       </div>
     </section>
 
-    <!-- About -->
     <section id="about" class="about-v2">
       <div class="container">
         <div class="section-header">
@@ -1583,7 +1593,6 @@
       </div>
     </section>
 
-    <!-- Services -->
     <section id="services">
       <div class="container">
         <div class="section-header">
@@ -1634,7 +1643,6 @@
       </div>
     </section>
 
-    <!-- Catalog / Parts -->
     <section id="catalog" class="catalog">
       <div class="container">
         <div class="section-header">
@@ -1661,7 +1669,6 @@
         </div>
 
         <div class="catalog-grid" id="catalogGrid">
-          <!-- 1 MCCB -->
           <article class="catalog-card" data-key="mccb 電池開關 無熔絲斷路器 breaker mitsubishi 三菱 nf-125 nf125 3p 80a st s-t">
             <div class="catalog-media">
               <img src="images/product-mccb.jpg" alt="電池開關 / 無熔絲斷路器" loading="lazy" />
@@ -1705,7 +1712,6 @@
             </div>
           </article>
 
-          <!-- 2 Inverter -->
           <article class="catalog-card" data-key="變頻器 inverter frequency drive vfd teco 東元 delta 台達 siemens 西門子 e710 ms300 v20 g120 馬達 調速">
             <div class="catalog-media">
               <img src="images/product-inverter-teco-e710.jpg" alt="變頻器" loading="lazy" />
@@ -1751,7 +1757,6 @@
             </div>
           </article>
 
-          <!-- 3 Timer -->
           <article class="catalog-card" data-key="計數器 定時器 定時開關 計時器 timer theben din 軌 時間開關 sul 181">
             <div class="catalog-media">
               <img src="images/product-timer.jpg" alt="計數器 / 時間開關" loading="lazy" />
@@ -1796,7 +1801,6 @@
             </div>
           </article>
 
-          <!-- 空結果提示 -->
           <div class="catalog-empty" id="catalogEmpty">
             找不到符合「<strong id="catalogEmptyQ"></strong>」的品項。<br />
             你可以試試：品牌（TECO/台達/三菱）、品名（變頻器/電池開關/定時器）、型號（E710/NF-125）。
@@ -1805,7 +1809,6 @@
       </div>
     </section>
 
-    <!-- Projects -->
     <section id="projects">
       <div class="container">
         <div class="section-header">
@@ -1871,7 +1874,6 @@
       </div>
     </section>
 
-    <!-- 控制箱設計（已完美重構：不重複控制項，不擋圖） -->
     <section id="gallery">
       <div class="container">
         <div class="section-header">
@@ -1928,20 +1930,16 @@
               </figure>
             </div>
 
-            <!-- dots導覽：優雅壓在圖片內下方 -->
             <div class="gc-dots-overlay" aria-label="輪播頁碼"></div>
           </div>
 
-          <!-- 文字說明列：真正移到圖外、正下方 -->
           <div class="gc-bar">
             <div class="gc-caption" id="gcCaption">舊型控制盤改善與配線整理</div>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- Client Voice -->
     <section id="testimonial">
       <div class="container">
         <div class="section-header">
@@ -1974,7 +1972,6 @@
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
       <div class="container">
         <div class="section-header">
@@ -2055,7 +2052,6 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-grid">
       <div>
@@ -2091,7 +2087,6 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script>
   function scrollToSection(id) {
     const el = document.getElementById(id);
@@ -2479,7 +2474,7 @@
 </script>
 
 <script>
-    /* ===== ✅ Gallery Carousel: 3秒自動輪播動效指令碼 ===== */
+    /* ===== Gallery Carousel: 3秒自動輪播動效指令碼 ===== */
     (function(){
       const root = document.getElementById("galleryCarousel");
       if (!root) return;
@@ -2552,17 +2547,15 @@
       }
       function restart(){ start(); }
 
-      // 貼心體驗：滑鼠移入時暫停輪播，移出時恢復
       root.addEventListener("mouseenter", stop);
       root.addEventListener("mouseleave", start);
 
-      // 視窗微幅視差跟隨效果
       const viewport = root.querySelector(".gc-viewport");
       if (viewport) {
         viewport.addEventListener("mousemove", (e) => {
           const r = viewport.getBoundingClientRect();
           const x = (e.clientX - r.left) / r.width;
-          const offset = (x - 0.5) * 6; // 最大位移限制在舒適的 ±3px
+          const offset = (x - 0.5) * 6;
           const active = slides[idx];
           if (active) active.style.setProperty("--px", offset.toFixed(2) + "px");
         });
